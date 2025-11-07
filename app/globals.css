@@ -2,12 +2,12 @@
 @import "tw-animate-css";
 
 @theme {
-  --color-brand-bordo: #67161F;
-  --color-brand-gold:  #9E7557;
-  --color-brand-gray:  #262626;
-  --color-brand-cream: #E0DCD0;
-  --color-brand-lightgray: #E9E7E1;
-  --color-brand-monolightgray: #EEEBE2;
+  --color-brand-bordo: #67161f;
+  --color-brand-gold: #9e7557;
+  --color-brand-gray: #262626;
+  --color-brand-cream: #e0dcd0;
+  --color-brand-lightgray: #e9e7e1;
+  --color-brand-monolightgray: #eeebe2;
 
   --heading-2-size: clamp(40px, 6vw, 80px);
 
@@ -22,11 +22,21 @@
   --heading-7-size: clamp(122px, 9vw, 144px);
 }
 
-@utility font-kudriashov { font-family: var(--font-kudriashov); }
-@utility font-alexandra  { font-family: var(--font-alexandra); }
-@utility font-grava      { font-family: var(--font-grava); }
-@utility font-newstandard{ font-family: var(--font-newstandard); }
-@utility font-allegretto { font-family: var(--font-allegretto); }
+@utility font-kudriashov {
+  font-family: var(--font-kudriashov);
+}
+@utility font-alexandra {
+  font-family: var(--font-alexandra);
+}
+@utility font-grava {
+  font-family: var(--font-grava);
+}
+@utility font-newstandard {
+  font-family: var(--font-newstandard);
+}
+@utility font-allegretto {
+  font-family: var(--font-allegretto);
+}
 
 @utility heading-2 {
   font-size: var(--heading-2-size);
@@ -51,7 +61,7 @@
 
 @utility heading-5 {
   font-size: var(--heading-5-size);
-  line-height: 1.0;
+  line-height: 1;
   letter-spacing: -0.02em;
   @apply font-allegretto text-brand-bordo opacity-50;
 }
@@ -71,4 +81,3 @@
   @apply font-alexandra text-brand-lightgray;
   text-shadow: 1px 1px 2px var(--color-brand-monolightgray);
 }
-
