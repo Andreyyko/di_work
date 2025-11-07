@@ -7,11 +7,8 @@ const alexandra = localFont({
 });
 
 const kudriashov = localFont({
-  src: "../public/fonts/Kudriashov.ttf",  
-  weight: "400",
-  style: "normal" ,  
+  src: "../public/fonts/Kudriashov.woff",
   variable: "--font-kudriashov",
-  display: "swap",
 });
 
 const grava = localFont({
