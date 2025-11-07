@@ -23,7 +23,7 @@ const IdentityIntro: React.FC = () => {
                 size: "140px",
               },
             ]}
-            className=""
+            className="heading-2"
           />
 
           <FontHeaderTwo
