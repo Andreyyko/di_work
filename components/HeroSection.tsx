@@ -12,20 +12,20 @@ const HeroSection = () => {
         <FontHeaderTwo
             text="РОК-М"
             highlights={[
-                {id:0, className: "font-alexandra text-brand-bordo", size: "140px"},
+                {id:0, position:"start"},
             ]}
         />
         <FontHeaderTwo
             text="РЕСУРНО-ОРІЄНТОВАНІ"
             highlights={[
-                {id:0, className: "font-alexandra text-brand-bordo", size: "140px"},
+                {id:0, position: "start"},
             ]}
         />
         <FontHeaderTwo
             text="КОНГНІТИВНІ МЕТОДИКИ"
             highlights={[
-                {id:0, className: "font-alexandra text-brand-bordo", size: "140px"},
-                {id:12, className: "font-alexandra text-brand-bordo", size: "140px"},
+                {id:1, position: "start"},
+                {id:0, position: "start"},
             ]}
         />
         </section>
