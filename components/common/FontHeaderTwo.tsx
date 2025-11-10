@@ -1,4 +1,5 @@
 import React, { memo, useMemo } from "react";
+import { twMerge } from "tailwind-merge";
 
 export type LetterRule = {
   id: number;
@@ -13,6 +14,7 @@ type Props = {
 
 const DEFAULT_LETTER_CLASS = "font-alexandra text-brand-bordo";
 const DEFAULT_LETTER_SIZE = "140px";
+const BASE_HEADING_CLASS = "heading-2";
 
 function FontHeaderTwo({
   text,
@@ -22,10 +24,12 @@ function FontHeaderTwo({
   const tokens = useMemo(() => text.split(/(\s+)/), [text]);
   const rules = useMemo(() => new Map(highlights.map(r => [r.id, r])), [highlights]);
 
+  const ClassName = twMerge(BASE_HEADING_CLASS, className)
+
   let wordIndex = 0;
 
   return (
-    <h2 className={className}>
+    <h2 className={ClassName}>
       {tokens.map((token, i) => {
         if (/^\s+$/.test(token)) return token;
 
