@@ -10,33 +10,18 @@
   --color-brand-monolightgray: #eeebe2;
 
   --heading-2-size: clamp(40px, 6vw, 80px);
-
   --heading-3-size: clamp(20px, 2.2vw, 28px);
-
   --heading-4-size: clamp(18px, 1.4vw, 22px);
-
   --heading-5-size: clamp(26px, 2vw, 33px);
-
   --heading-6-size: clamp(14px, 1.8vw, 18px);
-
   --heading-7-size: clamp(122px, 9vw, 144px);
 }
 
-@utility font-kudriashov {
-  font-family: var(--font-kudriashov);
-}
-@utility font-alexandra {
-  font-family: var(--font-alexandra);
-}
-@utility font-grava {
-  font-family: var(--font-grava);
-}
-@utility font-newstandard {
-  font-family: var(--font-newstandard);
-}
-@utility font-allegretto {
-  font-family: var(--font-allegretto);
-}
+@utility font-kudriashov  { font-family: var(--font-kudriashov); }
+@utility font-alexandra   { font-family: var(--font-alexandra); }
+@utility font-grava       { font-family: var(--font-grava); }
+@utility font-newstandard { font-family: var(--font-newstandard); }
+@utility font-allegretto  { font-family: var(--font-allegretto); }
 
 @utility heading-2 {
   font-size: var(--heading-2-size);
@@ -77,7 +62,22 @@
   font-size: var(--heading-7-size);
   line-height: 1.05;
   letter-spacing: 0;
-
   @apply font-alexandra text-brand-lightgray;
   text-shadow: 1px 1px 2px var(--color-brand-monolightgray);
+}
+
+@utility first-letter-hero {
+  display: inline-block;
+  line-height: 1;
+}
+
+.first-letter-hero::first-letter {
+  font-family: var(--font-alexandra, inherit);
+  font-size: clamp(80px, 12vw, 160px);
+  color: var(--first-letter-color, var(--color-brand-bordo, currentColor));
+  line-height: 0.089;
+}
+
+@media (min-width: 640px) {
+  .heading-2 { letter-spacing: -0.08em; }
 }
