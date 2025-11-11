@@ -49,12 +49,10 @@ const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
   textClassTwoHover = "heading-4 text-white font-kudriashov",
 }) => {
   const [hover, setHover] = React.useState(false);
-  const [active, setActive] = React.useState(false); // ✅ нове: активний стан після кліку
-
+  const [active, setActive] = React.useState(false); 
   const baseSrc = FRAMES[variant];
   const hoverSrc = FRAMES_HOVER[variant];
 
-  // ✅ для variant="two" показуємо hover-стиль, якщо є або ховер, або актив
   const isHoverLike = variant === "two" && (hover || active);
   const currentSrc = isHoverLike && hoverSrc ? hoverSrc : baseSrc;
 
@@ -68,12 +66,10 @@ const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
       : textClassTwo;
 
   const handleClick = () => {
-    // ✅ перемикаємо активність тільки для другої кнопки
     if (variant === "two") setActive((v) => !v);
     onClick?.();
   };
 
-  // Підтримка клавіатури (Space/Enter як toggle)
   const handleKeyDown: React.KeyboardEventHandler<HTMLButtonElement> = (e) => {
     if (variant !== "two") return;
     if (e.key === " " || e.key === "Enter") {
@@ -93,8 +89,8 @@ const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
       onMouseLeave={() => setHover(false)}
       onTouchStart={() => setHover(true)}
       onTouchEnd={() => setHover(false)}
-      aria-pressed={variant === "two" ? active : undefined} // ✅ accessibility
-      data-state={active ? "active" : "inactive"}          // зручно для CSS
+      aria-pressed={variant === "two" ? active : undefined} 
+      data-state={active ? "active" : "inactive"}        
       style={{
         position: "relative",
         display: "inline-block",
