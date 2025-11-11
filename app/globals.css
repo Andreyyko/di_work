@@ -8,26 +8,49 @@
   --color-brand-cream: #e0dcd0;
   --color-brand-lightgray: #e9e7e1;
   --color-brand-monolightgray: #eeebe2;
+  --color-brand-background: #eeece5;
 
   --heading-2-size: clamp(40px, 6vw, 80px);
   --heading-3-size: clamp(20px, 2.2vw, 28px);
   --heading-4-size: clamp(18px, 1.4vw, 22px);
   --heading-5-size: clamp(26px, 2vw, 33px);
   --heading-6-size: clamp(14px, 1.8vw, 18px);
-  --heading-7-size: clamp(122px, 9vw, 144px);
+  --heading-7-size: clamp(50px, 9vw, 144px);
 }
 
-@utility font-kudriashov  { font-family: var(--font-kudriashov); }
-@utility font-alexandra   { font-family: var(--font-alexandra); }
-@utility font-grava       { font-family: var(--font-grava); }
-@utility font-newstandard { font-family: var(--font-newstandard); }
-@utility font-allegretto  { font-family: var(--font-allegretto); }
+@utility font-kudriashov {
+  font-family: var(--font-kudriashov);
+}
+@utility font-alexandra {
+  font-family: var(--font-alexandra);
+}
+@utility font-grava {
+  font-family: var(--font-grava);
+}
+@utility font-newstandard {
+  font-family: var(--font-newstandard);
+}
+@utility font-allegretto {
+  font-family: var(--font-allegretto);
+}
 
 @utility heading-2 {
   font-size: var(--heading-2-size);
   line-height: 0.89;
   letter-spacing: -0.1em;
   @apply font-kudriashov text-brand-gray;
+}
+
+@media (min-width: 1536px) {
+  .heading-2 {
+    font-size: clamp(78px, 10vw, 105px);
+    line-height: 0.89;
+    letter-spacing: -0.1em;
+  }
+
+  .first-letter-hero::first-letter {
+    font-size: clamp(80px, 12vw, 160px);
+  }
 }
 
 @utility heading-3 {
@@ -61,9 +84,13 @@
 @utility heading-bg {
   font-size: var(--heading-7-size);
   line-height: 1.05;
-  letter-spacing: 0;
-  @apply font-alexandra text-brand-lightgray;
-  text-shadow: 1px 1px 2px var(--color-brand-monolightgray);
+  letter-spacing: 1;
+  @apply font-alexandra;
+
+  color: rgba(238, 235, 226, 1);
+
+  text-shadow: 1px 1px 1px rgba(219, 213, 195, 1),
+    -1px -1px 1px rgba(255, 253, 246, 1);
 }
 
 @utility first-letter-hero {
@@ -79,5 +106,7 @@
 }
 
 @media (min-width: 640px) {
-  .heading-2 { letter-spacing: -0.08em; }
+  .heading-2 {
+    letter-spacing: -0.08em;
+  }
 }
