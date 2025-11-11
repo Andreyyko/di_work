@@ -1,12 +1,11 @@
 "use client"
 
-
-import HeroSection from "@/components/HeroSection";
+import HeroSection from "@/components/HeroSection/HeroSection";
 
 export default function Home() {
   return (
-    <section className="">
+    <main className="bg-brand-background">
       <HeroSection/>
-    </section>
+    </main>
   );
 }

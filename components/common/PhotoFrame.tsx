@@ -1,4 +1,5 @@
 import { gold_frame } from "@/public/images/GoldFrameImage";
+import Image from "next/image";
 
 type Src = string | { src: string } | any;
 
@@ -50,7 +51,7 @@ export default function PhotoFrame({
           bottom: inCss,
         }}
       >
-        <img
+        <Image
           src={toUrl(src)}
           alt={alt}
           draggable={false}
@@ -58,7 +59,7 @@ export default function PhotoFrame({
         />
       </div>
 
-      <img
+      <Image
         src={toUrl(gold_frame.GOLD_FRAME)}
         alt={frameAlt}
         draggable={false}

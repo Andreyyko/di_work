@@ -2,7 +2,7 @@ import "./globals.css";
 import localFont from "next/font/local";
 
 const alexandra = localFont({
-  src: "../public/fonts/Alexandra_Script.ttf",
+  src: "../public/fonts/alexandra-script.ttf",
   variable: "--font-alexandra",
 });
 
