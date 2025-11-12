@@ -10,12 +10,13 @@
   --color-brand-monolightgray: #eeebe2;
   --color-brand-background: #eeece5;
 
-  --heading-2-size: clamp(40px, 6vw, 80px);
+
+  --heading-2-size: clamp(35px, 6vw, 80px);
   --heading-3-size: clamp(20px, 2.2vw, 28px);
   --heading-4-size: clamp(18px, 1.4vw, 22px);
-  --heading-5-size: clamp(26px, 2vw, 33px);
+  --heading-5-size: clamp(14px, 2vw, 33px);
   --heading-6-size: clamp(14px, 1.8vw, 18px);
-  --heading-7-size: clamp(50px, 9vw, 144px);
+  --heading-7-size: clamp(50px, 8vw, 144px);
 }
 
 @utility font-kudriashov {
@@ -37,7 +38,7 @@
 @utility heading-2 {
   font-size: var(--heading-2-size);
   line-height: 0.89;
-  letter-spacing: -0.1em;
+  letter-spacing: -0.01em;
   @apply font-kudriashov text-brand-gray;
 }
 
@@ -84,14 +85,16 @@
 @utility heading-bg {
   font-size: var(--heading-7-size);
   line-height: 1.05;
-  letter-spacing: 1;
+  letter-spacing: -0.03em;
   @apply font-alexandra;
 
   color: rgba(238, 235, 226, 1);
 
-  text-shadow: 1px 1px 1px rgba(219, 213, 195, 1),
-    -1px -1px 1px rgba(255, 253, 246, 1);
+  text-shadow:
+    1px 1px 1px rgba(219, 213, 195, 1),     
+    -1px -1px 1px rgba(255, 253, 246, 1);    
 }
+
 
 @utility first-letter-hero {
   display: inline-block;

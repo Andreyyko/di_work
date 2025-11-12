@@ -9,7 +9,7 @@ const IdentityIntro: React.FC = () => {
   const showImage = width !== null && width >= 1280;
 
   return (
-    <section className="w-full bg-brand-background px-2 sm:px-6 py-16 flex flex-col">
+    <section className="w-full bg-brand-background py-16 flex flex-col">
       <div className="text-left sm:whitespace-nowrap">
         <h2 className="heading-2">
           <span className="first-letter-hero">П</span>
