@@ -1,22 +1,7 @@
+import Image, { StaticImageData } from "next/image";
 import { gold_frame } from "@/public/images/GoldFrameImage";
-import Image from "next/image";
 
-type Src = string | { src: string } | any;
-
-const toUrl = (x: unknown): string => {
-  if (typeof x === "string") return x;
-  if (x && typeof x === "object" && "src" in x) {
-    const srcVal = (x as any).src;
-    if (typeof srcVal === "string") return srcVal;
-    if (srcVal && typeof srcVal === "object" && "src" in srcVal && typeof srcVal.src === "string") {
-      return srcVal.src;
-    }
-  }
-  if (process.env.NODE_ENV !== "production") {
-    console.warn("PhotoFrame: неможливо витягнути URL із значення", x);
-  }
-  return "";
-};
+type Src = string | StaticImageData;
 
 export default function PhotoFrame({
   src,
@@ -52,18 +37,31 @@ export default function PhotoFrame({
         }}
       >
         <Image
-          src={toUrl(src)}
+          src={src}                 
           alt={alt}
+          fill                      
+          sizes="100vw"             
           draggable={false}
-          style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }}
+          style={{
+            objectFit: "contain",
+            display: "block",
+            userSelect: "none",
+            pointerEvents: "none",
+          }}
         />
       </div>
 
       <Image
-        src={toUrl(gold_frame.GOLD_FRAME)}
+        src={gold_frame.GOLD_FRAME}
         alt={frameAlt}
         draggable={false}
-        style={{ display: "block", width: "100%", height: "auto", pointerEvents: "none", userSelect: "none" }}
+        style={{
+          display: "block",
+          width: "100%",
+          height: "auto",
+          pointerEvents: "none",
+          userSelect: "none",
+        }}
       />
     </div>
   );
