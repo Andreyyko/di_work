@@ -10,7 +10,6 @@
   --color-brand-monolightgray: #eeebe2;
   --color-brand-background: #eeece5;
 
-
   --heading-2-size: clamp(34px, 6vw, 80px);
   --heading-3-size: clamp(18px, 2.2vw, 28px);
   --heading-4-size: clamp(15px, 1.4vw, 22px);
@@ -91,11 +90,9 @@
 
   color: rgba(238, 235, 226, 1);
 
-  text-shadow:
-    1px 1px 1px rgba(219, 213, 195, 1),     
-    -1px -1px 1px rgba(255, 253, 246, 1);    
+  text-shadow: 1px 1px 1px rgba(219, 213, 195, 1),
+    -1px -1px 1px rgba(255, 253, 246, 1);
 }
-
 
 @utility first-letter-hero {
   display: inline-block;
@@ -112,5 +109,27 @@
 @media (min-width: 640px) {
   .heading-2 {
     letter-spacing: -0.08em;
+  }
+}
+
+@layer utilities {
+  .pb-responsive {
+    padding-bottom: 50px;
+
+    @media (min-width: 640px) {
+      padding-bottom: 70px;
+    }
+
+    @media (min-width: 768px) {
+      padding-bottom: 30px;
+    }
+
+    @media (min-width: 1024px) {
+      padding-bottom: 150px;
+    }
+
+    @media (min-width: 1280px) {
+      padding-bottom: 350px;
+    }
   }
 }

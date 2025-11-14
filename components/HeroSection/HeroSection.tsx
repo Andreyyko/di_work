@@ -6,24 +6,19 @@ import FrameWrapper from "../common/FrameWrapper";
 
 import { flower_images } from "@/public/images/FlowerImages";
 import { useWindowWidth } from "@/hooks/useWindowWidth";
-
-const CheckItems = [
-  "20 років психотерапевтичної практики",
-  "Авторські методики",
-  "Наукова апробація (PhD)",
-  "Структуровані інструкції",
-  "Наукова достовірність, бібліографія"
-]
+import { CheckItems } from "@/constant/heroSectionData";
 
 const HeroSection = () => {
   const { isSmallerThanSm } = useWindowWidth();
 
   return (
-    <section className="relative w-full pb-[50px] sm:pb-[70px] md:pb-[30px] lg:pb-[150px] xl:pb-[350px]">
+    <section className="relative w-full pb-responsive">
       <h5 className="heading-5 text-right relative w-screen left-1/2 right-1/2 -translate-x-1/2 px-0">
         Простір, де психологія поєднується з<br />
-        креативом, де вправи стають ключем до<br />
-        самопізнання, а гра — до нових<br />
+        креативом, де вправи стають ключем до
+        <br />
+        самопізнання, а гра — до нових
+        <br />
         можливостей.
       </h5>
 
@@ -72,10 +67,14 @@ const HeroSection = () => {
         </h2>
 
         <h4 className="heading-4 mb-8 mt-8">
-          Перший в Україні психологічний сайт,<br />
-          evidence-based онлайн-каталог із понад<br />
-          1000 технік, вправ, інтервенцій, практик<br />
-          спрямований на підтримку психічного<br />
+          Перший в Україні психологічний сайт,
+          <br />
+          evidence-based онлайн-каталог із понад
+          <br />
+          1000 технік, вправ, інтервенцій, практик
+          <br />
+          спрямований на підтримку психічного
+          <br />
           здоров’я та всіх сфер особистості.
         </h4>
 
@@ -94,21 +93,22 @@ const HeroSection = () => {
               paddingX={24}
               paddingY={36}
             >
-              <CheckItem
-                items={CheckItems}
-              />
+              <CheckItem items={CheckItems} />
             </FrameWrapper>
           </div>
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left mt-20 gap-4 md:gap-0">
           <h6 className="heading-6 opacity-100 font-grava text-[clamp(14px,1vw,18px)] max-w-[90%] md:max-w-[70%] mx-auto md:mx-0">
-            У СТАРОСЛОВʼЯНСЬКИХ МОВАХ «РОК» — ЦЕ ФАТУМ,<br />
+            У СТАРОСЛОВʼЯНСЬКИХ МОВАХ «РОК» — ЦЕ ФАТУМ,
+            <br />
             НЕВІДВОРОТНА ДОЛЯ, СИЛА, ЯКА ВИЗНАЧАЄ ХІД ПОДІЙ.
           </h6>
 
           <h6 className="heading-6 opacity-100 font-grava text-[clamp(14px,1vw,18px)]">
-            BY BOGDANA<br />.ANDREYKO BE UNIQUE
+            BY BOGDANA
+            <br />
+            .ANDREYKO BE UNIQUE
           </h6>
         </div>
       </div>

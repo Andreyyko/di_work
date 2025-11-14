@@ -1,6 +1,8 @@
 import { about_us_images } from "@/public/images/AboutUsImages";
 import FrameWrapper from "../common/FrameWrapper";
+
 import TwoFrameButton from "../common/TwoFrameButton";
+
 import { useWindowWidth } from "@/hooks/useWindowWidth";
 
 const AboutUs = () => {
@@ -8,7 +10,7 @@ const AboutUs = () => {
   const showBr = (width ?? 0) > 768 && (width ?? 0) < 885;
 
   return (
-    <section className="bg-brand-background w-full">
+    <section className="bg-brand-background w-full pb-responsive">
       <div className="flex flex-col md:flex-row items-center md:justify-between md:mb-[50px]">
         {isSmallerThanSm && (
           <p className="heading-bg sm:whitespace-nowrap translate-y-5 z-50">
@@ -30,7 +32,6 @@ const AboutUs = () => {
             className="shrink-0 w-[285px] h-[487px] min-w-[285px] min-h-[487px] overflow-hidden mb-[50px] md:mb-0"
           />
 
-          {/* Білий конверт поверх рамки */}
           <img
             src={about_us_images.whitePostcard.src}
             alt="white postcard"
@@ -96,14 +97,14 @@ const AboutUs = () => {
       <div className="flex flex-col items-start sm:items-center md:flex-row justify-between">
         <div className="flex flex-col sm:flex-row sm:w-[75%] md:w-full">
           {isLgOrLarger && (
-            <span className="heading-5 -translate-x-4 flex items-end lg:w-1/3 text-left sm:text-center">
+            <span className="heading-5 -translate-x-4 flex items-end lg:w-[32%] text-left sm:text-center">
               Гармонія починається
               <br /> зсередини. Коли думки,
               <br /> емоції та дії узгоджені — <br />
               з’являється спокій і<br /> впевненість у кожному дні
             </span>
           )}
-          <div className="flex flex-col justify-end lg:ml-20">
+          <div className="flex flex-col justify-end">
             <h3 className="heading-3 mb-5  text-left">
               КОЖНА З МЕТОДИК МІСТИТЬ
             </h3>

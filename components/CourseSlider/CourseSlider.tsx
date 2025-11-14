@@ -18,7 +18,7 @@ const CourseSlider = () => {
   };
 
   return (
-    <section className="relative pb-[50px] sm:pb-[70px] md:pb-[30px] lg:pb-[150px] xl:pb-[350px]">
+    <section className="relative pb-responsive">
       
       {!isSmallerThanMd && (
         <h5 className="heading-5 max-w-50 -translate-x-5">

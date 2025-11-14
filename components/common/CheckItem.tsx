@@ -20,9 +20,9 @@ const CheckItem = ({
 
   if (items && items.length > 0) {
     return (
-      <div className={`${className}`}>
+      <ul className={` ${className}`}>
         {items.map((item, idx) => (
-          <p key={idx} className="flex items-start gap-3 leading-tight">
+          <li key={idx} className="flex items-start gap-3 leading-tight">
             <Image
               src={ICON}
               alt=""
@@ -30,24 +30,26 @@ const CheckItem = ({
               height={size}
               className="shrink-0 mt-[3px]"
             />
-            {item}
-          </p>
+            <span>{item}</span>
+          </li>
         ))}
-      </div>
+      </ul>
     );
   }
 
   return (
-    <p className={`flex items-start gap-3 leading-tight ${className}`}>
-      <Image
-        src={ICON}
-        alt=""
-        width={size}
-        height={size}
-        className="shrink-0 mt-[3px]"
-      />
-      {children}
-    </p>
+    <ul className={className}>
+      <li className="flex items-start gap-3 leading-tight">
+        <Image
+          src={ICON}
+          alt=""
+          width={size}
+          height={size}
+          className="shrink-0 mt-[3px]"
+        />
+        <span>{children}</span>
+      </li>
+    </ul>
   );
 };
 
