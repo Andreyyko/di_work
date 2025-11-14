@@ -4,15 +4,29 @@ type Breakpoint = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 
 interface WindowWidthState {
   width: number | null;
-  isSmallerThanSm: boolean;
   breakpoint: Breakpoint;
+  isSmallerThanSm: boolean;
+  isSmallerThanMd: boolean;
+  isSmallerThanLgTitle: boolean;
+  isSmallerThanLg: boolean;
+  isSmallerThanXl: boolean;
+  isLgOrLarger: boolean;
+  isXlOrLarger: boolean;
+  is2xlOrLarger: boolean;
 }
 
 export const useWindowWidth = (): WindowWidthState => {
   const [state, setState] = useState<WindowWidthState>({
     width: null,
-    isSmallerThanSm: false,
     breakpoint: "xs",
+    isSmallerThanSm: false,
+    isSmallerThanMd: false,
+    isSmallerThanLgTitle: false,
+    isSmallerThanLg: false,
+    isSmallerThanXl: false,
+    isLgOrLarger: false,
+    isXlOrLarger: false,
+    is2xlOrLarger: false,
   });
 
   useEffect(() => {
@@ -25,16 +39,22 @@ export const useWindowWidth = (): WindowWidthState => {
       else if (w >= 1024) breakpoint = "lg";
       else if (w >= 768) breakpoint = "md";
       else if (w >= 640) breakpoint = "sm";
-      else breakpoint = "xs";
 
       setState({
         width: w,
-        isSmallerThanSm: w < 640,
         breakpoint,
+        isSmallerThanSm: w < 640,
+        isSmallerThanMd: w < 768,
+        isSmallerThanLgTitle: w < 886,
+        isSmallerThanLg: w < 1024,
+        isSmallerThanXl: w < 1280,
+        isLgOrLarger: w >= 1024,
+        isXlOrLarger: w >= 1280,
+        is2xlOrLarger: w >= 1536,
       });
     };
 
-    handleResize(); 
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
