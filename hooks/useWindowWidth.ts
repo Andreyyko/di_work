@@ -6,6 +6,7 @@ interface WindowWidthState {
   width: number | null;
   breakpoint: Breakpoint;
   isSmallerThanSm: boolean;
+  isbiggerThanMd: boolean;
   isSmallerThanMd: boolean;
   isSmallerThanLgTitle: boolean;
   isSmallerThanLg: boolean;
@@ -20,6 +21,7 @@ export const useWindowWidth = (): WindowWidthState => {
     width: null,
     breakpoint: "xs",
     isSmallerThanSm: false,
+    isbiggerThanMd: false,
     isSmallerThanMd: false,
     isSmallerThanLgTitle: false,
     isSmallerThanLg: false,
@@ -44,6 +46,7 @@ export const useWindowWidth = (): WindowWidthState => {
         width: w,
         breakpoint,
         isSmallerThanSm: w < 640,
+        isbiggerThanMd: w > 768,
         isSmallerThanMd: w < 768,
         isSmallerThanLgTitle: w < 886,
         isSmallerThanLg: w < 1024,
