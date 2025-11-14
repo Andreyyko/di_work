@@ -37,16 +37,16 @@ const toCss = (v?: number | string) =>
 const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
   variant,
   label,
-  width = 420,
-  height = 160,
+  width = 324,
+  height = 213,
   inset = "8%",
   onClick,
   alt = "button frame",
   className = "",
 
-  textClassOne = "heading-4 text-brand-gold font-kudriashov",
-  textClassTwo = "heading-4 text-red-800 font-kudriashov",
-  textClassTwoHover = "heading-4 text-white font-kudriashov",
+  textClassOne = "heading-4 text-brand-gold font-kudriashov text-[clamp(14px,2vw,19px)]",
+  textClassTwo = "heading-4 text-red-800 font-kudriashov text-[clamp(14px,2vw,19px)]",
+  textClassTwoHover = "heading-4 text-white font-kudriashov text-[clamp(14px,2vw,19px)]",
 }) => {
   const [hover, setHover] = React.useState(false);
   const [active, setActive] = React.useState(false); 

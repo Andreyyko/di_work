@@ -1,15 +1,25 @@
 import Image from "next/image";
+
 import CheckItem from "../common/CheckItem";
 import CustomSeal from "../common/CustomSeal";
 import FrameWrapper from "../common/FrameWrapper";
+
 import { flower_images } from "@/public/images/FlowerImages";
 import { useWindowWidth } from "@/hooks/useWindowWidth";
+
+const CheckItems = [
+  "20 років психотерапевтичної практики",
+  "Авторські методики",
+  "Наукова апробація (PhD)",
+  "Структуровані інструкції",
+  "Наукова достовірність, бібліографія"
+]
 
 const HeroSection = () => {
   const { isSmallerThanSm } = useWindowWidth();
 
   return (
-    <section className="relative w-full">
+    <section className="relative w-full pb-[50px] sm:pb-[70px] md:pb-[30px] lg:pb-[150px] xl:pb-[350px]">
       <h5 className="heading-5 text-right relative w-screen left-1/2 right-1/2 -translate-x-1/2 px-0">
         Простір, де психологія поєднується з<br />
         креативом, де вправи стають ключем до<br />
@@ -20,7 +30,7 @@ const HeroSection = () => {
       <Image
         className={`
           absolute top-0 z-10 select-none pointer-events-none
-          w-40 sm:w-[420px] md:w-[220px] lg:w-[700px] xl:w-[1180px]
+          w-35 sm:w-[180px] md:w-[220px] lg:w-[700px] xl:w-[1180px]
           -left-5 scale-x-[-1]
           lg:left-auto lg:-right-5 lg:scale-x-100 lg:top-90
         `}
@@ -31,7 +41,7 @@ const HeroSection = () => {
 
       <div className="relative mt-6 sm:mt-10">
         <h2 className="heading-2 flex flex-col relative">
-          <div className="lg:max-w-[76%] sm:max-w-[90%] sm:text-right text-end">
+          <div className="sm:max-w-[90%] mb:max-w-[80%] lg:max-w-[86%]  sm:text-right text-center">
             <span className="first-letter-hero">РОК-М</span>
           </div>
 
@@ -84,11 +94,9 @@ const HeroSection = () => {
               paddingX={24}
               paddingY={36}
             >
-              <CheckItem>20 років психотерапевтичної практики</CheckItem>
-              <CheckItem>Авторські методики</CheckItem>
-              <CheckItem>Наукова апробація (PhD)</CheckItem>
-              <CheckItem>Структуровані інструкції</CheckItem>
-              <CheckItem>Наукова достовірність, бібліографія</CheckItem>
+              <CheckItem
+                items={CheckItems}
+              />
             </FrameWrapper>
           </div>
         </div>
