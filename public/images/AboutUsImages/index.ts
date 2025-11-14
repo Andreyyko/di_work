@@ -1,5 +1,9 @@
-import BOGDANA from './bogdana.png'
+import bogdana from "./bogdana.svg";
+import bogdanaReadBook from "./bogdanaReadBook.svg";
+import whitePostcard from "./whitePostcard.svg"
 
 export const about_us_images = {
-    BOGDANA
-}
+  bogdana,
+  bogdanaReadBook,
+  whitePostcard
+};

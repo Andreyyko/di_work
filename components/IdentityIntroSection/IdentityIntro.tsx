@@ -1,5 +1,7 @@
 import React from "react";
+
 import { IdentityIntroImages } from "@/public/images/IdentityIntroImages";
+
 import FrameWrapper from "../common/FrameWrapper";
 import { useWindowWidth } from "@/hooks/useWindowWidth";
 
@@ -9,7 +11,7 @@ const IdentityIntro: React.FC = () => {
   const showImage = width !== null && width >= 1280;
 
   return (
-    <section className="w-full bg-brand-background py-16 flex flex-col">
+    <section className="w-full bg-brand-background pb-12 flex flex-col">
       <div className="text-left sm:whitespace-nowrap">
         <h2 className="heading-2">
           <span className="first-letter-hero">П</span>
@@ -75,7 +77,8 @@ const IdentityIntro: React.FC = () => {
           {!isSmallerThanSm && (
             <p className="heading-bg sm:whitespace-nowrap">
               by Bo<span className="mr-1">g</span>
-              <span>d</span>ana A<span className="mr-1">n</span><span>d</span>reyko
+              <span>d</span>ana A<span className="mr-1">n</span>
+              <span>d</span>reyko
             </p>
           )}
         </div>
