@@ -37,8 +37,6 @@ const CustomSeal = ({
             rounded-sm shadow-md
             font-kudriashov text-[10px] sm:text-[12px] md:text-[14px]
             bg-brand-cream text-brand-bordo/60
-            hover:bg-brand-bordo hover:text-brand-cream
-            transition-all duration-300
             text-center leading-tight
             wrap-break-word sm:whitespace-nowrap
             ${position === "right" ? "left-1/2 ml-1" : "right-1/2"}

@@ -7,8 +7,7 @@ export default function Home() {
   return (
     <main
       className="
-        bg-brand-background px-5 flex flex-col
-        space-y-[50px] sm:space-y-[150px] md:space-y-[150px] lg:space-y-[150px] xl:space-y-[350px]"
+        bg-brand-background px-5"
     >
       <HeroSection />
       <IdentityIntro />
