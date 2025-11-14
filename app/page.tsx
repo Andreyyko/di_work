@@ -1,5 +1,6 @@
 "use client";
 
+import CourseSlider from "@/components/CourseSlider/CourseSlider";
 import HeroSection from "@/components/HeroSection/HeroSection";
 import IdentityIntro from "@/components/IdentityIntroSection/IdentityIntro";
 
@@ -7,10 +8,11 @@ export default function Home() {
   return (
     <main
       className="
-        bg-brand-background px-5"
+        bg-brand-background px-5 overflow-hidden"
     >
       <HeroSection />
       <IdentityIntro />
+      <CourseSlider/>
     </main>
 
   );
