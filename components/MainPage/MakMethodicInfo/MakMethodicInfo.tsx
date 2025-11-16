@@ -1,9 +1,9 @@
 import { useWindowWidth } from "@/hooks/useWindowWidth";
 
-import TwoFrameButton from "../common/TwoFrameButton";
+import TwoFrameButton from "../../common/TwoFrameButton";
 
 import Image from "next/image";
-import { MakMethodicInfoImages } from "@/public/images/MakMethodicInfoImages";
+import { flower_images } from "@/public/images/CommonImages/FlowerImages";
 
 const MakMethodicInfo = () => {
   const { width, isSmallerThanLg, isSmallerThanSm } = useWindowWidth();
@@ -14,14 +14,14 @@ const MakMethodicInfo = () => {
     <section className="pb-responsive w-full relative  pt-20">
       {showMobileFlower ? (
         <Image
-          src={MakMethodicInfoImages.BackGroundImagesMobile}
+          src={flower_images.BackGroundImagesMobile}
           alt="background flower mobile"
           className="absolute top-[22%] -left-5 -translate-y-1/2  w-[1000px] h-[1500px] pointer-events-none select-none z-1"
           priority
         />
       ) : (
         <Image
-          src={MakMethodicInfoImages.BackGroundImages}
+          src={flower_images.BackGroundImages}
           alt="background flower"
           className="absolute top-[30%] sm:top-[40%] -left-5 -translate-y-1/2  pointer-events-none select-none z-1"
           priority
@@ -31,7 +31,7 @@ const MakMethodicInfo = () => {
         <div className="flex flex-row justify-between items-start mb-10">
           {!isSmallerThanLg && (
             <div className="flex flex-col max-w-[55%]">
-              <h3 className="heading-3 mb-5">КАРТИНИ (МАК)</h3>
+              <h3 className="heading-3 mb-5 uppercase">картини (мак)</h3>
               <p className="heading-4 md:max-w-[55%] lg:max-w-[44%]">
                 На платформі психічного здоров’я Evidence Based представлено
                 унікальний підхід до роботи з метафоричними асоціативними
@@ -60,24 +60,24 @@ const MakMethodicInfo = () => {
           <h2 className="heading-2 uppercase text-center">
             <span className="whitespace-nowrap -ml-5 sm:translate-x-0">
               {" "}
-              <span className="first-letter-hero">Т</span>ренінги,{" "}
+              <span className="first-letter">т</span>ренінги,{" "}
               <span className="whitespace-nowrap">
                 {" "}
-                <span className="first-letter-hero">M</span>АК,{" "}
+                <span className="first-letter">м</span>ак,{" "}
               </span>{" "}
             </span>
             {isSmallerThanSm && <br />}
             <span className="whitespace-nowrap">
               {" "}
-              <span className="first-letter-hero">M</span>узичний
+              <span className="first-letter">м</span>узичний
             </span>{" "}
-            <br /> <span className="first-letter-hero">C</span>упровід та список
+            <br /> <span className="first-letter">с</span>упровід та список
             використаної{" "}
             <span className="whitespace-nowrap">
               {" "}
-              <span className="first-letter-hero">Л</span>ітератури
+              <span className="first-letter">л</span>ітератури
             </span>{" "}
-            <br /> до <span className="first-letter-hero">M</span>етодик
+            <br /> до <span className="first-letter">м</span>етодик
           </h2>
         </div>
 
@@ -96,7 +96,7 @@ const MakMethodicInfo = () => {
         <div className="flex flex-col items-center sm:items-end sm:mb-10">
           {isSmallerThanSm && (
             <div className="flex flex-col">
-              <h3 className="heading-3 mb-5">КАРТИНИ (МАК)</h3>
+              <h3 className="heading-3 mb-5 uppercase">картини (мак)</h3>
               <p className="heading-4 mb-[30px]">
                 На платформі психічного здоров’я Evidence Based представлено
                 унікальний підхід до роботи з метафоричними асоціативними

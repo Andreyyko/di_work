@@ -1,5 +1,5 @@
 import Image, { StaticImageData } from "next/image";
-import { gold_frame } from "@/public/images/GoldFrameImage";
+import { gold_frame } from "@/public/images/CommonImages/GoldFrameImage";
 
 type Src = string | StaticImageData;
 

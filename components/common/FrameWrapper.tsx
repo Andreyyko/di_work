@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import Image, { StaticImageData } from "next/image";
 import CustomSeal from "./CustomSeal";
-import { ornament_item } from "@/public/images/OrnamentIcon";
+import { ornament_item } from "@/public/images/CommonImages/OrnamentIcon";
 
 export type Corner = "top-left" | "top-right" | "bottom-left" | "bottom-right" | "center";
 export type ImgSrc = string | StaticImageData;

@@ -1,7 +1,7 @@
-import { about_us_images } from "@/public/images/AboutUsImages";
-import FrameWrapper from "../common/FrameWrapper";
+import { about_us_images } from "@/public/images/MainPageImages/AboutUsImages";
+import FrameWrapper from "../../common/FrameWrapper";
 
-import TwoFrameButton from "../common/TwoFrameButton";
+import TwoFrameButton from "../../common/TwoFrameButton";
 
 import { useWindowWidth } from "@/hooks/useWindowWidth";
 
@@ -42,8 +42,8 @@ const AboutUs = () => {
         <div className="flex flex-col sm:w-[75%] md:ml-3">
           <div className="flex flex-col md:flex-row justify-between md:max-h-[300px] lg:max-h-[230px] md:mb-14">
             <div className="flex flex-col md:max-w-[280px] lg:max-w-[600px] xl:max-w-[630px]">
-              <h3 className="heading-3 mb-5">
-                САЙТ ВКЛЮЧАЄ {showBr && <br />} В СЕБЕ
+              <h3 className="heading-3 mb-5 uppercase">
+                сайт включає {showBr && <br />} в себе
               </h3>
               <p className="heading-4 md:w-full lg:w-[69%] mb-[30px] md:mb-0">
                 Поведінкові, ресурсні, когнітивні психологічні методики,
@@ -56,7 +56,7 @@ const AboutUs = () => {
               </p>
             </div>
             <div className="flex flex-col">
-              <h3 className="heading-3 mb-5 ">УСІ МЕТОДИКИ ПРОЙШЛИ</h3>
+              <h3 className="heading-3 mb-5 uppercase">усі методики прийшли</h3>
               <p className="heading-4 w-full sm:w-[90%] mb-[30px] md:mb-0">
                 Практичну перевірку в особистій психотерапевтичній практиці та
                 збирались протягом 20 років в різних країнах світу, в роботі з
@@ -68,7 +68,7 @@ const AboutUs = () => {
 
           <div className="flex flex-col md:flex-row justify-end lg:max-h-52 xl:max-h-60">
             <div className="max-w-[460px] flex flex-col justify-end">
-              <h3 className="heading-3 mb-5 ">ОКРЕМІ МЕТОДИКИ</h3>
+              <h3 className="heading-3 mb-5 uppercase">окремі методики</h3>
               <p className="heading-4 w-full sm:w-[79%] mb-[30px] md:mb-0">
                 Апробовані та описані у успішно захищеному дисертаційному
                 дослідженні на звання доктора філософії зі спеціальності
@@ -105,8 +105,8 @@ const AboutUs = () => {
             </span>
           )}
           <div className="flex flex-col justify-end">
-            <h3 className="heading-3 mb-5  text-left">
-              КОЖНА З МЕТОДИК МІСТИТЬ
+            <h3 className="heading-3 mb-5  text-left uppercase">
+              кожна з методик містить
             </h3>
             <p className="heading-4 sm:max-w-[460px] mb-[30px] md:mb-0 text-left  md:text-left">
               Наукову бібліографію, унікальну інструкцію та рекомендації щодо

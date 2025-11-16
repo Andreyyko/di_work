@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { seal_icon } from "@/public/images/SealIcon";
+import { seal_icon } from "@/public/images/CommonImages/SealIcon";
 
 interface CustomSealProps {
   label?: string;
@@ -35,7 +35,7 @@ const CustomSeal = ({
             py-1.5 sm:py-2 md:py-2.5
             px-2 sm:px-4 md:px-6 lg:px-8
             rounded-sm shadow-md cursor-pointer
-            font-kudriashov text-[10px] sm:text-[12px] md:text-[14px]
+            font-kudriashov uppercase text-[10px] sm:text-[12px] md:text-[14px]
             bg-brand-cream text-brand-bordo/60
             text-center leading-tight
             wrap-break-word sm:whitespace-nowrap

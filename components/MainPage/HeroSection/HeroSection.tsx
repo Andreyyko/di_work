@@ -1,12 +1,12 @@
 import Image from "next/image";
 
-import CheckItem from "../common/CheckItem";
-import CustomSeal from "../common/CustomSeal";
-import FrameWrapper from "../common/FrameWrapper";
+import CheckItem from "../../common/CheckItem";
+import CustomSeal from "../../common/CustomSeal";
+import FrameWrapper from "../../common/FrameWrapper";
 
-import { flower_images } from "@/public/images/FlowerImages";
+import { flower_images } from "@/public/images/CommonImages/FlowerImages";
 import { useWindowWidth } from "@/hooks/useWindowWidth";
-import { CheckItems } from "@/constant/heroSectionData";
+import { CheckItems } from "@/constant/MainPageConstant/heroSectionData";
 
 const HeroSection = () => {
   const {
@@ -40,13 +40,13 @@ const HeroSection = () => {
       <div className="relative mt-6 sm:mt-10">
         <h2 className="heading-2 flex flex-col relative">
           <div className="sm:max-w-[90%] mb:max-w-[80%] lg:max-w-[86%]  sm:text-right text-end">
-            <span className="first-letter-hero">РОК-М</span>
+            <span className="first-letter uppercase">рок-м</span>
           </div>
             {
               isSmallerThanSm ? (
-                <span className="first-letter-hero text-start block relative">
-                  РЕСУРСНО-
-                  <span className="first-letter-hero block text-right">ОРІЄНТОВАНІ</span>
+                <span className="first-letter text-start block relative">
+                  <span className="uppercase">ресурсно-</span>
+                  <span className="first-letter block text-right uppercase">орієнтовані</span>
 
                   <span className="heading-bg absolute right-10 top-57 mt-1">
                     Be Unique
@@ -54,8 +54,8 @@ const HeroSection = () => {
                 </span>
               ) : isXlOrLarger ? (
                 <div className="flex items-center gap-4">
-                  <span className="first-letter-hero whitespace-nowrap">
-                    РЕСУРСНО-ОРІЄНТОВАНІ
+                  <span className="first-letter whitespace-nowrap uppercase">
+                    ресурсно-орієнтовані
                   </span>
 
                   <span className="heading-bg whitespace-nowrap text-[144px] sm:text-[clamp(50px,7vw,144px)]"
@@ -65,22 +65,22 @@ const HeroSection = () => {
                   </span>
                 </div>
               ) : (
-                <span className="first-letter-hero whitespace-nowrap">
-                  РЕСУРСНО-ОРІЄНТОВАНІ
+                <span className="first-letter whitespace-nowrap uppercase">
+                  ресурсно-орієнтовані
                 </span>
               )
             }
-            <span className="first-letter-hero md:text-end block">
+            <span className="first-letter md:text-end block uppercase">
               {isSmallerThanSm ? (
                 <>
-                  <span className="first-letter-hero block text-right">КОГНІТИВНІ</span>
-                  <span className="block text-left">
-                    <span className="first-letter-hero">МЕТОДИКИ</span>
+                  <span className="first-letter block text-right uppercase">когнітивні</span>
+                  <span className="block text-left ">
+                    <span className="first-letter uppercase">методики</span>
                   </span>
                 </>
               ) : (
                 <>
-                  КОГНІТИВНІ <span className="first-letter-hero">МЕТОДИКИ</span>
+                  когнітивні <span className="first-letter uppercase">методики</span>
                 </>
               )}
             </span>
@@ -122,15 +122,15 @@ const HeroSection = () => {
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left mt-20 gap-4 md:gap-0">
-          <h6 className="heading-6 opacity-100 font-grava text-[clamp(14px,1vw,18px)] max-w-[90%] md:max-w-[70%] mx-auto md:mx-0 ">
-            У СТАРОСЛОВʼЯНСЬКИХ МОВАХ «РОК» — ЦЕ ФАТУМ,<br className="hidden sm:block"/>
-            НЕВІДВОРОТНА ДОЛЯ, СИЛА, ЯКА ВИЗНАЧАЄ ХІД ПОДІЙ.
+          <h6 className="heading-6 opacity-100 font-grava uppercase text-[clamp(14px,1vw,18px)] max-w-[90%] md:max-w-[70%] mx-auto md:mx-0 ">
+            у старослов'янських мовах «рок» — це фатум,<br className="hidden sm:block"/>
+            невідтворна доля, сила, яка визначає хід подій.
           </h6>
 
-          <h6 className="heading-6 opacity-50 sm:opacity-100 font-grava text-[clamp(14px,1vw,18px)]">
-            BY BOGDANA
+          <h6 className="heading-6 opacity-50 sm:opacity-100 font-grava uppercase text-[clamp(14px,1vw,18px)]">
+            by bogdana
             <br className="hidden sm:block"/>
-            .ANDREYKO <br className="block sm:hidden"/>BE UNIQUE
+            .andreyko <br className="block sm:hidden"/>be unique
           </h6>
         </div>
       </div>

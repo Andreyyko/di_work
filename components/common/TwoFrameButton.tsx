@@ -1,6 +1,6 @@
 import React from "react";
 import Image, { StaticImageData } from "next/image";
-import { frames_buttons } from "@/public/images/FramesButton";
+import { frames_buttons } from "@/public/images/CommonImages/FramesButton";
 
 type Variant = "one" | "two";
 
@@ -44,9 +44,9 @@ const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
   alt = "button frame",
   className = "",
 
-  textClassOne = "heading-4 text-brand-gold font-kudriashov text-[clamp(14px,2vw,19px)]",
-  textClassTwo = "heading-4 text-red-800 font-kudriashov text-[clamp(14px,2vw,19px)]",
-  textClassTwoHover = "heading-4 text-white font-kudriashov text-[clamp(14px,2vw,19px)]",
+  textClassOne = "heading-4 text-brand-gold uppercase font-kudriashov text-[clamp(14px,2vw,19px)]",
+  textClassTwo = "heading-4 text-red-800 font-kudriashov uppercase text-[clamp(14px,2vw,19px)]",
+  textClassTwoHover = "heading-4 text-white font-kudriashov uppercase text-[clamp(14px,2vw,19px)]",
 }) => {
   const [hover, setHover] = React.useState(false);
   const [active, setActive] = React.useState(false); 

@@ -1,8 +1,8 @@
 import React from "react";
 
-import { IdentityIntroImages } from "@/public/images/IdentityIntroImages";
+import { IdentityIntroImages } from "@/public/images/MainPageImages/IdentityIntroImages";
 
-import FrameWrapper from "../common/FrameWrapper";
+import FrameWrapper from "../../common/FrameWrapper";
 import { useWindowWidth } from "@/hooks/useWindowWidth";
 
 const IdentityIntro: React.FC = () => {
@@ -13,9 +13,9 @@ const IdentityIntro: React.FC = () => {
   return (
     <section className="w-full bg-brand-background pb-12 flex flex-col">
       <div className="text-left sm:whitespace-nowrap">
-        <h2 className="heading-2">
-          <span className="first-letter-hero">П</span>
-          ЕРШИЙ В УКРАЇНІ <br />
+        <h2 className="heading-2 uppercase">
+          <span className="first-letter uppercase">п</span>
+          ерший в україні <br />
         </h2>
 
         <div className="flex flex-row items-center justify-between max-w-[95%]">
@@ -29,10 +29,10 @@ const IdentityIntro: React.FC = () => {
           )}
 
           <p className="heading-2 sm:leading-16 text-center sm:text-left sm:whitespace-nowrap">
-            <span className="sm:ml-5 xl:ml-0 inline-block">ПСИХОЛОГІЧНИЙ</span>
+            <span className="sm:ml-5 xl:ml-0 inline-block uppercase">психологічний</span>
             <br />
-            <span className="inline-block">
-              <span className="first-letter-hero">С</span>АЙТ,{" "}
+            <span className="inline-block uppercase">
+              <span className="first-letter uppercase">с</span>айт,{" "}
               {isSmallerThanSm && "ЩО"}
               {!isSmallerThanSm && "ЩО ПОЄДНУЄ РІЗНІ"}
             </span>
@@ -45,9 +45,9 @@ const IdentityIntro: React.FC = () => {
           </p>
         </div>
 
-        <p className="heading-2 whitespace-nowrap">
-          {isSmallerThanSm && "РІЗНІ"} НАПРЯМКИ {isSmallerThanSm && <br />}
-          ДОКАЗОВОЇ
+        <p className="heading-2 whitespace-nowrap uppercase">
+          {isSmallerThanSm && "РІЗНІ"} напрямки {isSmallerThanSm && <br />}
+          доказової
         </p>
 
         <div className="flex flex-row items-center w-full justify-end xl:gap-32 md:gap-20 gap-10">
@@ -57,22 +57,22 @@ const IdentityIntro: React.FC = () => {
               когнітивно проведінковий
             </p>
           )}
-          <p className="heading-2 whitespace-nowrap">
-            <span className="first-letter-hero">П</span>СИХОТЕРАПІЇ,
-            <br /> СПРЯМОВАНИЙ
+          <p className="heading-2 whitespace-nowrap uppercase">
+            <span className="first-letter">п</span>сихотерапії,
+            <br /> спрямований
           </p>
         </div>
 
-        <p className="heading-2 sm:whitespace-nowrap">
-          <span className="sm:first-letter-hero">Н</span>А ПІДТРИМКУ ПСИХІЧНОГО
+        <p className="heading-2 sm:whitespace-nowrap uppercase">
+          <span className="sm:first-letter">н</span>А підтримку психічного
         </p>
 
-        <p className="heading-2 text-right w-[92%] sm:whitespace-nowrap">
-          <span className="first-letter-hero">З</span>ДОРОВ’Я ТА ВСІХ СФЕР
+        <p className="heading-2 text-right w-[92%] sm:whitespace-nowrap uppercase">
+          <span className="first-letter">з</span>доров'я та всіх сфер
         </p>
 
-        <div className="flex flex-row items-center justify-between">
-          <p className="heading-2 sm:whitespace-nowrap">ОСОБИСТОСТІ</p>
+        <div className="flex flex-row items-center justify-between ">
+          <p className="heading-2 sm:whitespace-nowrap uppercase">особистості</p>
 
           {!isSmallerThanSm && (
             <p className="heading-bg sm:whitespace-nowrap">

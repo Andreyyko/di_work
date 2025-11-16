@@ -3,13 +3,13 @@
 import { useRef } from "react";
 import Image from "next/image";
 
-import TwoFrameButton from "../common/TwoFrameButton";
+import TwoFrameButton from "../../common/TwoFrameButton";
 import TextSwiper from "./TextSwiper";
 import { useWindowWidth } from "@/hooks/useWindowWidth";
 import { Swiper as SwiperType } from "swiper";
-import ArrowButton from "../common/ArrowButton";
+import ArrowButton from "../../common/ArrowButton";
 
-import { flower_images } from "@/public/images/FlowerImages";
+import { flower_images } from "@/public/images/CommonImages/FlowerImages";
 
 const CourseSlider = () => {
   const swiperRef = useRef<SwiperType | null>(null);
@@ -30,23 +30,22 @@ const CourseSlider = () => {
           та формує впевненість у власних силах
         </h5>
       )}
-
       <h2 className="heading-2 flex flex-col">
         {isSmallerThanSm ? (
           <>
-            <span className="first-letter-hero text-end">НЕЗАЛЕЖНО</span>
-            <span className="text-start">ВІД ВІКУ</span>
+            <span className="first-letter uppercase text-end">незалежно</span>
+            <span className="text-start uppercase">від віку</span>
           </>
         ) : (
-          <span className="max-w-[90%] first-letter-hero text-end">
-            НЕЗАЛЕЖНО ВІД ВІКУ
+          <span className="max-w-[90%] uppercase first-letter text-end">
+            незалежно від віку
           </span>
         )}
 
-        <span className="text-start block">ЧИ ДОСВІДУ – ЦЕЙ КУРС</span>
+        <span className="text-start block uppercase">чи досвіду – цей курс</span>
 
-        <span className="max-w-[90%] first-letter-hero text-end block">
-          ПІДТРИМУЄ
+        <span className="max-w-[90%] first-letter uppercase text-end block">
+          підтримує
         </span>
 
         <div
@@ -58,8 +57,8 @@ const CourseSlider = () => {
         >
           {isSmallerThanSm ? (
             <>
-              <span className="first-letter-hero text-end w-[90%]">НА ШЛЯХУ</span>
-              <span className="text-start w-fit">ДО ЗМІН<span className={` 
+              <span className="first-letter text-end w-[90%] uppercase">на шляху</span>
+              <span className="text-start w-fit ">ДО ЗМІН<span className={` 
               ${isSmallerThanSm
               ?"inline heading-bg w-fit leading-1"
               :"hidden"
@@ -70,12 +69,12 @@ const CourseSlider = () => {
                 </span>
             </>
           ) : (
-            <span className="first-letter-hero text-start w-fit whitespace-nowrap">
-              НА ШЛЯХУ ДО ЗМІН
+            <span className="first-letter text-start w-fit whitespace-nowrap uppercase">
+              на шляху до змін
             </span>
           )}
 
-          <h3
+          <span
             className={`heading-3 ${
               isSmallerThanLg
                 ? "leading-5 w-full"
@@ -88,7 +87,7 @@ const CourseSlider = () => {
                 ?"hidden" 
                 :"block"}`}/>
             користуватись дорослі, діти і колективи
-          </h3>
+          </span>
         </div>
       </h2>
 

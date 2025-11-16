@@ -1,11 +1,11 @@
 "use client";
 
 
-import AboutUs from "@/components/AboutUsSection/AboutUs";
-import CourseSlider from "@/components/CourseSlider/CourseSlider";
-import HeroSection from "@/components/HeroSection/HeroSection";
-import IdentityIntro from "@/components/IdentityIntroSection/IdentityIntro";
-import MakMethodicInfo from "@/components/MakMethodicInfo/MakMethodicInfo";
+import AboutUs from "@/components/MainPage/AboutUsSection/AboutUs";
+import CourseSlider from "@/components/MainPage/CourseSlider/CourseSlider";
+import HeroSection from "@/components/MainPage/HeroSection/HeroSection";
+import IdentityIntro from "@/components/MainPage/IdentityIntroSection/IdentityIntro";
+import MakMethodicInfo from "@/components/MainPage/MakMethodicInfo/MakMethodicInfo";
 
 export default function Home() {
   return (
@@ -15,7 +15,7 @@ export default function Home() {
       <HeroSection />
       <IdentityIntro />
       <AboutUs />
-      {/* <CourseSlider/> */}
+      <CourseSlider/>
       <MakMethodicInfo />
     </main>
   );

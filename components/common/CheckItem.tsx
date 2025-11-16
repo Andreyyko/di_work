@@ -1,5 +1,5 @@
 import Image, { StaticImageData } from "next/image";
-import { check_icon } from "@/public/images/CheckItemIcon";
+import { check_icon } from "@/public/images/CommonImages/CheckItemIcon";
 
 type CheckItemProps = {
   items?: Array<React.ReactNode>;
