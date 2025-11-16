@@ -66,7 +66,6 @@ const TextSwiper = ({ onSwiper }: TextSwiperProps) => {
     );
   }
 
-  // на десктопах — слайдер
   return (
     <div className="max-w-[570px] w-full relative">
       <Swiper
