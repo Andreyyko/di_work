@@ -23,8 +23,10 @@ const CourseSlider = () => {
     <section className="relative">
       {!isSmallerThanMd && (
         <h5 className="heading-5 max-w-50 -translate-x-5">
-          Він допомагає відкрити нові можливості,<br />
-          розвиває внутрішні ресурси<br />
+          Він допомагає відкрити нові можливості,
+          <br />
+          розвиває внутрішні ресурси
+          <br />
           та формує впевненість у власних силах
         </h5>
       )}
@@ -95,7 +97,6 @@ const CourseSlider = () => {
           Mental health
         </p>
       )}
-
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
         <div className="flex-1 min-w-0 mt-30 sm:mt-30 md:max-w-[60%] translate-0 sm:translate-0 md:-translate-y-20">
           <TextSwiper onSwiper={(swiper) => (swiperRef.current = swiper)} />

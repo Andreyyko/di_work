@@ -5,6 +5,7 @@ import AboutUs from "@/components/AboutUsSection/AboutUs";
 import CourseSlider from "@/components/CourseSlider/CourseSlider";
 import HeroSection from "@/components/HeroSection/HeroSection";
 import IdentityIntro from "@/components/IdentityIntroSection/IdentityIntro";
+import MakMethodicInfo from "@/components/MakMethodicInfo/MakMethodicInfo";
 
 export default function Home() {
   return (
@@ -14,7 +15,8 @@ export default function Home() {
       <HeroSection />
       <IdentityIntro />
       <AboutUs />
-      <CourseSlider/>
+      {/* <CourseSlider/> */}
+      <MakMethodicInfo />
     </main>
   );
 }
