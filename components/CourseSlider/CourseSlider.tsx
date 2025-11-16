@@ -19,11 +19,12 @@ const CourseSlider = () => {
 
   return (
     <section className="relative pb-responsive">
-      
       {!isSmallerThanMd && (
         <h5 className="heading-5 max-w-50 -translate-x-5">
-          Він допомагає відкрити нові можливості,<br />
-          розвиває внутрішні ресурси<br />
+          Він допомагає відкрити нові можливості,
+          <br />
+          розвиває внутрішні ресурси
+          <br />
           та формує впевненість у власних силах
         </h5>
       )}
@@ -53,26 +54,23 @@ const CourseSlider = () => {
                 : "max-w-[30%] text-[22px]"
             }`}
           >
-            Розділи розроблені так, щоб ними могли користуватись дорослі, діти і колективи
+            Розділи розроблені так, щоб ними могли користуватись дорослі, діти і
+            колективи
           </h3>
         </div>
       </h2>
 
-      
       {!isSmallerThanMd && (
         <p className="pt-20 heading-bg text-right max-w-[95%] leading-[1.1] text-[clamp(60px,14vw,190px)]">
           Mental health
         </p>
       )}
 
-      
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mt-10 gap-6">
-        
         <div className="flex-1 min-w-0 md:max-w-[60%]">
           <TextSwiper onSwiper={(swiper) => (swiperRef.current = swiper)} />
         </div>
 
-        
         <div className="flex items-center justify-center md:justify-end gap-4 md:max-w-[40%] w-full">
           {!isSmallerThanMd && <ArrowButton onClick={handleNextSlide} />}
           <TwoFrameButton variant="one" label="ОБЕРІТЬ СВОЮ МЕТОДИКУ" />
@@ -80,7 +78,7 @@ const CourseSlider = () => {
       </div>
 
       <Image
-  className="
+        className="
     absolute
     top-63 -right-5
     sm:bottom-0 sm:-right-5
@@ -95,12 +93,9 @@ const CourseSlider = () => {
     
     select-none pointer-events-none z-10
   "
-  src={flower_images.COURSE_SLIDER_FLOWER}
-  alt="flower"
-/>
-
-
-
+        src={flower_images.COURSE_SLIDER_FLOWER}
+        alt="flower"
+      />
     </section>
   );
 };
