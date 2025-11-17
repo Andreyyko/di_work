@@ -31,14 +31,13 @@ const CustomSeal = ({
         <button
           onClick={onClick}
           className={`
-            absolute top-1/2 translate-y-[10%]
-            py-1.5 sm:py-2 md:py-2.5
-            px-2 sm:px-4 md:px-6 lg:px-8
+            absolute top-1/2 translate-y-[10%] wrap-break-word sm:whitespace-nowrap
+            py-2 sm:py-3 md:py-2.5 lg:py-4
+            px-7 sm:px-4 md:px-6 lg:px-6
             rounded-sm shadow-md cursor-pointer
-            font-kudriashov uppercase text-[10px] sm:text-[12px] md:text-[14px]
+            font-kudriashov uppercase text-[clamp(14px,1.25vw,18px)]
             bg-brand-cream text-brand-bordo/60
-            text-center leading-tight
-            wrap-break-word sm:whitespace-nowrap
+            text-center leading-3 -tracking-[1px]
             ${position === "right" ? "left-1/2 ml-1" : "right-1/2"}
           `}
         >
