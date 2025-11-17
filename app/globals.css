@@ -55,6 +55,7 @@
 }
 
 @utility heading-3 {
+  font-weight: bold;
   font-size: var(--heading-3-size);
   line-height: 0.89;
   letter-spacing: -0.05em;
