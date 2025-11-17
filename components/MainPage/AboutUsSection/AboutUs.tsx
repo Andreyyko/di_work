@@ -56,7 +56,7 @@ const AboutUs = () => {
               </p>
             </div>
             <div className="flex flex-col">
-              <h3 className="heading-3 mb-5 uppercase">усі методики прийшли</h3>
+              <h3 className="heading-3 mb-5 uppercase">усі методики пройшли</h3>
               <p className="heading-4 w-full sm:w-[90%] mb-[30px] md:mb-0">
                 Практичну перевірку в особистій психотерапевтичній практиці та
                 збирались протягом 20 років в різних країнах світу, в роботі з

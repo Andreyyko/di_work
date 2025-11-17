@@ -30,7 +30,7 @@ const CourseSlider = () => {
           та формує впевненість у власних силах
         </h5>
       )}
-      <h2 className="heading-2 flex flex-col">
+      <h2 className="heading-2 flex flex-col translate-y-0 sm:translate-y-0 md:translate-y-0 lg:translate-y-0 xl:-translate-y-38">
         {isSmallerThanSm ? (
           <>
             <span className="first-letter uppercase text-end">незалежно</span>
@@ -52,7 +52,7 @@ const CourseSlider = () => {
           className={`w-full ${
             isSmallerThanXl
               ? "flex flex-col gap-0"
-              : "flex flex-row items-center gap-6"
+              : "flex flex-row justify-between items-center gap-6"
           }`}
         >
           {isSmallerThanSm ? (
@@ -77,8 +77,8 @@ const CourseSlider = () => {
           <span
             className={`heading-3 ${
               isSmallerThanLg
-                ? "leading-5 w-full"
-                : "text-start whitespace-nowrap "
+                ? "leading-5 w-full pt-5"
+                : "text-start whitespace-nowrap"
             }`}
           >
             Розділи розроблені так, щоб ними могли{" "}
@@ -92,7 +92,7 @@ const CourseSlider = () => {
       </h2>
 
       {!isSmallerThanMd && (
-        <p className="pt-30 heading-bg text-right max-w-[95%] leading-[0.5] text-[clamp(60px,14vw,190px)]">
+        <p className="pt-30 -translate-y-4 xl:pt-0 heading-bg text-right max-w-[95%] leading-[0.5] text-[clamp(60px,14vw,190px)]">
           Mental health
         </p>
       )}
@@ -103,18 +103,18 @@ const CourseSlider = () => {
 
         <div className="flex items-center translate-0 sm:-translate-y-10 justify-center md:justify-end gap-4 md:max-w-[40%] w-full z-50">
           {!isSmallerThanMd && <ArrowButton onClick={handleNextSlide} />}
-          <TwoFrameButton variant="one" label="ОБЕРІТЬ СВОЮ МЕТОДИКУ" />
+          <TwoFrameButton variant="one" label="ОБРАТИ СВОЮ МЕТОДИКУ" />
         </div>
       </div>
 
       <Image
         className="
           absolute
-          top-52 w-80 -right-20
-          sm:top-40
-          md:top-50 md:w-170
-          lg:top-80 lg:w-230
-          xl:top-100 xl:w-auto
+          top-52 w-80 -right-18
+          sm:top-40 sm:-right-10
+          md:top-50 md:w-170 md:-right-10
+          lg:top-80 lg:w-220 lg:-right-10
+          xl:top-50 xl:w-auto xl:-right-10
           select-none pointer-events-none z-10
         "
         src={flower_images.COURSE_SLIDER_FLOWER}

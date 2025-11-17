@@ -27,9 +27,9 @@ const HeroSection = () => {
 
       <Image
         className={`
-          absolute top-0 -translate-y-6 sm:translate-0 z-10 select-none pointer-events-none
-          w-45 rotate-10 sm:rotate-0 sm:w-[180px] md:w-[220px] lg:w-[700px] xl:w-[1180px]
-          -left-5 scale-x-[-1]
+          absolute -top-2 -translate-y-6 sm:translate-0 z-10 select-none pointer-events-none
+          w-49 rotate-15 sm:rotate-0 md:-left-5 md:rotate-20 md:z-0 lg:z-10 lg:rotate-0 md:-top-10 sm:w-[180px] md:w-[280px] lg:w-[700px] xl:w-[1150px]
+          -left-3 scale-x-[-1]
           lg:left-auto lg:-right-5 lg:scale-x-100 lg:top-80
         `}
         src={flower_images.HERO_FLOWER}
@@ -39,26 +39,26 @@ const HeroSection = () => {
 
       <div className="relative mt-6 sm:mt-10">
         <h2 className="heading-2 flex flex-col relative">
-          <div className="sm:max-w-[90%] mb:max-w-[80%] lg:max-w-[86%]  sm:text-right text-end">
+          <div className="max-w-[95%] sm:max-w-[85%] mb:max-w-[90%] lg:max-w-[83%] xl:max-w-[76%]  sm:text-right text-end">
             <span className="first-letter uppercase">рок-м</span>
           </div>
             {
               isSmallerThanSm ? (
                 <span className="first-letter text-start block relative">
                   <span className="uppercase">ресурсно-</span>
-                  <span className="first-letter block text-right uppercase">орієнтовані</span>
+                  <span className="first-letter block text-right uppercase max-w-[95%]">орієнтовані</span>
 
-                  <span className="heading-bg absolute right-10 top-56 mt-1">
+                  <span className="heading-bg absolute right-10 top-53 mt-1">
                     Be Unique
                   </span>
                 </span>
               ) : isXlOrLarger ? (
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 h-20">
                   <span className="first-letter whitespace-nowrap uppercase">
                     ресурсно-орієнтовані
                   </span>
 
-                  <span className="heading-bg whitespace-nowrap text-[144px] sm:text-[clamp(50px,7vw,144px)]"
+                  <span className="heading-bg translate-y-5 items-center -translate-x-3 whitespace-nowrap text-[144px] sm:text-[clamp(50px,9vw,144px)]"
                     >
                     
                     Be Unique
@@ -73,8 +73,8 @@ const HeroSection = () => {
             <span className="first-letter md:text-end block uppercase">
               {isSmallerThanSm ? (
                 <>
-                  <span className="first-letter block text-right uppercase">когнітивні</span>
-                  <span className="block text-left ">
+                  <span className="first-letter block text-right uppercase max-w-[95%]">когнітивні</span>
+                  <span className="block text-left">
                     <span className="first-letter uppercase">методики</span>
                   </span>
                 </>
@@ -88,7 +88,7 @@ const HeroSection = () => {
           
         </h2>
 
-        <h4 className="heading-4 mb-8 mt-8">
+        <h4 className="heading-4 mt-5 mb-8 sm:mt-8">
           Перший в Україні психологічний сайт,
           <br />
           evidence-based онлайн-каталог із понад
@@ -127,7 +127,7 @@ const HeroSection = () => {
             невідтворна доля, сила, яка визначає хід подій.
           </h6>
 
-          <h6 className="heading-6 opacity-50 sm:opacity-100 font-grava uppercase text-[clamp(14px,1vw,18px)]">
+          <h6 className="heading-6 opacity-50 text-center   sm:text-right sm:opacity-100 font-grava uppercase text-[clamp(14px,1vw,18px)]">
             by bogdana
             <br className="hidden sm:block"/>
             .andreyko <br className="block sm:hidden"/>be unique
