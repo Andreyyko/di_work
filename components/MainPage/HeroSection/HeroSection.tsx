@@ -48,7 +48,7 @@ const HeroSection = () => {
                   <span className="uppercase">ресурсно-</span>
                   <span className="first-letter block text-right uppercase">орієнтовані</span>
 
-                  <span className="heading-bg absolute right-10 top-57 mt-1">
+                  <span className="heading-bg absolute right-10 top-56 mt-1">
                     Be Unique
                   </span>
                 </span>
