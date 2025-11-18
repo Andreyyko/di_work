@@ -6,17 +6,18 @@ import Image from "next/image";
 import { flower_images } from "@/public/images/CommonImages/FlowerImages";
 
 const MakMethodicInfo = () => {
-  const { width, isSmallerThanLg, isSmallerThanSm } = useWindowWidth();
+  const { width, isSmallerThanLg, isSmallerThanSm } =
+    useWindowWidth();
 
   const showMobileFlower = width !== null && width >= 320 && width <= 470;
 
   return (
-    <section className="pb-responsive w-full relative  pt-20">
+    <section className="pb-responsive w-full relative  pt-20 z-3">
       {showMobileFlower ? (
         <Image
           src={flower_images.BackGroundImagesMobile}
           alt="background flower mobile"
-          className="absolute top-[22%] -left-5 -translate-y-1/2  w-[1000px] h-[1500px] pointer-events-none select-none z-1"
+          className="absolute top-[23%] -left-5 -translate-y-1/2  w-[1000px] h-[1500px] pointer-events-none select-none z-1"
           priority
         />
       ) : (
@@ -27,10 +28,10 @@ const MakMethodicInfo = () => {
           priority
         />
       )}
-      <div className="relative z-2">
+      <div className="relative">
         <div className="flex flex-row justify-between items-start mb-10">
           {!isSmallerThanLg && (
-            <div className="flex flex-col max-w-[55%]">
+            <div className="flex flex-col max-w-[55%] z-2">
               <h3 className="heading-3 mb-5 uppercase">картини (мак)</h3>
               <p className="heading-4 md:max-w-[55%] lg:max-w-[44%]">
                 На платформі психічного здоров’я Evidence Based представлено
@@ -56,7 +57,7 @@ const MakMethodicInfo = () => {
           )}
         </div>
 
-        <div className="mb-3 sm:mb-[25px]">
+        <div className="mb-3 sm:mb-[25px] z-3 relative">
           <h2 className="heading-2 uppercase text-center">
             <span className="whitespace-nowrap -ml-5 sm:translate-x-0">
               {" "}
@@ -77,7 +78,8 @@ const MakMethodicInfo = () => {
               {" "}
               <span className="first-letter">л</span>ітератури
             </span>{" "}
-            <br /> до <span className="first-letter">м</span>етодик
+            {!isSmallerThanSm && <br />} до{" "}
+            <span className="first-letter">м</span>етодик
           </h2>
         </div>
 
@@ -94,10 +96,10 @@ const MakMethodicInfo = () => {
         )}
 
         <div className="flex flex-col items-center sm:items-end sm:mb-10">
-          {isSmallerThanSm && (
-            <div className="flex flex-col">
+          {isSmallerThanLg && (
+            <div className="flex flex-col z-3">
               <h3 className="heading-3 mb-5 uppercase">картини (мак)</h3>
-              <p className="heading-4 mb-[30px]">
+              <p className="heading-4 mb-[30px] sm:w-1/2 md:w-1/3">
                 На платформі психічного здоров’я Evidence Based представлено
                 унікальний підхід до роботи з метафоричними асоціативними
                 картинами (МАК) як сучасним інструментом розвитку
@@ -107,7 +109,7 @@ const MakMethodicInfo = () => {
             </div>
           )}
 
-          <div className="sm:max-w-[40%] md:max-w-[35%] lg:max-w-[28%]">
+          <div className="w-full sm:max-w-[40%] md:max-w-[35%] lg:max-w-[28%] z-3">
             <h3 className="heading-3 mb-5 uppercase text-left">
               Музичний супровід
             </h3>
@@ -122,7 +124,7 @@ const MakMethodicInfo = () => {
         <div className="flex flex-col items-center sm:flex-row w-full">
           <div className="flex flex-row justify-between">
             {!isSmallerThanLg && (
-              <span className="heading-5 -translate-x-5">
+              <span className="heading-5 -translate-x-5 relative -z-1">
                 Практика, що оживає
                 <br /> у тренінгах,
                 <br /> музика, яка підтримує
@@ -133,17 +135,17 @@ const MakMethodicInfo = () => {
               </span>
             )}
 
-            <div className="w-full md:w-11/12 lg:w-8/12 sm:mt-8">
+            <div className="w-full md:w-11/12 lg:w-8/12 lg:mt-4 xl:mt-11">
               <h3 className="heading-3 mb-5 uppercase text-left">
                 список використаної літератури
               </h3>
-              <p className="heading-4 w-3/5 mb-5">
+              <p className="heading-4 sm:w-3/5 mb-5">
                 Ми надаємо детальний список бібліографічних посилань на авторів
                 рекомендованої та використаної літератури до методик.
               </p>
               <p className="heading-4 mb-[50px] sm:mb-0">
                 *Тренінги будуть бонусом як
-                <br /> оновлення щомісяця для учасників.
+                {!isSmallerThanSm && <br />} оновлення щомісяця для учасників.
               </p>
             </div>
           </div>

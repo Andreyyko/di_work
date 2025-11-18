@@ -29,7 +29,7 @@ const AboutUs = () => {
             width="285px"
             height="487px"
             objectFit="none"
-            className="shrink-0 w-[285px] h-[487px] min-w-[285px] min-h-[487px] overflow-hidden mb-[50px] md:mb-0"
+            className="shrink-0 w-[285px] h-[487px] min-w-[285px] min-h-[487px] mb-[50px] md:mb-0"
           />
 
           <img
@@ -39,7 +39,7 @@ const AboutUs = () => {
           />
         </div>
 
-        <div className="flex flex-col sm:w-[75%] md:ml-3">
+        <div className="flex flex-col sm:w-[80%] md:ml-3">
           <div className="flex flex-col md:flex-row justify-between md:max-h-[300px] lg:max-h-[230px] md:mb-14">
             <div className="flex flex-col md:max-w-[280px] lg:max-w-[600px] xl:max-w-[630px]">
               <h3 className="heading-3 mb-5 uppercase">
@@ -55,9 +55,9 @@ const AboutUs = () => {
                 резилієнтності.
               </p>
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col sm:w-[400px]">
               <h3 className="heading-3 mb-5 uppercase">усі методики пройшли</h3>
-              <p className="heading-4 w-full sm:w-[90%] mb-[30px] md:mb-0">
+              <p className="heading-4 w-full sm:w-[90%] xl:w-[99%] mb-[30px] md:mb-0">
                 Практичну перевірку в особистій психотерапевтичній практиці та
                 збирались протягом 20 років в різних країнах світу, в роботі з
                 клієнтами, студентами, учнями, під час викладацької та наукової
@@ -67,9 +67,9 @@ const AboutUs = () => {
           </div>
 
           <div className="flex flex-col md:flex-row justify-end lg:max-h-52 xl:max-h-60">
-            <div className="max-w-[460px] flex flex-col justify-end">
+            <div className="sm:max-w-[460px] xl:max-w-[390px] flex flex-col justify-end">
               <h3 className="heading-3 mb-5 uppercase">окремі методики</h3>
-              <p className="heading-4 w-full sm:w-[79%] mb-[30px] md:mb-0">
+              <p className="heading-4 w-full sm:w-[79%] xl:w-[94%] mb-[30px] md:mb-0">
                 Апробовані та описані у успішно захищеному дисертаційному
                 дослідженні на звання доктора філософії зі спеціальності
                 спеціальна психологія. Сертифікований психотерапевт в трьох
@@ -87,7 +87,7 @@ const AboutUs = () => {
                 width="269px"
                 height="235px"
                 objectFit="none"
-                className="shrink-0 w-[269px] h-[235px] min-w-[269px] min-h-[235px] overflow-hidden"
+                className="shrink-0 w-[269px] h-[235px] min-w-[269px] min-h-[235px]"
               />
             )}
           </div>
@@ -97,18 +97,18 @@ const AboutUs = () => {
       <div className="flex flex-col items-start sm:items-center md:flex-row justify-between">
         <div className="flex flex-col sm:flex-row sm:w-[75%] md:w-full">
           {isLgOrLarger && (
-            <span className="heading-5 -translate-x-4 flex items-end lg:w-[32%] text-left">
+            <span className="heading-5 -translate-x-4 flex items-end lg:w-[26%] text-left">
               Гармонія починається
               <br /> зсередини. Коли думки,
               <br /> емоції та дії узгоджені — <br />
               з’являється спокій і<br /> впевненість у кожному дні
             </span>
           )}
-          <div className="flex flex-col justify-end">
+          <div className="flex flex-col justify-end sm:-ml-4 md:ml-0">
             <h3 className="heading-3 mb-5  text-left uppercase">
               кожна з методик містить
             </h3>
-            <p className="heading-4 sm:max-w-[460px] mb-[30px] md:mb-0 text-left  md:text-left">
+            <p className="heading-4 mb-[30px] md:mb-0 text-left  md:text-left">
               Наукову бібліографію, унікальну інструкцію та рекомендації щодо
               застосування для психологів, психотерапевтів, освітян, коучів,
               батьків та людей. Перша українська evidence-based онлайн-платформа
