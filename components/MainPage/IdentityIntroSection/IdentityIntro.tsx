@@ -11,7 +11,7 @@ const IdentityIntro: React.FC = () => {
   const showImage = width !== null && width >= 1280;
 
   return (
-    <section className="w-full bg-brand-background pb-12 flex flex-col">
+    <section className="w-full bg-brand-background pb-6 flex flex-col">
       <div className="text-left sm:whitespace-nowrap">
         <h2 className="heading-2 uppercase">
           <span className="first-letter uppercase">п</span>
@@ -28,8 +28,10 @@ const IdentityIntro: React.FC = () => {
             </div>
           )}
 
-          <p className="heading-2 sm:leading-16 text-center sm:text-left sm:whitespace-nowrap">
-            <span className="sm:ml-5 xl:ml-0 inline-block uppercase">психологічний</span>
+          <p className="heading-2  text-center sm:text-left sm:whitespace-nowrap">
+            <span className="sm:ml-5 xl:ml-0 inline-block uppercase">
+              психологічний
+            </span>
             <br />
             <span className="inline-block uppercase">
               <span className="first-letter uppercase">с</span>айт,{" "}
@@ -68,11 +70,15 @@ const IdentityIntro: React.FC = () => {
         </p>
 
         <p className="heading-2 text-right w-[92%] sm:whitespace-nowrap uppercase">
-          <span className="first-letter">з</span>доров'я та всіх сфер
+          <span className="first-letter">з</span>доров'я та {" "}
+          <span className={!isSmallerThanSm ? "" : "first-letter"}>в</span>сіх
+          сфер
         </p>
 
         <div className="flex flex-row items-center justify-between ">
-          <p className="heading-2 sm:whitespace-nowrap uppercase">особистості</p>
+          <p className="heading-2 sm:whitespace-nowrap uppercase">
+            особистості
+          </p>
 
           {!isSmallerThanSm && (
             <p className="heading-bg sm:whitespace-nowrap">
