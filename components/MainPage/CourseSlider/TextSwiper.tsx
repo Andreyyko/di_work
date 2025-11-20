@@ -20,13 +20,13 @@ const TextSwiper = ({ onSwiper }: TextSwiperProps) => {
       <div className="flex flex-col gap-10 max-w-[570px]">
         {slides.map((slide, index) => (
           <div key={index} className="relative flex flex-col justify-center p-2">
-            <span className="heading-bg text-brand-gray absolute top-0 text-[clamp(36px,6vw,70px)] ">
+            <span className="heading-bg text-brand-gray absolute -top-1 text-[clamp(36px,6vw,70px)] ">
               ({String(index + 1).padStart(2, "0")})
             </span>
-            <h2 className="heading-3 mt-7 sm:mt-10 text-[22px] sm:text-[25px]">
+            <h2 className="heading-3 mt-7 sm:mt-10 text-[18px] sm:text-[25px]">
               {slide.title}
             </h2>
-            <p className="mt-4 heading-4 font-light text-[18px] sm:text-[20px]">
+            <p className="mt-4 heading-4 font-light text-[14px] sm:text-[20px]">
               {slide.description}
             </p>
           </div>

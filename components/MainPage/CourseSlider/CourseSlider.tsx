@@ -5,15 +5,16 @@ import Image from "next/image";
 
 import TwoFrameButton from "../../common/TwoFrameButton";
 import TextSwiper from "./TextSwiper";
+import ArrowButton from "../../common/ArrowButton";
+
 import { useWindowWidth } from "@/hooks/useWindowWidth";
 import { Swiper as SwiperType } from "swiper";
-import ArrowButton from "../../common/ArrowButton";
 
 import { flower_images } from "@/public/images/CommonImages/FlowerImages";
 
 const CourseSlider = () => {
   const swiperRef = useRef<SwiperType | null>(null);
-  const { isSmallerThanMd, isSmallerThanSm, isSmallerThanLg, isSmallerThanXl } =
+  const { isSmallerThanMd, isSmallerThanSm, isSmallerThanXl } =
     useWindowWidth();
 
   const handleNextSlide = () => {
@@ -91,7 +92,7 @@ const CourseSlider = () => {
           className={`heading-3 ${
             isSmallerThanXl
               ? "leading-5 text-start w-full pt-5"
-              : "text-end -translate-y-15 whitespace-nowrap"
+              : "text-start max-w-[95%] sm:translate-x-0 md:translate-x-0 lg:translate-x-230 xl:translate-x-230 2xl:translate-x-300 -translate-y-15 whitespace-nowrap"
           }`}
         >
           Розділи розроблені так, щоб ними могли{" "}
@@ -123,7 +124,8 @@ const CourseSlider = () => {
           sm:top-40 sm:-right-10
           md:top-50 md:w-170 md:-right-10
           lg:top-80 lg:w-220 lg:-right-10
-          xl:top-60 xl:w-auto xl:-right-10
+          xl:top-55 xl:w-300 xl:-right-10
+          2xl:top-60 2xl:w-350 2xl:-right-10
           select-none pointer-events-none z-10
         "
         src={flower_images.COURSE_SLIDER_FLOWER}

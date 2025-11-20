@@ -25,7 +25,7 @@ const HeroSection = () => {
       <Image
         className={`
           absolute -top-2 -translate-y-6 sm:translate-0 z-10 select-none pointer-events-none
-          w-49 rotate-15 sm:rotate-0 md:-left-5 md:rotate-20 md:z-0 lg:z-10 lg:rotate-0 md:-top-10 sm:w-[180px] md:w-[280px] lg:w-[700px] xl:w-[1150px]
+          w-49 rotate-15 sm:rotate-0 md:-left-5 md:rotate-20 md:z-0 lg:z-10 lg:rotate-0 md:-top-10 sm:w-[180px] md:w-[280px] lg:w-[700px] xl:w-[1200px] 2xl:w[1300px]
           -left-3 scale-x-[-1]
           lg:left-auto lg:-right-5 lg:scale-x-100 lg:top-80
         `}
