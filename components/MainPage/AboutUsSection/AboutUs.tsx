@@ -97,7 +97,7 @@ const AboutUs = () => {
       <div className="flex flex-col items-start sm:items-center md:flex-row justify-between">
         <div className="flex flex-col sm:flex-row sm:w-[75%] md:w-full">
           {isLgOrLarger && (
-            <span className="heading-5 -translate-x-4 flex items-end lg:w-[26%] text-left">
+            <span className="heading-5 -translate-x-4 flex items-end lg:w-[26%] 2xl:w-[25%] text-left">
               Гармонія починається
               <br /> зсередини. Коли думки,
               <br /> емоції та дії узгоджені — <br />
