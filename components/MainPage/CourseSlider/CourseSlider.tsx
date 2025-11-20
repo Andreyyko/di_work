@@ -13,7 +13,8 @@ import { flower_images } from "@/public/images/CommonImages/FlowerImages";
 
 const CourseSlider = () => {
   const swiperRef = useRef<SwiperType | null>(null);
-  const { isSmallerThanMd, isSmallerThanSm, isSmallerThanLg ,isSmallerThanXl} = useWindowWidth();
+  const { isSmallerThanMd, isSmallerThanSm, isSmallerThanLg, isSmallerThanXl } =
+    useWindowWidth();
 
   const handleNextSlide = () => {
     swiperRef.current?.slideNext();
@@ -42,9 +43,11 @@ const CourseSlider = () => {
           </span>
         )}
 
-        <span className="text-start block uppercase">чи досвіду – цей курс</span>
+        <span className="text-start block uppercase">
+          чи досвіду – цей курс
+        </span>
 
-        <span className="max-w-[90%] first-letter uppercase text-end block">
+        <span className="max-w-full sm:max-w-[90%] first-letter uppercase text-end block">
           підтримує
         </span>
 
@@ -57,38 +60,44 @@ const CourseSlider = () => {
         >
           {isSmallerThanSm ? (
             <>
-              <span className="first-letter text-end w-[90%] uppercase">на шляху</span>
-              <span className="text-start w-fit ">ДО ЗМІН<span className={` 
-              ${isSmallerThanSm
-              ?"inline heading-bg w-fit leading-1"
-              :"hidden"
-              }`}
-              >
-                Mental Healthy
+              <span className="first-letter text-end w-[95%] uppercase">
+                на шляху
+              </span>
+
+              <span className="relative w-fit text-start block">
+                ДО ЗМІН
+                <span
+                  className="
+          absolute
+          inset-0
+          -z-10
+          translate-x-43
+          -translate-y-1
+          heading-bg
+          whitespace-nowrap
+        "
+                >
+                  Mental Healthy
                 </span>
-                </span>
+              </span>
             </>
           ) : (
             <span className="first-letter text-start w-fit whitespace-nowrap uppercase">
               на шляху до змін
             </span>
           )}
-
-          <span
-            className={`heading-3 ${
-              isSmallerThanLg
-                ? "leading-5 w-full pt-5"
-                : "text-start whitespace-nowrap"
-            }`}
-          >
-            Розділи розроблені так, щоб ними могли{" "}
-            <br className={`${
-                isSmallerThanSm
-                ?"hidden" 
-                :"block"}`}/>
-            користуватись дорослі, діти і колективи
-          </span>
         </div>
+        <span
+          className={`heading-3 ${
+            isSmallerThanXl
+              ? "leading-5 text-start w-full pt-5"
+              : "text-end -translate-y-15 whitespace-nowrap"
+          }`}
+        >
+          Розділи розроблені так, щоб ними могли{" "}
+          <br className={`${isSmallerThanSm ? "hidden" : "block"}`} />
+          користуватись дорослі, діти і колективи
+        </span>
       </h2>
 
       {!isSmallerThanMd && (
@@ -110,11 +119,11 @@ const CourseSlider = () => {
       <Image
         className="
           absolute
-          top-52 w-80 -right-18
+          top-65 w-80 -right-18
           sm:top-40 sm:-right-10
           md:top-50 md:w-170 md:-right-10
           lg:top-80 lg:w-220 lg:-right-10
-          xl:top-50 xl:w-auto xl:-right-10
+          xl:top-60 xl:w-auto xl:-right-10
           select-none pointer-events-none z-10
         "
         src={flower_images.COURSE_SLIDER_FLOWER}
