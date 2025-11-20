@@ -109,8 +109,8 @@ const HeroSection = () => {
             <FrameWrapper
               className="
                 
-                heading-6 font-grava opacity-100
-                md:w-[420px] lg:w-[480px] xl:w-[540px] 2xl:w-[600px]
+                heading-6 font-grava opacity-100 
+                w-auto
                 lg:translate-y-[-130px] xl:translate-y-0
               "
               paddingX={20}
