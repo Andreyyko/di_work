@@ -9,10 +9,7 @@ import { useWindowWidth } from "@/hooks/useWindowWidth";
 import { CheckItems } from "@/constant/MainPageConstant/heroSectionData";
 
 const HeroSection = () => {
-  const {
-  isSmallerThanSm,   
-  isXlOrLarger      
-} = useWindowWidth();
+  const { isSmallerThanSm, isXlOrLarger } = useWindowWidth();
 
   return (
     <section className="relative w-full pb-responsive">
@@ -39,53 +36,52 @@ const HeroSection = () => {
 
       <div className="relative mt-6 sm:mt-10">
         <h2 className="heading-2 flex flex-col relative">
-          <div className="max-w-[95%] sm:max-w-[85%] mb:max-w-[90%] lg:max-w-[83%] xl:max-w-[76%]  sm:text-right text-end">
+          <div className="max-w-full sm:max-w-[85%] mb:max-w-[90%] lg:max-w-[83%] xl:max-w-[76%]  sm:text-right text-end">
             <span className="first-letter uppercase">рок-м</span>
           </div>
-            {
-              isSmallerThanSm ? (
-                <span className="first-letter text-start block relative">
-                  <span className="uppercase">ресурсно-</span>
-                  <span className="first-letter block text-right uppercase max-w-[95%]">орієнтовані</span>
+          {isSmallerThanSm ? (
+            <span className="first-letter text-start block relative">
+              <span className="uppercase">ресурсно-</span>
+              <span className="first-letter block text-right uppercase max-w-full">
+                орієнтовані
+              </span>
 
-                  <span className="heading-bg absolute right-10 top-53 mt-1">
-                    Be Unique
-                  </span>
-                </span>
-              ) : isXlOrLarger ? (
-                <div className="flex items-center gap-4 h-20">
-                  <span className="first-letter whitespace-nowrap uppercase">
-                    ресурсно-орієнтовані
-                  </span>
-
-                  <span className="heading-bg translate-y-5 items-center -translate-x-3 whitespace-nowrap text-[144px] sm:text-[clamp(50px,9vw,144px)]"
-                    >
-                    
-                    Be Unique
-                  </span>
-                </div>
-              ) : (
-                <span className="first-letter whitespace-nowrap uppercase">
-                  ресурсно-орієнтовані
-                </span>
-              )
-            }
-            <span className="first-letter md:text-end block uppercase">
-              {isSmallerThanSm ? (
-                <>
-                  <span className="first-letter block text-right uppercase max-w-[95%]">когнітивні</span>
-                  <span className="block text-left">
-                    <span className="first-letter uppercase">методики</span>
-                  </span>
-                </>
-              ) : (
-                <>
-                  когнітивні <span className="first-letter uppercase">методики</span>
-                </>
-              )}
+              <span className="heading-bg absolute right-10 top-61 mt-1">
+                Be Unique
+              </span>
             </span>
+          ) : isXlOrLarger ? (
+            <div className="flex items-center gap-4 h-20">
+              <span className="first-letter whitespace-nowrap uppercase">
+                ресурсно-орієнтовані
+              </span>
 
-          
+              <span className="heading-bg translate-y-5 items-center -translate-x-3 whitespace-nowrap text-[144px] sm:text-[clamp(50px,9vw,144px)]">
+                Be Unique
+              </span>
+            </div>
+          ) : (
+            <span className="first-letter whitespace-nowrap uppercase">
+              ресурсно-орієнтовані
+            </span>
+          )}
+          <span className="first-letter md:text-end block uppercase">
+            {isSmallerThanSm ? (
+              <>
+                <span className="first-letter block text-right uppercase max-w-full">
+                  когнітивні
+                </span>
+                <span className="block text-left">
+                  <span className="first-letter uppercase">методики</span>
+                </span>
+              </>
+            ) : (
+              <>
+                когнітивні{" "}
+                <span className="first-letter uppercase">методики</span>
+              </>
+            )}
+          </span>
         </h2>
 
         <h4 className="heading-4 mt-5 mb-8 sm:mt-8">
@@ -123,14 +119,16 @@ const HeroSection = () => {
 
         <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left mt-20 gap-4 md:gap-0">
           <h6 className="heading-6 opacity-100 font-grava uppercase text-[clamp(14px,1vw,18px)] max-w-[90%] md:max-w-[70%] mx-auto md:mx-0 ">
-            у старослов'янських мовах «рок» — це фатум,<br className="hidden sm:block"/>
+            у старослов'янських мовах «рок» — це фатум,
+            <br className="hidden sm:block" />
             невідтворна доля, сила, яка визначає хід подій.
           </h6>
 
           <h6 className="heading-6 opacity-50 text-center   sm:text-right sm:opacity-100 font-grava uppercase text-[clamp(14px,1vw,18px)]">
             by bogdana
-            <br className="hidden sm:block"/>
-            .andreyko <br className="block sm:hidden"/>be unique
+            <br className="hidden sm:block" />
+            .andreyko <br className="block sm:hidden" />
+            be unique
           </h6>
         </div>
       </div>
