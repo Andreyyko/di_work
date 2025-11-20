@@ -9,6 +9,7 @@ const IdentityIntro: React.FC = () => {
   const { width, isSmallerThanSm } = useWindowWidth();
 
   const showImage = width !== null && width >= 1280;
+  const showImage2xl = width !== null && width >= 1600;
 
   return (
     <section className="w-full bg-brand-background pb-6 flex flex-col">
@@ -19,7 +20,7 @@ const IdentityIntro: React.FC = () => {
         </h2>
 
         <div className="flex flex-row items-center justify-between max-w-[95%]">
-          {showImage && (
+          {showImage && !showImage2xl && (
             <div className="flex items-center justify-center">
               <FrameWrapper
                 src={IdentityIntroImages.OpenBookImages}
