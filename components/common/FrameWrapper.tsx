@@ -93,8 +93,8 @@ const FrameWrapper: React.FC<FrameWrapperProps> = ({
   paddingX,
   paddingY,
   borderRadius = "0px",
-  width = "auto",
-  height = "auto",
+  width = "",
+  height = "",
   fill = false,
   imgWidth,
   imgHeight,
@@ -151,7 +151,7 @@ const FrameWrapper: React.FC<FrameWrapperProps> = ({
   return (
     <div
       style={{
-        display: "inline-block",
+        display: "auto",
         position: "relative",
         padding: `${resolvedPaddingY} ${resolvedPaddingX}`,
         borderRadius: `calc(${borderRadius} + ${frameThickness})`,

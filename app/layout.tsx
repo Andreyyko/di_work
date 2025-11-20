@@ -1,3 +1,4 @@
+import Header from "@/components/common/Header/Header";
 import "./globals.css";
 import localFont from "next/font/local";
 
@@ -45,7 +46,10 @@ export default function RootLayout({
         ${allegretto.variable}
       `}
       >
-      <body>{children}</body>
+      <body>
+        <Header/>
+        {children}
+        </body>
     </html>
   );
 }
