@@ -127,6 +127,8 @@
 @utility first-letter {
   display: inline-block;
   line-height: 1;
+  position: relative;
+  z-index: 10;
 }
 
 @utility heading-burger {
@@ -139,6 +141,8 @@
 @utility first-letter-burger{
   display: inline-block;
   line-height: 1;
+  position: relative;
+  z-index: 10;
 }
 
 .first-letter:first-letter {
@@ -146,6 +150,18 @@
   font-size: clamp(80px, 12vw, 160px);
   color: var(--first-letter-color, var(--color-brand-bordo, currentColor));
   line-height: 0.089;
+  position: absolute;
+  z-index: 20;
+}
+
+.first-letter:before {
+  content: attr(data-first-letter);
+  font-family: var(--font-alexandra, inherit);
+  font-size: clamp(80px, 12vw, 160px);
+  color: var(--first-letter-color, var(--color-brand-bordo, currentColor));
+  line-height: 0.089;
+  position: relative;
+  z-index: 20;
 }
 
 @utility first-letter-adaptation {
@@ -159,7 +175,20 @@
   color: var(--first-letter-color, var(--color-brand-bordo, currentColor));
   line-height: 0.089;
   letter-spacing: -0.1em;
+  position: relative;
+  z-index: 20;
 }
+
+.first-letter-burger:before {
+  content: attr(data-first-letter);
+  font-family: var(--font-alexandra, inherit);
+  font-size: clamp(80px, 12vw, 160px);
+  color: var(--first-letter-color, var(--color-brand-bordo, currentColor));
+  line-height: 0.089;
+  position: relative;
+  z-index: 20;
+}
+
 
 @media (min-width: 640px) {
   .heading-2 {

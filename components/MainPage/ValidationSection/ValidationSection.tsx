@@ -39,17 +39,17 @@ const ValidationSection = () => {
             <span className=" sm:leading-loose md:leading-10 lg:leading-[50px] xl:leading-[50px] sm:tracking-[-3px] md:tracking-[-1px] lg:tracking-[-4px]">
               <span className="whitespace-nowrap">
                 {" "}
-                <span className="first-letter">Усі</span> методики{" "}
+                <span className="first-letter" data-first-letter="у">сі</span> методики{" "}
               </span>{" "}
               пройшли
             </span>
 
             <span className="text-right block w-full leading-12 md:leading-12 lg:leading-20">
-              <span className="first-letter">Практичну</span>
+              <span className="first-letter" data-first-letter="п">рактичну</span>
             </span>
 
             <span className="md:leading-12 lg:leading-1">
-              <span className="first-letter">Перевірку</span>
+              <span className="first-letter" data-first-letter="п">еревірку</span>
             </span>
           </h2>
           <div className="flex flex-col">

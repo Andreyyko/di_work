@@ -37,13 +37,13 @@ const HeroSection = () => {
       <div className="relative mt-6 sm:mt-10">
         <h2 className="heading-2 flex flex-col relative">
           <div className="max-w-full sm:max-w-[85%] mb:max-w-[90%] lg:max-w-[83%] xl:max-w-[76%]  sm:text-right text-end">
-            <span className="first-letter uppercase">рок-м</span>
+            <span className="first-letter uppercase" data-first-letter="р">ок-м</span>
           </div>
           {isSmallerThanSm ? (
-            <span className="first-letter text-start block relative">
-              <span className="uppercase">ресурсно-</span>
-              <span className="first-letter block text-right uppercase max-w-full">
-                орієнтовані
+            <span className="first-letter text-start block relative" data-first-letter="Р">
+              <span className="uppercase">есурсно-</span>
+              <span className="first-letter block text-right uppercase max-w-full" data-first-letter="о">
+                рієнтовані
               </span>
 
               <span className="heading-bg absolute right-10 top-61 mt-1">
@@ -52,8 +52,8 @@ const HeroSection = () => {
             </span>
           ) : isXlOrLarger ? (
             <div className="flex items-center gap-4 h-20">
-              <span className="first-letter whitespace-nowrap uppercase">
-                ресурсно-орієнтовані
+              <span className="first-letter whitespace-nowrap uppercase " data-first-letter="р">
+                есурсно-орієнтовані
               </span>
 
               <span className="heading-bg translate-y-5 items-center -translate-x-3 whitespace-nowrap text-[144px] sm:text-[clamp(50px,9vw,144px)]">
@@ -61,24 +61,24 @@ const HeroSection = () => {
               </span>
             </div>
           ) : (
-            <span className="first-letter whitespace-nowrap uppercase">
-              ресурсно-орієнтовані
+            <span className="first-letter whitespace-nowrap uppercase" data-first-letter="р">
+              есурсно-орієнтовані
             </span>
           )}
           <span className="first-letter md:text-end block uppercase">
             {isSmallerThanSm ? (
               <>
-                <span className="first-letter block text-right uppercase max-w-full">
-                  когнітивні
+                <span className="first-letter block text-right uppercase max-w-full" data-first-letter="к">
+                  огнітивні
                 </span>
                 <span className="block text-left">
-                  <span className="first-letter uppercase">методики</span>
+                  <span className="first-letter uppercase" data-first-letter="м">етодики</span>
                 </span>
               </>
             ) : (
               <>
                 когнітивні{" "}
-                <span className="first-letter uppercase">методики</span>
+                <span className="first-letter uppercase " data-first-letter="м">етодики</span>
               </>
             )}
           </span>

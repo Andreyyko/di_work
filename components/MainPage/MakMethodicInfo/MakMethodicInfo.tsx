@@ -60,15 +60,15 @@ const MakMethodicInfo = () => {
           <h2 className="heading-2 uppercase text-center tracking-[-6px] sm:tracking-[-0.01em]">
             <span className="whitespace-nowrap -ml-3 sm:translate-x-0">
               {" "}
-              <span className="first-letter">тренінги,</span>{" "}
-              <span className="first-letter">мак</span>,{" "}
+              <span className="first-letter" data-first-letter="т">ренінги,</span>{" "}
+              <span className="first-letter" data-first-letter="м">ак</span>,{" "}
             </span>
             {isSmallerThanSm && <br />}{" "}
-            <span className="first-letter">музичний</span>
-            <br /> <span className="first-letter">супровід</span> та список
-            використаної <span className="first-letter">літератури</span>
+            <span className="first-letter" data-first-letter="м">узичний</span>
+            <br /> <span className="first-letter" data-first-letter="с">упровід</span> та список
+            використаної <span className="first-letter" data-first-letter="л">ітератури</span>
             {!isSmallerThanSm && <br />} до{" "}
-            <span className="first-letter">методик</span>
+            <span className="first-letter" data-first-letter="м">етодик</span>
           </h2>
         </div>
 

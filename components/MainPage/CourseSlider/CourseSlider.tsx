@@ -35,12 +35,12 @@ const CourseSlider = () => {
       <h2 className="heading-2 flex flex-col translate-y-0 sm:translate-y-0 md:translate-y-0 lg:translate-y-0 xl:-translate-y-38">
         {isSmallerThanSm ? (
           <>
-            <span className="first-letter uppercase text-end">незалежно</span>
+            <span className="first-letter uppercase text-end" data-first-letter="н">езалежно</span>
             <span className="text-start uppercase">від віку</span>
           </>
         ) : (
-          <span className="max-w-[90%] uppercase first-letter text-end">
-            незалежно від віку
+          <span className="max-w-[90%] uppercase first-letter text-end" data-first-letter="н">
+            езалежно від віку
           </span>
         )}
 
@@ -48,8 +48,8 @@ const CourseSlider = () => {
           чи досвіду – цей курс
         </span>
 
-        <span className="max-w-full sm:max-w-[90%] first-letter uppercase text-end block">
-          підтримує
+        <span className="max-w-full sm:max-w-[90%] first-letter uppercase text-end block" data-first-letter="п">
+          ідтримує
         </span>
 
         <div
@@ -61,8 +61,8 @@ const CourseSlider = () => {
         >
           {isSmallerThanSm ? (
             <>
-              <span className="first-letter text-end w-[95%] uppercase">
-                на шляху
+              <span className="first-letter text-end w-[95%] uppercase" data-first-letter="н">
+                а шляху
               </span>
 
               <span className="relative w-fit text-start block">
@@ -83,8 +83,8 @@ const CourseSlider = () => {
               </span>
             </>
           ) : (
-            <span className="first-letter text-start w-fit whitespace-nowrap uppercase">
-              на шляху до змін
+            <span className="first-letter text-start w-fit whitespace-nowrap uppercase" data-first-letter="н">
+              а шляху до змін
             </span>
           )}
         </div>
