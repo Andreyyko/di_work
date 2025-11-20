@@ -31,19 +31,17 @@ const ValidationSection = () => {
       </div>
       <div className="md:w-[50%]">
         <div>
-          <h2 className="heading-2 md:validation-heading uppercase flex flex-col mb-3 sm:mb-0">
+          <h2 className="heading-2 uppercase flex flex-col mb-3 sm:mb-0">
             <span className="md:whitespace-nowrap  sm:leading-loose md:leading-loose lg:leading-loose">
-              <span className="first-letter-adaptation">
-                Усі методики пройшли
-              </span>
+              <span className="first-letter"><span className="whitespace-nowrap">Усі методики</span> пройшли</span>
             </span>
 
             <span className="text-right block w-full leading-12 lg:leading-15">
-              <span className="first-letter-adaptation">Практичну</span>
+              <span className="first-letter">Практичну</span>
             </span>
 
             <span className="md:leading-normal">
-              <span className="first-letter-adaptation">Перевірку</span>
+              <span className="first-letter">Перевірку</span>
             </span>
           </h2>
           <div className="flex flex-col">

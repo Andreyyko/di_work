@@ -6,8 +6,7 @@ import Image from "next/image";
 import { flower_images } from "@/public/images/CommonImages/FlowerImages";
 
 const MakMethodicInfo = () => {
-  const { width, isSmallerThanLg, isSmallerThanSm } =
-    useWindowWidth();
+  const { width, isSmallerThanLg, isSmallerThanSm } = useWindowWidth();
 
   const showMobileFlower = width !== null && width >= 320 && width <= 470;
 
@@ -58,28 +57,18 @@ const MakMethodicInfo = () => {
         </div>
 
         <div className="mb-3 sm:mb-[25px] z-3 relative">
-          <h2 className="heading-2 uppercase text-center">
-            <span className="whitespace-nowrap -ml-5 sm:translate-x-0">
+          <h2 className="heading-2 uppercase text-center tracking-[-6px] sm:tracking-[-0.01em]">
+            <span className="whitespace-nowrap -ml-3 sm:translate-x-0">
               {" "}
-              <span className="first-letter">т</span>ренінги,{" "}
-              <span className="whitespace-nowrap">
-                {" "}
-                <span className="first-letter">м</span>ак,{" "}
-              </span>{" "}
+              <span className="first-letter">тренінги,</span>{" "}
+              <span className="first-letter">мак</span>,{" "}
             </span>
-            {isSmallerThanSm && <br />}
-            <span className="whitespace-nowrap">
-              {" "}
-              <span className="first-letter">м</span>узичний
-            </span>{" "}
-            <br /> <span className="first-letter">с</span>упровід та список
-            використаної{" "}
-            <span className="whitespace-nowrap">
-              {" "}
-              <span className="first-letter">л</span>ітератури
-            </span>{" "}
+            {isSmallerThanSm && <br />}{" "}
+            <span className="first-letter">музичний</span>
+            <br /> <span className="first-letter">супровід</span> та список
+            використаної <span className="first-letter">літератури</span>
             {!isSmallerThanSm && <br />} до{" "}
-            <span className="first-letter">м</span>етодик
+            <span className="first-letter">методик</span>
           </h2>
         </div>
 

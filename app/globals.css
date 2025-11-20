@@ -153,13 +153,6 @@
   line-height: 1;
 }
 
-.first-letter-adaptation:first-letter {
-  font-family: var(--font-alexandra, inherit);
-  font-size: clamp(70px, 12vw, 160px);
-  color: var(--first-letter-color, var(--color-brand-bordo, currentColor));
-  line-height: 0.089;
-}
-
 .first-letter-burger:first-letter {
   font-family: var(--font-alexandra, inherit);
   font-size: clamp(100px, 12vw, 160px);
@@ -225,3 +218,4 @@
 .animate-burger-out {
   animation: fadeBurgerOut 0.25s ease-in forwards;
 }
+
