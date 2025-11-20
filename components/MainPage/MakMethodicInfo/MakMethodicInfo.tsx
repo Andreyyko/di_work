@@ -21,9 +21,9 @@ const MakMethodicInfo = () => {
         />
       ) : (
         <Image
-          src={flower_images.BackGroundImages}
+          src={flower_images.BackGroundImages} 
           alt="background flower"
-          className="absolute top-[30%] sm:top-[40%] -left-5 -translate-y-1/2  pointer-events-none select-none z-1"
+          className="absolute top-[30%] sm:top-[40%] -left-5 -translate-y-1/2 2xl:w-[1900px]  pointer-events-none select-none z-1"
           priority
         />
       )}

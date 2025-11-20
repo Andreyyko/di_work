@@ -12,11 +12,12 @@ const ValidationSection = () => {
 
   return (
     <div className="w-full flex md:flex-row flex-col-reverse lg:justify-between items-center pb-5">
-      <div className="md:w-[50%] w-full md:-translate-x-5 md:px-0 flex justify-center -mx-5">
+      <div className="md:w-[50%] w-full md:-translate-x-5 md:px-0 flex justify-center 2xl:justify-start -mx-5">
         {isbiggerThanMd && (
           <Image
             src={ValidationSectionImages.letterСertificate}
             alt="Paper certificate in an open envelope"
+            className="2xl:w-11/12"
           />
         )}
         {!isbiggerThanMd && (
@@ -26,21 +27,28 @@ const ValidationSection = () => {
               alt="Paper certificate in an open envelope"
               className="w-full h-auto"
             />
+              <div className="absolute top-[75%] sm:top-[75%] md: left-1/2 -translate-x-1/2 -translate-y-1/2">
+              <CustomSeal label="Переглянути методики" />
+            </div>
           </div>
         )}
       </div>
       <div className="md:w-[50%]">
         <div>
           <h2 className="heading-2 uppercase flex flex-col mb-3 sm:mb-0">
-            <span className="md:whitespace-nowrap  sm:leading-loose md:leading-loose lg:leading-loose">
-              <span className="first-letter"><span className="whitespace-nowrap">Усі методики</span> пройшли</span>
+            <span className=" sm:leading-loose md:leading-10 lg:leading-[50px] xl:leading-[50px] sm:tracking-[-3px] md:tracking-[-1px] lg:tracking-[-4px]">
+              <span className="whitespace-nowrap">
+                {" "}
+                <span className="first-letter">Усі</span> методики{" "}
+              </span>{" "}
+              пройшли
             </span>
 
-            <span className="text-right block w-full leading-12 lg:leading-15">
+            <span className="text-right block w-full leading-12 md:leading-12 lg:leading-20">
               <span className="first-letter">Практичну</span>
             </span>
 
-            <span className="md:leading-normal">
+            <span className="md:leading-12 lg:leading-1">
               <span className="first-letter">Перевірку</span>
             </span>
           </h2>
@@ -58,7 +66,7 @@ const ValidationSection = () => {
             </p>
           </div>
         </div>
-        <div className="mt-6 lg:mt-12 flex justify-between">
+        <div className="mt-6 lg:mt-12 2xl:mt-60 flex justify-between">
           {isbiggerThanMd && (
             <span className="heading-5">
               Усі техніки та
