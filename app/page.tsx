@@ -6,6 +6,7 @@ import CourseSlider from "@/components/MainPage/CourseSlider/CourseSlider";
 import HeroSection from "@/components/MainPage/HeroSection/HeroSection";
 import IdentityIntro from "@/components/MainPage/IdentityIntroSection/IdentityIntro";
 import MakMethodicInfo from "@/components/MainPage/MakMethodicInfo/MakMethodicInfo";
+import ValidationSection from "@/components/MainPage/ValidationSection/ValidationSection";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <AboutUs />
       <CourseSlider/>
       <MakMethodicInfo />
+      <ValidationSection />
     </main>
   );
 }

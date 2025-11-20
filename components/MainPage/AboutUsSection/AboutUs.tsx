@@ -41,7 +41,7 @@ const AboutUs = () => {
 
         <div className="flex flex-col sm:w-[80%] md:ml-3">
           <div className="flex flex-col md:flex-row justify-between md:max-h-[300px] lg:max-h-[230px] md:mb-14">
-            <div className="flex flex-col md:max-w-[280px] lg:max-w-[600px] xl:max-w-[630px]">
+            <div className="flex flex-col md:max-w-[280px] lg:max-w-[500px] xl:max-w-[630px]">
               <h3 className="heading-3 mb-5 uppercase">
                 сайт включає {showBr && <br />} в себе
               </h3>
@@ -104,11 +104,11 @@ const AboutUs = () => {
               з’являється спокій і<br /> впевненість у кожному дні
             </span>
           )}
-          <div className="flex flex-col justify-end sm:-ml-4 md:ml-0">
+          <div className="flex flex-col justify-end sm:-ml-4 md:ml-0 lg:w-[355px] xl:w-[420px]">
             <h3 className="heading-3 mb-5  text-left uppercase">
               кожна з методик містить
             </h3>
-            <p className="heading-4 mb-[30px] md:mb-0 text-left  md:text-left">
+            <p className="heading-4 mb-[30px] md:mb-0 text-left md:text-left">
               Наукову бібліографію, унікальну інструкцію та рекомендації щодо
               застосування для психологів, психотерапевтів, освітян, коучів,
               батьків та людей. Перша українська evidence-based онлайн-платформа
@@ -124,7 +124,7 @@ const AboutUs = () => {
         </div>
 
         <div className="flex items-end justify-center w-full md:w-auto sm:mt-6 md:mt-0">
-          <TwoFrameButton variant="one" label="ДІЗНАТИСЯ БІЛЬШЕ" width={325} />
+          <TwoFrameButton variant="one" label="ДІЗНАТИСЯ БІЛЬШЕ" />
         </div>
       </div>
     </section>
