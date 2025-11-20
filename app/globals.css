@@ -10,7 +10,7 @@
   --color-brand-monolightgray: #eeebe2;
   --color-brand-background: #eeece5;
 
-  --heading-2-size: clamp(32px, 6vw, 80px);
+  --heading-2-size: clamp(40px, 6vw, 80px);
   --validation-heading-size: clamp(22px, 6vw, 80px);
   --heading-2-burger-size: clamp(50px, 6vw, 80px);
   --heading-3-size: clamp(18px, 2vw, 25px);
@@ -153,12 +153,6 @@
   line-height: 1;
 }
 
-.first-letter-adaptation:first-letter {
-  font-family: var(--font-alexandra, inherit);
-  font-size: clamp(70px, 12vw, 160px);
-  color: var(--first-letter-color, var(--color-brand-bordo, currentColor));
-  line-height: 0.089;
-
 .first-letter-burger:first-letter {
   font-family: var(--font-alexandra, inherit);
   font-size: clamp(100px, 12vw, 160px);
@@ -224,3 +218,4 @@
 .animate-burger-out {
   animation: fadeBurgerOut 0.25s ease-in forwards;
 }
+

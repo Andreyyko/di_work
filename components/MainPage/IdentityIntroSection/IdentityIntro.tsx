@@ -13,9 +13,9 @@ const IdentityIntro: React.FC = () => {
   return (
     <section className="w-full bg-brand-background pb-6 flex flex-col">
       <div className="text-left sm:whitespace-nowrap">
-        <h2 className="heading-2 uppercase">
-          <span className="first-letter uppercase">п</span>
-          ерший в україні <br />
+        <h2 className="heading-2 uppercase tracking-[-4px] sm:tracking-[-0.01em]">
+          <span className="first-letter uppercase">перший</span> в україні{" "}
+          <br />
         </h2>
 
         <div className="flex flex-row items-center justify-between max-w-[95%]">
@@ -29,25 +29,25 @@ const IdentityIntro: React.FC = () => {
           )}
 
           <p className="heading-2  text-center sm:text-left sm:whitespace-nowrap">
-            <span className="sm:ml-5 xl:ml-0 inline-block uppercase">
+            <span className="sm:ml-5 xl:ml-0 inline-block uppercase tracking-[-4px] sm:tracking-[-0.01em]">
               психологічний
             </span>
             <br />
-            <span className="inline-block uppercase">
-              <span className="first-letter uppercase">с</span>айт,{" "}
+            <span className="inline-block uppercase tracking-[-4px] sm:tracking-[-0.01em]">
+              <span className="first-letter uppercase">сайт</span>,{" "}
               {isSmallerThanSm && "ЩО"}
               {!isSmallerThanSm && "ЩО ПОЄДНУЄ РІЗНІ"}
             </span>
             {isSmallerThanSm && (
               <>
                 <br />
-                ПОЄДНУЄ
+                <span className="tracking-[-4px] sm:tracking-[-0.01em]">ПОЄДНУЄ</span>
               </>
             )}
           </p>
         </div>
 
-        <p className="heading-2 whitespace-nowrap uppercase">
+        <p className="heading-2 whitespace-nowrap uppercase tracking-[-4px] sm:tracking-[-0.01em]">
           {isSmallerThanSm && "РІЗНІ"} напрямки {isSmallerThanSm && <br />}
           доказової
         </p>
@@ -59,24 +59,24 @@ const IdentityIntro: React.FC = () => {
               когнітивно проведінковий
             </p>
           )}
-          <p className="heading-2 whitespace-nowrap uppercase">
-            <span className="first-letter">п</span>сихотерапії,
+          <p className="heading-2 whitespace-nowrap uppercase tracking-[-4px] sm:tracking-[-0.01em]">
+            <span className="first-letter">психотерапії</span>,
             <br /> спрямований
           </p>
         </div>
 
-        <p className="heading-2 sm:whitespace-nowrap uppercase">
-          <span className="sm:first-letter">н</span>А підтримку психічного
+        <p className="heading-2 sm:whitespace-nowrap uppercase tracking-[-4px] sm:tracking-[-0.01em]">
+          <span className="sm:first-letter">нa</span> підтримку психічного
         </p>
 
-        <p className="heading-2 text-right w-[92%] sm:whitespace-nowrap uppercase">
-          <span className="first-letter">з</span>доров'я та {" "}
-          <span className={!isSmallerThanSm ? "" : "first-letter"}>в</span>сіх
+        <p className="heading-2 text-right w-[92%] sm:whitespace-nowrap uppercase tracking-[-4px] sm:tracking-[-0.01em]">
+          <span className="first-letter">здоров'я</span> та{" "}
+          <span className={`${!isSmallerThanSm ? "" : "first-letter"}`}>всіх</span>
           сфер
         </p>
 
         <div className="flex flex-row items-center justify-between ">
-          <p className="heading-2 sm:whitespace-nowrap uppercase">
+          <p className="heading-2 sm:whitespace-nowrap uppercase tracking-[-4px] sm:tracking-[-0.01em]">
             особистості
           </p>
 
