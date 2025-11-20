@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { useRef, useState, useEffect } from "react";
+import gsap from "gsap";
 
 interface ArrowButtonProps {
   direction?: "left" | "right";
@@ -9,18 +9,55 @@ interface ArrowButtonProps {
   className?: string;
 }
 
-const ArrowButton = ({ direction = "right", onClick, className = "" }: ArrowButtonProps) => {
+const ArrowButton = ({
+  direction = "right",
+  onClick,
+  className = "",
+}: ArrowButtonProps) => {
   const [cycle, setCycle] = useState(0);
+  const pathRef = useRef<SVGPathElement>(null);
 
   const handleClick = () => {
     setCycle((c) => c + 1);
     onClick?.();
   };
 
+  useEffect(() => {
+    if (!pathRef.current) return;
+
+    gsap.set(pathRef.current, {
+      strokeDasharray: 1000,
+      strokeDashoffset: 1000,
+      opacity: 0,
+      fillOpacity: 0,
+    });
+
+    const tl = gsap.timeline();
+
+    tl.to(pathRef.current, {
+      opacity: 1,
+      strokeDashoffset: 0,
+      duration: 1.6,
+      ease: "power2.inOut",
+    });
+
+    tl.to(
+      pathRef.current,
+      {
+        fillOpacity: 1,
+        duration: 0.6,
+        ease: "power2.out",
+      },
+      "-=0.7"
+    );
+  }, [cycle]);
+
   return (
     <div
       onClick={handleClick}
-      onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && handleClick()}
+      onKeyDown={(e) =>
+        e.key === "Enter" || e.key === " " ? handleClick() : null
+      }
       role="button"
       tabIndex={0}
       className={`inline-block cursor-pointer select-none text-brand-bordo ${className}`}
@@ -30,17 +67,15 @@ const ArrowButton = ({ direction = "right", onClick, className = "" }: ArrowButt
         transform: direction === "left" ? "scaleX(-1)" : "scaleX(1)",
       }}
     >
-      <motion.svg
-        key={cycle}
+      <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 117 77"
         preserveAspectRatio="xMidYMid meet"
         width="100%"
         height="100%"
-        initial="hidden"
-        animate="visible"
       >
-        <motion.path
+        <path
+          ref={pathRef}
           d="M34 724 c-22 -51 -30 -190 -14 -239 28 -86 120 -144 236 -149 52 -3
           69 -8 96 -31 49 -42 142 -82 238 -102 65 -14 129 -18 273 -18 103 0 187 0 187
           0 0 -1 -22 -18 -50 -39 -27 -21 -69 -61 -92 -89 l-43 -52 66 53 c37 28 105 76
@@ -57,25 +92,8 @@ const ArrowButton = ({ direction = "right", onClick, className = "" }: ArrowButt
           strokeWidth="8"
           strokeLinecap="round"
           strokeLinejoin="round"
-          variants={{
-            hidden: {
-              pathLength: 0,
-              fillOpacity: 0,
-              opacity: 0,
-            },
-            visible: {
-              pathLength: 1,
-              fillOpacity: 1,
-              opacity: 1,
-              transition: {
-                pathLength: { duration: 1.6, ease: "easeInOut" },
-                fillOpacity: { delay: 0.8, duration: 0.6 },
-                opacity: { duration: 0.3 },
-              },
-            },
-          }}
         />
-      </motion.svg>
+      </svg>
     </div>
   );
 };

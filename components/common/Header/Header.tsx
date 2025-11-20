@@ -1,10 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
+
 import Image from "next/image";
 import InitialsCircle from "../InitialsCircle";
-import { header_images } from "@/public/images/HeaderImages";
 import BurgerMenu from "./BurgerMenu";
+
+import { header_images } from "@/public/images/HeaderImages";
 import { useWindowWidth } from "@/hooks/useWindowWidth";
 
 const Header = () => {
@@ -13,19 +15,61 @@ const Header = () => {
   const { isSmallerThanMd } = useWindowWidth();
 
   const handleClose = () => {
-    setClosing(true);          
+    setClosing(true);
+
     setTimeout(() => {
       setOpen(false);
-      setClosing(false);       
-    }, 350);
-  }
+      setClosing(false);
+    }, 850);
+  };
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
   }, [open]);
 
+  const circlePosition = (() => {
+    let pos = {
+      top: "10px",
+      left: "47%",
+    };
+
+    if (isSmallerThanMd && !open) {
+      pos = {
+        top: "12px",
+        left: "85%",
+      };
+    }
+
+    if (open) {
+      pos = {
+        top: "10px",
+        left: "47%",
+      };
+    }
+
+    if (isSmallerThanMd && open) {
+      pos = {
+        top: "12px",
+        left: "85%",
+      };
+    }
+
+    return pos;
+  })();
+
   return (
     <>
+      <div
+        className="
+        absolute z-999
+          transition-all duration-300
+          ease-[cubic-bezier(.22,.61,.36,1)]
+        "
+        style={circlePosition}
+      >
+        <InitialsCircle />
+      </div>
+
       <header
         className="
           absolute top-0 left-0 w-full 
@@ -41,18 +85,7 @@ const Header = () => {
           />
         </button>
 
-        {!isSmallerThanMd && (
-          <div className="flex items-center justify-center">
-            <InitialsCircle />
-          </div>
-        )}
-
         <div className="z-300">
-
-          {isSmallerThanMd && !open && (
-            <InitialsCircle  />
-          )}
-
           {!isSmallerThanMd && (
             <button className="pt-3">
               <Image
@@ -67,9 +100,10 @@ const Header = () => {
 
       {open && (
         <BurgerMenu
-        onClose={handleClose}  
-        isMobile={isSmallerThanMd} 
-        closing={closing}/>
+          onClose={handleClose}
+          isMobile={isSmallerThanMd}
+          closing={closing}
+        />
       )}
     </>
   );
