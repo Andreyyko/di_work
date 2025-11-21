@@ -156,7 +156,7 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
         >
           <div className="flex flex-col items-center gap-5 sm:gap-7.5">
             <button className="heading-2-burger uppercase menu-item menu-fade">
-              <span className="first-letter-burger">Про нас</span>
+              <span className="first-letter-burger">П</span>ро нас
               <span className="heading-burger pl-2 sm:pl-5">01</span>
             </button>
 
