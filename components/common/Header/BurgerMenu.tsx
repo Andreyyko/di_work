@@ -156,18 +156,18 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
         >
           <div className="flex flex-col items-center gap-5 sm:gap-7.5">
             <button className="heading-2-burger uppercase menu-item menu-fade">
-              <span className="first-letter-burger">П</span>ро нас
+              <span className="first-letter" data-first-letter="П">ро нас</span>
               <span className="heading-burger pl-2 sm:pl-5">01</span>
             </button>
 
             <button className="heading-2-burger uppercase sm:translate-x-5 menu-item menu-fade">
-              <span className="first-letter-burger">Р</span>озділи
+              <span className="first-letter-burger" data-first-letter="Р">озділи</span>
               <span className="heading-burger pl-2 sm:pl-5">02</span>
             </button>
 
             <button className="heading-2-burger uppercase sm:-translate-x-5 menu-item menu-fade">
               <span className="heading-burger mr-2 sm:mr-5">03</span>
-              МА<span className="first-letter-burger">К</span>
+              МА<span className="first-letter-burger" data-first-letter="К"></span>
             </button>
 
             <button className="heading-2-burger uppercase menu-item menu-fade">
@@ -175,13 +175,13 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
                 <>
                   <span className="heading-burger mr-2">04</span>
                   <span>
-                    FA<span className="first-letter-burger">Q</span>
+                    FA<span className="first-letter-burger" data-first-letter="Q"></span>
                   </span>
                 </>
               ) : (
                 <>
                   <span>
-                    FA<span className="first-letter-burger">Q</span>
+                    FA<span className="first-letter-burger" data-first-letter="Q"></span>
                   </span>
                   <span className="heading-burger pl-7">04</span>
                 </>
