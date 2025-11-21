@@ -171,7 +171,7 @@
 
 .first-letter-burger:first-letter {
   font-family: var(--font-alexandra, inherit);
-  font-size: clamp(100px, 12vw, 160px);
+  font-size: clamp(75px, 12vw, 150px);
   color: var(--first-letter-color, var(--color-brand-bordo, currentColor));
   line-height: 0.089;
   letter-spacing: -0.1em;
@@ -182,7 +182,7 @@
 .first-letter-burger:before {
   content: attr(data-first-letter);
   font-family: var(--font-alexandra, inherit);
-  font-size: clamp(80px, 12vw, 160px);
+  font-size: clamp(75px, 12vw, 160px);
   color: var(--first-letter-color, var(--color-brand-bordo, currentColor));
   line-height: 0.089;
   position: relative;
