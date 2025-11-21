@@ -1,38 +1,51 @@
 type Props = {
-    className?: string;
+  className?: string;
+  size?: "default" | "xl";
 };
 
-const InitialsCircle = ({ className }: Props) => {
-    return (
-        <div
-            className={`
-                w-[clamp(40px,8vw,100px)]
-                h-[clamp(40px,8vw,100px)]
-                rounded-full
-                bg-brand-bordo
-                text-white
-                flex flex-col
-                items-center
-                justify-center
-                text-center
+const InitialsCircle = ({ className, size = "default" }: Props) => {
+  const isXL = size === "xl";
+
+  return (
+    <div
+      className={`
+                flex flex-col items-center justify-center text-center
+                rounded-full bg-brand-bordo text-white
+                ${
+                  isXL
+                    ? "w-[170px] h-[170px]"
+                    : "w-[clamp(40px,8vw,100px)] h-[clamp(40px,8vw,100px)]"
+                }
                 ${className ?? ""}
             `}
-        >
-            <span
-                className="font-kudriashov uppercase text-[clamp(13.2px,2vw,32px)]"
-                style={{ lineHeight: "clamp(16px, 2.5vw, 30px)" }}
-            >
-                ab
-            </span>
+    >
+      <span
+        className={`
+                    font-kudriashov uppercase
+                    ${
+                      isXL
+                        ? "text-[52px] leading-[52px]"
+                        : "text-[clamp(13.2px,2vw,32px)] leading-[clamp(16px,2.5vw,30px)]"
+                    }
+                `}
+      >
+        ab
+      </span>
 
-            <span
-                className="font-kudriashov uppercase text-[clamp(5px,1vw,13px)] -translate-y-0.5 -tracking-tighter"
-                style={{ lineHeight: "clamp(4px, 1.2vw, 13px)" }}
-            >
-                andreyko
-            </span>
-        </div>
-    );
+      <span
+        className={`
+                    font-kudriashov uppercase -translate-y-0.5 -tracking-tighter
+                    ${
+                      isXL
+                        ? "text-[20px] leading-5"
+                        : "text-[clamp(5px,1vw,13px)] leading-[clamp(4px,1.2vw,13px)]"
+                    }
+                `}
+      >
+        andreyko
+      </span>
+    </div>
+  );
 };
 
 export default InitialsCircle;
