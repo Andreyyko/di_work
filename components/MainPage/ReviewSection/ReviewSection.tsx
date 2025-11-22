@@ -128,7 +128,7 @@ const ReviewSection = () => {
             ресурси, довірся собі та зроби перший крок назустріч новому етапу
           </h5>
 
-          <h5 className="absolute -right-5 text-right -top-10 max-w-[180px] heading-5 hidden md:block">
+          <h5 className="absolute -right-5 text-right -top-10 heading-5 hidden md:block">
             Це простір, де є місце <br /> стабільності, здоровим <br />{" "}
             стосункам і особистому <br /> розвитку. Тут панує <br />{" "}
             усвідомленість, а твої <br />
