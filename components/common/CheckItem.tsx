@@ -7,6 +7,7 @@ type CheckItemProps = {
   size?: number;
   className?: string;
   icon?: StaticImageData | string;
+  showFor?: number[];
 };
 
 const CheckItem = ({
@@ -15,13 +16,19 @@ const CheckItem = ({
   size = 18,
   className = "",
   icon,
+  showFor,
 }: CheckItemProps) => {
   const ICON = icon ?? check_icon.CHECK;
 
   if (items && items.length > 0) {
+    const filteredItems =
+      showFor && showFor.length > 0
+        ? items.filter((_, index) => showFor.includes(index))
+        : items;
+
     return (
       <ul className={` ${className}`}>
-        {items.map((item, idx) => (
+        {filteredItems.map((item, idx) => (
           <li key={idx} className="flex items-start gap-3 leading-tight">
             <Image
               src={ICON}

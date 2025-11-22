@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import gsap from "gsap";
 
 interface ArrowButtonProps {
@@ -14,50 +14,63 @@ const ArrowButton = ({
   onClick,
   className = "",
 }: ArrowButtonProps) => {
-  const [cycle, setCycle] = useState(0);
   const pathRef = useRef<SVGPathElement>(null);
+  const tlRef = useRef<gsap.core.Timeline | null>(null);
 
-  const handleClick = () => {
-    setCycle((c) => c + 1);
-    onClick?.();
-  };
-
-  useEffect(() => {
+  const animate = () => {
     if (!pathRef.current) return;
+    const path = pathRef.current;
 
-    gsap.set(pathRef.current, {
-      strokeDasharray: 1000,
-      strokeDashoffset: 1000,
-      opacity: 0,
+    tlRef.current?.kill();
+
+    const length = path.getTotalLength();
+
+    gsap.set(path, {
+      strokeDasharray: length,
+      strokeDashoffset: length,
       fillOpacity: 0,
+      opacity: 0,
     });
 
     const tl = gsap.timeline();
+    tlRef.current = tl;
 
-    tl.to(pathRef.current, {
+    tl.to(path, {
       opacity: 1,
+      duration: 0.2,
+      ease: "power1.out",
+    });
+
+    tl.to(path, {
       strokeDashoffset: 0,
       duration: 1.6,
       ease: "power2.inOut",
     });
 
     tl.to(
-      pathRef.current,
+      path,
       {
         fillOpacity: 1,
         duration: 0.6,
-        ease: "power2.out",
+        ease: "power1.out",
       },
-      "-=0.7"
+      "-=0.8"
     );
-  }, [cycle]);
+  };
+
+  useEffect(() => {
+    animate();
+  }, []);
+
+  const handleClick = () => {
+    animate();
+    onClick?.();
+  };
 
   return (
     <div
       onClick={handleClick}
-      onKeyDown={(e) =>
-        e.key === "Enter" || e.key === " " ? handleClick() : null
-      }
+      onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && handleClick()}
       role="button"
       tabIndex={0}
       className={`inline-block cursor-pointer select-none text-brand-bordo ${className}`}
