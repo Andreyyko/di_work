@@ -8,7 +8,7 @@ type CheckItemProps = {
   className?: string;
   icon?: StaticImageData | string;
   showFor?: number[];
-  minText?: boolean; // NEW
+  minText?: boolean; 
 };
 
 const CheckItem = ({
@@ -33,7 +33,7 @@ const CheckItem = ({
         : items;
 
     return (
-      <ul className={className}>
+      <ul className={` ${className}`}>
         {filteredItems.map((item, idx) => (
           <li key={idx} className="flex items-start gap-3 leading-tight">
             <Image

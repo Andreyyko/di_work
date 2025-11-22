@@ -56,4 +56,3 @@ type Props = {
   };
   
   export default InitialsCircle;
-  

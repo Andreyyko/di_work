@@ -10,5 +10,4 @@ export const header_images = {
     FACEBOOK_ICON,
     INSTAGRAM_ICON,
     YOUTUBE_ICON,
-    
 }

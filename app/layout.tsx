@@ -3,12 +3,12 @@ import "./globals.css";
 import localFont from "next/font/local";
 
 const alexandra = localFont({
-  src: "../public/fonts/alexandra-script.ttf",
+  src: "../public/fonts/alexandra-script.woff2",
   variable: "--font-alexandra",
 });
 
 const kudriashov = localFont({
-  src: "../public/fonts/Kudriashov.woff",
+  src: "../public/fonts/Kudriashov.woff2",
   variable: "--font-kudriashov",
 });
 
