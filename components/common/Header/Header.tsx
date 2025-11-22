@@ -6,7 +6,7 @@ import Image from "next/image";
 import InitialsCircle from "../InitialsCircle";
 import BurgerMenu from "./BurgerMenu";
 
-import { header_images } from "@/public/images/HeaderImages";
+import { header_images } from "@/public/images/CommonImages/HeaderImages";
 import { useWindowWidth } from "@/hooks/useWindowWidth";
 
 const Header = () => {

@@ -15,7 +15,7 @@ const IdentityIntro: React.FC = () => {
     <section className="w-full bg-brand-background pb-6 flex flex-col">
       <div className="text-left sm:whitespace-nowrap">
         <h2 className="heading-2 uppercase tracking-[-4px] sm:tracking-[-0.01em]">
-          <span className="first-letter uppercase" data-first-letter="п">ерший</span> в україні{" "}
+          <span className="first-letter uppercase">перший</span> в україні{" "}
           <br />
         </h2>
 
@@ -35,7 +35,7 @@ const IdentityIntro: React.FC = () => {
             </span>
             <br />
             <span className="inline-block uppercase tracking-[-4px] sm:tracking-[-0.01em]">
-              <span className="first-letter uppercase" data-first-letter="с">айт</span>,{" "}
+              <span className="first-letter uppercase">сайт</span>,{" "}
               {isSmallerThanSm && "ЩО"}
               {!isSmallerThanSm && "ЩО ПОЄДНУЄ РІЗНІ"}
             </span>
@@ -61,17 +61,17 @@ const IdentityIntro: React.FC = () => {
             </p>
           )}
           <p className="heading-2 whitespace-nowrap uppercase tracking-[-4px] sm:tracking-[-0.01em]">
-            <span className="first-letter" data-first-letter="п">сихотерапії</span>,
+            <span className="first-letter">психотерапії</span>,
             <br /> спрямований
           </p>
         </div>
 
         <p className="heading-2 sm:whitespace-nowrap uppercase tracking-[-4px] sm:tracking-[-0.01em]">
-          <span className="sm:first-letter" data-first-letter="н">a</span> підтримку психічного
+          <span className="sm:first-letter">нa</span> підтримку психічного
         </p>
 
         <p className="heading-2 text-right w-[92%] sm:whitespace-nowrap uppercase tracking-[-4px] sm:tracking-[-0.01em]">
-          <span className="first-letter" data-first-letter="з">доров'я</span> та{" "}
+          <span className="first-letter">здоров'я</span> та{" "}
           <span className={`${!isSmallerThanSm ? "" : "first-letter"}`}>всіх</span>
           сфер
         </p>

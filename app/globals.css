@@ -19,7 +19,8 @@
   --heading-5-size: clamp(14px, 2vw, 33px);
   --heading-6-size: clamp(14px, 1.8vw, 18px);
   --heading-7-size: clamp(50px, 8vw, 144px);
-  --heading-burger-size: clamp(14px, 2vw, 18px)
+  --heading-footer-size: 18px;
+  --heading-burger-size: clamp(14px, 2vw, 18px);
 }
 
 @utility font-kudriashov {
@@ -36,6 +37,9 @@
 }
 @utility font-allegretto {
   font-family: var(--font-allegretto);
+}
+@utility font-montserrat {
+  font-family: var(--font-montserrat);
 }
 
 @utility validation-heading {
@@ -124,6 +128,14 @@
     -1px -1px 1px rgba(255, 253, 246, 1);
 }
 
+@utility heading-footer {
+  font-size: var(--heading-footer-size);
+  line-height: 0.89;
+  letter-spacing: -0.01em;
+
+  @apply font-montserrat text-brand-gray font-semibold opacity-50;
+}
+
 @utility first-letter {
   display: inline-block;
   line-height: 1;
@@ -138,7 +150,7 @@
   @apply font-grava text-brand-gray;
 }
 
-@utility first-letter-burger{
+@utility first-letter-burger {
   display: inline-block;
   line-height: 1;
   position: relative;
@@ -188,7 +200,6 @@
   position: relative;
   z-index: 20;
 }
-
 
 @media (min-width: 640px) {
   .heading-2 {
@@ -247,4 +258,3 @@
 .animate-burger-out {
   animation: fadeBurgerOut 0.25s ease-in forwards;
 }
-

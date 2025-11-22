@@ -4,7 +4,7 @@ import Image from "next/image";
 import FrameWrapper from "../../common/FrameWrapper";
 
 import { X } from "lucide-react";
-import { header_images } from "@/public/images/HeaderImages";
+import { header_images } from "@/public/images/CommonImages/HeaderImages";
 import { useWindowWidth } from "@/hooks/useWindowWidth";
 
 import { useEffect, useRef } from "react";

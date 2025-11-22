@@ -7,6 +7,8 @@ type CheckItemProps = {
   size?: number;
   className?: string;
   icon?: StaticImageData | string;
+  showFor?: number[];
+  minText?: boolean; // NEW
 };
 
 const CheckItem = ({
@@ -15,13 +17,24 @@ const CheckItem = ({
   size = 18,
   className = "",
   icon,
+  showFor,
+  minText = false, 
 }: CheckItemProps) => {
   const ICON = icon ?? check_icon.CHECK;
 
+  const textClass = minText
+    ? "text-[clamp(14px,3vw,18px)]"
+    : "";
+
   if (items && items.length > 0) {
+    const filteredItems =
+      showFor && showFor.length > 0
+        ? items.filter((_, index) => showFor.includes(index))
+        : items;
+
     return (
-      <ul className={` ${className}`}>
-        {items.map((item, idx) => (
+      <ul className={className}>
+        {filteredItems.map((item, idx) => (
           <li key={idx} className="flex items-start gap-3 leading-tight">
             <Image
               src={ICON}
@@ -30,7 +43,7 @@ const CheckItem = ({
               height={size}
               className="shrink-0 mt-[3px]"
             />
-            <span>{item}</span>
+            <span className={textClass}>{item}</span>
           </li>
         ))}
       </ul>
@@ -47,7 +60,7 @@ const CheckItem = ({
           height={size}
           className="shrink-0 mt-[3px]"
         />
-        <span>{children}</span>
+        <span className={textClass}>{children}</span>
       </li>
     </ul>
   );

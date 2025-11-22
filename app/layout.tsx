@@ -29,6 +29,11 @@ const allegretto = localFont({
   variable: "--font-allegretto",
 });
 
+const montserrat = localFont({
+  src: "../public/fonts/Montserrat.ttf",
+  variable: "--font-montserrat",
+});
+
 
 export default function RootLayout({
   children,
@@ -44,6 +49,7 @@ export default function RootLayout({
         ${grava.variable}
         ${newStandard.variable}
         ${allegretto.variable}
+        ${montserrat.variable}
       `}
       >
       <body>
