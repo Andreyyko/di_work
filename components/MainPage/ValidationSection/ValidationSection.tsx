@@ -11,7 +11,7 @@ const ValidationSection = () => {
   const isMdToLg = !isSmallerThanSm && isSmallerThanLg;
 
   return (
-    <div className="w-full flex md:flex-row flex-col-reverse lg:justify-between items-center pb-5">
+    <div className="w-full flex md:flex-row flex-col-reverse lg:justify-between items-center pb-5 pb-responsive">
       <div className="md:w-[50%] w-full md:-translate-x-5 md:px-0 flex justify-center 2xl:justify-start -mx-5">
         {isbiggerThanMd && (
           <Image

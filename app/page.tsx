@@ -3,6 +3,7 @@
 import Footer from "@/components/common/Footer/Footer";
 import AboutUs from "@/components/MainPage/AboutUsSection/AboutUs";
 import CourseSlider from "@/components/MainPage/CourseSlider/CourseSlider";
+import FAQSection from "@/components/MainPage/FAQSection/FAQSection";
 import HeroSection from "@/components/MainPage/HeroSection/HeroSection";
 import IdentityIntro from "@/components/MainPage/IdentityIntroSection/IdentityIntro";
 import MakMethodicInfo from "@/components/MainPage/MakMethodicInfo/MakMethodicInfo";
@@ -19,6 +20,7 @@ export default function Home() {
       <MakMethodicInfo />
       <ReviewSection />
       <ValidationSection />
+      <FAQSection/>
       <Footer />
     </main>
   );
