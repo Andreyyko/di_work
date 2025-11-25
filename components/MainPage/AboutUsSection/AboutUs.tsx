@@ -4,6 +4,7 @@ import FrameWrapper from "../../common/FrameWrapper";
 import TwoFrameButton from "../../common/TwoFrameButton";
 
 import { useWindowWidth } from "@/hooks/useWindowWidth";
+import { white_letter } from "@/public/images/CommonImages/PostCard";
 
 const AboutUs = () => {
   const { isLgOrLarger, width, isSmallerThanSm } = useWindowWidth();
@@ -33,7 +34,7 @@ const AboutUs = () => {
           />
 
           <img
-            src={about_us_images.whitePostcard.src}
+            src={white_letter.WHITE_POSTCARD.src}
             alt="white postcard"
             className="absolute bottom-10 md:-bottom-7 -left-20 md:-left-[102px] w-[170px] h-[120px] md:w-[245px] md:h-[175px] rotate-15 drop-shadow-md z-20"
           />

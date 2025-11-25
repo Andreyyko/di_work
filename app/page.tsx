@@ -3,6 +3,7 @@
 import AboutUs from "@/components/MainPage/AboutUsSection/AboutUs";
 import ContactForm from "@/components/MainPage/ContactFormSection/ContactForm";
 import CourseSlider from "@/components/MainPage/CourseSlider/CourseSlider";
+import FAQSection from "@/components/MainPage/FAQSection/FAQSection";
 import HeroSection from "@/components/MainPage/HeroSection/HeroSection";
 import IdentityIntro from "@/components/MainPage/IdentityIntroSection/IdentityIntro";
 import MakMethodicInfo from "@/components/MainPage/MakMethodicInfo/MakMethodicInfo";
@@ -20,6 +21,7 @@ export default function Home() {
       <ReviewSection />
       <ValidationSection />
       <ContactForm />
+      <FAQSection/>
     </main>
   );
 }

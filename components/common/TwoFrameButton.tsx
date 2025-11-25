@@ -16,8 +16,7 @@ type TwoFrameButtonProps = {
 
   onClick?: () => void;
   disabled?: boolean;
-  type?: "button" | "submit"; // ⭐ додано
-
+  type?: "button" | "submit";
   alt?: string;
   className?: string;
 
@@ -46,8 +45,7 @@ const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
   inset = "8%",
   onClick,
   disabled = false,
-  type = "button", // ⭐ дефолт
-
+  type = "button",
   alt = "button frame",
   className = "",
 
@@ -133,6 +131,7 @@ const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
           userSelect: "none",
           pointerEvents: "none",
         }}
+        priority={false}
       />
 
       <div
