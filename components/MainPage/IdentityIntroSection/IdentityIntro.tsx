@@ -42,7 +42,9 @@ const IdentityIntro: React.FC = () => {
             {isSmallerThanSm && (
               <>
                 <br />
-                <span className="tracking-[-4px] sm:tracking-[-0.01em]">ПОЄДНУЄ</span>
+                <span className="tracking-[-4px] sm:tracking-[-0.01em]">
+                  ПОЄДНУЄ
+                </span>
               </>
             )}
           </p>
@@ -72,7 +74,9 @@ const IdentityIntro: React.FC = () => {
 
         <p className="heading-2 text-right w-[92%] sm:whitespace-nowrap uppercase tracking-[-4px] sm:tracking-[-0.01em]">
           <span className="first-letter">здоров'я</span> та{" "}
-          <span className={`${!isSmallerThanSm ? "" : "first-letter"}`}>всіх</span>
+          <span className={`${!isSmallerThanSm ? "" : "first-letter"}`}>
+            всіх
+          </span>{" "}
           сфер
         </p>
 

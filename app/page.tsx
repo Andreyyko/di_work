@@ -20,8 +20,8 @@ export default function Home() {
       <MakMethodicInfo />
       <ReviewSection />
       <ValidationSection />
+      <FAQSection />
       <ContactForm />
-      <FAQSection/>
     </main>
   );
 }
