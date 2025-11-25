@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Image, { StaticImageData } from "next/image";
 import { frames_buttons } from "@/public/images/CommonImages/FramesButton";
@@ -14,7 +16,7 @@ type TwoFrameButtonProps = {
 
   onClick?: () => void;
   disabled?: boolean;
-
+  type?: "button" | "submit";
   alt?: string;
   className?: string;
 
@@ -43,7 +45,7 @@ const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
   inset = "8%",
   onClick,
   disabled = false,
-
+  type = "button",
   alt = "button frame",
   className = "",
 
@@ -89,7 +91,7 @@ const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
 
   return (
     <button
-      type="button"
+      type={type} 
       disabled={disabled}
       aria-disabled={disabled}
       aria-pressed={variant === "two" ? active : undefined}
@@ -114,6 +116,7 @@ const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
         border: "none",
         padding: 0,
         transition: "opacity 0.2s ease",
+        pointerEvents: disabled ? "none" : "auto",
       }}
     >
       <Image

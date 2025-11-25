@@ -1,7 +1,7 @@
 "use client";
 
-import Footer from "@/components/common/Footer/Footer";
 import AboutUs from "@/components/MainPage/AboutUsSection/AboutUs";
+import ContactForm from "@/components/MainPage/ContactFormSection/ContactForm";
 import CourseSlider from "@/components/MainPage/CourseSlider/CourseSlider";
 import FAQSection from "@/components/MainPage/FAQSection/FAQSection";
 import HeroSection from "@/components/MainPage/HeroSection/HeroSection";
@@ -20,8 +20,8 @@ export default function Home() {
       <MakMethodicInfo />
       <ReviewSection />
       <ValidationSection />
+      <ContactForm />
       <FAQSection/>
-      <Footer />
     </main>
   );
 }
