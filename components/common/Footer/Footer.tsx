@@ -1,3 +1,5 @@
+"use client"
+
 import { footer_images } from "@/public/images/CommonImages/FooterImages";
 import Image from "next/image";
 import InitialsCircle from "../InitialsCircle";
@@ -14,7 +16,7 @@ const Footer = () => {
     : footer_images.FLOWER_IMAGE;
 
   return (
-    <footer className="w-full relative md:pt-44 p">
+    <footer className="w-full relative bg-brand-background px-5 overflow-hidden">
       <Image
         src={flowerImage}
         alt="footer flower"

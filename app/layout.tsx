@@ -1,6 +1,7 @@
 import Header from "@/components/common/Header/Header";
 import "./globals.css";
 import localFont from "next/font/local";
+import Footer from "@/components/common/Footer/Footer";
 
 const alexandra = localFont({
   src: "../public/fonts/alexandra-script.woff2",
@@ -55,6 +56,7 @@ export default function RootLayout({
       <body>
         <Header/>
         {children}
+        <Footer />
         </body>
     </html>
   );
