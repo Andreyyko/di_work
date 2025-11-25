@@ -13,6 +13,7 @@ type TwoFrameButtonProps = {
   inset?: number | string;
 
   onClick?: () => void;
+  disabled?: boolean;
 
   alt?: string;
   className?: string;
@@ -41,6 +42,8 @@ const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
   height = 213,
   inset = "8%",
   onClick,
+  disabled = false,
+
   alt = "button frame",
   className = "",
 
@@ -49,13 +52,15 @@ const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
   textClassTwoHover = "heading-4 text-white font-kudriashov uppercase text-[clamp(14px,2vw,19px)]",
 }) => {
   const [hover, setHover] = React.useState(false);
-  const [active, setActive] = React.useState(false); 
+  const [active, setActive] = React.useState(false);
+
   const baseSrc = FRAMES[variant];
   const hoverSrc = FRAMES_HOVER[variant];
 
-  const isHoverLike = variant === "two" && (hover || active);
-  const currentSrc = isHoverLike && hoverSrc ? hoverSrc : baseSrc;
+  const isHoverLike =
+    !disabled && variant === "two" && (hover || active);
 
+  const currentSrc = isHoverLike && hoverSrc ? hoverSrc : baseSrc;
   const insetCss = toCss(inset) ?? "0";
 
   const textClass =
@@ -66,12 +71,15 @@ const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
       : textClassTwo;
 
   const handleClick = () => {
+    if (disabled) return;
     if (variant === "two") setActive((v) => !v);
     onClick?.();
   };
 
   const handleKeyDown: React.KeyboardEventHandler<HTMLButtonElement> = (e) => {
+    if (disabled) return;
     if (variant !== "two") return;
+
     if (e.key === " " || e.key === "Enter") {
       e.preventDefault();
       setActive((v) => !v);
@@ -82,26 +90,30 @@ const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
   return (
     <button
       type="button"
+      disabled={disabled}
+      aria-disabled={disabled}
+      aria-pressed={variant === "two" ? active : undefined}
+      data-state={active ? "active" : "inactive"}
+      className={className}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      className={className}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      onTouchStart={() => setHover(true)}
-      onTouchEnd={() => setHover(false)}
-      aria-pressed={variant === "two" ? active : undefined} 
-      data-state={active ? "active" : "inactive"}        
+      onMouseEnter={() => !disabled && setHover(true)}
+      onMouseLeave={() => !disabled && setHover(false)}
+      onTouchStart={() => !disabled && setHover(true)}
+      onTouchEnd={() => !disabled && setHover(false)}
       style={{
         position: "relative",
         display: "inline-block",
         lineHeight: 0,
-        cursor: "pointer",
+        cursor: disabled ? "not-allowed" : "pointer",
         width: `${width}px`,
         height: "auto",
         maxWidth: "100%",
+        opacity: disabled ? 0.5 : 1,
         background: "transparent",
         border: "none",
         padding: 0,
+        transition: "opacity 0.2s ease",
       }}
     >
       <Image
@@ -109,7 +121,13 @@ const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
         alt={alt}
         width={width}
         height={height}
-        style={{ display: "block", width: "100%", height: "auto" }}
+        style={{
+          display: "block",
+          width: "100%",
+          height: "auto",
+          userSelect: "none",
+          pointerEvents: "none",
+        }}
         priority={false}
       />
 
