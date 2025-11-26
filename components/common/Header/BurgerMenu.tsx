@@ -165,9 +165,9 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
               <span className="heading-burger pl-2 sm:pl-5">02</span>
             </button>
 
-            <button className="heading-2-burger uppercase sm:-translate-x-5 menu-item menu-fade">
+            <button className="heading-2-burger uppercase pl-10 sm:-translate-x-5 menu-item menu-fade">
               <span className="heading-burger mr-2 sm:mr-5">03</span>
-              МА<span className="first-letter-burger" data-first-letter="К"></span>
+               МА<span className="first-letter-burger" data-first-letter="К"><span className="opacity-0">O</span></span>
             </button>
 
             <button className="heading-2-burger uppercase menu-item menu-fade">
@@ -175,7 +175,7 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
                 <>
                   <span className="heading-burger mr-2">04</span>
                   <span>
-                    FA<span className="first-letter-burger" data-first-letter="Q"></span>
+                    FA<span className="first-letter-burger" data-first-letter="Q"><span className="opacity-0">F</span></span>
                   </span>
                 </>
               ) : (
