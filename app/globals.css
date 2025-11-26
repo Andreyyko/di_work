@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+html, body {
+  overscroll-behavior-x: none;
+}
+
+
 @theme {
   --color-brand-bordo: #67161f;
   --color-brand-gold: #9e7557;
