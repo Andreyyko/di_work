@@ -22,7 +22,6 @@ const ValidationSection = () => {
 
   useEffect(() => {
     if (!isbiggerThanMd) return;
-
     if (!letterRef.current || !wrapperRef.current) return;
 
     gsap.fromTo(
@@ -36,6 +35,27 @@ const ValidationSection = () => {
         scrollTrigger: {
           trigger: wrapperRef.current,
           start: "top 80%",
+          once: true,
+        },
+      }
+    );
+  }, [isbiggerThanMd]);
+
+  useEffect(() => {
+    if (isbiggerThanMd) return; 
+    if (!letterRef.current || !wrapperRef.current) return;
+
+    gsap.fromTo(
+      letterRef.current,
+      { y: 150, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1.2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: wrapperRef.current,
+          start: "top 85%",
           once: true,
         },
       }
@@ -69,7 +89,7 @@ const ValidationSection = () => {
               <Image
                 src={ValidationSectionImages.FOTTER_CONVERT}
                 alt="Envelope top"
-                className="rotate-90 2xl:w-11/12 md:-translate-x-60 lg:-translate-x-70  xl:-translate-x-73 translate-y-[42%]"
+                className="rotate-90 2xl:w-11/12 md:-translate-x-60 lg:-translate-x-70 xl:-translate-x-83 translate-y-[42%]"
               />
             </div>
           </div>
@@ -77,11 +97,30 @@ const ValidationSection = () => {
 
         {!isbiggerThanMd && (
           <div className="w-screen sm:w-10/12 relative ml-[-50vw] sm:ml-0 sm:mr-0 mr-[-50vw]">
-            <Image
-              src={ValidationSectionImages.letterСertificateNew}
-              alt="Paper certificate in an open envelope"
-              className="w-full h-auto"
-            />
+            <div className="relative w-fit h-fit">
+              <Image
+                src={ValidationSectionImages.CONVERT}
+                alt="Envelope"
+                className="relative"
+              />
+
+              <div className="absolute inset-0 flex pointer-events-none">
+                <Image
+                  ref={letterRef}
+                  src={ValidationSectionImages.LETTER}
+                  alt="Letter"
+                  className="w-[90%] xl:w-11/12 translate-x-[6%] -translate-y-[2%]"
+                />
+              </div>
+
+              <div className="absolute inset-0 pointer-events-none">
+                <Image
+                  src={ValidationSectionImages.FOTTER_CONVERT}
+                  alt="Envelope top"
+                  className="2xl:w-11/12 translate-y-[85%]"
+                />
+              </div>
+            </div>
 
             <div className="absolute top-[75%] sm:top-[75%] left-1/2 -translate-x-1/2 -translate-y-1/2">
               <CustomSeal label="Переглянути методики" />
@@ -135,9 +174,8 @@ const ValidationSection = () => {
         <div className="mt-6 lg:mt-12 2xl:mt-60 flex justify-between">
           {isbiggerThanMd && (
             <span className="heading-5">
-              {" "}
-              Усі техніки та <br /> вправи перевірені на <br /> ефективнісь в
-              <br /> науково-практичній <br /> діяльності.{" "}
+              Усі техніки та <br /> вправи перевірені на <br /> ефективнісь в{" "}
+              <br /> науково-практичній <br /> діяльності.
             </span>
           )}
 
