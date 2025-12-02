@@ -5,10 +5,11 @@ import gsap from "gsap";
 type FAQItemProps = {
   question: string;
   answer: string;
+  defaultOpen?: boolean;
 };
 
-const FAQItem = ({ question, answer }: FAQItemProps) => {
-  const [open, setOpen] = useState(false);
+const FAQItem = ({ question, answer, defaultOpen = false }: FAQItemProps) => {
+  const [open, setOpen] = useState(defaultOpen ?? false);
   const contentRef = useRef<HTMLDivElement>(null);
   const tlRef = useRef<gsap.core.Tween | null>(null);
 
