@@ -144,9 +144,9 @@ const ReviewSection = () => {
               еревірено
             </span>{" "}
             <span className="first-letter uppercase" data-first-letter="Д">
-              досвідом і{" "}
+              освідом і{" "}
               <span className="first-letter" data-first-letter="Д">
-                довірою
+                овірою
               </span>
             </span>
           </h2>

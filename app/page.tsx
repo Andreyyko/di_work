@@ -1,6 +1,7 @@
 "use client";
 
 import AboutUs from "@/components/MainPage/AboutUsSection/AboutUs";
+import ChoosePlanSection from "@/components/MainPage/ChoosePlanSection/ChoosePlanSection";
 import ContactForm from "@/components/MainPage/ContactFormSection/ContactForm";
 import CourseSlider from "@/components/MainPage/CourseSlider/CourseSlider";
 import FAQSection from "@/components/MainPage/FAQSection/FAQSection";
@@ -20,6 +21,7 @@ export default function Home() {
       <CourseSlider />
       <MakMethodicInfo />
       <SectionSlider/>
+      <ChoosePlanSection/>
       <ReviewSection />
       <ValidationSection />
       <FAQSection />

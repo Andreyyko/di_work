@@ -26,6 +26,7 @@ html, body {
   --heading-7-size: clamp(50px, 8vw, 144px);
   --heading-footer-size: 18px;
   --heading-burger-size: clamp(14px, 2vw, 18px);
+  --heading-plan-size: clamp(25px, 3vw, 32px);
 }
 
 @utility font-kudriashov {
@@ -45,6 +46,14 @@ html, body {
 }
 @utility font-montserrat {
   font-family: var(--font-montserrat);
+}
+
+@utility heading-plan {
+  font-weight: bold;
+  font-size: var(--heading-plan-size);
+  line-height: 0.89;
+  letter-spacing: -0.01em;
+  @apply font-grava text-brand-gray;
 }
 
 @utility validation-heading {
@@ -155,13 +164,6 @@ html, body {
   @apply font-grava text-brand-gray;
 }
 
-@utility first-letter-burger {
-  display: inline-block;
-  line-height: 1;
-  position: relative;
-  z-index: 10;
-}
-
 .first-letter:first-letter {
   font-family: var(--font-alexandra, inherit);
   font-size: clamp(80px, 12vw, 160px);
@@ -186,6 +188,13 @@ html, body {
   line-height: 1;
 }
 
+@utility first-letter-burger {
+  display: inline-block;
+  line-height: 1;
+  position: relative;
+  z-index: 10;
+}
+
 .first-letter-burger:first-letter {
   font-family: var(--font-alexandra, inherit);
   font-size: clamp(80px, 12vw, 150px);
@@ -196,7 +205,6 @@ html, body {
   z-index: 20;
 }
 
-
 .first-letter-burger:before {
   content: attr(data-first-letter);
   font-family: var(--font-alexandra, inherit);
@@ -206,6 +214,37 @@ html, body {
   position: relative;
   z-index: 20;
 }
+
+
+@utility first-letter-plan {
+  display: inline-block;
+  line-height: 1;
+  position: relative;
+  z-index: 10;
+}
+
+.first-letter-plan:first-letter {
+  font-weight: 400;
+  font-family: var(--font-alexandra, inherit);
+  font-size: clamp(76px, 6vw, 100px);
+  color: var(--first-letter-color, var(--color-brand-bordo, currentColor));
+  line-height: 0.089;
+  letter-spacing: -0.1em;
+  position: relative;
+  z-index: 20;
+}
+
+.first-letter-plan:before {
+  font-weight: 400;
+  content: attr(data-first-letter);
+  font-family: var(--font-alexandra, inherit);
+  font-size: clamp(76px, 6vw, 100px);
+  color: var(--first-letter-color, var(--color-brand-bordo, currentColor));
+  line-height: 0.089;
+  position: relative;
+  z-index: 20;
+}
+
 
 @media (min-width: 640px) {
   .heading-2 {
