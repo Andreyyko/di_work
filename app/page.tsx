@@ -11,6 +11,7 @@ import MakMethodicInfo from "@/components/MainPage/MakMethodicInfo/MakMethodicIn
 import ReviewSection from "@/components/MainPage/ReviewSection/ReviewSection";
 import SectionSlider from "@/components/MainPage/SectionSlider/SectionSlider";
 import ValidationSection from "@/components/MainPage/ValidationSection/ValidationSection";
+import CategoriesFrThСarousel from "@/components/MainPage/CategoriesFrThСarouselSection/index"
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
       <ValidationSection />
       <FAQSection />
       <ContactForm />
+      <CategoriesFrThСarousel />
     </main>
   );
 }

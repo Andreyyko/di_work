@@ -1,32 +1,35 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 
 type Props = {
   label: string;
   placeholder?: string;
   type?: "text" | "email" | "textarea";
+  error?: string;
+  onValueChange?: (v: string) => void;
+  resetSignal?: number; // ← added for clearing
 };
 
-const FormField: FC<Props> = ({ label, placeholder, type = "text" }) => {
+const FormField: FC<Props> = ({
+  label,
+  placeholder,
+  type = "text",
+  error,
+  onValueChange,
+  resetSignal,
+}) => {
   const [value, setValue] = useState("");
-  const [error, setError] = useState("");
 
-  const validateEmail = (email: string) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
-  };
+  // Clear field when resetSignal changes
+  useEffect(() => {
+    setValue("");
+    onValueChange?.("");
+  }, [resetSignal]);
 
-  const handleChange = (val: string) => {
-    setValue(val);
-
-    if (type === "email") {
-      if (!validateEmail(val)) {
-        setError("Invalid email format");
-      } else {
-        setError("");
-      }
-    }
+  const handleChange = (v: string) => {
+    setValue(v);
+    onValueChange?.(v);
   };
 
   const inputClasses = `
@@ -38,24 +41,13 @@ const FormField: FC<Props> = ({ label, placeholder, type = "text" }) => {
     <div className="flex flex-col w-full">
       <label className="heading-4 lg:text-[25px] mb-[15px]">{label}</label>
 
-      {type === "textarea" ? (
-        <input
-          placeholder={placeholder}
-          value={value}
-          onChange={(e) => handleChange(e.target.value)}
-          className={`heading-4 pb-2.5 resize-none outline-none ${
-            error ? "border-b border-red-500" : ""
-          }`}
-        />
-      ) : (
-        <input
-          type={type}
-          placeholder={placeholder}
-          value={value}
-          onChange={(e) => handleChange(e.target.value)}
-          className={inputClasses}
-        />
-      )}
+      <input
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={(e) => handleChange(e.target.value)}
+        className={inputClasses}
+      />
 
       <div
         className={`w-full h-px ${
