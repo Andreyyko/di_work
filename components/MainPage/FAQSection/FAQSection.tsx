@@ -51,7 +51,7 @@ const FAQSection = () => {
 
       <div className="mx-auto max-w-full sm:max-w-full md:max-w-full lg:max-w-[55%] xl:max-w-[55%]">
         {faqList.map((item, i) => (
-          <FAQItem key={i} question={item.question} answer={item.answer} />
+          <FAQItem key={i} question={item.question} answer={item.answer} defaultOpen={i < 2}/>
         ))}
       </div>
 
