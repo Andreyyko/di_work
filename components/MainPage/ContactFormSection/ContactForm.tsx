@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -19,19 +19,22 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const ContactForm = () => {
+  const [resetSignal, setResetSignal] = useState(0);
+
   const {
-    register,
     control,
     handleSubmit,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = (values: FormValues) => {
-    return axios.post("/api/contact", values).then((res) => {
-      console.log("Sent:", res.data);
-    });
+  const onSubmit = async (values: FormValues) => {
+    console.log("FORM SUBMITTED:", values);
+
+    reset();
+    setResetSignal((n) => n + 1); 
   };
 
   return (
@@ -49,100 +52,77 @@ const ContactForm = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-wrap justify-center gap-7.5 md:gap-16 w-full max-w-[1400px]"
         >
+          {/* FULL NAME */}
           <div className="w-full md:w-[45%] relative">
-            <FormField
-              label="Ім’я та Прізвище"
-              placeholder="Ваше ім’я та фамілія"
+            <Controller
+              name="fullName"
+              control={control}
+              render={({ field, fieldState }) => (
+                <FormField
+                  label="Ім’я та Прізвище"
+                  placeholder="Ваше ім’я та фамілія"
+                  onValueChange={field.onChange}
+                  error={fieldState.error?.message}
+                  resetSignal={resetSignal}
+                />
+              )}
             />
-
-            <input
-              {...register("fullName")}
-              className="absolute opacity-0 pointer-events-none"
-            />
-
-            <p
-              className={`
-                text-red-600 text-sm absolute left-0 -bottom-6
-                transition-all duration-300
-                ${errors.fullName ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}
-              `}
-            >
-              {errors.fullName?.message}
-            </p>
           </div>
 
+          {/* MESSAGE */}
           <div className="w-full md:w-[45%] relative">
-            <FormField
-              label="Повідомлення"
-              type="textarea"
-              placeholder="Напишіть, що вас цікавить - ми з радістю відповімо"
+            <Controller
+              name="message"
+              control={control}
+              render={({ field, fieldState }) => (
+                <FormField
+                  type="textarea"
+                  label="Повідомлення"
+                  placeholder="Напишіть, що вас цікавить - ми з радістю відповімо"
+                  onValueChange={field.onChange}
+                  error={fieldState.error?.message}
+                  resetSignal={resetSignal}
+                />
+              )}
             />
-
-            <textarea
-              {...register("message")}
-              className="absolute opacity-0 pointer-events-none"
-            />
-
-            <p
-              className={`
-                text-red-600 text-sm absolute left-0 -bottom-6
-                transition-all duration-300
-                ${errors.message ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}
-              `}
-            >
-              {errors.message?.message}
-            </p>
           </div>
 
+          {/* EMAIL */}
           <div className="w-full md:w-[45%] relative">
-            <FormField
-              label="Email"
-              type="email"
-              placeholder="example@gmail.com"
+            <Controller
+              name="email"
+              control={control}
+              render={({ field, fieldState }) => (
+                <FormField
+                  type="email"
+                  label="Email"
+                  placeholder="example@gmail.com"
+                  onValueChange={field.onChange}
+                  error={fieldState.error?.message}
+                  resetSignal={resetSignal}
+                />
+              )}
             />
-
-            <input
-              {...register("email")}
-              type="email"
-              className="absolute opacity-0 pointer-events-none"
-            />
-
-            <p
-              className={`
-                text-red-600 text-sm absolute left-0 -bottom-6
-                transition-all duration-300
-                ${errors.email ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}
-              `}
-            >
-              {errors.email?.message}
-            </p>
           </div>
 
+          {/* TARIFF */}
           <div className="w-full md:w-[45%] relative">
             <Controller
               name="tariff"
               control={control}
-              render={({ field }) => (
+              render={({ field, fieldState }) => (
                 <SelectField
                   label="Оберіть тариф"
                   options={["Стандарт", "Медіум", "Преміум"]}
                   value={field.value}
                   onChange={field.onChange}
+                  error={fieldState.error?.message}
                 />
               )}
             />
-
-            <p
-              className={`
-                text-red-600 text-sm absolute left-0 -bottom-6
-                transition-all duration-300
-                ${errors.tariff ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}
-              `}
-            >
-              {errors.tariff?.message}
-            </p>
           </div>
 
+          {/* SUBMIT */}
           <div className="w-full flex justify-center">
             <TwoFrameButton
               type="submit"

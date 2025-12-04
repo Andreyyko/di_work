@@ -7,6 +7,7 @@ type Props = {
   options: string[];
   value?: string;
   onChange?: (value: string) => void;
+  error?: string;
 };
 
 const SelectField: FC<Props> = ({ label, options, value, onChange }) => {
