@@ -39,7 +39,7 @@ const SectionSlider = () => {
             showOrnaments
           />
         </div>
-  
+        <span className="heading-bg absolute top-40 right-15 sm:top-45 sm:right-60 md:top-45 md:right-60 lg:top-0 lg:right-65 xl:top-0 xl:right-90">Be Unique</span>
         <h2 className="hidden lg:block heading-2 uppercase text-right absolute w-full top-[21%]">
           <span className="first-letter block -translate-x-[27%]">Що ви</span>
           <span className="first-letter block">Отримаєте завдяки цим</span>
@@ -51,7 +51,7 @@ const SectionSlider = () => {
           />
         </h2>
   
-        <h2 className="lg:hidden heading-2 uppercase  mt-10 mb-6 px-0 md:px-40">
+        <h2 className="lg:hidden heading-2 uppercase  mt-10 mb-10 px-0 md:px-40">
           <span className="first-letter text-start">Що ви</span>
           <span className="first-letter block text-end">Отримаєте</span>
           <span className="block text-start">завдяки цим</span>
@@ -68,7 +68,7 @@ const SectionSlider = () => {
           />
         </div>
   
-        <div className="relative lg:max-w-3xl xl:max-w-5xl mt-15">
+        <div className="relative lg:max-w-3xl xl:max-w-6xl mt-15">
   
           <Swiper
             effect="fade"
@@ -91,7 +91,7 @@ const SectionSlider = () => {
             {section_slides.map((item, index) => (
               <SwiperSlide key={index}>
                 <div className="min-h-[380px] lg:min-h-[220px] mt-5">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 md:gap-15 lg:gap-20ʼ">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 md:gap-15 lg:gap-20 xl:gap-55">
                     <div>
                       <h3 className="heading-3 mb-4">{item.leftTitle}</h3>
                       <p className="heading-4 max-w-[90%]">{item.leftText}</p>

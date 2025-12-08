@@ -3,7 +3,7 @@ import letterСertificateMobile from "./letterСertificateMobile.svg";
 import letterСertificateMobileNew from "./letterCertificateNewMobile.svg";
 import letterСertificateNew from "./letterCertificateNew.svg";
 import LETTER from './Letter.svg'
-import CONVERT from './Convet.svg'
+import CONVERT from './Convert.svg'
 import FOTTER_CONVERT from './FooterConvert.svg'
 import LETTER_MOBILE from './Letter_Mobile.svg'
 

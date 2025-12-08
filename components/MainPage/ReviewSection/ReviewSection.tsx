@@ -45,7 +45,7 @@ const ReviewSection = () => {
         <div className="relative w-full mt-6">
           <button
             className={`
-              swiper-button-prev-custom absolute left-0 top-65 z-20
+              swiper-button-prev-custom absolute left-0 top-60 z-20
               transition-opacity duration-300
               ${isAtStart ? "opacity-30 pointer-events-none" : "opacity-100"}
             `}
@@ -55,7 +55,7 @@ const ReviewSection = () => {
 
           <button
             className={`
-              swiper-button-next-custom absolute right-0 top-65 z-20
+              swiper-button-next-custom absolute right-0 top-60 z-20
               transition-opacity duration-300
               ${isAtEnd ? "opacity-30 pointer-events-none" : "opacity-100"}
             `}

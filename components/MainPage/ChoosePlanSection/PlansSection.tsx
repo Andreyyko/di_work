@@ -15,6 +15,7 @@ const PlanSection = () => {
             sealHideUntilHover={true}
             showOrnaments
             sealResponsiveButton
+            sealButtonDesktop="left"
           >
             <div className="flex items-center flex-row justify-between pb-5">
               <h3
@@ -78,6 +79,7 @@ const PlanSection = () => {
             showSeal
             sealHideUntilHover={true}
             sealResponsiveButton
+            sealButtonDesktop="left"
           >
             <div className="flex items-center flex-row justify-between pb-5">
               <h3

@@ -117,7 +117,7 @@ const cornerStyle = (
         ...basePos,
         bottom: 0,
         right: 0,
-        transform: `translate(50%, 50%) translate(${offX}px, ${offY}px)`,
+        transform: `translate(25%, 50%) translate(${offX}px, ${offY}px)`,
       };
     default:
       return {
