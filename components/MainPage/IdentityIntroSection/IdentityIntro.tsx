@@ -34,7 +34,7 @@ const IdentityIntro: React.FC = () => {
               психологічний
             </span>
             <br />
-            <span className="inline-block uppercase tracking-[-4px] sm:tracking-[-0.01em]">
+            <span className="inline-block uppercase tracking-[-4px] sm:tracking-[-8px]">
               <span className="first-letter uppercase">сайт</span>,{" "}
               {isSmallerThanSm && "ЩО"}
               {!isSmallerThanSm && "ЩО ПОЄДНУЄ РІЗНІ"}

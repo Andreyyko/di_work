@@ -24,7 +24,7 @@ export default function CategoriesFrThCarousel() {
   } = useCarouselLogic(breakpoint);
 
   return (
-    <section className="relative w-full flex flex-col items-center justify-center py-20">
+    <section className="relative w-full flex flex-col items-center justify-center pb-responsive">
       <h2 className="heading-2 uppercase text-center md:mb-7 mb-5">
         <span className="first-letter">Розділи</span>{" "}
         <span className="whitespace-nowrap">
@@ -64,7 +64,7 @@ export default function CategoriesFrThCarousel() {
           className="
             absolute 
             md:right-[13%] lg:right-[13%] xl:right-[19%]
-            top-[97%] md:top-[7%] lg:top-[8%] xl:top-[1%]
+            top-[93%] md:top-[7%] lg:top-[8%] xl:top-[1%]
             translate-y-1/2
             heading-6 underline
           "

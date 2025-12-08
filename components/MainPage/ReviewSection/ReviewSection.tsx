@@ -18,7 +18,7 @@ const ReviewSection = () => {
   const [isAtEnd, setIsAtEnd] = useState(false);
 
   return (
-    <section className="relative w-full pb-responsive mb-37.5">
+    <section className="relative w-full pb-responsive mb-37.5 lg:mb-0">
       {isSmallerThanLg && (
         <>
           <h2 className="heading-2 text-center pt-10">

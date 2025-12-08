@@ -18,7 +18,7 @@ export const layoutMap: any = {
       { width: 140, height: 110, top: -160, right: 240 },
     ],
     md: [
-      { width: 100, height: 100, top: -120, left: 100 },
+      { width: 100, height: 100, top: -120, left: 80 },
       { width: 150, height: 165, top: -130, left: 100 },
       { width: 130, height: 100, top: 20, left: -120 },
       { width: 280, height: 260, center: true },
