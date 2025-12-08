@@ -38,7 +38,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-full overflow-visible pb-37.5 pt-[250px]">
+    <div className="flex flex-col items-center justify-center w-full overflow-visible pt-[250px]">
       <h2 className="heading-2 text-center uppercase tracking-[-5px] lg:tracking-[-10px] mb-12.5">
         <span className="first-letter">Почніть</span> шлях{" "}
         <span className="first-letter">До</span>{" "}

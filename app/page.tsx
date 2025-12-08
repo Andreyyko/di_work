@@ -19,6 +19,7 @@ export default function Home() {
       <HeroSection />
       <IdentityIntro />
       <AboutUs />
+      <CategoriesFrThСarousel />
       <CourseSlider />
       <MakMethodicInfo />
       <SectionSlider/>
@@ -27,7 +28,6 @@ export default function Home() {
       <ValidationSection />
       <FAQSection />
       <ContactForm />
-      <CategoriesFrThСarousel />
     </main>
   );
 }

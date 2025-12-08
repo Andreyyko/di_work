@@ -16,14 +16,14 @@ const Footer = () => {
     : footer_images.FLOWER_IMAGE;
 
   return (
-    <footer className="w-full relative bg-brand-background px-5 overflow-hidden">
+    <footer className="w-full relative bg-brand-background px-5 overflow-hidden pt-37.5">
       <Image
         src={flowerImage}
         alt="footer flower"
         className="
           pointer-events-none select-none 
-          absolute left-[68%] md:left-[64%] -translate-x-1/2  top-[73%]
-          md:top-[52%] -translate-y-1/2 
+          absolute left-[68%] md:left-[64%] -translate-x-1/2  top-[79%]
+          md:top-[45%] -translate-y-1/2 
           w-60 md:w-[850px] 
         "
       />
