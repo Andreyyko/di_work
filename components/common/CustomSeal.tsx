@@ -70,7 +70,11 @@ const CustomSeal = ({
           onClick={onClick}
           className={`
             absolute top-1/2 translate-y-[10%]
-            ${hideButtonUntilHover ? "opacity-0 group-hover:opacity-100 transition-all duration-300" : ""}
+            ${
+              hideButtonUntilHover
+                ? "opacity-100 2xl:opacity-0 lg:group-hover:opacity-100 transition-all duration-300"
+                : ""
+            }
             ${padding}
             font-kudriashov uppercase 
             bg-brand-cream text-brand-bordo/60

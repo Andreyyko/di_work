@@ -73,7 +73,7 @@ const ValidationSection = () => {
             <Image
               src={ValidationSectionImages.CONVERT}
               alt="Envelope"
-              className="relative rotate-90 -translate-x-35 2xl:w-11/12"
+              className="relative rotate-90 -translate-x-35  2xl:w-11/12"
             />
 
             <div className="absolute inset-0 flex pointer-events-none">
@@ -89,7 +89,7 @@ const ValidationSection = () => {
               <Image
                 src={ValidationSectionImages.FOTTER_CONVERT}
                 alt="Envelope top"
-                className="rotate-90 2xl:w-11/12 md:-translate-x-60 lg:-translate-x-70 xl:-translate-x-83 translate-y-[42%]"
+                className="rotate-90 2xl:w-11/12 md:-translate-x-60 lg:-translate-x-70 xl:-translate-x-83 translate-y-[35.5%]"
               />
             </div>
           </div>

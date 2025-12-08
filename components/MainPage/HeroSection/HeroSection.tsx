@@ -27,7 +27,7 @@ const HeroSection = () => {
           absolute -top-2 -translate-y-6 sm:translate-0 z-10 select-none pointer-events-none
           w-49 rotate-15 sm:rotate-0 md:-left-5 md:rotate-20 md:z-0 lg:z-10 lg:rotate-0 md:-top-10 sm:w-[180px] md:w-[280px] lg:w-[700px] xl:w-[1200px] 2xl:w[1300px]
           -left-3 scale-x-[-1]
-          lg:left-auto lg:-right-5 lg:scale-x-100 lg:top-80
+          lg:left-auto lg:-right-5 lg:scale-x-100 lg:top-80 xl:top-70
         `}
         src={flower_images.HERO_FLOWER}
         alt="hero-flower"
@@ -117,7 +117,7 @@ const HeroSection = () => {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left mt-20 gap-4 md:gap-0">
+        <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left mt-16.5 gap-4 md:gap-0">
           <h6 className="heading-6 opacity-100 font-grava uppercase text-[clamp(14px,1vw,18px)] max-w-[90%] md:max-w-[70%] mx-auto md:mx-0 ">
             у старослов'янських мовах «рок» — це фатум,
             <br className="hidden sm:block" />
