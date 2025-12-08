@@ -7,11 +7,13 @@ import { main_page_backrounds } from "@/public/images/MainPageImages/backgrounds
 const alexandra = localFont({
   src: "../public/fonts/alexandra-script.woff2",
   variable: "--font-alexandra",
+  display: "swap",
 });
 
 const kudriashov = localFont({
   src: "../public/fonts/Kudriashov.woff2",
   variable: "--font-kudriashov",
+  display: "swap",
 });
 
 const grava = localFont({
@@ -19,21 +21,25 @@ const grava = localFont({
     {path: "../public/fonts/Grava-Normal.ttf"}
   ],
   variable: "--font-grava",
+  display: "swap",
 });
 
 const newStandard = localFont({
   src: "../public/fonts/New_Standard_Old.ttf",
   variable: "--font-newstandard",
+  display: "swap",
 });
 
 const allegretto = localFont({
   src: "../public/fonts/Allegretto_Script_One_Regular.ttf",
   variable: "--font-allegretto",
+  display: "swap",
 });
 
 const montserrat = localFont({
   src: "../public/fonts/Montserrat.ttf",
   variable: "--font-montserrat",
+  display: "swap",
 });
 
 export const metadata = {

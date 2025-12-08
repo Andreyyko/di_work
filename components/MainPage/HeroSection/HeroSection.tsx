@@ -34,7 +34,8 @@ const HeroSection = () => {
         src={flower_images.HERO_FLOWER}
         alt="hero-flower"
         priority
-      />
+        fetchPriority="high"
+        />
 
       <div className="relative mt-6 sm:mt-10">
         <h2 className="heading-2 flex flex-col relative">
