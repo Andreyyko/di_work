@@ -123,17 +123,17 @@ const ReviewSection = () => {
 
       {!isSmallerThanLg && (
         <div className="relative w-full">
-          <h5 className="absolute -left-5 -top-20 max-w-[180px] heading-5 hidden md:block">
+          <p className="absolute -left-5 -top-20 max-w-[180px] heading-5 hidden md:block">
             Ти вже маєш усе необхідне, аби рухатися вперед. Усвідом власні
             ресурси, довірся собі та зроби перший крок назустріч новому етапу
-          </h5>
+          </p>
 
-          <h5 className="absolute -right-5 text-right -top-10 heading-5 hidden md:block">
+          <p className="absolute -right-5 text-right -top-10 heading-5 hidden md:block">
             Це простір, де є місце <br /> стабільності, здоровим <br />{" "}
             стосункам і особистому <br /> розвитку. Тут панує <br />{" "}
             усвідомленість, а твої <br />
             рішення працюють <br /> на твоє майбутнє
-          </h5>
+          </p>
         </div>
       )}
 

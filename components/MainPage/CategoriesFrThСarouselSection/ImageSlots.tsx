@@ -2,7 +2,6 @@
 
 import FrameWrapperForCarousel from "@/components/common/FrameWrapperForCarousel";
 
-// Type for a single layout slot
 interface LayoutSlot {
   width?: number;
   height?: number;
@@ -13,16 +12,15 @@ interface LayoutSlot {
   hidden?: boolean;
 }
 
-// Type for carousel image item
 interface CarouselItem {
   src: {
     src: string;
   };
   title: string;
   description: string;
+  alt?: string; 
 }
 
-// Props for ImageSlots component
 interface ImageSlotsProps {
   layout: LayoutSlot[];
   left: CarouselItem[];
@@ -51,6 +49,7 @@ export default function ImageSlots({
           <img
             ref={setSlot(0)}
             src={left[0].src.src}
+            alt={left[0].alt || left[0].title}
             className="w-full h-full object-cover"
           />
         </FrameWrapperForCarousel>
@@ -67,6 +66,7 @@ export default function ImageSlots({
           <img
             ref={setSlot(2)}
             src={left[2].src.src}
+            alt={left[2].alt || left[2].title}
             className="w-full h-full object-cover"
           />
         </FrameWrapperForCarousel>
@@ -83,6 +83,7 @@ export default function ImageSlots({
           <img
             ref={setSlot(1)}
             src={left[1].src.src}
+            alt={left[1].alt || left[1].title}
             className="w-full h-full object-cover"
           />
         </FrameWrapperForCarousel>
@@ -98,6 +99,7 @@ export default function ImageSlots({
         <img
           ref={setSlot(3)}
           src={center.src.src}
+          alt={center.alt || center.title}
           className="w-full h-full object-cover"
         />
       </FrameWrapperForCarousel>
@@ -113,6 +115,7 @@ export default function ImageSlots({
           <img
             ref={setSlot(6)}
             src={right[2].src.src}
+            alt={right[2].alt || right[2].title}
             className="w-full h-full object-cover"
           />
         </FrameWrapperForCarousel>
@@ -129,6 +132,7 @@ export default function ImageSlots({
           <img
             ref={setSlot(5)}
             src={right[1].src.src}
+            alt={right[1].alt || right[1].title}
             className="w-full h-full object-cover"
           />
         </FrameWrapperForCarousel>
@@ -145,6 +149,7 @@ export default function ImageSlots({
           <img
             ref={setSlot(4)}
             src={right[0].src.src}
+            alt={right[0].alt || right[0].title}
             className="w-full h-full object-cover"
           />
         </FrameWrapperForCarousel>

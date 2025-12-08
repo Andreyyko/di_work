@@ -86,7 +86,7 @@ const HeroSection = () => {
           </span>
         </h2>
 
-        <h4 className="heading-4 mt-5 mb-8 sm:mt-8">
+        <p className="heading-4 mt-5 mb-8 sm:mt-8">
           Перший в Україні психологічний сайт,
           <br />
           evidence-based онлайн-каталог із понад
@@ -96,7 +96,7 @@ const HeroSection = () => {
           спрямований на підтримку психічного
           <br />
           здоров’я та всіх сфер особистості.
-        </h4>
+        </p>
 
         <div className="flex flex-col md:flex-row md:items-center lg:items-start justify-between gap-12">
           <div className="flex justify-center md:justify-start order-2 md:order-1">
@@ -120,18 +120,18 @@ const HeroSection = () => {
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left mt-16.5 gap-4 md:gap-0">
-          <h6 className="heading-6 opacity-100 font-grava uppercase text-[clamp(14px,1vw,18px)] max-w-[90%] md:max-w-[70%] mx-auto md:mx-0 ">
+          <p className="heading-6 opacity-100 font-grava uppercase text-[clamp(14px,1vw,18px)] max-w-[90%] md:max-w-[70%] mx-auto md:mx-0 ">
             у старослов'янських мовах «рок» — це фатум,
             <br className="hidden sm:block" />
             невідтворна доля, сила, яка визначає хід подій.
-          </h6>
+          </p>
 
-          <h6 className="heading-6 opacity-50 text-center   sm:text-right sm:opacity-100 font-grava uppercase text-[clamp(14px,1vw,18px)]">
+          <p className="heading-6 opacity-50 text-center   sm:text-right sm:opacity-100 font-grava uppercase text-[clamp(14px,1vw,18px)]">
             by bogdana
             <br className="hidden sm:block" />
             .andreyko <br className="block sm:hidden" />
             be unique
-          </h6>
+          </p>
         </div>
       </div>
     </section>

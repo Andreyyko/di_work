@@ -19,14 +19,14 @@ const FAQSection = () => {
         alt="flower"
       />
 
-      <h5 className="heading-5 hidden lg:block absolute right-0 text-right -top-35 translate-x-5">
+      <p className="heading-5 hidden lg:block absolute right-0 text-right -top-35 translate-x-5">
         Тут ви знайдете пояснення ключових <br />
         моментів, відповіді на часті <br />
         запитання
         <br /> та підказки для комфортного
         <br />
         використання методик.
-      </h5>
+      </p>
 
       <h2 className="heading-2 uppercase md:-translate-y-10 mb-10 md:text-left -tracking-widest">
         <span className="first-letter left-5 md:left-10" data-first-letter="в">
@@ -55,7 +55,7 @@ const FAQSection = () => {
         ))}
       </div>
 
-      <h5 className="heading-5 hidden lg:block absolute left-0 -translate-x-5 -translate-y-42">
+      <p className="heading-5 hidden lg:block absolute left-0 -translate-x-5 -translate-y-42">
         Ми зібрали
         <br />
         найважливіше,
@@ -65,7 +65,7 @@ const FAQSection = () => {
         знайшли те, що
         <br />
         потрібно.
-      </h5>
+      </p>
 
       <h3 className="heading-3 text-right -translate-y-25 hidden xl:block">
         Ми зібрали найпоширеніші
