@@ -11,7 +11,7 @@ const AboutUs = () => {
   const showBr = (width ?? 0) > 768 && (width ?? 0) < 885;
 
   return (
-    <section className="bg-brand-background w-full pb-responsive">
+    <section className="w-full pb-responsive">
       <div className="flex flex-col md:flex-row items-center md:justify-between md:mb-[50px]">
         {isSmallerThanSm && (
           <p className="heading-bg sm:whitespace-nowrap translate-y-5 z-50">

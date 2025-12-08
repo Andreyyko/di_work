@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const FAQSection = () => {
   return (
-    <section className="relative mt-20 ">
+    <section className="relative pt-20 ">
       <Image
         className="absolute w-40 sm:w-60 right-0 -rotate-30 -top-20 translate-x-21 lg:left-0 lg:rotate-15 lg:-translate-x-21 lg:top-30 lg:w-75"
         src={white_letter.WHITE_POSTCARD}

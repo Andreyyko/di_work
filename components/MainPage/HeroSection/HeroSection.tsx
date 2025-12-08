@@ -12,7 +12,9 @@ const HeroSection = () => {
   const { isSmallerThanSm, isXlOrLarger } = useWindowWidth();
 
   return (
-    <section className="relative w-full pb-responsive">
+    <section
+        className="relative w-full pb-responsive"
+      >
       <h5 className="heading-5 text-right relative w-screen left-1/2 right-1/2 -translate-x-1/2 px-0">
         Простір, де психологія поєднується з<br />
         креативом, де вправи стають ключем до

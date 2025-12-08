@@ -10,6 +10,7 @@ import { useWindowWidth } from "@/hooks/useWindowWidth";
 import { useEffect, useRef } from "react";
 
 import gsap from "gsap";
+import { main_page_backrounds } from "@/public/images/MainPageImages/backgrounds";
 
 type Props = {
   onClose: () => void;
@@ -119,12 +120,15 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
 
   return (
     <div
+      style={{
+        backgroundImage: `url(${main_page_backrounds.CONRACT_FORM_BACKGROUND.src})`,
+      }}
       ref={menuRef}
-      className="fixed inset-0 bg-brand-background z-150 flex flex-col justify-between overflow-hidden"
+      className="fixed inset-0 bg-brand-background z-150 flex flex-col justify-between overflow-hidden  bg-cover bg-center bg-no-repeat"
     >
       <div className="relative flex justify-between items-center p-4 z-200 pointer-events-auto">
         <button onClick={onClose} className="menu-fade">
-          <X size={32} />
+          <X size={32} className="cursor-pointer" />
         </button>
 
         <div className="flex items-center gap-4">
@@ -132,7 +136,7 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
             <Image
               src={header_images.USER_ICON}
               alt="profile"
-              className="w-[17px] h-[17px] menu-fade"
+              className="w-[17px] h-[17px] menu-fade cursor-pointer"
             />
           )}
         </div>
@@ -156,18 +160,25 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
         >
           <div className="flex flex-col items-center gap-5 sm:gap-7.5">
             <button className="heading-2-burger uppercase menu-item menu-fade">
-              <span className="first-letter" data-first-letter="П">ро нас</span>
+              <span className="first-letter" data-first-letter="П">
+                ро нас
+              </span>
               <span className="heading-burger pl-2 sm:pl-5">01</span>
             </button>
 
             <button className="heading-2-burger uppercase sm:translate-x-5 menu-item menu-fade">
-              <span className="first-letter-burger" data-first-letter="Р">озділи</span>
+              <span className="first-letter-burger" data-first-letter="Р">
+                озділи
+              </span>
               <span className="heading-burger pl-2 sm:pl-5">02</span>
             </button>
 
             <button className="heading-2-burger uppercase pl-10 sm:-translate-x-5 menu-item menu-fade">
               <span className="heading-burger mr-2 sm:mr-5">03</span>
-               МА<span className="first-letter-burger" data-first-letter="К"><span className="opacity-0">O</span></span>
+              МА
+              <span className="first-letter-burger" data-first-letter="К">
+                <span className="opacity-0">O</span>
+              </span>
             </button>
 
             <button className="heading-2-burger uppercase menu-item menu-fade">
@@ -175,13 +186,20 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
                 <>
                   <span className="heading-burger mr-2">04</span>
                   <span>
-                    FA<span className="first-letter-burger" data-first-letter="Q"><span className="opacity-0">F</span></span>
+                    FA
+                    <span className="first-letter-burger" data-first-letter="Q">
+                      <span className="opacity-0">F</span>
+                    </span>
                   </span>
                 </>
               ) : (
                 <>
                   <span>
-                    FA<span className="first-letter-burger" data-first-letter="Q"></span>
+                    FA
+                    <span
+                      className="first-letter-burger"
+                      data-first-letter="Q"
+                    ></span>
                   </span>
                   <span className="heading-burger pl-7">04</span>
                 </>
@@ -192,9 +210,13 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
       </div>
 
       <div className="flex absolute bottom-0 justify-between items-end w-full px-5.5 pb-5 pointer-events-auto menu-item menu-fade">
-        <p className="flex heading-6 gap-10 opacity-60">
-          info@rok-m.ua <br />
-          +380 00 000 00 00
+        <p className="flex flex-col heading-6 gap-1 opacity-60">
+          <a href="mailto:info@rok-m.ua" className="hover:underline">
+            info@rok-m.ua
+          </a>{" "}
+          <a href="tel:+380000000000" className="hover:underline">
+            +380 00 000 00 00
+          </a>
         </p>
 
         <div className="flex gap-4 items-center">
@@ -202,7 +224,7 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
             <Image
               src={header_images.USER_ICON}
               alt="profile"
-              className="w-5 h-5 menu-fade"
+              className="w-5 h-5 menu-fade cursor-pointer"
             />
           )}
           <a

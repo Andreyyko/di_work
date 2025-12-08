@@ -21,7 +21,7 @@ const SectionSlider = () => {
     const [isEnd, setIsEnd] = useState(false);
   
     return (
-      <section className="relative w-full bg-brand-background pb-responsive">
+      <section className="relative w-full pb-responsive">
   
         <div className="hidden lg:flex justify-between items-start w-full relative z-10">
           <FrameWrapper
