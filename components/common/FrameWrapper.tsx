@@ -209,7 +209,7 @@ const FrameWrapper = forwardRef<HTMLDivElement, FrameWrapperProps>(
     const defaultOrnamentsArr: Ornament[] = [
       { position: "top-right", offsetX: -8, offsetY: 16, width: 40, rotate: 180, flipV: true },
       { position: "top-left", offsetX: 8, offsetY: 16, width: 40 },
-      { position: "bottom-right", offsetX: -8, offsetY: -16, width: 40, rotate: 180 },
+      { position: "bottom-right", offsetX: 8, offsetY: -16, width: 40, rotate: 180 },
       { position: "bottom-left", offsetX: 8, offsetY: -16, width: 40, flipV: true },
     ];
 
