@@ -13,6 +13,7 @@ import SectionSlider from "@/components/MainPage/SectionSlider/SectionSlider";
 import ValidationSection from "@/components/MainPage/ValidationSection/ValidationSection";
 import CategoriesFrThСarousel from "@/components/MainPage/CategoriesFrThСarouselSection/index"
 
+
 export default function Home() {
   return (
     <main className="bg-brand-background px-5 overflow-hidden">

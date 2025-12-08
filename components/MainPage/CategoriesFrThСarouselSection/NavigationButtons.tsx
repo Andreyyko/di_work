@@ -2,7 +2,6 @@
 
 import ArrowButton from "@/components/common/ArrowButton";
 
-// Props type for NavigationButtons
 interface NavigationButtonsProps {
   moveLeft: () => void;
   moveRight: () => void;
