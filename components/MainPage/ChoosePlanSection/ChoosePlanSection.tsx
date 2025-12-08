@@ -4,7 +4,7 @@ const ChoosePlanSection = () => {
   return (
     <section className="pb-responsive">
       <div className="flex flex-row">
-        <h5 className="hidden lg:block heading-5 left-0 -translate-x-5">
+        <p className="hidden lg:block heading-5 left-0 -translate-x-5">
           Найзручніший формат
           <br />
           для старту:
@@ -20,7 +20,7 @@ const ChoosePlanSection = () => {
           отримати результат
           <br />
           вже зараз
-        </h5>
+        </p>
         <h2 className="heading-2 pb-5 translate-x-1 md:translate-none">
           <span
             className="first-letter uppercase text-start"

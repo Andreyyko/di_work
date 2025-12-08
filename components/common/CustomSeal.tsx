@@ -77,7 +77,7 @@ const CustomSeal = ({
             }
             ${padding}
             font-kudriashov uppercase 
-            bg-brand-cream text-brand-bordo/60
+            bg-brand-cream text-brand-bordo
             rounded-sm shadow-md cursor-pointer leading-3 -tracking-[1px]
             ${finalMobilePos}
             ${finalDesktopPos}

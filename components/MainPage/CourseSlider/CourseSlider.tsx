@@ -24,22 +24,31 @@ const CourseSlider = () => {
   return (
     <section className="relative">
       {!isSmallerThanMd && (
-        <h5 className="heading-5 max-w-50 -translate-x-5">
+        <p className="heading-5 max-w-50 -translate-x-5">
           Він допомагає відкрити нові можливості,
           <br />
           розвиває внутрішні ресурси
           <br />
           та формує впевненість у власних силах
-        </h5>
+        </p>
       )}
+
       <h2 className="heading-2 flex flex-col translate-y-0 sm:translate-y-0 md:translate-y-0 lg:translate-y-0 xl:-translate-y-38">
         {isSmallerThanSm ? (
           <>
-            <span className="first-letter uppercase text-end" data-first-letter="н">езалежно</span>
+            <span
+              className="first-letter uppercase text-end"
+              data-first-letter="н"
+            >
+              езалежно
+            </span>
             <span className="text-start uppercase">від віку</span>
           </>
         ) : (
-          <span className="max-w-[90%] uppercase first-letter text-end" data-first-letter="н">
+          <span
+            className="max-w-[90%] uppercase first-letter text-end"
+            data-first-letter="н"
+          >
             езалежно від віку
           </span>
         )}
@@ -48,7 +57,10 @@ const CourseSlider = () => {
           чи досвіду – цей курс
         </span>
 
-        <span className="max-w-full sm:max-w-[90%] first-letter uppercase text-end block" data-first-letter="п">
+        <span
+          className="max-w-full sm:max-w-[90%] first-letter uppercase text-end block"
+          data-first-letter="п"
+        >
           ідтримує
         </span>
 
@@ -61,7 +73,10 @@ const CourseSlider = () => {
         >
           {isSmallerThanSm ? (
             <>
-              <span className="first-letter text-end w-[95%] uppercase" data-first-letter="н">
+              <span
+                className="first-letter text-end w-[95%] uppercase"
+                data-first-letter="н"
+              >
                 а шляху
               </span>
 
@@ -83,7 +98,10 @@ const CourseSlider = () => {
               </span>
             </>
           ) : (
-            <span className="first-letter text-start w-fit whitespace-nowrap uppercase" data-first-letter="н">
+            <span
+              className="first-letter text-start w-fit whitespace-nowrap uppercase"
+              data-first-letter="н"
+            >
               а шляху до змін
             </span>
           )}

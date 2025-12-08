@@ -19,8 +19,8 @@ const ArrowButton = ({
 
   const animate = () => {
     if (!pathRef.current) return;
-    const path = pathRef.current;
 
+    const path = pathRef.current;
     tlRef.current?.kill();
 
     const length = path.getTotalLength();
@@ -67,13 +67,14 @@ const ArrowButton = ({
     onClick?.();
   };
 
+  const label =
+    direction === "left" ? "Попередній слайд" : "Наступний слайд";
+
   return (
-    <div
+    <button
+      aria-label={label}
       onClick={handleClick}
-      onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && handleClick()}
-      role="button"
-      tabIndex={0}
-      className={`inline-block cursor-pointer select-none text-brand-bordo ${className}`}
+      className={`inline-block cursor-pointer select-none text-brand-bordo bg-transparent border-none p-0 ${className}`}
       style={{
         width: "clamp(50px, 8vw, 117px)",
         height: "clamp(33px, 4vw, 77px)",
@@ -107,7 +108,7 @@ const ArrowButton = ({
           strokeLinejoin="round"
         />
       </svg>
-    </div>
+    </button>
   );
 };
 
