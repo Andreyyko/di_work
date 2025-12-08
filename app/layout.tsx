@@ -2,6 +2,7 @@ import Header from "@/components/common/Header/Header";
 import "./globals.css";
 import localFont from "next/font/local";
 import Footer from "@/components/common/Footer/Footer";
+import { main_page_backrounds } from "@/public/images/MainPageImages/backgrounds";
 
 const alexandra = localFont({
   src: "../public/fonts/alexandra-script.woff2",
@@ -53,10 +54,14 @@ export default function RootLayout({
         ${montserrat.variable}
       `}
       >
-      <body>
+      <body className="bg-brand-background">
         <Header/>
         {children}
+        <section className="bg-cover bg-center bg-no-repeat" 
+      style={{backgroundImage: `url(${main_page_backrounds.FOOTER_BACKGROUND.src})`,
+      }}>
         <Footer />
+        </section>
         </body>
     </html>
   );

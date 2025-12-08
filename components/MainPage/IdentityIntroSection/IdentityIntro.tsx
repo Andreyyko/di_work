@@ -12,7 +12,7 @@ const IdentityIntro: React.FC = () => {
   const showImage2xl = width !== null && width >= 1600;
 
   return (
-    <section className="w-full bg-brand-background pb-6 flex flex-col">
+    <section className="w-full pb-6 flex flex-col">
       <div className="text-left sm:whitespace-nowrap">
         <h2 className="heading-2 uppercase tracking-[-4px] sm:tracking-[-0.01em]">
           <span className="first-letter uppercase">перший</span> в україні{" "}

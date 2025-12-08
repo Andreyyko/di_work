@@ -81,7 +81,7 @@ const Header = () => {
           <Image
             src={header_images.BURGER_ICON}
             alt="burger-icon"
-            className="w-[25px] h-[17px]"
+            className="w-[25px] h-[17px] cursor-pointer"
           />
         </button>
 
@@ -91,7 +91,7 @@ const Header = () => {
               <Image
                 src={header_images.USER_ICON}
                 alt="profile-icon"
-                className="w-[17px] h-[17px]"
+                className="w-[17px] h-[17px] cursor-pointer"
               />
             </button>
           )}
