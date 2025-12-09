@@ -162,7 +162,8 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
               </span>
             </button>
 
-            <button className="heading-2-burger uppercase pl-25 sm:-translate-x-5 menu-item menu-fade">
+≠            <button className="heading-2-burger uppercase pl-25 sm:-translate-x-5 menu-item menu-fade">
+
               МА
               <span className="first-letter-burger" data-first-letter="К">
                 <span className="opacity-0">O</span>
@@ -170,6 +171,7 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
             </button>
 
             <button className="heading-2-burger uppercase menu-item menu-fade">
+
 
               <span className="sm:hidden flex items-center">
                 <span>
@@ -189,7 +191,6 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
                   <span className="first-letter-burger" data-first-letter="Q"></span>
                 </span>
               </span>
-
             </button>
           </div>
         </FrameWrapper>
