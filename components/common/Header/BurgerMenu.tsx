@@ -163,18 +163,15 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
               <span className="first-letter" data-first-letter="П">
                 ро нас
               </span>
-              <span className="heading-burger pl-2 sm:pl-5">01</span>
             </button>
 
             <button className="heading-2-burger uppercase sm:translate-x-5 menu-item menu-fade">
               <span className="first-letter-burger" data-first-letter="Р">
                 озділи
               </span>
-              <span className="heading-burger pl-2 sm:pl-5">02</span>
             </button>
 
             <button className="heading-2-burger uppercase pl-10 sm:-translate-x-5 menu-item menu-fade">
-              <span className="heading-burger mr-2 sm:mr-5">03</span>
               МА
               <span className="first-letter-burger" data-first-letter="К">
                 <span className="opacity-0">O</span>
@@ -184,7 +181,6 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
             <button className="heading-2-burger uppercase menu-item menu-fade">
               {isSmallerThanSm ? (
                 <>
-                  <span className="heading-burger mr-2">04</span>
                   <span>
                     FA
                     <span className="first-letter-burger" data-first-letter="Q">
@@ -201,7 +197,6 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
                       data-first-letter="Q"
                     ></span>
                   </span>
-                  <span className="heading-burger pl-7">04</span>
                 </>
               )}
             </button>
