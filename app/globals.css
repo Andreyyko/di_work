@@ -29,6 +29,7 @@ html, body {
   --heading-plan-size: clamp(25px, 3vw, 32px);
 }
 
+
 @utility font-kudriashov {
   font-family: var(--font-kudriashov);
 }
