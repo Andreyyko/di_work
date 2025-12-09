@@ -18,9 +18,7 @@ import { main_page_backrounds } from "@/public/images/MainPageImages/backgrounds
 export default function Home() {
   return (
     <main className="bg-brand-background overflow-hidden">
-      <section className="px-5 bg-cover bg-center bg-no-repeat" 
-      style={{backgroundImage: `url(${main_page_backrounds.HERO_SECTION_BACKGROUND.src})`,
-      }}> 
+      <section className="px-5">
         <HeroSection />
       </section>
       <section className="px-5 bg-cover bg-center bg-no-repeat" 

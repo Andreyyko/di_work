@@ -71,9 +71,12 @@ const ArrowButton = ({
     direction === "left" ? "Попередній слайд" : "Наступний слайд";
 
   return (
-    <button
+    <div
+      role="button"
+      tabIndex={0}
       aria-label={label}
       onClick={handleClick}
+      onKeyDown={(e) => e.key === "Enter" && handleClick()}
       className={`inline-block cursor-pointer select-none text-brand-bordo bg-transparent border-none p-0 ${className}`}
       style={{
         width: "clamp(50px, 8vw, 117px)",
@@ -108,7 +111,7 @@ const ArrowButton = ({
           strokeLinejoin="round"
         />
       </svg>
-    </button>
+    </div>
   );
 };
 
