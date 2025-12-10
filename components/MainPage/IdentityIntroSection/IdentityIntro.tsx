@@ -6,6 +6,9 @@ import { IdentityIntroImages } from "@/public/images/MainPageImages/IdentityIntr
 import FrameWrapper from "../../common/FrameWrapper";
 
 const IdentityIntro: React.FC = () => {
+  const { width, isSmallerThanSm } = useWindowWidth();
+  const showImage = width !== null && width >= 640;
+
   return (
     <section className="w-full pb-6 flex flex-col">
       <div className="text-left sm:whitespace-nowrap">
@@ -13,14 +16,15 @@ const IdentityIntro: React.FC = () => {
           <span className="first-letter uppercase">перший</span> в україні{" "}
           <br />
         </h2>
-
-        <div className="flex flex-row items-center justify-between max-w-[95%]">
-          <div className="hidden xl:flex 2xl:hidden items-center justify-center">
-            <FrameWrapper
-              src={IdentityIntroImages.OpenBookImages}
-              alt="open book"
-            />
-          </div>
+        <div className="flex flex-row items-center justify-between max-w-[95%] ">
+          {showImage  && (
+            <div className="flex items-center justify-center w-[450px]">
+              <FrameWrapper
+                src={IdentityIntroImages.OpenBookImages}
+                alt="open book"
+              />
+            </div>
+          )}
 
           <p className="heading-2 text-center sm:text-left sm:whitespace-nowrap">
             <span className="sm:ml-5 xl:ml-0 inline-block uppercase tracking-[-4px] sm:tracking-[-0.01em]">
