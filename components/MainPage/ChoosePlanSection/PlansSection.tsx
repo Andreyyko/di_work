@@ -10,7 +10,7 @@ const PlanSection = () => {
           <FrameWrapper
             paddingX={40}
             paddingY={60}
-            className="w-full lg:w-[29%]"
+            className="w-full lg:w-[29%] order-2 lg:order-0"
             showSeal
             sealHideUntilHover={true}
             showOrnaments
@@ -40,8 +40,8 @@ const PlanSection = () => {
           <FrameWrapper
             paddingX={40}
             paddingY={70}
-            paddingBottom={148}
-            className="w-full lg:w-[29%]"
+            paddingBottom={100}
+            className="w-full lg:w-[29%] order-4 lg:order-0"
             showSeal
             sealHideUntilHover={true}
             showOrnaments
@@ -75,7 +75,7 @@ const PlanSection = () => {
             paddingX={40}
             paddingY={60}
             paddingBottom={148}
-            className="w-full lg:w-[29%]"
+            className="w-full lg:w-[29%] order-1 lg:order-0"
             showSeal
             sealHideUntilHover={true}
             sealResponsiveButton
@@ -105,7 +105,7 @@ const PlanSection = () => {
           <FrameWrapper
             paddingX={40}
             paddingY={50}
-            className="w-full lg:w-[29%]"
+            className="w-full lg:w-[29%] order-3 lg:order-0"
             showSeal
             sealHideUntilHover={true}
             sealResponsiveButton

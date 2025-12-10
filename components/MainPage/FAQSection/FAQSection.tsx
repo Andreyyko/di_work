@@ -14,7 +14,7 @@ const FAQSection = () => {
       />
 
       <Image
-        className="hidden lg:block absolute lg:translate-x-5 lg:w-150 lg:right-0 lg:-top-70 xl:w-auto xl:-top-140"
+        className="hidden lg:block absolute lg:translate-x-5 lg:w-150 lg:right-0 lg:-top-60 xl:w-auto xl:-top-140"
         src={flower_images.FAQ_FLOWER}
         alt="flower"
       />

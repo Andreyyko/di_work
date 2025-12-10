@@ -1,3 +1,4 @@
+import PlanSectionMobile from "./PlanSectionMobile";
 import PlanSection from "./PlansSection";
 
 const ChoosePlanSection = () => {
@@ -47,7 +48,12 @@ const ChoosePlanSection = () => {
       <span className="heading-3 relative md:absolute md:right-15 md:-translate-y-14 leading-tighter lg:-translate-y-17">
         Три рівні: від одного розділу<br className="hidden md:block"/>методик до повного доступу
         </span>
+    <div className="hidden lg:block">
       <PlanSection/>
+      </div>
+      <div className="block lg:hidden">
+      <PlanSectionMobile/>
+      </div>
     </section>
   );
 };

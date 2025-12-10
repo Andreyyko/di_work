@@ -38,7 +38,6 @@ export default function ImageSlots({
 }: ImageSlotsProps) {
   return (
     <>
-      {/* LEFT SMALL */}
       {!layout[0].hidden && (
         <FrameWrapperForCarousel
           width={`${layout[0].width}px`}
@@ -55,7 +54,6 @@ export default function ImageSlots({
         </FrameWrapperForCarousel>
       )}
 
-      {/* LEFT MID */}
       {!layout[1].hidden && (
         <FrameWrapperForCarousel
           width={`${layout[1].width}px`}
@@ -72,7 +70,6 @@ export default function ImageSlots({
         </FrameWrapperForCarousel>
       )}
 
-      {/* LEFT BIG */}
       {!layout[2].hidden && (
         <FrameWrapperForCarousel
           width={`${layout[2].width}px`}
@@ -89,7 +86,6 @@ export default function ImageSlots({
         </FrameWrapperForCarousel>
       )}
 
-      {/* CENTER */}
       <FrameWrapperForCarousel
         width={`${layout[3].width}px`}
         height={`${layout[3].height}px`}
@@ -104,7 +100,6 @@ export default function ImageSlots({
         />
       </FrameWrapperForCarousel>
 
-      {/* RIGHT SMALL */}
       {!layout[4].hidden && (
         <FrameWrapperForCarousel
           width={`${layout[4].width}px`}
@@ -121,7 +116,6 @@ export default function ImageSlots({
         </FrameWrapperForCarousel>
       )}
 
-      {/* RIGHT BIG */}
       {!layout[5].hidden && (
         <FrameWrapperForCarousel
           width={`${layout[5].width}px`}
@@ -138,7 +132,6 @@ export default function ImageSlots({
         </FrameWrapperForCarousel>
       )}
 
-      {/* RIGHT MID */}
       {!layout[6].hidden && (
         <FrameWrapperForCarousel
           width={`${layout[6].width}px`}

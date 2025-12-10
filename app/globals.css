@@ -13,13 +13,13 @@ html, body {
   --color-brand-cream: #e0dcd0;
   --color-brand-lightgray: #e9e7e1;
   --color-brand-monolightgray: #eeebe2;
-  --color-brand-background: #eeece5;
+  --color-brand-background: #FFFBEF;
 
   --heading-2-size: clamp(40px, 6vw, 80px);
   --validation-heading-size: clamp(22px, 6vw, 80px);
   --heading-2-burger-size: clamp(50px, 6vw, 80px);
   --heading-3-size: clamp(18px, 2vw, 25px);
-  --heading-4-size: clamp(15px, 1.4vw, 22px);
+  --heading-4-size: clamp(15px, 1.4vw, 25px);
 
   --heading-5-size: clamp(14px, 2vw, 33px);
   --heading-6-size: clamp(14px, 1.8vw, 18px);

@@ -7,12 +7,22 @@ import InitialsCircle from "../InitialsCircle";
 import BurgerMenu from "./BurgerMenu";
 
 import { header_images } from "@/public/images/CommonImages/HeaderImages";
-import { useWindowWidth } from "@/hooks/useWindowWidth";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
-  const { isSmallerThanMd } = useWindowWidth();
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+
+    const update = () => setIsMobile(mq.matches);
+    update();
+
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
   const handleClose = () => {
     setClosing(true);
@@ -27,45 +37,16 @@ const Header = () => {
     document.body.style.overflow = open ? "hidden" : "";
   }, [open]);
 
-  const circlePosition = (() => {
-    let pos = {
-      top: "10px",
-      left: "47%",
-    };
-
-    if (isSmallerThanMd && !open) {
-      pos = {
-        top: "12px",
-        left: "85%",
-      };
-    }
-
-    if (open) {
-      pos = {
-        top: "10px",
-        left: "47%",
-      };
-    }
-
-    if (isSmallerThanMd && open) {
-      pos = {
-        top: "12px",
-        left: "85%",
-      };
-    }
-
-    return pos;
-  })();
-
   return (
     <>
       <div
         className="
-        absolute z-999
-          transition-all duration-300
-          ease-[cubic-bezier(.22,.61,.36,1)]
+          absolute z-999
+          transition-all duration-300 ease-[cubic-bezier(.22,.61,.36,1)]
+          
+          top-3 left-[85%]        /* mobile */
+          md:top-2.5 md:left-[47%]  /* desktop */
         "
-        style={circlePosition}
       >
         <InitialsCircle />
       </div>
@@ -86,22 +67,20 @@ const Header = () => {
         </button>
 
         <div className="z-300">
-          {!isSmallerThanMd && (
-            <button className="pt-3">
-              <Image
-                src={header_images.USER_ICON}
-                alt="profile-icon"
-                className="w-[17px] h-[17px] cursor-pointer"
-              />
-            </button>
-          )}
+          <button className="pt-3 hidden md:block">
+            <Image
+              src={header_images.USER_ICON}
+              alt="profile-icon"
+              className="w-[17px] h-[17px] cursor-pointer"
+            />
+          </button>
         </div>
       </header>
 
       {open && (
         <BurgerMenu
           onClose={handleClose}
-          isMobile={isSmallerThanMd}
+          isMobile={isMobile}
           closing={closing}
         />
       )}
