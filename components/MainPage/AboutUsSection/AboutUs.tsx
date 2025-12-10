@@ -98,14 +98,14 @@ const AboutUs = () => {
       <div className="flex flex-col items-start sm:items-center md:flex-row justify-between">
         <div className="flex flex-col sm:flex-row sm:w-[75%] md:w-full">
           {isLgOrLarger && (
-            <span className="heading-5 -translate-x-4 flex items-end lg:w-[26%] 2xl:w-[25%] text-left">
+            <span className="heading-5 -translate-x-4 flex items-end lg:w-[26%] 2xl:w-[25%] text-left translate-y-0 2xl:-translate-20">
               Гармонія починається
               <br /> зсередини. Коли думки,
               <br /> емоції та дії узгоджені — <br />
               з’являється спокій і<br /> впевненість у кожному дні
             </span>
           )}
-          <div className="flex flex-col justify-end sm:-ml-4 md:ml-0 lg:w-[355px] xl:w-[420px]">
+          <div className="flex flex-col justify-end sm:-ml-4 md:ml-0 lg:w-[355px] xl:w-[420px] 2xl:w-[520px] translate-y-0 2xl:-translate-y-20">
             <h3 className="heading-3 mb-5  text-left uppercase">
               кожна з методик містить
             </h3>

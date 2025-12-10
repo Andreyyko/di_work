@@ -18,7 +18,7 @@ const ReviewSection = () => {
   const [isAtEnd, setIsAtEnd] = useState(false);
 
   return (
-    <section className="relative w-full pb-responsive mb-37.5 lg:mb-0">
+    <section className="relative w-full pb-responsive">
       {isSmallerThanLg && (
         <>
           <h2 className="heading-2 text-center pt-10">
@@ -42,7 +42,7 @@ const ReviewSection = () => {
       )}
 
       {isSmallerThanLg && (
-        <div className="relative w-full mt-6">
+        <div className="relative w-full mt-6 mb-37.5 lg:mb-0">
           <button
             className={`
               swiper-button-prev-custom absolute left-0 top-60 z-20

@@ -192,6 +192,8 @@ const FrameWrapperForCarousel = forwardRef<
             borderRadius,
             pointerEvents: "none",
             zIndex: 2,
+            boxShadow:
+              "2px 2px 1px rgba(224,220,208,1), inset 2px 2px 1px rgba(224,220,208,1)",
           }}
         />
 
