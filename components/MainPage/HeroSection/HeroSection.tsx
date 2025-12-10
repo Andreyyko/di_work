@@ -12,18 +12,8 @@ const HeroSection = () => {
   const { isSmallerThanSm, isXlOrLarger } = useWindowWidth();
 
   return (
-    <section
-        className="relative w-full pb-responsive"
-      >
-      <h5 className="heading-5 text-right relative w-screen left-1/2 right-1/2 -translate-x-1/2 px-0">
-        Простір, де психологія поєднується з<br />
-        креативом, де вправи стають ключем до
-        <br />
-        самопізнання, а гра — до нових
-        <br />
-        можливостей.
-      </h5>
-
+    <section className="relative w-full pb-responsive">
+      
       <Image
         className={`
           absolute -top-2 -translate-y-6 sm:translate-0 z-10 select-none pointer-events-none
@@ -35,17 +25,30 @@ const HeroSection = () => {
         alt="hero-flower"
         priority
         fetchPriority="high"
-        />
+      />
+
+      <h5 className="heading-5 text-right relative w-screen left-1/2 right-1/2 -translate-x-1/2 px-0">
+        Простір, де психологія поєднується з<br />
+        креативом, де вправи стають ключем до
+        <br />
+        самопізнання, а гра — до нових
+        <br />
+        можливостей.
+      </h5>
 
       <div className="relative mt-6 sm:mt-10">
         <h2 className="heading-2 flex flex-col relative">
-          <div className="max-w-full sm:max-w-[85%] mb:max-w-[90%] lg:max-w-[83%] xl:max-w-[76%]  sm:text-right text-end">
+          <div className="max-w-full sm:max-w-[85%] mb:max-w-[90%] lg:max-w-[83%] xl:max-w-[76%] sm:text-right text-end">
             <span className="first-letter uppercase" data-first-letter="р">ок-м</span>
           </div>
+
           {isSmallerThanSm ? (
             <span className="first-letter text-start block relative" data-first-letter="Р">
               <span className="uppercase">есурсно-</span>
-              <span className="first-letter block text-right uppercase max-w-full" data-first-letter="о">
+              <span
+                className="first-letter block text-right uppercase max-w-full"
+                data-first-letter="о"
+              >
                 рієнтовані
               </span>
 
@@ -55,7 +58,10 @@ const HeroSection = () => {
             </span>
           ) : isXlOrLarger ? (
             <div className="flex items-center gap-4 h-20">
-              <span className="first-letter whitespace-nowrap uppercase " data-first-letter="р">
+              <span
+                className="first-letter whitespace-nowrap uppercase"
+                data-first-letter="р"
+              >
                 есурсно-орієнтовані
               </span>
 
@@ -64,24 +70,38 @@ const HeroSection = () => {
               </span>
             </div>
           ) : (
-            <span className="first-letter whitespace-nowrap uppercase" data-first-letter="р">
+            <span
+              className="first-letter whitespace-nowrap uppercase"
+              data-first-letter="р"
+            >
               есурсно-орієнтовані
             </span>
           )}
+
           <span className="first-letter md:text-end block uppercase">
             {isSmallerThanSm ? (
               <>
-                <span className="first-letter block text-right uppercase max-w-full" data-first-letter="к">
+                <span
+                  className="first-letter block text-right uppercase max-w-full"
+                  data-first-letter="к"
+                >
                   огнітивні
                 </span>
                 <span className="block text-left">
-                  <span className="first-letter uppercase" data-first-letter="м">етодики</span>
+                  <span
+                    className="first-letter uppercase"
+                    data-first-letter="м"
+                  >
+                    етодики
+                  </span>
                 </span>
               </>
             ) : (
               <>
                 когнітивні{" "}
-                <span className="first-letter uppercase " data-first-letter="м">етодики</span>
+                <span className="first-letter uppercase" data-first-letter="м">
+                  етодики
+                </span>
               </>
             )}
           </span>
@@ -106,28 +126,23 @@ const HeroSection = () => {
 
           <div className="flex justify-center items-center md:justify-end lg:items-start order-1 md:order-2">
             <FrameWrapper
-              className="
-                
-                heading-6 font-grava opacity-100 
-                w-auto
-                lg:translate-y-[-130px] xl:translate-y-0
-              "
+              className="heading-6 font-grava opacity-100 w-auto lg:translate-y-[-130px] xl:translate-y-0"
               paddingX={20}
               paddingY={25}
             >
-              <CheckItem className="" items={CheckItems} />
+              <CheckItem items={CheckItems} />
             </FrameWrapper>
           </div>
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left mt-16.5 gap-4 md:gap-0">
-          <p className="heading-6 opacity-100 font-grava uppercase text-[clamp(14px,1vw,18px)] max-w-[90%] md:max-w-[70%] mx-auto md:mx-0 ">
+          <p className="heading-6 opacity-100 font-grava uppercase text-[clamp(14px,1vw,18px)] max-w-[90%] md:max-w-[70%] mx-auto md:mx-0">
             у старослов'янських мовах «рок» — це фатум,
             <br className="hidden sm:block" />
             невідтворна доля, сила, яка визначає хід подій.
           </p>
 
-          <p className="heading-6 opacity-50 text-center   sm:text-right sm:opacity-100 font-grava uppercase text-[clamp(14px,1vw,18px)]">
+          <p className="heading-6 opacity-50 text-center sm:text-right sm:opacity-100 font-grava uppercase text-[clamp(14px,1vw,18px)]">
             by bogdana
             <br className="hidden sm:block" />
             .andreyko <br className="block sm:hidden" />
