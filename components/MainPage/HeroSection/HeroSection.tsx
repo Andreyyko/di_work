@@ -27,7 +27,6 @@ const HeroSection = () => {
         <br />
         можливостей.
       </h5>
-
       <Image
         src={flower_images.HERO_FLOWER}
         alt="hero-flower"
@@ -74,7 +73,6 @@ const HeroSection = () => {
             >
               рієнтовані
             </span>
-
             <span className="heading-bg absolute right-10 top-61 mt-1">
               Be Unique
             </span>
@@ -91,7 +89,6 @@ const HeroSection = () => {
             >
               есурсно-орієнтовані
             </span>
-
             <span className="heading-bg translate-y-5 items-center -translate-x-3 whitespace-nowrap text-[144px] sm:text-[clamp(50px,9vw,144px)]">
               Be Unique
             </span>
@@ -158,13 +155,13 @@ const HeroSection = () => {
               paddingX={20}
               paddingY={25}
             >
-              <CheckItem className="" items={CheckItems} />
+              <CheckItem items={CheckItems} />
             </FrameWrapper>
           </div>
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left mt-16.5 gap-4 md:gap-0">
-          <p className="heading-6 opacity-100 font-grava uppercase text-[clamp(14px,1vw,18px)] max-w-[90%] md:max-w-[70%] mx-auto md:mx-0 ">
+          <p className="heading-6 opacity-100 font-grava uppercase text-[clamp(14px,1vw,18px)] max-w-[90%] md:max-w-[70%] mx-auto md:mx-0">
             у старослов'янських мовах «рок» — це фатум,
             <br className="hidden sm:block" />
             невідтворна доля, сила, яка визначає хід подій.

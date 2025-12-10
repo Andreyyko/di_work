@@ -1,19 +1,7 @@
 "use client";
 
-import AboutUs from "@/components/MainPage/AboutUsSection/AboutUs";
-import ChoosePlanSection from "@/components/MainPage/ChoosePlanSection/ChoosePlanSection";
-import ContactForm from "@/components/MainPage/ContactFormSection/ContactForm";
-import CourseSlider from "@/components/MainPage/CourseSlider/CourseSlider";
-import FAQSection from "@/components/MainPage/FAQSection/FAQSection";
 import HeroSection from "@/components/MainPage/HeroSection/HeroSection";
-import IdentityIntro from "@/components/MainPage/IdentityIntroSection/IdentityIntro";
-import MakMethodicInfo from "@/components/MainPage/MakMethodicInfo/MakMethodicInfo";
-import ReviewSection from "@/components/MainPage/ReviewSection/ReviewSection";
-import SectionSlider from "@/components/MainPage/SectionSlider/SectionSlider";
-import ValidationSection from "@/components/MainPage/ValidationSection/ValidationSection";
-import CategoriesFrThСarousel from "@/components/MainPage/CategoriesFrThСarouselSection/index"
-import { main_page_backrounds } from "@/public/images/MainPageImages/backgrounds";
-
+import LazySection from "@/components/common/LazySection";
 
 export default function Home() {
   return (
@@ -21,61 +9,62 @@ export default function Home() {
       <section className="px-5">
         <HeroSection />
       </section>
-      <section className="px-5 bg-cover bg-center bg-no-repeat" 
-      style={{backgroundImage: `url(${main_page_backrounds.IDENTITY_SECTION_BACKGROUND.src})`,
-      }}>
-        <IdentityIntro />
-      </section>
-      <section className="px-5 bg-cover bg-center bg-no-repeat" 
-      style={{backgroundImage: `url(${main_page_backrounds.ABOUT_US_BACKGROUND.src})`,
-      }}>
-        <AboutUs />
-      </section>
-      <section className="px-5 bg-cover bg-center bg-no-repeat" 
-      style={{backgroundImage: `url(${main_page_backrounds.CATEGORIES_FT_TH_CAROUSEL.src})`,
-      }}>
-        <CategoriesFrThСarousel />
-      </section>
-      <section className="px-5 bg-cover bg-center bg-no-repeat" 
-      style={{backgroundImage: `url(${main_page_backrounds.COURSE_CAROUSEL_BACKGROUND.src})`,
-      }}>
-        <CourseSlider />
-      </section>
-      <section className="px-5 bg-cover bg-center bg-no-repeat" 
-      style={{backgroundImage: `url(${main_page_backrounds.MAK_METHODIC_INFO_BACKGROUND.src})`,
-      }}>
-        <MakMethodicInfo />
-      </section>
-      <section className="px-5 bg-cover bg-center bg-no-repeat" 
-      style={{backgroundImage: `url(${main_page_backrounds.SECTION_SLIDER_BACKGROUND.src})`,
-      }}>
-        <SectionSlider/>
-      </section>
-      <section className="px-5 bg-cover bg-center bg-no-repeat" 
-      style={{backgroundImage: `url(${main_page_backrounds.CHOOSE_PLAN_SECTION_BACKGROUND.src})`,
-      }}>
-        <ChoosePlanSection/>
-      </section>
-      <section className="px-5 bg-cover bg-center bg-no-repeat" 
-      style={{backgroundImage: `url(${main_page_backrounds.REVIEW_SECTION_BACKGROUND.src})`,
-      }}>
-      <ReviewSection />
-      </section>
-      <section className="px-5 bg-cover bg-center bg-no-repeat" 
-      style={{backgroundImage: `url(${main_page_backrounds.VALIDATION_SECTION_BACKGROUND.src})`,
-      }}>
-        <ValidationSection />
-      </section>
-      <section className="px-5 bg-cover bg-center bg-no-repeat" 
-      style={{backgroundImage: `url(${main_page_backrounds.FAQ_SECTION_BACKGROUND.src})`,
-      }}>
-        <FAQSection />
-      </section>
-      <section className="px-5 bg-cover bg-center bg-no-repeat" 
-      style={{backgroundImage: `url(${main_page_backrounds.CONRACT_FORM_BACKGROUND.src})`,
-      }}>
-        <ContactForm />
-      </section>
+
+      <LazySection
+        loader={() => import("@/components/MainPage/IdentityIntroSection/IdentityIntro")}
+        className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/identity_section_background.svg')]"
+      />
+
+      <LazySection
+        loader={() => import("@/components/MainPage/AboutUsSection/AboutUs")}
+        className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/about_us_background.svg')]"
+      />
+
+      <LazySection
+        loader={() => import("@/components/MainPage/CategoriesFrThСarouselSection")}
+        className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/categories_fr_th_carousel.svg')]"
+      />
+
+      <LazySection
+        loader={() => import("@/components/MainPage/CourseSlider/CourseSlider")}
+        className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/course_carousel_background.svg')]"
+      />
+
+      <LazySection
+        loader={() => import("@/components/MainPage/MakMethodicInfo/MakMethodicInfo")}
+        className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/Mak_Methodic_Info_Background.svg')]"
+      />
+
+      <LazySection
+        loader={() => import("@/components/MainPage/SectionSlider/SectionSlider")}
+        className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/Section_Slider_BackGround.svg')]"
+      />
+
+      <LazySection
+        loader={() => import("@/components/MainPage/ChoosePlanSection/ChoosePlanSection")}
+        className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/choose_plan_section_backgrpund.svg')]"
+      />
+
+      <LazySection
+        loader={() => import("@/components/MainPage/ReviewSection/ReviewSection")}
+        className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/review_section_background.svg')]"
+      />
+
+      <LazySection
+        loader={() => import("@/components/MainPage/ValidationSection/ValidationSection")}
+        className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/validation_section_background.svg')]"
+      />
+
+      <LazySection
+        loader={() => import("@/components/MainPage/FAQSection/FAQSection")}
+        className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/faq_section_background.svg')]"
+      />
+
+      <LazySection
+        loader={() => import("@/components/MainPage/ContactFormSection/ContactForm")}
+        className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/contact_from_background.svg')]"
+      />
+
     </main>
   );
 }
