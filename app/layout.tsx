@@ -101,6 +101,13 @@ export default function RootLayout({
         ${montserrat.variable}
       `}
       >
+      <head>
+        <link
+          rel="preload"
+          as="image"
+          href="/images/CommonImages/FlowerImages/hero_flower.svg"
+        />
+      </head>
       <body className="bg-brand-background">
         <Header/>
         {children}
