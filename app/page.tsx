@@ -12,12 +12,21 @@ import ReviewSection from "@/components/MainPage/ReviewSection/ReviewSection";
 import SectionSlider from "@/components/MainPage/SectionSlider/SectionSlider";
 import ValidationSection from "@/components/MainPage/ValidationSection/ValidationSection";
 import CategoriesFrThСarousel from "@/components/MainPage/CategoriesFrThСarouselSection/index";
+import Image from "next/image";
 
 export default function Home() {
   return (
     <main className="bg-brand-background overflow-hidden">
+      <section className="relative px-5">
+        <Image
+          src="/images/MainPageImages/backgrounds/hero_section_background.svg"
+          alt="background"
+          fill
+          priority
+          fetchPriority="high"
+          className="object-cover object-center"
+        />
 
-      <section className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/hero_section_background.svg')]">
         <HeroSection />
       </section>
 
