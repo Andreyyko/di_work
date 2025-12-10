@@ -105,7 +105,7 @@ export default function RootLayout({
         <link
           rel="preload"
           as="image"
-          href="/images/CommonImages/FlowerImages/hero_flower.svg"
+          href="/images/CommonImages/FlowerImages/hero-flower.svg"
         />
       </head>
       <body className="bg-brand-background">
