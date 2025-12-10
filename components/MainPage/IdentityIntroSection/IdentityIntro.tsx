@@ -4,9 +4,10 @@ import React from "react";
 
 import { IdentityIntroImages } from "@/public/images/MainPageImages/IdentityIntroImages";
 import FrameWrapper from "../../common/FrameWrapper";
+import { useWindowWidth } from "@/hooks/useWindowWidth";
 
 const IdentityIntro: React.FC = () => {
-  const { width, isSmallerThanSm } = useWindowWidth();
+  const { width } = useWindowWidth();
   const showImage = width !== null && width >= 640;
 
   return (
