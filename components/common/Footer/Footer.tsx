@@ -16,7 +16,7 @@ const Footer = () => {
     : footer_images.FLOWER_IMAGE;
 
   return (
-    <footer className="w-full relative px-5 overflow-hidden pt-37.5">
+    <footer className="w-full min-h-[200px] relative px-5 overflow-hidden pt-37.5">
       <Image
         src={flowerImage}
         alt="footer flower"

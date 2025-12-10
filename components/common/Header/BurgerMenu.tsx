@@ -5,7 +5,6 @@ import FrameWrapper from "../../common/FrameWrapper";
 
 import { X } from "lucide-react";
 import { header_images } from "@/public/images/CommonImages/HeaderImages";
-import { useWindowWidth } from "@/hooks/useWindowWidth";
 
 import { useEffect, useRef } from "react";
 
@@ -21,7 +20,6 @@ type Props = {
 const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
   const menuRef = useRef<HTMLDivElement>(null);
   const frameRef = useRef<HTMLDivElement>(null);
-  const { isSmallerThanSm } = useWindowWidth();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -32,11 +30,7 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
         gsap.fromTo(
           menuRef.current,
           { opacity: 0 },
-          {
-            opacity: 1,
-            duration: 0.6,
-            ease: "power2.out",
-          }
+          { opacity: 1, duration: 0.6, ease: "power2.out" }
         );
 
         gsap.fromTo(
@@ -68,15 +62,11 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
       } else {
         const tl = gsap.timeline();
 
-        tl.to(
-          items,
-          {
-            opacity: 0,
-            duration: 0.25,
-            ease: "power2.inOut",
-          },
-          0
-        );
+        tl.to(items, {
+          opacity: 0,
+          duration: 0.25,
+          ease: "power2.inOut",
+        });
 
         tl.to(
           menuItems,
@@ -124,7 +114,7 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
         backgroundImage: `url(${main_page_backrounds.CONRACT_FORM_BACKGROUND.src})`,
       }}
       ref={menuRef}
-      className="fixed inset-0 bg-brand-background z-150 flex flex-col justify-between overflow-hidden  bg-cover bg-center bg-no-repeat"
+      className="fixed inset-0 bg-brand-background z-150 flex flex-col justify-between overflow-hidden bg-cover bg-center bg-no-repeat"
     >
       <div className="relative flex justify-between items-center p-4 z-200 pointer-events-auto">
         <button onClick={onClose} className="menu-fade">
@@ -159,6 +149,7 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
           frameThickness={isMobile ? "4px" : "8px"}
         >
           <div className="flex flex-col items-center gap-5 sm:gap-7.5">
+
             <button className="heading-2-burger uppercase menu-item menu-fade">
               <span className="first-letter" data-first-letter="П">
                 ро нас
@@ -171,7 +162,8 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
               </span>
             </button>
 
-            <button className="heading-2-burger uppercase pl-10 sm:-translate-x-5 menu-item menu-fade">
+≠            <button className="heading-2-burger uppercase pl-25 sm:-translate-x-5 menu-item menu-fade">
+
               МА
               <span className="first-letter-burger" data-first-letter="К">
                 <span className="opacity-0">O</span>
@@ -179,26 +171,26 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
             </button>
 
             <button className="heading-2-burger uppercase menu-item menu-fade">
-              {isSmallerThanSm ? (
-                <>
-                  <span>
-                    FA
-                    <span className="first-letter-burger" data-first-letter="Q">
-                      <span className="opacity-0">F</span>
-                    </span>
+
+
+              <span className="sm:hidden flex items-center">
+                <span>
+                  FA
+                  <span
+                    className="first-letter-burger"
+                    data-first-letter="Q"
+                  >
+                    <span className="opacity-0">F</span>
                   </span>
-                </>
-              ) : (
-                <>
-                  <span>
-                    FA
-                    <span
-                      className="first-letter-burger"
-                      data-first-letter="Q"
-                    ></span>
-                  </span>
-                </>
-              )}
+                </span>
+              </span>
+
+              <span className="hidden sm:flex items-center">
+                <span>
+                  FA
+                  <span className="first-letter-burger" data-first-letter="Q"></span>
+                </span>
+              </span>
             </button>
           </div>
         </FrameWrapper>
@@ -208,7 +200,7 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
         <p className="flex flex-col heading-6 gap-1 opacity-60">
           <a href="mailto:info@rok-m.ua" className="hover:underline">
             info@rok-m.ua
-          </a>{" "}
+          </a>
           <a href="tel:+380000000000" className="hover:underline">
             +380 00 000 00 00
           </a>
@@ -222,31 +214,20 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
               className="w-5 h-5 menu-fade cursor-pointer"
             />
           )}
+
           <a
             href="https://www.instagram.com/bogdanagalitskaandreiko/"
             target="_blank"
           >
-            <Image
-              src={header_images.INSTAGRAM_ICON}
-              alt="ig"
-              className="w-6 h-6 menu-fade"
-            />
+            <Image src={header_images.INSTAGRAM_ICON} alt="ig" className="w-6 h-6 menu-fade" />
           </a>
 
           <a href="https://www.facebook.com/share/15xGzPkuLT/" target="_blank">
-            <Image
-              src={header_images.FACEBOOK_ICON}
-              alt="fb"
-              className="w-6 h-6 menu-fade"
-            />
+            <Image src={header_images.FACEBOOK_ICON} alt="fb" className="w-6 h-6 menu-fade" />
           </a>
 
           <a href="#" target="_blank">
-            <Image
-              src={header_images.YOUTUBE_ICON}
-              alt="yt"
-              className="w-6 h-6 menu-fade"
-            />
+            <Image src={header_images.YOUTUBE_ICON} alt="yt" className="w-6 h-6 menu-fade" />
           </a>
         </div>
       </div>

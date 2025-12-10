@@ -120,7 +120,6 @@ const ReviewSection = () => {
           ))}
         </div>
       )}
-
       {!isSmallerThanLg && (
         <div className="relative w-full">
           <p className="absolute -left-5 -top-20 max-w-[180px] heading-5 hidden md:block">

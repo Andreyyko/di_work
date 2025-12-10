@@ -77,7 +77,6 @@ const AboutUs = () => {
                 країнах світу.
               </p>
             </div>
-
             {isLgOrLarger && (
               <FrameWrapper
                 src={about_us_images.bogdana}

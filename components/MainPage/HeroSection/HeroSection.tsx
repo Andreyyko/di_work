@@ -5,15 +5,12 @@ import CustomSeal from "../../common/CustomSeal";
 import FrameWrapper from "../../common/FrameWrapper";
 
 import { flower_images } from "@/public/images/CommonImages/FlowerImages";
-import { useWindowWidth } from "@/hooks/useWindowWidth";
 import { CheckItems } from "@/constant/MainPageConstant/heroSectionData";
+import { main_page_backrounds } from "@/public/images/MainPageImages/backgrounds";
 
 const HeroSection = () => {
-  const { isSmallerThanSm, isXlOrLarger } = useWindowWidth();
-
   return (
     <section className="relative w-full pb-responsive">
-      
       <Image
         className={`
           absolute -top-2 -translate-y-6 sm:translate-0 z-10 select-none pointer-events-none
@@ -26,7 +23,6 @@ const HeroSection = () => {
         priority
         fetchPriority="high"
       />
-
       <h5 className="heading-5 text-right relative w-screen left-1/2 right-1/2 -translate-x-1/2 px-0">
         Простір, де психологія поєднується з<br />
         креативом, де вправи стають ключем до
@@ -35,75 +31,104 @@ const HeroSection = () => {
         <br />
         можливостей.
       </h5>
+      <Image
+        src={flower_images.HERO_FLOWER}
+        alt="hero-flower"
+        priority
+        fetchPriority="high"
+        width={1200}
+        height={1000}
+        sizes="
+          (max-width: 640px) 180px,
+          (max-width: 768px) 280px,
+          (max-width: 1024px) 700px,
+          (max-width: 1536px) 1200px,
+          1300px
+        "
+        className="
+          absolute -top-2 -translate-y-6 sm:translate-0 z-10 select-none pointer-events-none
+          w-49 rotate-15 sm:rotate-0 md:-left-5 md:rotate-20 md:z-0 lg:z-10 lg:rotate-0 md:-top-10 
+          sm:w-[180px] md:w-[280px] lg:w-[700px] xl:w-[1200px] 2xl:w-[1300px]
+          -left-3 scale-x-[-1]
+          lg:left-auto lg:-right-5 lg:scale-x-100 lg:top-80 xl:top-70
+        "
+      />
 
       <div className="relative mt-6 sm:mt-10">
         <h2 className="heading-2 flex flex-col relative">
           <div className="max-w-full sm:max-w-[85%] mb:max-w-[90%] lg:max-w-[83%] xl:max-w-[76%] sm:text-right text-end">
-            <span className="first-letter uppercase" data-first-letter="р">ок-м</span>
+            <span className="first-letter uppercase" data-first-letter="р">
+              ок-м
+            </span>
           </div>
 
-          {isSmallerThanSm ? (
-            <span className="first-letter text-start block relative" data-first-letter="Р">
-              <span className="uppercase">есурсно-</span>
-              <span
-                className="first-letter block text-right uppercase max-w-full"
-                data-first-letter="о"
-              >
-                рієнтовані
-              </span>
+          <span
+            className="
+              first-letter text-start block relative
+              sm:hidden
+            "
+            data-first-letter="Р"
+          >
+            <span className="uppercase">есурсно-</span>
 
-              <span className="heading-bg absolute right-10 top-61 mt-1">
-                Be Unique
-              </span>
+            <span
+              className="first-letter block text-right uppercase max-w-full"
+              data-first-letter="о"
+            >
+              рієнтовані
             </span>
-          ) : isXlOrLarger ? (
-            <div className="flex items-center gap-4 h-20">
-              <span
-                className="first-letter whitespace-nowrap uppercase"
-                data-first-letter="р"
-              >
-                есурсно-орієнтовані
-              </span>
+            <span className="heading-bg absolute right-10 top-61 mt-1">
+              Be Unique
+            </span>
+          </span>
 
-              <span className="heading-bg translate-y-5 items-center -translate-x-3 whitespace-nowrap text-[144px] sm:text-[clamp(50px,9vw,144px)]">
-                Be Unique
-              </span>
-            </div>
-          ) : (
+          <div
+            className="
+              hidden xl:flex items-center gap-4 h-20
+            "
+          >
             <span
               className="first-letter whitespace-nowrap uppercase"
               data-first-letter="р"
             >
               есурсно-орієнтовані
             </span>
-          )}
+            <span className="heading-bg translate-y-5 items-center -translate-x-3 whitespace-nowrap text-[144px] sm:text-[clamp(50px,9vw,144px)]">
+              Be Unique
+            </span>
+          </div>
+
+          <span
+            className="
+              hidden sm:block xl:hidden
+              first-letter whitespace-nowrap uppercase
+            "
+            data-first-letter="р"
+          >
+            есурсно-орієнтовані
+          </span>
 
           <span className="first-letter md:text-end block uppercase">
-            {isSmallerThanSm ? (
-              <>
-                <span
-                  className="first-letter block text-right uppercase max-w-full"
-                  data-first-letter="к"
-                >
-                  огнітивні
-                </span>
-                <span className="block text-left">
-                  <span
-                    className="first-letter uppercase"
-                    data-first-letter="м"
-                  >
-                    етодики
-                  </span>
-                </span>
-              </>
-            ) : (
-              <>
-                когнітивні{" "}
+            <span className="sm:hidden">
+              <span
+                className="first-letter block text-right uppercase max-w-full"
+                data-first-letter="к"
+              >
+                огнітивні
+              </span>
+              <span className="block text-left">
                 <span className="first-letter uppercase" data-first-letter="м">
                   етодики
                 </span>
-              </>
-            )}
+              </span>
+            </span>
+
+            <span className="hidden sm:block text-end">
+              когнітивні{" "}
+              <span className="first-letter uppercase" data-first-letter="м">
+                етодики
+              </span>
+            </span>
           </span>
         </h2>
 
@@ -126,7 +151,11 @@ const HeroSection = () => {
 
           <div className="flex justify-center items-center md:justify-end lg:items-start order-1 md:order-2">
             <FrameWrapper
-              className="heading-6 font-grava opacity-100 w-auto lg:translate-y-[-130px] xl:translate-y-0"
+              className="
+                heading-6 font-grava opacity-100 
+                w-auto
+                lg:translate-y-[-130px] xl:translate-y-0
+              "
               paddingX={20}
               paddingY={25}
             >
