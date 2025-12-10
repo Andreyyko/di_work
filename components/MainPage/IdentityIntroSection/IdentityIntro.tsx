@@ -8,7 +8,7 @@ import { useWindowWidth } from "@/hooks/useWindowWidth";
 const IdentityIntro: React.FC = () => {
   const { width, isSmallerThanSm } = useWindowWidth();
 
-  const showImage = width !== null && width >= 1280;
+  const showImage = width !== null && width >= 640;
   const showImage2xl = width !== null && width >= 1600;
 
   return (
@@ -19,9 +19,9 @@ const IdentityIntro: React.FC = () => {
           <br />
         </h2>
 
-        <div className="flex flex-row items-center justify-between max-w-[95%]">
-          {showImage && !showImage2xl && (
-            <div className="flex items-center justify-center">
+        <div className="flex flex-row items-center justify-between max-w-[95%] ">
+          {showImage  && (
+            <div className="flex items-center justify-center w-[450px]">
               <FrameWrapper
                 src={IdentityIntroImages.OpenBookImages}
                 alt="open book"

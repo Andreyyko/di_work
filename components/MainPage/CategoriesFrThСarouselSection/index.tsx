@@ -43,7 +43,7 @@ export default function CategoriesFrThCarousel() {
 
       <NavigationButtons moveLeft={moveLeft} moveRight={moveRight} />
 
-      <div className="relative h-[490px] md:h-[500px] lg:h-[600px] flex items-center justify-center">
+      <div className="relative h-[490px] md:h-[500px] lg:h-[600px] 2xl:h-[850px] flex items-center justify-center">
         <ImageSlots
           layout={layout}
           left={left}
@@ -63,8 +63,8 @@ export default function CategoriesFrThCarousel() {
           href="/methods"
           className="
             absolute 
-            md:right-[13%] lg:right-[13%] xl:right-[19%]
-            top-[93%] md:top-[7%] lg:top-[8%] xl:top-[1%]
+            md:right-[13%] lg:right-[13%] xl:right-[19%] 2xl:right-[25%]
+            top-[93%] md:top-[7%] lg:top-[8%] xl:top-[1%] 2xl:top-[10%]
             translate-y-1/2
             heading-6 underline
           "
