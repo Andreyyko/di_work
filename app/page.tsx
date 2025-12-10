@@ -1,15 +1,16 @@
 "use client";
 
 import HeroSection from "@/components/MainPage/HeroSection/HeroSection";
+import HeroWrapper from "@/components/MainPage/HeroSection/HeroWrapper";
 import LazySection from "@/components/common/LazySection";
 
 export default function Home() {
   return (
     <main className="bg-brand-background overflow-hidden">
 
-      <section className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/hero_section_background.svg')]">
-        <HeroSection />
-      </section>
+<HeroWrapper>
+  <HeroSection />
+</HeroWrapper>
 
       <LazySection
         loader={() => import("@/components/MainPage/IdentityIntroSection/IdentityIntro")}
