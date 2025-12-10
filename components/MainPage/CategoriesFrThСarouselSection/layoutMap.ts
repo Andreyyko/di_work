@@ -10,11 +10,11 @@ export const layoutMap: any = {
   ],
   "2xl": [
     { width: 165, height: 155, top: -200, left: 180 },
-    { width: 280, height: 310, top: -160, left: 250 },
-    { width: 250, height: 190, top: 40, left: -280 },
+    { width: 280, height: 310, top: -160, left: 230 },
+    { width: 250, height: 190, top: 40, left: -320 },
     { width: 570, height: 400, center: true },
     { width: 165, height: 155, top: -270, left: 380 },
-    { width: 280, height: 310, top: -20, left: 110 },
+    { width: 280, height: 310, top: -20, left: 150 },
     { width: 250, height: 190, top: -210, right: 410 },
   ],
   lg: [

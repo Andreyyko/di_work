@@ -162,7 +162,7 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
               </span>
             </button>
 
-≠            <button className="heading-2-burger uppercase pl-25 sm:-translate-x-5 menu-item menu-fade">
+       <button className="heading-2-burger uppercase pl-25 sm:-translate-x-5 menu-item menu-fade">
 
               МА
               <span className="first-letter-burger" data-first-letter="К">
