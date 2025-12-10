@@ -11,71 +11,57 @@ import MakMethodicInfo from "@/components/MainPage/MakMethodicInfo/MakMethodicIn
 import ReviewSection from "@/components/MainPage/ReviewSection/ReviewSection";
 import SectionSlider from "@/components/MainPage/SectionSlider/SectionSlider";
 import ValidationSection from "@/components/MainPage/ValidationSection/ValidationSection";
-import CategoriesFrThСarousel from "@/components/MainPage/CategoriesFrThСarouselSection/index"
-import { main_page_backrounds } from "@/public/images/MainPageImages/backgrounds";
-
+import CategoriesFrThСarousel from "@/components/MainPage/CategoriesFrThСarouselSection/index";
 
 export default function Home() {
   return (
     <main className="bg-brand-background overflow-hidden">
-      <section className="px-5 bg-cover bg-center bg-no-repeat" 
-      style={{backgroundImage: `url(${main_page_backrounds.HERO_SECTION_BACKGROUND.src})`,
-      }}> 
+
+      <section className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/hero_section_background.svg')]">
         <HeroSection />
       </section>
-      <section className="px-5 bg-cover bg-center bg-no-repeat" 
-      style={{backgroundImage: `url(${main_page_backrounds.IDENTITY_SECTION_BACKGROUND.src})`,
-      }}>
+
+      <section className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/identity_section_background.svg')]">
         <IdentityIntro />
       </section>
-      <section className="px-5 bg-cover bg-center bg-no-repeat" 
-      style={{backgroundImage: `url(${main_page_backrounds.ABOUT_US_BACKGROUND.src})`,
-      }}>
+
+      <section className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/about_us_background.svg')]">
         <AboutUs />
       </section>
-      <section className="px-5 bg-cover bg-center bg-no-repeat" 
-      style={{backgroundImage: `url(${main_page_backrounds.CATEGORIES_FT_TH_CAROUSEL.src})`,
-      }}>
+
+      <section className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/categories_fr_th_carousel.svg')]">
         <CategoriesFrThСarousel />
       </section>
-      <section className="px-5 bg-cover bg-center bg-no-repeat" 
-      style={{backgroundImage: `url(${main_page_backrounds.COURSE_CAROUSEL_BACKGROUND.src})`,
-      }}>
+
+      <section className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/course_carousel_background.svg')]">
         <CourseSlider />
       </section>
-      <section className="px-5 bg-cover bg-center bg-no-repeat" 
-      style={{backgroundImage: `url(${main_page_backrounds.MAK_METHODIC_INFO_BACKGROUND.src})`,
-      }}>
+
+      <section className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/Mak_Methodic_Info_Background.svg')]">
         <MakMethodicInfo />
       </section>
-      <section className="px-5 bg-cover bg-center bg-no-repeat" 
-      style={{backgroundImage: `url(${main_page_backrounds.SECTION_SLIDER_BACKGROUND.src})`,
-      }}>
-        <SectionSlider/>
+
+      <section className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/Section_Slider_BackGround.svg')]">
+        <SectionSlider />
       </section>
-      <section className="px-5 bg-cover bg-center bg-no-repeat" 
-      style={{backgroundImage: `url(${main_page_backrounds.CHOOSE_PLAN_SECTION_BACKGROUND.src})`,
-      }}>
-        <ChoosePlanSection/>
+
+      <section className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/choose_plan_section_backgrpund.svg')]">
+        <ChoosePlanSection />
       </section>
-      <section className="px-5 bg-cover bg-center bg-no-repeat" 
-      style={{backgroundImage: `url(${main_page_backrounds.REVIEW_SECTION_BACKGROUND.src})`,
-      }}>
-      <ReviewSection />
+
+      <section className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/review_section_background.svg')]">
+        <ReviewSection />
       </section>
-      <section className="px-5 bg-cover bg-center bg-no-repeat" 
-      style={{backgroundImage: `url(${main_page_backrounds.VALIDATION_SECTION_BACKGROUND.src})`,
-      }}>
+
+      <section className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/validation_section_background.svg')]">
         <ValidationSection />
       </section>
-      <section className="px-5 bg-cover bg-center bg-no-repeat" 
-      style={{backgroundImage: `url(${main_page_backrounds.FAQ_SECTION_BACKGROUND.src})`,
-      }}>
+
+      <section className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/faq_section_background.svg')]">
         <FAQSection />
       </section>
-      <section className="px-5 bg-cover bg-center bg-no-repeat" 
-      style={{backgroundImage: `url(${main_page_backrounds.CONRACT_FORM_BACKGROUND.src})`,
-      }}>
+
+      <section className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/contact_from_background.svg')]">
         <ContactForm />
       </section>
     </main>
