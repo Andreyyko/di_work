@@ -5,18 +5,21 @@ import ChoosePlanSection from "@/components/MainPage/ChoosePlanSection/ChoosePla
 import ContactForm from "@/components/MainPage/ContactFormSection/ContactForm";
 import CourseSlider from "@/components/MainPage/CourseSlider/CourseSlider";
 import FAQSection from "@/components/MainPage/FAQSection/FAQSection";
+import HeroSection from "@/components/MainPage/HeroSection/HeroSection";
 import IdentityIntro from "@/components/MainPage/IdentityIntroSection/IdentityIntro";
 import MakMethodicInfo from "@/components/MainPage/MakMethodicInfo/MakMethodicInfo";
 import ReviewSection from "@/components/MainPage/ReviewSection/ReviewSection";
 import SectionSlider from "@/components/MainPage/SectionSlider/SectionSlider";
 import ValidationSection from "@/components/MainPage/ValidationSection/ValidationSection";
 import CategoriesFrThСarousel from "@/components/MainPage/CategoriesFrThСarouselSection/index";
-import HeroSectionWrapper from "@/components/MainPage/HeroSection/HeroSectionWrapper";
 
 export default function Home() {
   return (
     <main className="bg-brand-background overflow-hidden">
-        <HeroSectionWrapper />
+
+      <section className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/hero_section_background.svg')]">
+        <HeroSection />
+      </section>
 
       <section className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/identity_section_background.svg')]">
         <IdentityIntro />
