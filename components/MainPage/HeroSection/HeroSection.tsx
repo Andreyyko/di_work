@@ -12,13 +12,17 @@ const HeroSection = () => {
   return (
     <section className="relative w-full pb-responsive">
       <Image
-    src={main_page_backrounds.HERO_SECTION_BACKGROUND}
-    alt="hero background"
-    fill
-    priority
-    fetchPriority="high"
-    className="object-cover"
-  />
+        className={`
+          absolute -top-2 -translate-y-6 sm:translate-0 z-10 select-none pointer-events-none
+          w-49 rotate-15 sm:rotate-0 md:left-0 md:rotate-20 md:z-0 lg:z-10 lg:rotate-0 md:-top-10 sm:w-[180px] md:w-[280px] lg:w-[700px] xl:w-[1200px] 2xl:w[1300px]
+          -left-3 scale-x-[-1]
+          lg:left-auto lg:-right-5 lg:scale-x-100 lg:top-80 xl:top-70
+        `}
+        src={flower_images.HERO_FLOWER}
+        alt="hero-flower"
+        priority
+        fetchPriority="high"
+      />
       <h5 className="heading-5 text-right relative w-screen left-1/2 right-1/2 -translate-x-1/2 px-0">
         Простір, де психологія поєднується з<br />
         креативом, де вправи стають ключем до

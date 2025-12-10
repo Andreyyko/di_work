@@ -59,7 +59,7 @@ const MakMethodicInfo = () => {
         <div className="mb-3 sm:mb-[25px] z-3 relative">
           <h2 className="heading-2 uppercase text-center tracking-[-6px] sm:tracking-[-0.01em]">
             <span className="whitespace-nowrap -ml-3 sm:translate-x-0">
-              <span className="first-letter" data-first-letter="т">ренінги,</span>{" "}
+              {" "}
               <span className="first-letter" data-first-letter="м">ак</span>,{" "}
             </span>
             <br className="block sm:hidden" />

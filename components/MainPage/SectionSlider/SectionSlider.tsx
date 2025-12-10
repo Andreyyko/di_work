@@ -40,7 +40,7 @@ const SectionSlider = () => {
           />
         </div>
         <span className="heading-bg absolute top-40 right-15 sm:top-45 sm:right-60 md:top-45 md:right-60 lg:top-0 lg:right-65 xl:top-0 xl:right-90">Be Unique</span>
-        <h2 className="hidden lg:block heading-2 uppercase text-right absolute w-full top-[21%]">
+        <h2 className="hidden lg:block heading-2 uppercase text-right absolute w-full top-[21%] text-[20px] md:text-[40px] lg:text-[55px] xl:text-[80px]">
           <span className="first-letter block -translate-x-[27%]">Що ви</span>
           <span className="first-letter block">Отримаєте завдяки цим</span>
           <span className="first-letter block -translate-x-[18%]">Розділам</span>
@@ -51,7 +51,7 @@ const SectionSlider = () => {
           />
         </h2>
   
-        <h2 className="lg:hidden heading-2 uppercase  mt-10 mb-10 px-0 md:px-40">
+        <h2 className="lg:hidden heading-2 uppercase pt-10 mb-10 px-0 md:px-40">
           <span className="first-letter text-start">Що ви</span>
           <span className="first-letter block text-end">Отримаєте</span>
           <span className="block text-start">завдяки цим</span>
