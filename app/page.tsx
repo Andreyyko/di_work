@@ -1,17 +1,20 @@
 "use client";
 
-import AboutUs from "@/components/MainPage/AboutUsSection/AboutUs";
-import ChoosePlanSection from "@/components/MainPage/ChoosePlanSection/ChoosePlanSection";
-import ContactForm from "@/components/MainPage/ContactFormSection/ContactForm";
-import CourseSlider from "@/components/MainPage/CourseSlider/CourseSlider";
-import FAQSection from "@/components/MainPage/FAQSection/FAQSection";
+import dynamic from "next/dynamic";
 import HeroSection from "@/components/MainPage/HeroSection/HeroSection";
-import IdentityIntro from "@/components/MainPage/IdentityIntroSection/IdentityIntro";
-import MakMethodicInfo from "@/components/MainPage/MakMethodicInfo/MakMethodicInfo";
-import ReviewSection from "@/components/MainPage/ReviewSection/ReviewSection";
-import SectionSlider from "@/components/MainPage/SectionSlider/SectionSlider";
-import ValidationSection from "@/components/MainPage/ValidationSection/ValidationSection";
-import CategoriesFrThСarousel from "@/components/MainPage/CategoriesFrThСarouselSection/index";
+
+const IdentityIntro = dynamic(() => import("@/components/MainPage/IdentityIntroSection/IdentityIntro"));
+const AboutUs = dynamic(() => import("@/components/MainPage/AboutUsSection/AboutUs"));
+const CategoriesFrThСarousel = dynamic(() => import("@/components/MainPage/CategoriesFrThСarouselSection"));
+const CourseSlider = dynamic(() => import("@/components/MainPage/CourseSlider/CourseSlider"));
+const MakMethodicInfo = dynamic(() => import("@/components/MainPage/MakMethodicInfo/MakMethodicInfo"));
+const SectionSlider = dynamic(() => import("@/components/MainPage/SectionSlider/SectionSlider"));
+const ChoosePlanSection = dynamic(() => import("@/components/MainPage/ChoosePlanSection/ChoosePlanSection"));
+const ReviewSection = dynamic(() => import("@/components/MainPage/ReviewSection/ReviewSection"));
+const ValidationSection = dynamic(() => import("@/components/MainPage/ValidationSection/ValidationSection"));
+const FAQSection = dynamic(() => import("@/components/MainPage/FAQSection/FAQSection"));
+const ContactForm = dynamic(() => import("@/components/MainPage/ContactFormSection/ContactForm"));
+
 
 export default function Home() {
   return (
