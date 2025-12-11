@@ -25,7 +25,7 @@ const MakMethodicInfo = () => {
         className="
           absolute top-[30%] sm:top-[40%] -left-5 -translate-y-1/2 2xl:w-[1900px]
           pointer-events-none select-none z-1
-          hidden max-[470px]:hidden sm:block
+          hidden max-[470px]:hidden min-[470px]:block
         "
         priority
       />
