@@ -23,7 +23,7 @@ const SectionSlider = () => {
     return (
       <section className="relative w-full pb-responsive">
   
-        <div className="hidden lg:flex justify-between items-start w-full relative z-10">
+        <div className="hidden lg:flex justify-between items-start w-full relative z-10">  
           <FrameWrapper
             src={section_slider_images.BOHDANA_STAYING}
             paddingX={20}
@@ -39,7 +39,7 @@ const SectionSlider = () => {
             showOrnaments
           />
         </div>
-        <span className="heading-bg absolute top-50 right-15 sm:top-45 sm:right-60 md:top-55 md:right-60 lg:top-0 lg:right-65 xl:top-0 xl:right-90">Be Unique</span>
+        <span className="heading-bg hidden lg:block absolute top-50 right-15 sm:top-45 sm:right-60 md:top-55 md:right-60 lg:top-0 lg:right-65 xl:top-0 xl:right-90">Be Unique</span>
         <h2 className="hidden lg:block heading-2 uppercase text-right absolute w-full top-[21%] text-[20px] md:text-[40px] lg:text-[55px] xl:text-[80px]">
           <span className="first-letter block -translate-x-[27%]">Що ви</span>
           <span className="first-letter block">Отримаєте завдяки цим</span>
@@ -58,7 +58,8 @@ const SectionSlider = () => {
           <span className="first-letter block text-end">Розділам</span>
         </h2>
   
-        <div className="lg:hidden flex justify-center mb-6">
+        <div className="lg:hidden relative flex justify-center mb-6">
+        <span className="heading-bg absolute -top-9 right-15 sm:right-50 sm:-top-10 md:right-90 md:-top-12">Be Unique</span>
           <FrameWrapper
             src={section_slider_images.BOHDANA_STAYING}
             paddingX={20}
