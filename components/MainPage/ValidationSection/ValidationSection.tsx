@@ -23,7 +23,7 @@ const ValidationSection = () => {
       letterDesktopRef.current,
       { x: -900, opacity: 0 },
       {
-        x: -90,
+        x: -70,
         opacity: 1,
         duration: 1.6,
         ease: "power3.out",
