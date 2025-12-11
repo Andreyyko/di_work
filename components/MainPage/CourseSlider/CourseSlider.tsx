@@ -87,13 +87,14 @@ const CourseSlider = () => {
           absolute
           inset-0
           -z-10
-          translate-x-43
+          translate-x-40
           -translate-y-1
           heading-bg
           whitespace-nowrap
+          text-[clamp(50px,14vw,190px)]
         "
                 >
-                  Mental Healthy
+                  Mental H ealth
                 </span>
               </span>
             </>

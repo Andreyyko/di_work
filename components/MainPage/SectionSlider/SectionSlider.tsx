@@ -39,7 +39,7 @@ const SectionSlider = () => {
             showOrnaments
           />
         </div>
-        <span className="heading-bg absolute top-40 right-15 sm:top-45 sm:right-60 md:top-45 md:right-60 lg:top-0 lg:right-65 xl:top-0 xl:right-90">Be Unique</span>
+        <span className="heading-bg absolute top-50 right-15 sm:top-45 sm:right-60 md:top-55 md:right-60 lg:top-0 lg:right-65 xl:top-0 xl:right-90">Be Unique</span>
         <h2 className="hidden lg:block heading-2 uppercase text-right absolute w-full top-[21%] text-[20px] md:text-[40px] lg:text-[55px] xl:text-[80px]">
           <span className="first-letter block -translate-x-[27%]">Що ви</span>
           <span className="first-letter block">Отримаєте завдяки цим</span>
