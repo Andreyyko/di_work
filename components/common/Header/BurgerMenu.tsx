@@ -27,12 +27,20 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
       const menuItems = ".menu-item";
 
       if (!closing) {
+        // 🔥 Анімація заднього фону (оновлена)
         gsap.fromTo(
           menuRef.current,
-          { opacity: 0 },
-          { opacity: 1, duration: 0.6, ease: "power2.out" }
+          { opacity: 0, scale: 1.05, filter: "blur(6px)" },
+          {
+            opacity: 1,
+            scale: 1,
+            filter: "blur(0px)",
+            duration: 0.8,
+            ease: "power3.out",
+          }
         );
 
+        // 🔥 Анімація рамки меню
         gsap.fromTo(
           frameRef.current,
           { opacity: 0, scale: 0.92, filter: "blur(12px)" },
@@ -42,10 +50,11 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
             filter: "blur(0px)",
             duration: 0.8,
             ease: "power3.out",
-            delay: 0.08,
+            delay: 0.1,
           }
         );
 
+        // 🔥 Анімація пунктів меню
         gsap.fromTo(
           items,
           { opacity: 0, y: 8, filter: "blur(10px)" },
@@ -60,8 +69,10 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
           }
         );
       } else {
+        // 🔥 Анімація закриття
         const tl = gsap.timeline();
 
+        // зникнення тексту меню
         tl.to(items, {
           opacity: 0,
           duration: 0.25,
@@ -81,6 +92,7 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
           0
         );
 
+        // рамка ховається
         tl.to(
           frameRef.current,
           {
@@ -93,14 +105,17 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
           "-=0.2"
         );
 
+        // 🔥 нова анімація фону при закритті
         tl.to(
           menuRef.current,
           {
             opacity: 0,
-            duration: 0.35,
-            ease: "power2.in",
+            scale: 1.04,
+            filter: "blur(8px)",
+            duration: 0.45,
+            ease: "power3.inOut",
           },
-          "-=0.2"
+          "-=0.25"
         );
       }
     }, menuRef);
@@ -116,6 +131,7 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
       ref={menuRef}
       className="fixed inset-0 bg-brand-background z-150 flex flex-col justify-between overflow-hidden bg-cover bg-center bg-no-repeat"
     >
+      {/* 🔹 Верхній блок */}
       <div className="relative flex justify-between items-center p-4 z-200 pointer-events-auto">
         <button onClick={onClose} className="menu-fade">
           <X size={32} className="cursor-pointer" />
@@ -132,6 +148,7 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
         </div>
       </div>
 
+      {/* 🔹 Центральний блок */}
       <div className="relative flex-1 flex items-center justify-center">
         <FrameWrapper
           ref={frameRef}
@@ -151,19 +168,14 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
           <div className="flex flex-col items-center gap-5 sm:gap-7.5">
 
             <button className="heading-2-burger uppercase menu-item menu-fade">
-              <span className="first-letter" data-first-letter="П">
-                ро нас
-              </span>
+              <span className="first-letter" data-first-letter="П">ро нас</span>
             </button>
 
             <button className="heading-2-burger uppercase sm:translate-x-5 menu-item menu-fade">
-              <span className="first-letter-burger" data-first-letter="Р">
-                озділи
-              </span>
+              <span className="first-letter-burger" data-first-letter="Р">озділи</span>
             </button>
 
-       <button className="heading-2-burger uppercase pl-25 sm:-translate-x-5 menu-item menu-fade">
-
+            <button className="heading-2-burger uppercase pl-25 sm:-translate-x-5 menu-item menu-fade">
               МА
               <span className="first-letter-burger" data-first-letter="К">
                 <span className="opacity-0">O</span>
@@ -171,15 +183,10 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
             </button>
 
             <button className="heading-2-burger uppercase menu-item menu-fade">
-
-
               <span className="sm:hidden flex items-center">
                 <span>
                   FA
-                  <span
-                    className="first-letter-burger"
-                    data-first-letter="Q"
-                  >
+                  <span className="first-letter-burger" data-first-letter="Q">
                     <span className="opacity-0">F</span>
                   </span>
                 </span>
@@ -192,10 +199,12 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
                 </span>
               </span>
             </button>
+
           </div>
         </FrameWrapper>
       </div>
 
+      {/* 🔹 Нижній блок */}
       <div className="flex absolute bottom-0 justify-between items-end w-full px-5.5 pb-5 pointer-events-auto menu-item menu-fade">
         <p className="flex flex-col heading-6 gap-1 opacity-60">
           <a href="mailto:info@rok-m.ua" className="hover:underline">
@@ -215,10 +224,7 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
             />
           )}
 
-          <a
-            href="https://www.instagram.com/bogdanagalitskaandreiko/"
-            target="_blank"
-          >
+          <a href="https://www.instagram.com/bogdanagalitskaandreiko/" target="_blank">
             <Image src={header_images.INSTAGRAM_ICON} alt="ig" className="w-6 h-6 menu-fade" />
           </a>
 
