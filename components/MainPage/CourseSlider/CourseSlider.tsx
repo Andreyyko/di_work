@@ -91,10 +91,11 @@ const CourseSlider = () => {
           -translate-y-1
           heading-bg
           whitespace-nowrap
+          tracking-wide
           text-[clamp(50px,14vw,190px)]
         "
                 >
-                  Mental H ealth
+                  Mental health
                 </span>
               </span>
             </>

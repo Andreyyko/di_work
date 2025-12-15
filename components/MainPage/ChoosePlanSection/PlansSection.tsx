@@ -40,7 +40,7 @@ const PlanSection = () => {
           <FrameWrapper
             paddingX={40}
             paddingY={70}
-            paddingBottom={100}
+            paddingBottom={140}
             className="w-full lg:w-[29%] order-4 lg:order-0"
             showSeal
             sealHideUntilHover={true}
