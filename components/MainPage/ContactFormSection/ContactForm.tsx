@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState, useRef, useLayoutEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
+import gsap from "gsap";
+
 import FormField from "@/components/common/FormField";
 import SelectField from "@/components/common/SelectField";
 import TwoFrameButton from "@/components/common/TwoFrameButton";
@@ -19,32 +20,80 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const ContactForm = () => {
+  const sectionRef = useRef<HTMLDivElement | null>(null);
   const [resetSignal, setResetSignal] = useState(0);
+  const [animate, setAnimate] = useState(false);
 
   const {
     control,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitting },
+    formState: { isSubmitting },
   } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
   });
 
   const onSubmit = async (values: FormValues) => {
     console.log("FORM SUBMITTED:", values);
-
     reset();
-    setResetSignal((n) => n + 1); 
+    setResetSignal((n) => n + 1);
   };
 
+  useLayoutEffect(() => {
+    if (!sectionRef.current) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setAnimate(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2, rootMargin: "120px" }
+    );
+
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  useLayoutEffect(() => {
+    if (!animate || !sectionRef.current) return;
+
+    const elements = sectionRef.current.querySelectorAll(".contact-anim");
+    if (!elements.length) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        elements,
+        {
+          opacity: 0,
+          scale: 0.985,
+          filter: "blur(12px)",
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          filter: "blur(0px)",
+          duration: 1.15,
+          ease: "power2.out",
+          stagger: 0.12,
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, [animate]);
+
   return (
-    <div className="flex flex-col items-center justify-center w-full overflow-visible pt-[250px]">
-      <h2 className="heading-2 text-center uppercase tracking-[-5px] lg:tracking-[-10px] mb-12.5">
+    <div
+      ref={sectionRef}
+      className="flex flex-col items-center justify-center w-full overflow-visible pt-[250px]"
+    >
+      <h2 className="contact-anim opacity-0 heading-2 text-center uppercase tracking-[-5px] lg:tracking-[-10px] mb-12.5">
         <span className="first-letter">Почніть</span> шлях{" "}
         <span className="first-letter">До</span>{" "}
         <span className="first-letter">внутрішнього</span>{" "}
-        <span className="first-letter">балансу</span> та самоцінності вже
-        сьогодні
+        <span className="first-letter">балансу</span> та самоцінності вже сьогодні
       </h2>
 
       <div className="w-full flex justify-center">
@@ -52,8 +101,7 @@ const ContactForm = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-wrap justify-center gap-7.5 md:gap-16 w-full max-w-[1400px]"
         >
-          {/* FULL NAME */}
-          <div className="w-full md:w-[45%] relative">
+          <div className="contact-anim opacity-0 w-full md:w-[45%] relative">
             <Controller
               name="fullName"
               control={control}
@@ -69,8 +117,7 @@ const ContactForm = () => {
             />
           </div>
 
-          {/* MESSAGE */}
-          <div className="w-full md:w-[45%] relative">
+          <div className="contact-anim opacity-0 w-full md:w-[45%] relative">
             <Controller
               name="message"
               control={control}
@@ -87,8 +134,7 @@ const ContactForm = () => {
             />
           </div>
 
-          {/* EMAIL */}
-          <div className="w-full md:w-[45%] relative">
+          <div className="contact-anim opacity-0 w-full md:w-[45%] relative">
             <Controller
               name="email"
               control={control}
@@ -105,8 +151,7 @@ const ContactForm = () => {
             />
           </div>
 
-          {/* TARIFF */}
-          <div className="w-full md:w-[45%] relative">
+          <div className="contact-anim opacity-0 w-full md:w-[45%] relative">
             <Controller
               name="tariff"
               control={control}
@@ -122,8 +167,7 @@ const ContactForm = () => {
             />
           </div>
 
-          {/* SUBMIT */}
-          <div className="w-full flex justify-center">
+          <div className="contact-anim opacity-0 w-full flex justify-center">
             <TwoFrameButton
               type="submit"
               disabled={isSubmitting}

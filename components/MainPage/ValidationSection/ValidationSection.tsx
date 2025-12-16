@@ -5,7 +5,7 @@ import { ValidationSectionImages } from "@/public/images/MainPageImages/Validati
 
 import CustomSeal from "@/components/common/CustomSeal";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -50,6 +50,32 @@ const ValidationSection = () => {
         scrollTrigger: {
           trigger: wrapperRef.current,
           start: "top 85%",
+          once: true,
+        },
+      }
+    );
+  }, []);
+
+  useLayoutEffect(() => {
+    if (!wrapperRef.current) return;
+
+    gsap.fromTo(
+      ".validation-anim",
+      {
+        opacity: 0,
+        filter: "blur(14px)",
+        y: 30,
+      },
+      {
+        opacity: 1,
+        filter: "blur(0px)",
+        y: 0,
+        duration: 1.2,
+        ease: "power3.out",
+        stagger: 0.15,
+        scrollTrigger: {
+          trigger: wrapperRef.current,
+          start: "top 70%",
           once: true,
         },
       }
@@ -114,14 +140,14 @@ const ValidationSection = () => {
           </div>
         </div>
 
-        <div className="absolute top-[75%] sm:top-[75%] left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div className="absolute top-[75%] sm:top-[75%] left-1/2 -translate-x-1/2 -translate-y-1/2 validation-anim opacity-0">
           <CustomSeal label="Переглянути методики" />
         </div>
       </div>
 
       <div className="md:w-[50%]">
         <div>
-          <h2 className="heading-2 uppercase flex flex-col mb-3 sm:mb-0">
+          <h2 className="heading-2 uppercase flex flex-col mb-3 sm:mb-0 validation-anim opacity-0">
             <span className="sm:leading-loose md:leading-10 lg:leading-[50px] xl:leading-[50px] sm:tracking-[-3px] md:tracking-[-1px] lg:tracking-[-4px]">
               <span className="whitespace-nowrap">
                 <span className="first-letter" data-first-letter="у">
@@ -146,22 +172,22 @@ const ValidationSection = () => {
           </h2>
 
           <div className="flex flex-col">
-            <p className="heading-4 md:w-[70%] lg:w-[46%] mt-10 lg:mt-12">
+            <p className="heading-4 md:w-[70%] lg:w-[46%] mt-10 lg:mt-12 validation-anim opacity-0">
               В особистій психотерапевтичній практиці та збирались протягом 20
               років в різних країнах світу, в роботі з клієнтами, студентами,
-              учнями , під час викладацької та наукової діяльності.{" "}
+              учнями, під час викладацької та наукової діяльності.
             </p>
 
-            <p className="heading-4 md:w-[70%] lg:w-[46%] mt-5">
+            <p className="heading-4 md:w-[70%] lg:w-[46%] mt-5 validation-anim opacity-0">
               Окремі методики апробовані та описані у успішно захищеному
               дисертаційному досліджені на звання доктора філософії з
               спеціальності спеціальна психологія. Сертифікований психотерапевт
-              в трьох країнах світу.{" "}
+              в трьох країнах світу.
             </p>
           </div>
         </div>
 
-        <div className="mt-6 lg:mt-12 2xl:mt-60 flex justify-between">
+        <div className="mt-6 lg:mt-12 2xl:mt-60 flex justify-between validation-anim opacity-0">
           <span className="hidden md:block heading-5">
             Усі техніки та <br /> вправи перевірені на <br /> ефективнісь в{" "}
             <br /> науково-практичній <br /> діяльності.

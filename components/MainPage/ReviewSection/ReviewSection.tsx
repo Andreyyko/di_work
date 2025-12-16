@@ -9,7 +9,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import ArrowButton from "@/components/common/ArrowButton";
 import { feedbacks } from "@/constant/MainPageConstant/FeedBacksRewievData";
-import { useState } from "react";
+import { useState, useRef, useLayoutEffect } from "react";
+import gsap from "gsap";
 
 const ReviewSection = () => {
   const { isSmallerThanLg } = useWindowWidth();
@@ -17,11 +18,56 @@ const ReviewSection = () => {
   const [isAtStart, setIsAtStart] = useState(true);
   const [isAtEnd, setIsAtEnd] = useState(false);
 
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [animate, setAnimate] = useState(false);
+
+  useLayoutEffect(() => {
+    if (!sectionRef.current) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setAnimate(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15, rootMargin: "120px 0px" }
+    );
+
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  useLayoutEffect(() => {
+    if (!animate) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".review-anim",
+        {
+          opacity: 0,
+          filter: "blur(14px)",
+          willChange: "opacity, filter",
+        },
+        {
+          opacity: 1,
+          filter: "blur(0px)",
+          duration: 0.45,
+          ease: "power3.out",
+          stagger: 0.15,
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, [animate]);
+
   return (
-    <section className="relative w-full pb-responsive">
+    <section ref={sectionRef} className="relative w-full pb-responsive">
+
       {isSmallerThanLg && (
         <>
-          <h2 className="heading-2 text-center pt-10">
+          <h2 className="review-anim opacity-0 heading-2 text-center pt-10">
             <span className="first-letter uppercase" data-first-letter="П">
               еревірено
             </span>{" "}
@@ -33,7 +79,7 @@ const ReviewSection = () => {
             </span>
           </h2>
 
-          <h3 className="heading-3 text-center pt-4">
+          <h3 className="review-anim opacity-0 heading-3 text-center pt-4">
             20 років науково-практичної діяльності, сотні клієнтів, наукові
             дослідження
             <br />і сертифікати, які підтверджують ефективність методик
@@ -42,7 +88,7 @@ const ReviewSection = () => {
       )}
 
       {isSmallerThanLg && (
-        <div className="relative w-full mt-6 mb-37.5 lg:mb-0">
+        <div className="review-anim opacity-0 relative w-full mt-6 mb-37.5 lg:mb-0">
           <button
             className={`
               swiper-button-prev-custom absolute left-0 top-60 z-20
@@ -89,7 +135,7 @@ const ReviewSection = () => {
           >
             {feedbacks.map((fb) => (
               <SwiperSlide key={fb.id}>
-                <div className="mx-auto w-[330px]">
+                <div className="review-anim opacity-0 mx-auto w-[330px]">
                   <FrameWrapper paddingX={23} paddingY={15}>
                     <Image src={fb.img} alt="feedback" />
                   </FrameWrapper>
@@ -105,13 +151,8 @@ const ReviewSection = () => {
           {feedbacks.map((fb) => (
             <div
               key={fb.id}
-              className="
-                transition-all duration-300 mx-3 my-3
-                w-[220px]
-                lg:w-[220px]
-                xl:w-[280px]
-                2xl:w-[270px]
-              "
+              className="review-anim opacity-0 transition-all duration-300 mx-3 my-3
+                w-[220px] lg:w-[220px] xl:w-[280px] 2xl:w-[270px]"
             >
               <FrameWrapper paddingX={20} paddingY={13}>
                 <Image src={fb.img} alt="feedback" />
@@ -120,6 +161,7 @@ const ReviewSection = () => {
           ))}
         </div>
       )}
+
       {!isSmallerThanLg && (
         <div className="relative w-full">
           <p className="absolute -left-5 -top-20 max-w-[180px] heading-5 hidden md:block">
@@ -128,17 +170,15 @@ const ReviewSection = () => {
           </p>
 
           <p className="absolute -right-5 text-right -top-10 heading-5 hidden md:block">
-            Це простір, де є місце <br /> стабільності, здоровим <br />{" "}
-            стосункам і особистому <br /> розвитку. Тут панує <br />{" "}
-            усвідомленість, а твої <br />
-            рішення працюють <br /> на твоє майбутнє
+            Це простір, де є місце<br/>стабільності, здоровим<br/>стосункам і особистому<br/> 
+            розвитку. Тут панує<br/>усвідомленість, а твої<br/>рішення працюють на<br/>твоє майбутнє
           </p>
         </div>
       )}
 
       {!isSmallerThanLg && (
         <>
-          <h2 className="heading-2 text-center pt-30">
+          <h2 className="review-anim opacity-0 heading-2 text-center pt-30">
             <span className="first-letter uppercase" data-first-letter="П">
               еревірено
             </span>{" "}
@@ -150,7 +190,7 @@ const ReviewSection = () => {
             </span>
           </h2>
 
-          <h3 className="heading-3 text-center pt-7">
+          <h3 className="review-anim opacity-0 heading-3 text-center pt-7">
             20 років науково-практичної діяльності, сотні клієнтів, наукові
             дослідження
             <br />і сертифікати, які підтверджують ефективність методик

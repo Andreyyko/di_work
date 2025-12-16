@@ -1,9 +1,9 @@
 import GOLD_BUTTON from './GoldButton.svg'
 import RED_BUTTON from './RedButton.svg'
-import RED_BUTTON_HOVER from './RedButtonHover.svg'
+import RED_BUTTON_FRAME from './RedButtonFrame.svg'
 
 export const frames_buttons = {
     GOLD_BUTTON,
     RED_BUTTON,
-    RED_BUTTON_HOVER
+    RED_BUTTON_FRAME
 }
