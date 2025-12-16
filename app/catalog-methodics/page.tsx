@@ -1,9 +1,24 @@
-import HeroSection from "@/components/CatalogMethodicsPage/HeroSection";
+"use client";
 
-export default function MethodicsCatalog() {
-    return (
-        <div className="px-5">
-            <HeroSection/>
-        </div>
-    )
-  }
+import HeroSection from "@/components/CatalogMethodicsPage/HeroSection";
+import MethodicsListUse from "@/components/CatalogMethodicsPage/MethodicsListUse";
+import ChoosePlanSection from "@/components/MainPage/ChoosePlanSection/ChoosePlanSection";
+import { white_letter } from "@/public/images/CommonImages/PostCard";
+import Image from "next/image"
+
+export default function MethodicsCatalogPage() {
+  return (
+    <div className="bg-brand-background relative overflow-hidden">
+        <section className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/hero_section_background.svg')]">
+      <HeroSection />
+      </section>
+      <section className="px-5 bg-[url('/images/CatalogMethodicsPage/backgrounds/MethodicsListBackGrounds.svg')]">
+        <MethodicsListUse />
+        <Image className="absolute right-0 -translate-y-230 w-130 rotate-15 translate-x-40 hidden md:block" src={white_letter.WHITE_POSTCARD} alt={"postcard"}/>
+      </section>
+      <section className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/CatalogMethodicsPage/backgrounds/MethodicsListBackGrounds.svg')] pb-6">
+      <ChoosePlanSection />
+      </section>
+    </div>
+  );
+}

@@ -41,7 +41,7 @@ export default function MethodCard({ item }: Props) {
           <Link href="#" className="heading-6 underline">
             Дізнатися більше
           </Link>
-          <span className="heading-3 text-[#262626]">{item.price}</span>
+          <span className="heading-3 text-brand-gray">{item.price}</span>
         </div>
         <div className="flex justify-center mt-6">
           <TwoFrameButton variant="one" label="Придбати" />
