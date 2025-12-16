@@ -1,6 +1,7 @@
 "use client";
 
-import React from "react";
+import React, { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
 
 import { IdentityIntroImages } from "@/public/images/MainPageImages/IdentityIntroImages";
 import FrameWrapper from "../../common/FrameWrapper";
@@ -10,15 +11,35 @@ const IdentityIntro: React.FC = () => {
   const { width } = useWindowWidth();
   const showImage = width !== null && width >= 640;
 
+  const sectionRef = useRef<HTMLElement | null>(null);
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const items = gsap.utils.toArray<HTMLElement>(".identity-item");
+
+      gsap.set(items, { opacity: 0, yPercent: 20 });
+
+      gsap.to(items, {
+        opacity: 1,
+        yPercent: 0,
+        duration: 0.9,
+        ease: "power3.out",
+        stagger: 0.12,
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="w-full pb-6 flex flex-col">
+    <section ref={sectionRef} className="w-full pb-6 flex flex-col">
       <div className="text-left sm:whitespace-nowrap">
-        <h2 className="heading-2 uppercase tracking-[-4px] sm:tracking-[-0.01em]">
-          <span className="first-letter uppercase">перший</span> в україні{" "}
-          <br />
+        <h2 className="identity-item heading-2 uppercase tracking-[-4px] sm:tracking-[-0.01em]">
+          <span className="first-letter uppercase">перший</span> в україні <br />
         </h2>
-        <div className="flex flex-row items-center justify-between max-w-[95%] ">
-          {showImage  && (
+
+        <div className="identity-item flex flex-row items-center justify-between max-w-[95%]">
+          {showImage && (
             <div className="flex items-center justify-center w-[450px]">
               <FrameWrapper
                 src={IdentityIntroImages.OpenBookImages}
@@ -38,19 +59,19 @@ const IdentityIntro: React.FC = () => {
               <span className="hidden sm:inline">ЩО ПОЄДНУЄ РІЗНІ</span>
             </span>
 
-            <span className="sm:hidden block">
+            <span className="sm:hidden ">
               <br />
-              <span className="tracking-[-4px]">ПОЄДНУЄ</span>
+              <span className="first-letter tracking-[-4px]" data-first-letter="П">ОЄДНУЄ</span>
             </span>
           </p>
         </div>
 
-        <p className="heading-2 whitespace-nowrap uppercase tracking-[-4px] sm:tracking-[-0.01em]">
+        <p className="identity-item heading-2 whitespace-nowrap uppercase tracking-[-4px] sm:tracking-[-0.01em]">
           <span className="sm:hidden">РІЗНІ </span>напрямки{" "}
           <span className="sm:hidden block" /> доказової
         </p>
 
-        <div className="flex flex-row items-center w-full justify-end xl:gap-32 md:gap-20 gap-10">
+        <div className="identity-item flex flex-row items-center w-full justify-end xl:gap-32 md:gap-20 gap-10">
           <p className="hidden sm:block heading-3 whitespace-nowrap">
             Ресурсно-орієнтований <br />
             когнітивно проведінковий
@@ -62,16 +83,16 @@ const IdentityIntro: React.FC = () => {
           </p>
         </div>
 
-        <p className="heading-2 sm:whitespace-nowrap uppercase tracking-[-4px] sm:tracking-[-0.01em]">
+        <p className="identity-item heading-2 sm:whitespace-nowrap uppercase tracking-[-4px] sm:tracking-[-0.01em]">
           <span className="sm:first-letter">нa</span> підтримку психічного
         </p>
 
-        <p className="heading-2 text-right w-[92%] sm:whitespace-nowrap uppercase tracking-[-4px] sm:tracking-[-0.01em]">
+        <p className="identity-item heading-2 text-right w-[92%] sm:whitespace-nowrap uppercase tracking-[-4px] sm:tracking-[-0.01em]">
           <span className="first-letter">здоров'я</span> та{" "}
           <span className="sm:first-letter">всіх</span> сфер
         </p>
 
-        <div className="flex flex-row items-center justify-between">
+        <div className="identity-item flex flex-row items-center justify-between">
           <p className="heading-2 sm:whitespace-nowrap uppercase tracking-[-4px] sm:tracking-[-0.01em]">
             особистості
           </p>
@@ -83,7 +104,7 @@ const IdentityIntro: React.FC = () => {
           </p>
         </div>
 
-        <p className="heading-3 whitespace-nowrap mt-5 sm:hidden">
+        <p className="identity-item heading-3 whitespace-nowrap mt-5 sm:hidden">
           Ресурсно-орієнтований <br />
           когнітивно проведінковий
         </p>
