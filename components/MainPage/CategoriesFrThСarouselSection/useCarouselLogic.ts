@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 
 import { layoutMap } from "./layoutMap";
-import { CategoriesFrThCarouselData } from "@/constant/MainPageConstant/CategoriesFrThCarouselData";
+import { CategoriesFrThCarouselData } from "@/constant/common/CategoriesFrThCarouselData";
 
 export const useCarouselLogic = (breakpoint: string) => {
   const layout = layoutMap[breakpoint] ?? layoutMap["xl"];

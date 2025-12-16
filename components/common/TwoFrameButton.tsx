@@ -39,7 +39,7 @@ const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
       onClick={() => !disabled && onActivate?.()}
       onMouseEnter={() => !disabled && setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className={`relative block w-full max-w-[324px] aspect-324/213 ${className}`}
+      className={`relative block w-full max-w-[324px] aspect-324/213 shrink-0 ${className}`}
       style={{
         border: "none",
         background: "transparent",
