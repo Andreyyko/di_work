@@ -2,6 +2,7 @@
 
 import HeroSection from "@/components/MainPage/HeroSection/HeroSection";
 import LazySection from "@/components/common/LazySection";
+import TwoFrameButtonGroup from "@/components/common/TwoFrameButtonGroup";
 
 export default function Home() {
   return (
