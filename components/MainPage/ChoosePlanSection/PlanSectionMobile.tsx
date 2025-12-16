@@ -37,7 +37,6 @@ const PlanSectionMobile = () => {
         </span>
       </FrameWrapper>
 
-      {/* 2️⃣ МЕДІУМ */}
       <FrameWrapper
         paddingX={40}
         paddingY={60}

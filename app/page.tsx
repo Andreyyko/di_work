@@ -5,6 +5,7 @@ import LazySection from "@/components/common/LazySection";
 import TwoFrameButtonGroup from "@/components/common/TwoFrameButtonGroup";
 
 export default function Home() {
+
   return (
     <main className="bg-brand-background overflow-hidden">
       <section className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/hero_section_background.svg')]">

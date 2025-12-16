@@ -3,7 +3,9 @@
 import React, { useState } from "react";
 import TwoFrameButton, { TwoFrameButtonProps } from "./TwoFrameButton";
 
+
 type GroupButton = Omit<TwoFrameButtonProps, "isActive">;
+
 
 export type TwoFrameButtonGroupProps = {
   buttons: GroupButton[];
