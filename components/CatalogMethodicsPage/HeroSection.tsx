@@ -1,10 +1,12 @@
+"use client";
+
 import { CheckItems } from "@/constant/MainPageConstant/heroSectionData";
 import CheckItem from "../common/CheckItem";
 import FrameWrapper from "../common/FrameWrapper";
 
 const HeroSection = () => {
   return (
-    <section className="pb-responsive">
+    <section className="pb-0 md:pb-62.5">
       <h5 className="heading-5 text-left -translate-x-5">
         Не важливо, як саме ти
         <br />
@@ -12,31 +14,71 @@ const HeroSection = () => {
         <br />
         думки мають значення.
       </h5>
-      <h2 className="heading-2 first-letter text-center pt-15">
-        <span className="first-letter" data-first-letter="Р">
-          ОК-М, BEUNIQUE.HEALTH —
-        </span>
-        <span className="">
-          ПЕРША
-          <span className="first-letter" data-first-letter="У">
-            КРАЇНСЬКА
-          </span>{" "}
-          EVIDENCE-BASED ОНЛАЙН-ПЛАТФОРМА
-        </span>
-        <span className="first-letter">З</span>
-        <span className="first-letter" data-first-letter="П">
-          ОНАД ТИСЯЧУ
-        </span>
-        <br />
-        ТЕРАПЕВТИЧНИХ
-        <span className="first-letter">ТЕХНІК І</span>
-        <br />
-        <span className="first-letter" data-first-letter="М">
-          {" "}
-          ЕТОДИК
-        </span>
+      <h2 className="heading-2 text-center pt-15 hidden lg:block">
+        <div className="">
+          <span className="first-letter" data-first-letter="Р">
+            ОК-М, BEUNIQUE.HEALTH —
+          </span>
+          <span>
+            ПЕРША{" "}
+            <span className="first-letter" data-first-letter="У">
+              КРАЇНСЬКА
+            </span>{" "}
+            EVIDENCE-BASED ОНЛАЙН-ПЛАТФОРМА{" "}
+          </span>
+          <span className="first-letter">З</span>
+          <span className="first-letter" data-first-letter="П">
+            ОНАД ТИСЯЧУ
+          </span>
+          <br />
+          ТЕРАПЕВТИЧНИХ <span className="first-letter">ТЕХНІК І</span>
+          <br />
+          <span className="first-letter" data-first-letter="М">
+            ЕТОДИК
+          </span>
+        </div>
       </h2>
-      <div className="pt-15 flex flex-col md:flex-row md:items-center lg:items-start justify-between gap-12">
+
+      <h2 className="heading-2 text-center pt-10 flex flex-col items-center -tracking-widest lg:hidden">
+        <div>
+          <span className="first-letter" data-first-letter="Р">
+            ОК-М,
+          </span>{" "}
+          BEUNIQUE.HEALTH
+        </div>
+
+        <div>— ПЕРША</div>
+
+        <div>
+          <span className="first-letter" data-first-letter="У">
+            УКРАЇНСЬКА
+          </span>
+        </div>
+
+        <div>EVIDENCE-BASED</div>
+
+        <div>ОНЛАЙН-ПЛАТФОРМА <span className="first-letter">З</span></div>
+        
+        <div className="tracking-[-0.12em]">
+          <span className="first-letter" data-first-letter="П">
+            ОНАД
+          </span>{" "}
+          ТИСЯЧУ
+        </div>
+
+        <div>ТЕРАПЕВТИЧНИХ</div>
+
+        <div>
+          <span className="first-letter" data-first-letter="Т">
+            ЕХНІК І{" "}
+            <span className="first-letter" data-first-letter="М">
+              ЕТОДИК
+            </span>
+          </span>
+        </div>
+      </h2>
+
+      <div className="pt-0 md:pt-15 flex flex-col md:flex-row md:items-center lg:items-start justify-between gap-12">
         <p className="heading-4 mt-5 flex items-center justify-center mb-8 sm:mt-8">
           Практичні техніки, вправи, ігри та
           <br />

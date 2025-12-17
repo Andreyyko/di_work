@@ -39,7 +39,7 @@ const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
       onClick={() => !disabled && onActivate?.()}
       onMouseEnter={() => !disabled && setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className={`relative block w-full max-w-[324px] aspect-324/213 shrink-0 ${className}`}
+      className={`relative inline-block ${className}`}
       style={{
         border: "none",
         background: "transparent",
@@ -47,40 +47,48 @@ const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
         cursor: disabled ? "not-allowed" : "pointer",
       }}
     >
-      {variant === "one" && (
-        <>
-          <Image
-            src={goldButton}
-            alt="gold button"
-            fill
-            className="absolute object-contain pointer-events-none"
-          />
+      {/* НАДІЙНИЙ АНТИДЕФОРМАЦІЙНИЙ WRAPPER */}
+      <div
+        className="relative w-[324px] max-w-full"
+        style={{
+          aspectRatio: "324 / 213",
+        }}
+      >
+        {/* VARIANT ONE */}
+        {variant === "one" && (
+          <>
+            <Image
+              src={goldButton}
+              alt="gold button"
+              fill
+              className="absolute object-contain pointer-events-none"
+            />
 
-          <div className="absolute inset-0 grid place-items-center font-kudriashov uppercase text-[#9E7557] text-[clamp(12px,4vw,19px)]">
-            {label}
-          </div>
-        </>
-      )}
+            <div className="absolute inset-0 grid place-items-center font-kudriashov uppercase text-[#9E7557] text-[clamp(12px,4vw,19px)]">
+              {label}
+            </div>
+          </>
+        )}
 
-      {variant === "two" && (
-        <>
-          <Image
-            src={showHover ? redButtonFrame : redButton}
-            alt="button"
-            fill
-            className="absolute object-contain pointer-events-none transition-all duration-150"
-          />
+        {/* VARIANT TWO */}
+        {variant === "two" && (
+          <>
+            <Image
+              src={showHover ? redButtonFrame : redButton}
+              alt="button"
+              fill
+              className="absolute object-contain pointer-events-none transition-all duration-150"
+            />
 
-          <div
-            className="absolute inset-[8%] grid place-items-center uppercase font-kudriashov text-[clamp(12px,4vw,18px)] transition-colors duration-150"
-            style={{
-              color: showHover ? "white" : "#67161F",
-            }}
-          >
-            {label}
-          </div>
-        </>
-      )}
+            <div
+              className="absolute inset-[8%] grid place-items-center uppercase font-kudriashov text-[clamp(12px,4vw,18px)] transition-colors duration-150"
+              style={{ color: showHover ? "white" : "#67161F" }}
+            >
+              {label}
+            </div>
+          </>
+        )}
+      </div>
     </button>
   );
 };
