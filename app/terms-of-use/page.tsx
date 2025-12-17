@@ -1,35 +1,33 @@
 import PrivacySection from "@/components/common/PrivacySection";
+import { TermsOfuseData } from "@/constant/TermsOfUseConstant/TermsOfUseData";
 import { footer_images } from "@/public/images/CommonImages/FooterImages";
-import Image from "next/image";
-import { PravicyData } from "@/constant/PrivacyConstant/privacyData";
 import { white_letter } from "@/public/images/CommonImages/PostCard";
+import Image from 'next/image'
 
-export default function PrivacyPage() {
+export default function TermsOfUsePage() {
   return (
-    <section className="px-5  bg-[url('/images/CatalogMethodicsPage/backgrounds/MethodicsListBackGrounds.svg')]">
+    <section className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/CatalogMethodicsPage/backgrounds/MethodicsListBackGrounds.svg')]">
       <Image
         className="absolute right-0 translate-y-250 w-90 lg:w-130 lg:translate-y-290 rotate-15 translate-x-40 hidden md:block"
         src={white_letter.WHITE_POSTCARD}
         alt={"postcard"}
       />
       <h5 className="heading-5 -translate-x-5">
-        Ваша довіра — наш
+        Ваші дані — це ваша
         <br />
-        найцінніший ресурс, і ми
+        історія, і ми піклуємося,
         <br />
-        оберігаємо її з повагою та
-        <br />
-        турботою
+        щоб її берегли.
       </h5>
-      <h2 className="heading-privacy text-center flex flex-col uppercase -tracking-widest pt-13 lg:pt-22 pb-37.5 lg:pb-94.5">
-        <span className="first-letter-privacy" data-first-letter="П">
-          олітика
+      <h2 className="heading-2 text-center flex flex-col uppercase -tracking-widest pt-13 lg:pt-22 pb-37.5 lg:pb-94.5 -translate-x-3">
+        <span className="first-letter" data-first-letter="у">
+          мови
         </span>
-        <span className="first-letter-privacy" data-first-letter="К">
-          онфіденційності
+        <span className="first-letter" data-first-letter="К">
+          ористування
         </span>
       </h2>
-      {PravicyData.map((block, index) => (
+      {TermsOfuseData.map((block, index) => (
         <PrivacySection key={index} {...block} />
       ))}
 
