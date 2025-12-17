@@ -8,6 +8,7 @@ import CustomSeal from "@/components/common/CustomSeal";
 import { useEffect, useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { usePathname } from "next/navigation";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,6 +16,8 @@ const ValidationSection = () => {
   const letterDesktopRef = useRef<HTMLImageElement>(null);
   const letterMobileRef = useRef<HTMLImageElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+  const isFaqPage = pathname === "/faq";
 
   useEffect(() => {
     if (!letterDesktopRef.current) return;
@@ -85,7 +88,10 @@ const ValidationSection = () => {
   return (
     <div
       ref={wrapperRef}
-      className="w-full flex md:flex-row lg:justify-start flex-col-reverse xl:justify-between items-center pb-5 pb-responsive"
+      className={`
+    w-full flex md:flex-row lg:justify-start flex-col-reverse
+    xl:justify-between items-center pb-5 pb-responsive
+  `}
     >
       <div className="md:w-[50%] w-full md:-translate-x-5 md:px-0 justify-center 2xl:justify-start -mx-5 hidden md:flex">
         <div className="relative w-fit h-fit">

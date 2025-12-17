@@ -10,7 +10,7 @@ interface Props {
 export default function FaqTabs({ activeTab, onChange }: Props) {
   const tabsOne = [
     { id: "methodologies", label: "Про методики" },
-    { id: "trainings", label: "Про тренінги та МАК-картки" },
+    { id: "trainings", label: "Про тренінги та МАК картини" },
     { id: "payment", label: "Про оплату та доступ" },
     { id: "certificates", label: "Про сертифікати" },
     { id: "results", label: "Про результати" },

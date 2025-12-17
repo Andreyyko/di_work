@@ -66,7 +66,7 @@ export default function FaqList({ items }: Props) {
   return (
     <div
       ref={listRef}
-      className="w-full px-3 mt-50 mb-20 sm:mb-50"
+      className="w-full px-3 mt-20 sm:mt-50 mb-20 sm:mb-50"
     >
       {items.map((item, i) => {
         const open = isOpen(i);

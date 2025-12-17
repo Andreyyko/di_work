@@ -13,6 +13,7 @@ export type TwoFrameButtonProps = {
   variant: Variant;
   label: string;
   isActive?: boolean;
+  isFaq?: boolean; // Indicates usage inside FAQ section
   onActivate?: () => void;
   disabled?: boolean;
   className?: string;
@@ -23,14 +24,20 @@ const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
   variant,
   label,
   isActive = false,
+  isFaq = false,
   onActivate,
   disabled = false,
   type = "button",
   className = "",
 }) => {
   const [hover, setHover] = useState(false);
+  const [pressed, setPressed] = useState(false);
 
-  const showHover = !disabled && (hover || isActive);
+  const interactive = !disabled && (hover || isActive);
+
+  // Ultra-soft motion values
+  const scale = disabled ? 1 : pressed ? 0.985 : interactive ? 1.015 : 1;
+  const translateY = disabled ? 0 : pressed ? 0.5 : interactive ? -1.5 : 0;
 
   return (
     <button
@@ -38,7 +45,12 @@ const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
       disabled={disabled}
       onClick={() => !disabled && onActivate?.()}
       onMouseEnter={() => !disabled && setHover(true)}
-      onMouseLeave={() => setHover(false)}
+      onMouseLeave={() => {
+        setHover(false);
+        setPressed(false);
+      }}
+      onMouseDown={() => !disabled && setPressed(true)}
+      onMouseUp={() => setPressed(false)}
       className={`relative inline-block ${className}`}
       style={{
         border: "none",
@@ -47,11 +59,13 @@ const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
         cursor: disabled ? "not-allowed" : "pointer",
       }}
     >
-      {/* НАДІЙНИЙ АНТИДЕФОРМАЦІЙНИЙ WRAPPER */}
+      {/* Stable geometry wrapper */}
       <div
-        className="relative w-[324px] max-w-full"
+        className={`relative ${isFaq ? " overflow-hidden h-23 sm:h-auto" : ""}  w-[324px] max-w-full`}
         style={{
           aspectRatio: "324 / 213",
+          transform: `translateY(${translateY}px) scale(${scale})`,
+          transition: "transform 620ms cubic-bezier(0.25, 0.8, 0.25, 1)",
         }}
       >
         {/* VARIANT ONE */}
@@ -64,7 +78,12 @@ const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
               className="absolute object-contain pointer-events-none"
             />
 
-            <div className="absolute inset-0 grid place-items-center font-kudriashov uppercase text-[#9E7557] text-[clamp(12px,4vw,19px)]">
+            <div
+              className="absolute inset-0 grid place-items-center font-kudriashov uppercase text-[clamp(12px,4vw,19px)] transition-colors duration-400"
+              style={{
+                color: interactive ? "#8C6A4D" : "#9E7557",
+              }}
+            >
               {label}
             </div>
           </>
@@ -74,15 +93,19 @@ const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
         {variant === "two" && (
           <>
             <Image
-              src={showHover ? redButtonFrame : redButton}
-              alt="button"
+              src={interactive ? redButtonFrame : redButton}
+              alt="red button"
               fill
-              className="absolute object-contain pointer-events-none transition-all duration-150"
+              className="absolute object-contain pointer-events-none transition-opacity duration-400"
             />
 
             <div
-              className="absolute inset-[8%] grid place-items-center uppercase font-kudriashov text-[clamp(12px,4vw,18px)] transition-colors duration-150"
-              style={{ color: showHover ? "white" : "#67161F" }}
+              className={`absolute inset-[8%] grid place-items-center uppercase leading-4 md:leading-6 md:tracking-[-2px] font-kudriashov transition-colors duration-400 ${
+                isFaq ? "text-[14px] sm:text-[20px] md:text-[22px] lg:text-[25px]" : "text-[clamp(12px,4vw,18px)]"
+              }`}
+              style={{
+                color: interactive ? "white" : "#67161F",
+              }}
             >
               {label}
             </div>
