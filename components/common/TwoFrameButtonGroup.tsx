@@ -3,9 +3,7 @@
 import React, { useState } from "react";
 import TwoFrameButton, { TwoFrameButtonProps } from "./TwoFrameButton";
 
-
 type GroupButton = Omit<TwoFrameButtonProps, "isActive">;
-
 
 export type TwoFrameButtonGroupProps = {
   buttons: GroupButton[];
@@ -20,9 +18,10 @@ const TwoFrameButtonGroup: React.FC<TwoFrameButtonGroupProps> = ({
 
   return (
     <div className={` ${className}`}>
-      <div className="grid  lg:grid-cols-1   gap-4">
-        <div className="flex flex-wrap items-center  justify-center">
+      <div className="flex flex-wrap items-center mx-2 justify-center">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5 md:gap-6 lg:gap-12.5">
           {buttons.map((btn, index) => (
+         
             <TwoFrameButton
               key={index}
               {...btn}
@@ -32,7 +31,9 @@ const TwoFrameButtonGroup: React.FC<TwoFrameButtonGroupProps> = ({
                 setActiveIndex(index);
                 btn.onActivate?.();
               }}
+              isFaq
             />
+          
           ))}
         </div>
       </div>

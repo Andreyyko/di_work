@@ -14,24 +14,36 @@ export default function FaqPage() {
 
   return (
     <div className="">
-      <div className="absolute top-0 left-0 max-w-sm">
-        <p className="heading-5 opacity-70">
+      <div
+        className="
+    absolute
+    top-0 left-0
+    md:max-w-sm
+
+    /* MOBILE */
+  
+    max-sm:right-0
+   
+    max-sm:text-right
+    max-sm:scale-x-[-1]
+
+  
+  "
+      >
+        <p className="heading-5 opacity-70 max-sm:scale-x-[-1]">
           Запитання — це перший крок
           <br /> до відкриття нових горизонтів,
           <br /> де кожна відповідь — це новий
           <br /> шлях до розуміння.
         </p>
-      </div>      
+      </div>
+
       <h1 className="heading-2 uppercase mb-20 mt-32 text-center">
         <span className="first-letter">FAQ</span> —{" "}
         <span className="first-letter">Часті</span> запитання
       </h1>
-      
-      <FaqTabs
-  activeTab={activeTab}
-  onChange={setActiveTab}
-/>
 
+      <FaqTabs activeTab={activeTab} onChange={setActiveTab} />
       <FaqList items={(faqData as any)[activeTab]} />
       {activeTab === "methodologies" && (
         <div className="-mb-50">
@@ -40,12 +52,12 @@ export default function FaqPage() {
         </div>
       )}
       {activeTab === "certificates" && (
-        <div className="-mb-50">
+        <div className="mb-20 md:-mb-50">
           <ValidationSection />{" "}
         </div>
       )}
       {activeTab === "results" && (
-        <div className="-mb-50">
+        <div className="-mb-15 md:-mb-50">
           <ReviewSection />{" "}
         </div>
       )}
