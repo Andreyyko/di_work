@@ -27,7 +27,6 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
       const menuItems = ".menu-item";
 
       if (!closing) {
-        // 🔥 Анімація заднього фону (оновлена)
         gsap.fromTo(
           menuRef.current,
           { opacity: 0, scale: 1.05, filter: "blur(6px)" },
@@ -40,7 +39,6 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
           }
         );
 
-        // 🔥 Анімація рамки меню
         gsap.fromTo(
           frameRef.current,
           { opacity: 0, scale: 0.92, filter: "blur(12px)" },
@@ -54,7 +52,6 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
           }
         );
 
-        // 🔥 Анімація пунктів меню
         gsap.fromTo(
           items,
           { opacity: 0, y: 8, filter: "blur(10px)" },
@@ -69,10 +66,8 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
           }
         );
       } else {
-        // 🔥 Анімація закриття
         const tl = gsap.timeline();
 
-        // зникнення тексту меню
         tl.to(items, {
           opacity: 0,
           duration: 0.25,
@@ -92,7 +87,6 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
           0
         );
 
-        // рамка ховається
         tl.to(
           frameRef.current,
           {
@@ -105,7 +99,6 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
           "-=0.2"
         );
 
-        // 🔥 нова анімація фону при закритті
         tl.to(
           menuRef.current,
           {
@@ -171,11 +164,11 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
               <span className="first-letter" data-first-letter="П">ро нас</span>
             </button>
 
-            <button className="heading-2-burger uppercase sm:translate-x-5 menu-item menu-fade">
+            <button className="heading-2-burger uppercase sm:translate-x-10 menu-item menu-fade">
               <span className="first-letter-burger" data-first-letter="Р">озділи</span>
             </button>
 
-            <button className="heading-2-burger uppercase pl-25 sm:-translate-x-5 menu-item menu-fade">
+            <button className="heading-2-burger uppercase pl-15 md:pl-25 sm:-translate-x-5 menu-item menu-fade">
               МА
               <span className="first-letter-burger" data-first-letter="К">
                 <span className="opacity-0">O</span>
