@@ -6,6 +6,8 @@ import InsideMak from "./InsideMak";
 import Purpose from "./Purpose";
 import { mak_gallery_images } from "@/public/images/MakGallery";
 import MakPlan from "./MakPlan";
+import Image from "next/image";
+import { white_letter } from "@/public/images/CommonImages/PostCard";
 
 export default function MakGalleryPage() {
   return (
@@ -44,6 +46,11 @@ export default function MakGalleryPage() {
             юдини
           </span>
         </span>
+        <Image
+          src={white_letter.WHITE_POSTCARD}
+          alt="postcard"
+          className="absolute left-[35%] w-[30%] z-50 rotate-10 hidden lg:block"
+        />
       </h2>
       <MakImages />
       <AuthorCol />
