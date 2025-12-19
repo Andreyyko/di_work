@@ -42,9 +42,7 @@ function renderLine(
           <span
             key={idx}
             className={
-              isHighlighted
-                ? "first-letter uppercase -translate-y-1"
-                : ""
+              isHighlighted ? "first-letter uppercase -translate-y-1" : ""
             }
           >
             {word}
@@ -61,13 +59,16 @@ export default function CustomHeading(props: CustomHeadingProps) {
     : props;
 
   return (
-    <div className="w-full flex flex-col items-center justify-center text-center py-10 pt-28">
-      <PhotoFrame src={data.image} />
+    <div>
+        <h5 className="-translate-x-5 heading-5">Відновлення довіри,<br/>покращення комунікації та<br/>гармонія у стосунках через<br/>спільне розуміння.</h5>
+      <div className="w-full flex flex-col items-center justify-center text-center py-10">
+        <PhotoFrame src={data.image} />
 
-      <div className="mt-6 flex flex-col w-full heading-2 uppercase">
-        {renderLine(data.line1, data.highlightWords1, "start")}
-        {renderLine(data.line2, data.highlightWords2, "end")}
-        {renderLine(data.line3, data.highlightWords3, "start")}
+        <div className="mt-6 flex flex-col w-full heading-2 uppercase">
+          {renderLine(data.line1, data.highlightWords1, "start")}
+          {renderLine(data.line2, data.highlightWords2, "end")}
+          {renderLine(data.line3, data.highlightWords3, "start")}
+        </div>
       </div>
     </div>
   );
