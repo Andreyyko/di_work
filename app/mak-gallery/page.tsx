@@ -8,12 +8,11 @@ import { mak_gallery_images } from "@/public/images/MakGallery";
 import MakPlan from "./MakPlan";
 import Image from "next/image";
 import { white_letter } from "@/public/images/CommonImages/PostCard";
-import CustomHeading from "@/components/common/CustomHeading";
 
 export default function MakGalleryPage() {
   return (
     <section className="px-5 bg-[url('/images/CatalogMethodicsPage/backgrounds/MethodicsListBackGrounds.svg')] overflow-hidden">
-      {/* <h5 className="heading-5 -translate-x-5">
+      <h5 className="heading-5 -translate-x-5">
         Тренінги для відновлення
         <br />
         ресурсу — це не просто
@@ -66,8 +65,7 @@ export default function MakGalleryPage() {
         paddingX={20}
         paddingY={40}
       />
-      <MakPlan /> */}
-      <CustomHeading preset="kids"/>
+      <MakPlan />
     </section>
   );
 }
