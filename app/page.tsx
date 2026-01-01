@@ -39,7 +39,7 @@ export default function Home() {
         loader={() =>
           import("@/components/MainPage/MakMethodicInfo/MakMethodicInfo")
         }
-        className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/Mak_Methodic_Info_Background.svg')]"
+        className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/CatalogMethodicsPage/backgrounds/MethodicsListBackGrounds.svg')]"
       />
 
       <LazySection
