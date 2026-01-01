@@ -34,7 +34,7 @@ const PrivacySection: React.FC<PrivacySectionProps> = ({
   className = "",
 }) => {
   return (
-    <section className={`mb-10 w-fit ${className}`}>
+    <div className={`mb-10 w-fit ${className}`}>
       {title && <h3 className="heading-3 uppercase pb-5 w-fit">{title}</h3>}
 
       {descriptionpurpose && (
@@ -112,7 +112,7 @@ const PrivacySection: React.FC<PrivacySectionProps> = ({
           {extra_three}
         </p>
       )}
-    </section>
+    </div>
   );
 };
 

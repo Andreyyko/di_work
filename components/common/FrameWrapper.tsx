@@ -1,9 +1,11 @@
 "use client";
 
-import React, { forwardRef } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import CustomSeal from "./CustomSeal";
 import { ornament_item } from "@/public/images/CommonImages/OrnamentIcon";
+
+/* ===================== TYPES ===================== */
 
 export type Corner =
   | "top-left"
@@ -11,6 +13,7 @@ export type Corner =
   | "bottom-left"
   | "bottom-right"
   | "center";
+
 export type ImgSrc = string | StaticImageData;
 
 export type Ornament = {
@@ -36,8 +39,15 @@ export type FrameWrapperProps = {
   frameThickness?: string;
   gap?: string;
 
+  /** padding до lg */
   paddingX?: number | string;
+  /** padding з lg і вище */
+  paddingXDesktop?: number | string;
+
+  /** padding до lg */
   paddingY?: number | string;
+  /** padding з lg і вище */
+  paddingYDesktop?: number | string;
 
   paddingTop?: number | string;
   paddingBottom?: number | string;
@@ -59,7 +69,7 @@ export type FrameWrapperProps = {
 
   showSeal?: boolean;
   sealHideUntilHover?: boolean;
-  sealResponsiveButton?: boolean; 
+  sealResponsiveButton?: boolean;
   sealButtonDesktop?: "left" | "right";
 
   sealPosition?: Exclude<Corner, "center">;
@@ -79,6 +89,8 @@ export type FrameWrapperProps = {
   style?: React.CSSProperties;
   children?: React.ReactNode;
 };
+
+/* ===================== HELPERS ===================== */
 
 const toCss = (v?: string | number) =>
   v === undefined ? undefined : typeof v === "number" ? `${v}px` : v;
@@ -140,6 +152,8 @@ const addPadding = (base?: string | number, extra?: string | number) => {
   return `${b + e}px`;
 };
 
+/* ===================== COMPONENT ===================== */
+
 const FrameWrapper = forwardRef<HTMLDivElement, FrameWrapperProps>(
   (
     {
@@ -150,7 +164,9 @@ const FrameWrapper = forwardRef<HTMLDivElement, FrameWrapperProps>(
       gap = "10px",
 
       paddingX,
+      paddingXDesktop,
       paddingY,
+      paddingYDesktop,
       paddingTop,
       paddingBottom,
       paddingLeft,
@@ -170,7 +186,7 @@ const FrameWrapper = forwardRef<HTMLDivElement, FrameWrapperProps>(
       showSeal = false,
       sealHideUntilHover = false,
       sealResponsiveButton = false,
-      sealButtonDesktop, 
+      sealButtonDesktop,
       sealPosition = "bottom-right",
       sealSize = 200,
       sealOffsetX = 0,
@@ -190,8 +206,31 @@ const FrameWrapper = forwardRef<HTMLDivElement, FrameWrapperProps>(
     },
     ref
   ) => {
-    const basePadY = toCss(paddingY) ?? gap;
-    const basePadX = toCss(paddingX) ?? gap;
+    /* ===== breakpoint ===== */
+    const [isDesktop, setIsDesktop] = useState(false);
+
+    useEffect(() => {
+      const mq = window.matchMedia("(min-width: 1024px)");
+      const update = () => setIsDesktop(mq.matches);
+      update();
+      mq.addEventListener("change", update);
+      return () => mq.removeEventListener("change", update);
+    }, []);
+
+    /* ===== paddings ===== */
+    const basePadX =
+      toCss(
+        isDesktop && paddingXDesktop !== undefined
+          ? paddingXDesktop
+          : paddingX
+      ) ?? gap;
+
+    const basePadY =
+      toCss(
+        isDesktop && paddingYDesktop !== undefined
+          ? paddingYDesktop
+          : paddingY
+      ) ?? gap;
 
     const finalPadTop = addPadding(basePadY, paddingTop);
     const finalPadBottom = addPadding(basePadY, paddingBottom);
@@ -237,13 +276,7 @@ const FrameWrapper = forwardRef<HTMLDivElement, FrameWrapperProps>(
             children
           ) : src ? (
             fill ? (
-              <div
-                style={{
-                  position: "relative",
-                  width: "100%",
-                  height: "100%",
-                }}
-              >
+              <div style={{ position: "relative", width: "100%", height: "100%" }}>
                 <Image
                   src={src}
                   alt={alt}
@@ -278,11 +311,7 @@ const FrameWrapper = forwardRef<HTMLDivElement, FrameWrapperProps>(
         {showOrnaments &&
           ornamentsToRender.map((o, i) => {
             const pos = o.position ?? "top-right";
-            const base = cornerStyle(
-              pos,
-              o.offsetX ?? 0,
-              o.offsetY ?? 0
-            );
+            const base = cornerStyle(pos, o.offsetX ?? 0, o.offsetY ?? 0);
             const scaleX = o.flipH ? -1 : 1;
             const scaleY = o.flipV ? -1 : 1;
 
@@ -311,11 +340,7 @@ const FrameWrapper = forwardRef<HTMLDivElement, FrameWrapperProps>(
         {showSeal && (
           <div
             style={{
-              ...cornerStyle(
-                sealPosition,
-                sealOffsetX,
-                sealOffsetY
-              ),
+              ...cornerStyle(sealPosition, sealOffsetX, sealOffsetY),
               zIndex: 6,
             }}
           >
