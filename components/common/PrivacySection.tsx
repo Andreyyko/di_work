@@ -16,7 +16,7 @@ const PrivacySection: React.FC<PrivacySectionProps> = ({
   className = "",
 }) => {
   return (
-    <section className={`mb-10 ${className}`}>
+    <div className={`mb-20  ${className}`}>
       
       {title && (
         <h3 className="heading-3 uppercase mb-5">
@@ -25,13 +25,13 @@ const PrivacySection: React.FC<PrivacySectionProps> = ({
       )}
 
       {description && (
-        <p className="heading-4 max-w-full md:max-w-[50%] mb-2.5">
+        <p className="heading-4 max-w-full md:max-w-[50%] mb-2.5 tracking-[-0.05em]">
           {description}
         </p>
       )}
 
       {list && list.length > 0 && (
-        <ul className="list-disc heading-4 pl-5 mb-2.5 max-w-full md:max-w-[55%]">
+        <ul className="list-disc heading-4 pl-5 mb-2.5 max-w-full md:max-w-[55%] tracking-[-0.05em]">
           {list.map((item, i) => (
             <li key={i}>{item}</li>
           ))}
@@ -39,11 +39,11 @@ const PrivacySection: React.FC<PrivacySectionProps> = ({
       )}
 
       {extra && (
-        <p className="heading-4 max-w-full md:max-w-[55%]">
+        <p className="heading-4 max-w-full md:max-w-[55%] tracking-[-0.05em]">
           {extra}
         </p>
       )}
-    </section>
+    </div>
   );
 };
 

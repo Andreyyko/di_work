@@ -7,7 +7,7 @@ import FrameWrapper from "@/components/common/FrameWrapper";
 
 export default function AboutUs() {
   return (
-    <div className="px-5 relative overflow-hidden">
+    <div className="px-5 relative overflow-hidden bg-[url('/images/MainPageImages/backgrounds/hero_section_background.svg')]">
       <HeroSection />
       <BoxSectionTop />
       <BoxSectionBottom />

@@ -6,7 +6,7 @@ const InsideMak = () => {
   return (
     <div className="flex flex-col lg:flex-row justify-between gap-10 lg:gap-50 pt-10">
       <div className="flex flex-col lg:flex-row justify-between gap-10 items-center lg:items-start">
-        <div className="flex flex-col gap-0 lg:gap-60 w-full lg:w-[50%]">
+        <div className="flex flex-col gap-0 lg:gap-65 w-full lg:w-[50%]">
           <MakSectionTexts
             title="Що всередині?"
             listmakinside={[

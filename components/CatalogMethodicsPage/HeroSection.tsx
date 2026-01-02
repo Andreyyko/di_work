@@ -57,8 +57,10 @@ const HeroSection = () => {
 
         <div>EVIDENCE-BASED</div>
 
-        <div>ОНЛАЙН-ПЛАТФОРМА <span className="first-letter">З</span></div>
-        
+        <div>
+          ОНЛАЙН-ПЛАТФОРМА <span className="first-letter">З</span>
+        </div>
+
         <div className="tracking-[-0.12em]">
           <span className="first-letter" data-first-letter="П">
             ОНАД
@@ -78,21 +80,15 @@ const HeroSection = () => {
         </div>
       </h2>
 
-      <div className="pt-0 md:pt-15 flex flex-col md:flex-row md:items-center lg:items-start justify-between gap-12">
-        <p className="heading-4 mt-5 flex items-center justify-center mb-8 sm:mt-8">
-          Практичні техніки, вправи, ігри та
-          <br />
-          тренінги, що підходять для дорослих,
-          <br />
-          дітей, сімей і команд, що поєднують
-          <br />
-          практичність (структуровані інструкції) і<br />
-          наукову достовірність (посилання на
-          <br />
-          літературу й авторів методик).
+      <div className="pt-0 md:pt-15 flex flex-col md:flex-row md:items-center lg:items-start justify-between gap-2">
+        <p className="heading-4 mt-5 flex items-center w-[97%] md:w-[50%] lg:w-[27%] mb-8 sm:mt-8">
+          Практичні техніки, вправи, ігри та тренінги, що підходять для
+          дорослих, дітей, сімей і команд, що поєднують практичність
+          (структуровані інструкції) і
+          наукову достовірність (посилання на літературу й авторів методик).
         </p>
 
-        <div className="flex justify-center items-center md:justify-end lg:items-start order-1 md:order-2">
+        <div className="flex justify-center items-center md:justify-end lg:items-start order-1 md:order-2 relative">
           <FrameWrapper
             className="heading-6 font-grava opacity-100 w-auto "
             paddingX={20}
@@ -100,6 +96,7 @@ const HeroSection = () => {
           >
             <CheckItem items={CheckItems} />
           </FrameWrapper>
+          <h6 className="heading-bg absolute -top-8 right-[30%] block md:hidden">Be Unique</h6>
         </div>
       </div>
     </section>

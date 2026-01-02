@@ -190,7 +190,7 @@ const FrameWrapper = forwardRef<HTMLDivElement, FrameWrapperProps>(
       sealPosition = "bottom-right",
       sealSize = 200,
       sealOffsetX = 0,
-      sealOffsetY = 0,
+      sealOffsetY = 30,
       sealLabel = "ОБРАТИ ТАРИФ",
       sealDisabled = false,
       onSealClick,
@@ -206,7 +206,6 @@ const FrameWrapper = forwardRef<HTMLDivElement, FrameWrapperProps>(
     },
     ref
   ) => {
-    /* ===== breakpoint ===== */
     const [isDesktop, setIsDesktop] = useState(false);
 
     useEffect(() => {
@@ -217,7 +216,6 @@ const FrameWrapper = forwardRef<HTMLDivElement, FrameWrapperProps>(
       return () => mq.removeEventListener("change", update);
     }, []);
 
-    /* ===== paddings ===== */
     const basePadX =
       toCss(
         isDesktop && paddingXDesktop !== undefined

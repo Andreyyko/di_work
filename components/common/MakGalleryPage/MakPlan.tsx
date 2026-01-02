@@ -8,7 +8,7 @@ const MakPlan = () => {
       <FrameWrapper
         paddingX={40}
         paddingY={70}
-        className="w-full lg:w-[50%] order-4 lg:order-0"
+        className="w-full lg:w-[50%] order-4 lg:order-0 leading-0"
         showSeal
         sealHideUntilHover={true}
         showOrnaments
@@ -40,7 +40,7 @@ const MakPlan = () => {
       <FrameWrapper
         paddingX={40}
         paddingY={70}
-        className="w-full lg:w-[50%] order-4 lg:order-0"
+        className="w-full lg:w-[50%] order-4 lg:order-0 leading-0"
         showSeal
         sealHideUntilHover={true}
         showOrnaments

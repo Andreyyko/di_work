@@ -21,7 +21,7 @@ export default function MakGalleryPage() {
         <br />
         внутрішньої гармонії
       </h5>
-      <h2 className="heading-2 uppercase text-center -tracking-widest pt-5">
+      <h2 className="heading-2 uppercase text-center -tracking-widest pt-5 pb-[330px] md:pb-[170px] lg:pb-0">
         <span className="first-letter -tracking-widest" data-first-letter="У">
           нікальна авторська{" "}
           <span className="first-letter -tracking-widest" data-first-letter="З">
@@ -49,7 +49,7 @@ export default function MakGalleryPage() {
         <Image
           src={white_letter.WHITE_POSTCARD}
           alt="postcard"
-          className="absolute left-[35%] w-[30%] z-50 rotate-10 hidden lg:block"
+          className="absolute left-[20%] lg:left-[35%] lg:w-[30%] z-50 rotate-10"
         />
       </h2>
       <MakImages />

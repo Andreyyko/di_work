@@ -10,7 +10,7 @@ const AuthorCol = () => {
           src={mak_gallery_images.GIRL_WINDOW}
           paddingX={20}
           paddingY={40}
-          width="330px"
+          width="360px"
           imgWidth={350}
           className="h-fit"
         />

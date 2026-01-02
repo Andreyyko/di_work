@@ -9,7 +9,7 @@ const EffectComp = () => {
         <FrameWrapper
           src={mak_gallery_images.BOY_AND_GIRL}
           paddingX={20}
-          paddingY={40}
+          paddingY={30}
           width="300px"
           imgWidth={300}
           className="h-fit order-2 lg:order-1 mx-auto lg:mx-0"
@@ -38,9 +38,9 @@ const EffectComp = () => {
         <FrameWrapper
           className="right-0 hidden lg:block"
           src={mak_gallery_images.BOOK_PREVIEW}
-          width="330px"
+          width="340px"
           showOrnaments
-          paddingX={20}
+          paddingX={21}
           paddingY={40}
         />
       </div>
