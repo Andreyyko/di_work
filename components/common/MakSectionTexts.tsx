@@ -8,6 +8,7 @@ export type PrivacySectionProps = {
   descriptionpurposetwo?: string | React.ReactNode;
   descriptionpurposeshort?: string | React.ReactNode;
   list?: string[];
+  sourceList?: React.ReactNode[];
   listmakinside?: string[];
   listEffect?: string[];
   extra?: string | React.ReactNode;
@@ -24,6 +25,7 @@ const PrivacySection: React.FC<PrivacySectionProps> = ({
   descriptionpurpose,
   descriptionpurposetwo,
   descriptionpurposeshort,
+  sourceList,
   list,
   listmakinside,
   listEffect,
@@ -68,6 +70,14 @@ const PrivacySection: React.FC<PrivacySectionProps> = ({
       {list && list.length > 0 && (
         <ul className="list-disc heading-4 pl-5 pb-2.5 max-w-full lg:max-w-[40%]">
           {list.map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
+        </ul>
+      )}
+
+      {sourceList && sourceList.length > 0 && (
+        <ul className="list-disc heading-4 pl-5 pb-2.5 w-full lg:w-[66%] tracking-[-0.05em]">
+          {sourceList.map((item, i) => (
             <li key={i}>{item}</li>
           ))}
         </ul>
