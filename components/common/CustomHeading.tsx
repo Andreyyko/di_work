@@ -1,73 +1,101 @@
 import PhotoFrame from "./PhotoFrame";
-import {
-  headingPresets,
-  HeadingPresetKey,
-  HeadingPreset,
-} from "../../constant/common/CustomHeadingPreset";
-
-type CustomHeadingProps =
-  | {
-      preset: HeadingPresetKey;
-      image?: never;
-      line1?: never;
-      line2?: never;
-      line3?: never;
-    }
-  | {
-      preset?: undefined;
-      image: string;
-      line1?: string;
-      line2?: string;
-      line3?: string;
-      highlightWords1?: number[];
-      highlightWords2?: number[];
-      highlightWords3?: number[];
-    };
+import { HeadingData } from "@/constant/common/CustomHeadingPreset";
 
 function renderLine(
-  text: string | undefined,
-  highlight: number[] | undefined,
-  align: "start" | "end"
+  text?: string,
+  highlight?: number[],
+  align: "start" | "end" = "start"
 ) {
   if (!text) return null;
 
-  const words = text.split(" ");
-
   return (
-    <span className={`self-${align} flex flex-wrap gap-2`}>
-      {words.map((word, idx) => {
-        const isHighlighted = highlight?.includes(idx);
-
-        return (
-          <span
-            key={idx}
-            className={
-              isHighlighted ? "first-letter uppercase -translate-y-1" : ""
-            }
-          >
-            {word}
-          </span>
-        );
-      })}
+    <span className={`justify-${align} flex flex-wrap gap-2 -tracking-widest`}>
+      {text.split(" ").map((word, idx) => (
+        <span
+          key={idx}
+          className={
+            highlight?.includes(idx)
+              ? "first-letter uppercase -translate-y-1"
+              : ""
+          }
+        >
+          {word}
+        </span>
+      ))}
     </span>
   );
 }
 
-export default function CustomHeading(props: CustomHeadingProps) {
-  const data: HeadingPreset | any = props.preset
-    ? headingPresets[props.preset]
-    : props;
+function renderLineMob(
+  text?: string,
+  highlight?: number[],
+  align: "start" | "end" = "start"
+) {
+  if (!text) return null;
 
   return (
-    <div>
-        <h5 className="-translate-x-5 heading-5">Відновлення довіри,<br/>покращення комунікації та<br/>гармонія у стосунках через<br/>спільне розуміння.</h5>
-      <div className="w-full flex flex-col items-center justify-center text-center py-10">
-        <PhotoFrame src={data.image} />
+    <span className={`justify-${align} flex flex-wrap gap-2 -tracking-widest`}>
+      {text.split(" ").map((word, idx) => (
+        <span
+          key={idx}
+          className={
+            highlight?.includes(idx)
+              ? "first-letter uppercase translate-y-0.5"
+              : ""
+          }
+        >
+          {word}
+        </span>
+      ))}
+    </span>
+  );
+}
 
-        <div className="mt-6 flex flex-col w-full heading-2 uppercase">
-          {renderLine(data.line1, data.highlightWords1, "start")}
-          {renderLine(data.line2, data.highlightWords2, "end")}
-          {renderLine(data.line3, data.highlightWords3, "start")}
+type CustomHeadingProps = HeadingData;
+
+export default function CustomHeading({
+  image,
+  line1,
+  line2,
+  line3,
+  highlightWords1,
+  highlightWords2,
+  highlightWords3,
+  lineMob1,
+  lineMob2,
+  lineMob3,
+  lineMob4,
+  lineMob5,
+  lineMob6,
+  highlightWordsMob1,
+  highlightWordsMob2,
+  highlightWordsMob3,
+  highlightWordsMob4,
+  highlightWordsMob5,
+  highlightWordsMob6,
+  subLineHeading
+}: CustomHeadingProps) {
+  return (
+    <div>
+      <h5 className="absolute translate-x-0 heading-5 w-[50%] lg:w-[21%] lg:left-0 lg:text-left text-right right-0">
+        {subLineHeading}
+      </h5>
+
+      <div className="w-full flex flex-col lg:pt-30 pt-20 items-center justify-center text-center pb-10">
+        <PhotoFrame src={image} />
+
+        <div className="pt-6 md:flex flex-col w-full heading-2 uppercase hidden">
+          {renderLine(line1, highlightWords1, "start")}
+          {renderLine(line2, highlightWords2, "end")}
+          {renderLine(line3, highlightWords3, "start")}
+        </div>
+        <div className="pt-6 flex md:hidden flex-col w-full heading-2 uppercase text-4xl">
+          {renderLineMob(lineMob1, highlightWordsMob1, "start")}
+          {renderLineMob(lineMob2, highlightWordsMob2, "end")}
+          {renderLineMob(lineMob3, highlightWordsMob3, "end")}
+          {renderLineMob(lineMob4, highlightWordsMob4, "start")}
+          {renderLineMob(lineMob5, highlightWordsMob5, "end")}
+          {renderLineMob(lineMob6, highlightWordsMob6, "start")}
         </div>
       </div>
     </div>

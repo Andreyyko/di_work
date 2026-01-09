@@ -244,10 +244,10 @@ const FrameWrapper = forwardRef<HTMLDivElement, FrameWrapperProps>(
       (sealPosition.includes("left") ? "left" : "right");
 
     const defaultOrnamentsArr: Ornament[] = [
-      { position: "top-right", offsetX: -8, offsetY: 16, width: 40, rotate: 180, flipV: true },
-      { position: "top-left", offsetX: 8, offsetY: 16, width: 40 },
-      { position: "bottom-right", offsetX: 8, offsetY: -16, width: 40, rotate: 180 },
-      { position: "bottom-left", offsetX: 8, offsetY: -16, width: 40, flipV: true },
+      { position: "top-right", offsetX: -6, offsetY: 16, width: 40, rotate: 180, flipV: true },
+      { position: "top-left", offsetX: 6, offsetY: 16, width: 40 },
+      { position: "bottom-right", offsetX: 5, offsetY: -16, width: 40, rotate: 180 },
+      { position: "bottom-left", offsetX: 6, offsetY: -16, width: 40, flipV: true },
     ];
 
     const ornamentsToRender = ornaments?.length

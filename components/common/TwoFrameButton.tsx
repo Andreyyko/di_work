@@ -13,7 +13,7 @@ export type TwoFrameButtonProps = {
   variant: Variant;
   label: string;
   isActive?: boolean;
-  isFaq?: boolean; // Indicates usage inside FAQ section
+  isFaq?: boolean;
   onActivate?: () => void;
   disabled?: boolean;
   className?: string;
@@ -35,7 +35,6 @@ const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
 
   const interactive = !disabled && (hover || isActive);
 
-  // Ultra-soft motion values
   const scale = disabled ? 1 : pressed ? 0.985 : interactive ? 1.015 : 1;
   const translateY = disabled ? 0 : pressed ? 0.5 : interactive ? -1.5 : 0;
 
@@ -59,16 +58,16 @@ const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
         cursor: disabled ? "not-allowed" : "pointer",
       }}
     >
-      {/* Stable geometry wrapper */}
       <div
-        className={`relative ${isFaq ? " overflow-hidden h-23 sm:h-auto" : ""}  w-[324px] max-w-full`}
+        className={`relative ${
+          isFaq ? " overflow-hidden h-23 sm:h-auto" : ""
+        }  w-[324px] max-w-full`}
         style={{
           aspectRatio: "324 / 213",
           transform: `translateY(${translateY}px) scale(${scale})`,
           transition: "transform 620ms cubic-bezier(0.25, 0.8, 0.25, 1)",
         }}
       >
-        {/* VARIANT ONE */}
         {variant === "one" && (
           <>
             <Image
@@ -79,17 +78,27 @@ const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
             />
 
             <div
-              className="absolute inset-0 grid place-items-center font-kudriashov uppercase text-[clamp(12px,4vw,19px)] transition-colors duration-400"
+              className="absolute inset-0 grid place-items-center font-kudriashov uppercase leading-4 text-[clamp(12px,4vw,19px)] transition-colors duration-400"
               style={{
                 color: interactive ? "#8C6A4D" : "#9E7557",
               }}
             >
-              {label}
+              {typeof label === "string"
+                ? (() => {
+                    const words = label.split(" ");
+                    return (
+                      <>
+                        {words[0]}
+                        <br />
+                        {words.slice(1).join(" ")}
+                      </>
+                    );
+                  })()
+                : label}
             </div>
           </>
         )}
 
-        {/* VARIANT TWO */}
         {variant === "two" && (
           <>
             <Image
@@ -101,7 +110,9 @@ const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
 
             <div
               className={`absolute inset-[8%] grid place-items-center uppercase leading-4 md:leading-6 md:tracking-[-2px] font-kudriashov transition-colors duration-400 ${
-                isFaq ? "text-[14px] sm:text-[20px] md:text-[22px] lg:text-[25px]" : "text-[clamp(12px,4vw,18px)]"
+                isFaq
+                  ? "text-[14px] sm:text-[20px] md:text-[22px] lg:text-[25px]"
+                  : "text-[clamp(12px,4vw,18px)]"
               }`}
               style={{
                 color: interactive ? "white" : "#67161F",
