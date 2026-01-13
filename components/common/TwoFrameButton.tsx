@@ -27,7 +27,7 @@ const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
   isFaq = false,
   onActivate,
   disabled = false,
-  type = "button",
+  type = "button" ,
   className = "",
 }) => {
   const [hover, setHover] = useState(false);
