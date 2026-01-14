@@ -4,10 +4,10 @@ import {
   headingPresets,
   HeadingPresetKey,
 } from "@/constant/common/CustomHeadingPreset";
-import ImageTextBlockSection from "@/components/common/SectionPage/ImageTextBlockSection/ImageTextBlockSection";
+import ImageTextBlockSection from "@/components/SectionPage/ImageTextBlockSection/ImageTextBlockSection";
 import { imageTextPresets } from "@/constant/SectionsPage/ImageTextBlock";
-import { secondBlockMap } from "@/components/common/SectionPage/SecondBlock/SecondBlockMap";
-import { thirdBlockMap } from "@/components/common/SectionPage/ThirdBlock/ThirdBlockMap";
+import { secondBlockMap } from "@/components/SectionPage/SecondBlock/SecondBlockMap";
+import { thirdBlockMap } from "@/components/SectionPage/ThirdBlock/ThirdBlockMap";
 import ContactForm from "@/components/MainPage/ContactFormSection/ContactForm";
 
 type PageProps = {

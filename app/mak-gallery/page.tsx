@@ -1,11 +1,11 @@
 import FrameWrapper from "@/components/common/FrameWrapper";
-import AuthorCol from "../../components/common/MakGalleryPage/AuthorCol";
-import EffectComp from "../../components/common/MakGalleryPage/EffectComp";
-import MakImages from "../../components/common/MakGalleryPage/ForWhatImages";
-import InsideMak from "../../components/common/MakGalleryPage/InsideMak";
-import Purpose from "../../components/common/MakGalleryPage/Purpose";
+import AuthorCol from "../../components/MakGalleryPage/AuthorCol";
+import EffectComp from "../../components/MakGalleryPage/EffectComp";
+import MakImages from "../../components/MakGalleryPage/ForWhatImages";
+import InsideMak from "../../components/MakGalleryPage/InsideMak";
+import Purpose from "../../components/MakGalleryPage/Purpose";
 import { mak_gallery_images } from "@/public/images/MakGallery";
-import MakPlan from "../../components/common/MakGalleryPage/MakPlan";
+import MakPlan from "../../components/MakGalleryPage/MakPlan";
 import Image from "next/image";
 import { white_letter } from "@/public/images/CommonImages/PostCard";
 

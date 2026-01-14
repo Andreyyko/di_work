@@ -1,5 +1,5 @@
-import HeroSection from "@/components/common/SourceListPage/HeroSection";
-import SourceList from "@/components/common/SourceListPage/SourceList";
+import HeroSection from "@/components/SourceListPage/HeroSection";
+import SourceList from "@/components/SourceListPage/SourceList";
 
 export default function SourceListPage() {
   return (

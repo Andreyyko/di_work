@@ -1,8 +1,8 @@
 import ValidationSection from "@/components/MainPage/ValidationSection/ValidationSection";
-import BioSection from "../../components/common/AboutUsPage/BioSection";
-import BoxSectionBottom from "../../components/common/AboutUsPage/BoxSectionBottom";
-import BoxSectionTop from "../../components/common/AboutUsPage/BoxSectionTop";
-import HeroSection from "../../components/common/AboutUsPage/HeroSection";
+import BioSection from "../../components/AboutUsPage/BioSection";
+import BoxSectionBottom from "../../components/AboutUsPage/BoxSectionBottom";
+import BoxSectionTop from "../../components/AboutUsPage/BoxSectionTop";
+import HeroSection from "../../components/AboutUsPage/HeroSection";
 import FrameWrapper from "@/components/common/FrameWrapper";
 
 export default function AboutUs() {
