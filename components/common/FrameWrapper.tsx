@@ -5,8 +5,6 @@ import Image, { StaticImageData } from "next/image";
 import CustomSeal from "./CustomSeal";
 import { ornament_item } from "@/public/images/CommonImages/OrnamentIcon";
 
-/* ===================== TYPES ===================== */
-
 export type Corner =
   | "top-left"
   | "top-right"
@@ -34,21 +32,15 @@ export type Ornament = {
 export type FrameWrapperProps = {
   src?: ImgSrc;
   alt?: string;
-
+  
   frameColor?: string;
   frameThickness?: string;
   gap?: string;
-
-  /** padding до lg */
   paddingX?: number | string;
-  /** padding з lg і вище */
   paddingXDesktop?: number | string;
-
-  /** padding до lg */
   paddingY?: number | string;
-  /** padding з lg і вище */
   paddingYDesktop?: number | string;
-
+  
   paddingTop?: number | string;
   paddingBottom?: number | string;
   paddingLeft?: number | string;
@@ -79,6 +71,7 @@ export type FrameWrapperProps = {
   sealLabel?: string;
   sealDisabled?: boolean;
   onSealClick?: () => void;
+  
   sealButtonSide?: "right" | "left";
 
   showOrnaments?: boolean;
@@ -90,7 +83,6 @@ export type FrameWrapperProps = {
   children?: React.ReactNode;
 };
 
-/* ===================== HELPERS ===================== */
 
 const toCss = (v?: string | number) =>
   v === undefined ? undefined : typeof v === "number" ? `${v}px` : v;

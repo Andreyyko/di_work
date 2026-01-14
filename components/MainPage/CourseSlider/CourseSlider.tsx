@@ -11,6 +11,7 @@ import ArrowButton from "../../common/ArrowButton";
 import { useWindowWidth } from "@/hooks/useWindowWidth";
 import { Swiper as SwiperType } from "swiper";
 import { flower_images } from "@/public/images/CommonImages/FlowerImages";
+import Link from "next/link";
 
 const CourseSlider = () => {
   const swiperRef = useRef<SwiperType | null>(null);
@@ -168,10 +169,10 @@ const CourseSlider = () => {
           <TextSwiper onSwiper={(swiper) => (swiperRef.current = swiper)} />
         </div>
 
-        <div className="flex items-center sm:-translate-y-10 justify-center md:justify-end gap-4 md:max-w-[40%] w-full z-50">
+        <Link href="/catalog-methodics" className="flex items-center sm:-translate-y-10 justify-center md:justify-end gap-4 md:max-w-[40%] w-full z-50">
           {!isSmallerThanMd && <ArrowButton onClick={handleNextSlide} />}
           <TwoFrameButton variant="one" label="ОБРАТИ СВОЮ МЕТОДИКУ" />
-        </div>
+        </Link>
       </div>
 
       <Image

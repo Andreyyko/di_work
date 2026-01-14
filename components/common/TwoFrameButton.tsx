@@ -6,8 +6,9 @@ import Image from "next/image";
 import redButton from "@/public/images/CommonImages/FramesButton/RedButton.svg";
 import redButtonFrame from "@/public/images/CommonImages/FramesButton/RedButtonFrame.svg";
 import goldButton from "@/public/images/CommonImages/FramesButton/GoldButton.svg";
+import modalButton from "@/public/images/CommonImages/FramesButton/ButtonModal.svg";
 
-type Variant = "one" | "two";
+type Variant = "one" | "two" | "three";
 
 export type TwoFrameButtonProps = {
   variant: Variant;
@@ -27,7 +28,7 @@ const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
   isFaq = false,
   onActivate,
   disabled = false,
-  type = "button" ,
+  type = "button",
   className = "",
 }) => {
   const [hover, setHover] = useState(false);
@@ -116,6 +117,30 @@ const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
               }`}
               style={{
                 color: interactive ? "white" : "#67161F",
+              }}
+            >
+              {label}
+            </div>
+          </>
+        )}
+
+        {variant === "three" && (
+          <>
+            <Image
+              src={modalButton}
+              alt="red button"
+              fill
+              className="absolute object-contain pointer-events-none transition-opacity duration-400"
+            />
+
+            <div
+              className={`absolute inset-[8%] grid place-items-center uppercase leading-4 md:leading-6 md:tracking-[-2px] font-kudriashov transition-colors duration-400 ${
+                isFaq
+                  ? "text-[14px] sm:text-[20px] md:text-[22px] lg:text-[25px]"
+                  : "text-[clamp(12px,4vw,18px)]"
+              }`}
+              style={{
+                color: interactive ? "white" : "white",
               }}
             >
               {label}

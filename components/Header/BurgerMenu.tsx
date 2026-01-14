@@ -10,6 +10,7 @@ import { useEffect, useRef } from "react";
 
 import gsap from "gsap";
 import { main_page_backrounds } from "@/public/images/MainPageImages/backgrounds";
+import Link from "next/link";
 
 type Props = {
   onClose: () => void;
@@ -124,7 +125,6 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
       ref={menuRef}
       className="fixed inset-0 bg-brand-background z-150 flex flex-col justify-between overflow-hidden bg-cover bg-center bg-no-repeat"
     >
-      {/* 🔹 Верхній блок */}
       <div className="relative flex justify-between items-center p-4 z-200 pointer-events-auto">
         <button onClick={onClose} className="menu-fade">
           <X size={32} className="cursor-pointer" />
@@ -141,13 +141,12 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
         </div>
       </div>
 
-      {/* 🔹 Центральний блок */}
       <div className="relative flex-1 flex items-center justify-center">
         <FrameWrapper
           ref={frameRef}
           className="
             menu-frame
-            absolute -translate-y-10
+            absolute 
             w-[90%] h-[80%]
             sm:w-[50%] sm:h-[138%]
             md:w-[60%] md:h-[120%]
@@ -160,22 +159,22 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
         >
           <div className="flex flex-col items-center gap-5 sm:gap-7.5">
 
-            <button className="heading-2-burger uppercase menu-item menu-fade">
+            <Link onClick={onClose} href="/about" className="heading-2-burger uppercase menu-item menu-fade">
               <span className="first-letter" data-first-letter="П">ро нас</span>
-            </button>
+            </Link>
 
-            <button className="heading-2-burger uppercase sm:translate-x-10 menu-item menu-fade">
+            <Link href="/catalog-methodics" onClick={onClose} className="heading-2-burger uppercase  menu-item menu-fade">
               <span className="first-letter-burger" data-first-letter="Р">озділи</span>
-            </button>
+            </Link>
 
-            <button className="heading-2-burger uppercase pl-15 md:pl-25 sm:-translate-x-5 menu-item menu-fade">
+            <Link href="/mak-gallery" onClick={onClose} className="heading-2-burger uppercase pl-15 md:pl-25 sm:-translate-x-5 menu-item menu-fade">
               МА
               <span className="first-letter-burger" data-first-letter="К">
                 <span className="opacity-0">O</span>
               </span>
-            </button>
+            </Link>
 
-            <button className="heading-2-burger uppercase menu-item menu-fade">
+            <Link href="/faq" onClick={onClose} className="heading-2-burger uppercase menu-item menu-fade">
               <span className="sm:hidden flex items-center">
                 <span>
                   FA
@@ -191,13 +190,12 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
                   <span className="first-letter-burger" data-first-letter="Q"></span>
                 </span>
               </span>
-            </button>
+            </Link>
 
           </div>
         </FrameWrapper>
       </div>
 
-      {/* 🔹 Нижній блок */}
       <div className="flex absolute bottom-0 justify-between items-end w-full px-5.5 pb-5 pointer-events-auto menu-item menu-fade">
         <p className="flex flex-col heading-6 gap-1 opacity-60">
           <a href="mailto:info@rok-m.ua" className="hover:underline">
@@ -210,11 +208,13 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
 
         <div className="flex gap-4 items-center">
           {isMobile && (
+            <Link href="/profile/my-profile" onClick={onClose}>
             <Image
               src={header_images.USER_ICON}
               alt="profile"
               className="w-5 h-5 menu-fade cursor-pointer"
             />
+            </Link>
           )}
 
           <a href="https://www.instagram.com/bogdanagalitskaandreiko/" target="_blank">

@@ -8,6 +8,7 @@ import FrameWrapper from "../../common/FrameWrapper";
 import TwoFrameButton from "../../common/TwoFrameButton";
 import { useWindowWidth } from "@/hooks/useWindowWidth";
 import { white_letter } from "@/public/images/CommonImages/PostCard";
+import Link from "next/link";
 
 const AboutUs = () => {
   const { isLgOrLarger, width, isSmallerThanSm } = useWindowWidth();
@@ -30,7 +31,7 @@ const AboutUs = () => {
         threshold: 0,
         rootMargin: "200px 0px -10% 0px",
       }
-      );
+    );
 
     observer.observe(sectionRef.current);
 
@@ -66,7 +67,7 @@ const AboutUs = () => {
           </p>
         )}
 
-<div className="relative about-item opacity-0 translate-y-[30px]">
+        <div className="relative about-item opacity-0 translate-y-[30px]">
           <FrameWrapper
             src={about_us_images.bogdanaReadBook}
             alt="Photo"
@@ -88,7 +89,7 @@ const AboutUs = () => {
 
         <div className="flex flex-col sm:w-[80%] md:ml-3">
           <div className="flex flex-col md:flex-row justify-between md:max-h-[300px] lg:max-h-[230px] md:mb-14">
-          <div className="flex flex-col md:max-w-[280px] lg:max-w-[500px] xl:max-w-[630px] about-item opacity-0 translate-y-[30px]">
+            <div className="flex flex-col md:max-w-[280px] lg:max-w-[500px] xl:max-w-[630px] about-item opacity-0 translate-y-[30px]">
               <h3 className="heading-3 mb-5 uppercase">
                 сайт включає {showBr && <br />} в себе
               </h3>
@@ -115,7 +116,7 @@ const AboutUs = () => {
           </div>
 
           <div className="flex flex-col md:flex-row justify-end lg:max-h-52 xl:max-h-60">
-          <div className="sm:max-w-[460px] xl:max-w-[390px] flex flex-col justify-end about-item opacity-0 translate-y-[30px]">
+            <div className="sm:max-w-[460px] xl:max-w-[390px] flex flex-col justify-end about-item opacity-0 translate-y-[30px]">
               <h3 className="heading-3 mb-5 uppercase">окремі методики</h3>
               <p className="heading-4 mb-[30px] md:mb-0 text-left md:text-left">
                 Апробовані та описані у успішно захищеному дисертаційному
@@ -171,9 +172,12 @@ const AboutUs = () => {
           </div>
         </div>
 
-        <div className="flex items-end justify-center w-full md:w-auto sm:mt-6 md:mt-0 about-item opacity-0 translate-y-[30px]">
+        <Link
+          href="/about"
+          className="flex items-end justify-center w-full md:w-auto sm:mt-6 md:mt-0 translate-y-[30px]"
+        >
           <TwoFrameButton variant="one" label="ДІЗНАТИСЯ БІЛЬШЕ" />
-        </div>
+        </Link>
       </div>
     </section>
   );

@@ -109,7 +109,7 @@ const FAQSection = () => {
         ))}
       </div>
 
-      <p className="faq-anim opacity-0 heading-5 hidden lg:block absolute left-0 -translate-x-5 -translate-y-42">
+      <p className="heading-5 hidden lg:block absolute left-0 -translate-x-5 -translate-y-42">
         Ми зібрали
         <br />
         найважливіше,
@@ -121,7 +121,7 @@ const FAQSection = () => {
         потрібно.
       </p>
 
-      <h3 className="faq-anim opacity-0 heading-3 text-right -translate-y-25 hidden xl:block">
+      <h3 className=" heading-3 text-right -translate-y-25 hidden xl:block">
         Ми зібрали найпоширеніші
         <br />
         питання, щоб вам було
