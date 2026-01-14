@@ -14,6 +14,7 @@ html, body {
   --color-brand-lightgray: #e9e7e1;
   --color-brand-monolightgray: #eeebe2;
   --color-brand-background: #FFFBEF;
+  --color-brand-white: #FFFFFF;
 
   --heading-2-size: clamp(40px, 6vw, 80px);
   --heading-privacy-size: clamp(30px, 5vw, 80px);
@@ -205,6 +206,13 @@ html, body {
   z-index: 10;
 }
 
+@utility first-letter-modal {
+  display: inline-block;
+  line-height: 1;
+  position: relative;
+  z-index: 10;
+}
+
 .first-letter-burger:first-letter {
   font-family: var(--font-alexandra, inherit);
   font-size: clamp(80px, 12vw, 150px);
@@ -240,6 +248,26 @@ html, body {
   font-family: var(--font-alexandra, inherit);
   font-size: clamp(60px, 10vw, 160px);
   color: var(--first-letter-color, var(--color-brand-bordo, currentColor));
+  line-height: 0.089;
+  position: relative;
+  z-index: 20;
+}
+
+.first-letter-modal:first-letter {
+  font-family: var(--font-alexandra, inherit);
+  font-size: clamp(80px, 10vw, 150px);
+  color: var(--first-letter-color, var(--color-brand-white, currentColor));
+  line-height: 0.089;
+  letter-spacing: -0.1em;
+  position: relative;
+  z-index: 20;
+}
+
+.first-letter-modal:before {
+  content: attr(data-first-letter);
+  font-family: var(--font-alexandra, inherit);
+  font-size: clamp(80px, 10vw, 160px);
+  color: var(--first-letter-color, var(--color-brand-white, currentColor));
   line-height: 0.089;
   position: relative;
   z-index: 20;

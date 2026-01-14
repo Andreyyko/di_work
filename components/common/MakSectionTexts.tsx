@@ -8,6 +8,7 @@ export type PrivacySectionProps = {
   descriptionpurposetwo?: string | React.ReactNode;
   descriptionpurposeshort?: string | React.ReactNode;
   list?: string[];
+  sourceList?: React.ReactNode[];
   listmakinside?: string[];
   listEffect?: string[];
   extra?: string | React.ReactNode;
@@ -24,6 +25,7 @@ const PrivacySection: React.FC<PrivacySectionProps> = ({
   descriptionpurpose,
   descriptionpurposetwo,
   descriptionpurposeshort,
+  sourceList,
   list,
   listmakinside,
   listEffect,
@@ -38,7 +40,7 @@ const PrivacySection: React.FC<PrivacySectionProps> = ({
       {title && <h3 className="heading-3 uppercase pb-5 w-fit">{title}</h3>}
 
       {descriptionpurpose && (
-        <p className="heading-4 max-w-full lg:w-[80%] pb-2.5 w-fit">
+        <p className="heading-4 max-w-full lg:w-full pb-10 w-fit">
           {descriptionpurpose}
         </p>
       )}
@@ -50,13 +52,13 @@ const PrivacySection: React.FC<PrivacySectionProps> = ({
       )}
 
       {descriptionpurposetwo && (
-        <p className="heading-4 max-w-full lg:w-[80%] pb-2.5 w-fit">
-          {descriptionpurpose}
+        <p className="heading-4 max-w-full lg:w-full pb-2.5 w-fit">
+          {descriptionpurposetwo}
         </p>
       )}
 
       {description && (
-        <p className="heading-4 max-w-full lg:max-w-[30%] pb-2.5 w-fit">
+        <p className="heading-4 max-w-full lg:max-w-[34%] pb-2.5 w-fit">
           {description}
         </p>
       )}
@@ -68,6 +70,14 @@ const PrivacySection: React.FC<PrivacySectionProps> = ({
       {list && list.length > 0 && (
         <ul className="list-disc heading-4 pl-5 pb-2.5 max-w-full lg:max-w-[40%]">
           {list.map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
+        </ul>
+      )}
+
+      {sourceList && sourceList.length > 0 && (
+        <ul className="list-disc heading-4 pl-5 pb-2.5 w-full lg:w-[66%] tracking-[-0.05em]">
+          {sourceList.map((item, i) => (
             <li key={i}>{item}</li>
           ))}
         </ul>
@@ -90,7 +100,7 @@ const PrivacySection: React.FC<PrivacySectionProps> = ({
       )}
 
       {extra && (
-        <p className="heading-4 max-w-full md:max-w-[80%] pb-5 w-fit">
+        <p className="heading-4 max-w-full md:max-w-[85%] pb-5 w-fit">
           {extra}
         </p>
       )}

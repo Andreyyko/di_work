@@ -1,7 +1,7 @@
-import Header from "@/components/common/Header/Header";
+import Header from "@/components/Header/Header";
 import "./globals.css";
 import localFont from "next/font/local";
-import Footer from "@/components/common/Footer/Footer";
+import Footer from "@/components/Footer/Footer";
 import { main_page_backrounds } from "@/public/images/MainPageImages/backgrounds";
 
 const alexandra = localFont({

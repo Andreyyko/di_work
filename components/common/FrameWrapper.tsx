@@ -5,8 +5,6 @@ import Image, { StaticImageData } from "next/image";
 import CustomSeal from "./CustomSeal";
 import { ornament_item } from "@/public/images/CommonImages/OrnamentIcon";
 
-/* ===================== TYPES ===================== */
-
 export type Corner =
   | "top-left"
   | "top-right"
@@ -34,21 +32,15 @@ export type Ornament = {
 export type FrameWrapperProps = {
   src?: ImgSrc;
   alt?: string;
-
+  
   frameColor?: string;
   frameThickness?: string;
   gap?: string;
-
-  /** padding до lg */
   paddingX?: number | string;
-  /** padding з lg і вище */
   paddingXDesktop?: number | string;
-
-  /** padding до lg */
   paddingY?: number | string;
-  /** padding з lg і вище */
   paddingYDesktop?: number | string;
-
+  
   paddingTop?: number | string;
   paddingBottom?: number | string;
   paddingLeft?: number | string;
@@ -79,6 +71,7 @@ export type FrameWrapperProps = {
   sealLabel?: string;
   sealDisabled?: boolean;
   onSealClick?: () => void;
+  
   sealButtonSide?: "right" | "left";
 
   showOrnaments?: boolean;
@@ -90,7 +83,6 @@ export type FrameWrapperProps = {
   children?: React.ReactNode;
 };
 
-/* ===================== HELPERS ===================== */
 
 const toCss = (v?: string | number) =>
   v === undefined ? undefined : typeof v === "number" ? `${v}px` : v;
@@ -190,7 +182,7 @@ const FrameWrapper = forwardRef<HTMLDivElement, FrameWrapperProps>(
       sealPosition = "bottom-right",
       sealSize = 200,
       sealOffsetX = 0,
-      sealOffsetY = 0,
+      sealOffsetY = 30,
       sealLabel = "ОБРАТИ ТАРИФ",
       sealDisabled = false,
       onSealClick,
@@ -206,7 +198,6 @@ const FrameWrapper = forwardRef<HTMLDivElement, FrameWrapperProps>(
     },
     ref
   ) => {
-    /* ===== breakpoint ===== */
     const [isDesktop, setIsDesktop] = useState(false);
 
     useEffect(() => {
@@ -217,7 +208,6 @@ const FrameWrapper = forwardRef<HTMLDivElement, FrameWrapperProps>(
       return () => mq.removeEventListener("change", update);
     }, []);
 
-    /* ===== paddings ===== */
     const basePadX =
       toCss(
         isDesktop && paddingXDesktop !== undefined
@@ -246,10 +236,10 @@ const FrameWrapper = forwardRef<HTMLDivElement, FrameWrapperProps>(
       (sealPosition.includes("left") ? "left" : "right");
 
     const defaultOrnamentsArr: Ornament[] = [
-      { position: "top-right", offsetX: -8, offsetY: 16, width: 40, rotate: 180, flipV: true },
-      { position: "top-left", offsetX: 8, offsetY: 16, width: 40 },
-      { position: "bottom-right", offsetX: 8, offsetY: -16, width: 40, rotate: 180 },
-      { position: "bottom-left", offsetX: 8, offsetY: -16, width: 40, flipV: true },
+      { position: "top-right", offsetX: -6, offsetY: 16, width: 40, rotate: 180, flipV: true },
+      { position: "top-left", offsetX: 6, offsetY: 16, width: 40 },
+      { position: "bottom-right", offsetX: 5, offsetY: -16, width: 40, rotate: 180 },
+      { position: "bottom-left", offsetX: 6, offsetY: -16, width: 40, flipV: true },
     ];
 
     const ornamentsToRender = ornaments?.length

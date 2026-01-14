@@ -17,7 +17,6 @@ const SelectField: FC<Props> = ({ label, options, value, onChange }) => {
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
-  // --- Close when clicking outside ---
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
       if (
@@ -31,7 +30,6 @@ const SelectField: FC<Props> = ({ label, options, value, onChange }) => {
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
 
-  // --- GSAP animation for open/close ---
   useEffect(() => {
     const el = dropdownRef.current;
     if (!el) return;
@@ -69,7 +67,6 @@ const SelectField: FC<Props> = ({ label, options, value, onChange }) => {
 
   return (
     <div ref={wrapperRef} className="relative w-full flex flex-col overflow-visible">
-      {/* Floating label */}
       <label
         className={`
           pointer-events-none heading-4 lg:text-[25px] transition-all duration-300 hidden md:block absolute left-0
@@ -79,7 +76,6 @@ const SelectField: FC<Props> = ({ label, options, value, onChange }) => {
         {label}
       </label>
 
-      {/* Click area */}
       <div
         className={`w-full cursor-pointer pt-0 md:pt-8 ${
           value ? "lg:pt-[41px]" : "pb-1.5 md:pb-4 lg:pt-11"
@@ -98,13 +94,11 @@ const SelectField: FC<Props> = ({ label, options, value, onChange }) => {
         </span>
       </div>
 
-      {/* Divider */}
       <div className="w-full h-px bg-brand-gray" />
 
-      {/* Dropdown – animated by GSAP */}
       <div
         ref={dropdownRef}
-        className="absolute left-0 w-full bg-[#FFFBEF] top-[15px] sm:top-[62px] border border-brand-gray shadow-xl rounded-lg mt-2 z-999 overflow-hidden"
+        className="absolute left-0 w-full bg-brand-background top-[15px] sm:top-[62px] border border-brand-gray shadow-xl rounded-lg mt-2 z-999 overflow-hidden"
         style={{ height: 0, opacity: 0, pointerEvents: "none" }}
       >
         {options.map((opt, i) => (

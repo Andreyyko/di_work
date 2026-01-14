@@ -14,7 +14,7 @@ export default function MethodicsCatalogPage() {
       </section>
       <section className="px-5 bg-[url('/images/CatalogMethodicsPage/backgrounds/MethodicsListBackGrounds.svg')]">
         <MethodicsListUse />
-        <Image className="absolute right-0 -translate-y-230 w-130 rotate-15 translate-x-40 hidden md:block" src={white_letter.WHITE_POSTCARD} alt={"postcard"}/>
+        <Image className="absolute right-0 -translate-y-190 w-110 rotate-15 translate-x-40 hidden md:block" src={white_letter.WHITE_POSTCARD} alt={"postcard"}/>
       </section>
       <section className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/CatalogMethodicsPage/backgrounds/MethodicsListBackGrounds.svg')] pb-6">
       <ChoosePlanSection />
