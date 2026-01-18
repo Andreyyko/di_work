@@ -151,7 +151,7 @@ const ContactForm = () => {
             />
           </div>
 
-          <div className="contact-anim opacity-0 w-full md:w-[45%] relative">
+          <div className="contact-anim opacity-0 w-full md:w-[45%] relative z-100">
             <Controller
               name="tariff"
               control={control}

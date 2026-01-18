@@ -98,7 +98,7 @@ const SelectField: FC<Props> = ({ label, options, value, onChange }) => {
 
       <div
         ref={dropdownRef}
-        className="absolute left-0 w-full bg-brand-background top-[15px] sm:top-[62px] border border-brand-gray shadow-xl rounded-lg mt-2 z-999 overflow-hidden"
+        className="absolute left-0 w-full bg-brand-background top-[15px] sm:top-[62px] border border-brand-gray shadow-xl mt-2 z-999 overflow-hidden"
         style={{ height: 0, opacity: 0, pointerEvents: "none" }}
       >
         {options.map((opt, i) => (

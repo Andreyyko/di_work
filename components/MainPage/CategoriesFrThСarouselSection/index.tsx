@@ -29,7 +29,6 @@ export default function CategoriesFrThCarousel() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const [shouldAnimate, setShouldAnimate] = useState(false);
 
-  /* Detect earlier than visible */
   useLayoutEffect(() => {
     if (!sectionRef.current) return;
 
@@ -51,7 +50,6 @@ export default function CategoriesFrThCarousel() {
     return () => observer.disconnect();
   }, []);
 
-  /* GSAP animation */
   useLayoutEffect(() => {
     if (!shouldAnimate) return;
 
@@ -112,7 +110,7 @@ export default function CategoriesFrThCarousel() {
         />
 
         <Link
-          href="/methods"
+          href="/catalog-methodics"
           className="
             opacity-40 translate-y-[18%]
             absolute 
