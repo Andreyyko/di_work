@@ -89,7 +89,7 @@ const ProfilePageHeaderMobile = () => {
           <h6 className="heading-6 underline cursor-pointer text-[14px]">
             Вийти
           </h6>
-          <Link href="/profile/my-profile">
+          <Link href="/">
             <h6 className="heading-6 underline cursor-pointer h-fit">
               Повернутися на головну
             </h6>

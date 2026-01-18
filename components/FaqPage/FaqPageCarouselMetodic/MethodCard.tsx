@@ -38,7 +38,7 @@ export default function MethodCard({ item }: Props) {
         </p>
         </div>
         <div className="mt-6 md:mt-4 flex justify-between w-full">
-          <Link href="#" className="heading-6 underline">
+          <Link href={`/sections/${item.slug}`} className="heading-6 underline">
             Дізнатися більше
           </Link>
           <span className="heading-3 text-brand-gray">{item.price}</span>

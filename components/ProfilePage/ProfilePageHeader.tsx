@@ -12,7 +12,7 @@ const ProfilePageHeader = () => {
           <h6 className="heading-6 underline cursor-pointer w-fit">Вийти</h6>
         </div>
       </div>
-      <Link href="/profile/my-profile">
+      <Link href="/">
         <h6 className="heading-6 underline cursor-pointer h-fit">
           Повернутися на головну
         </h6>
