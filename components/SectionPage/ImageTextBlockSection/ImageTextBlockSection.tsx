@@ -62,7 +62,7 @@ const ImageTextBlockSection = ({
   mobile_image,
 }: TextImageBlockData) => {
   return (
-    <div className="px-5 flex lg:flex-row flex-col gap-5 pt-40 lg:pt-62.5 pb-127 lg:pb-168.75 relative bg-[url('/images/MainPageImages/backgrounds/Section_Slider_BackGround.svg')]">
+    <div className="px-5 flex lg:flex-row flex-col gap-5  lg:pt-62.5 pb-127 lg:pb-168.75 relative bg-[url('/images/MainPageImages/backgrounds/Section_Slider_BackGround.svg')]">
       <h5 className="heading-5 absolute text-[20px] lg:text-[50px] w-[70%] md:w-[30%] lg:w-[40%] bottom-70 md:right-20 lg:right-30 -right-10">
         {sub_text}
       </h5>

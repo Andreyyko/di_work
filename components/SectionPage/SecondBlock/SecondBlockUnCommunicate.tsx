@@ -5,6 +5,7 @@ import SectionsTextsCustom from "../../common/SectionsTextsCustom";
 import TwoFrameButton from "../../common/TwoFrameButton";
 import Image from "next/image";
 import { flower_images } from "@/public/images/CommonImages/FlowerImages";
+import { white_letter } from "@/public/images/CommonImages/PostCard";
 
 const SecondBlockUnCommunicate = () => {
   return (
@@ -13,9 +14,14 @@ const SecondBlockUnCommunicate = () => {
       <Image
         src={flower_images.SECTION_PAGE_FLOWER}
         alt={"flower"}
-        className="absolute right-0 lg:bottom-[35%] xl:bottom-[26.5%] bottom-[46%] z-100 max-w-[1440px] w-[458px] lg:w-[1040px] xl:w-[1440px] md:w-[700px] md:bottom-[48%]"
+        className="absolute right-0 lg:bottom-[35%] xl:bottom-[26.5%] bottom-[46%] z-100 max-w-[1440px] w-[458px] lg:w-[1040px] xl:w-[1440px] md:w-[700px] md:bottom-[40%]"
       />
-      <h5 className="absolute heading-5 lg:top-[10%] xl:top-[8.5%] -right-5 w-90 text-right hidden lg:block">
+      <Image
+        src={white_letter.WHITE_POSTCARD}
+        alt="letter"
+        className="absolute top-190 -right-30 w-[30%] lg:w-[25%] lg:right-85 -rotate-15 hidden lg:block"
+      />
+      <h5 className="absolute heading-5 lg:top-[10%] xl:top-[8.5%] -right-5 w-70 text-right hidden lg:block">
         Говорити — це не лише вимовляти звуки, а відчувати, що тебе чують.
       </h5>
       <div className="flex flex-col gap-6 lg:hidden lg:items-start">

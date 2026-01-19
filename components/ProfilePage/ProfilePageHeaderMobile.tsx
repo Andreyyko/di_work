@@ -99,7 +99,7 @@ const ProfilePageHeaderMobile = () => {
 
       <div
         ref={dropdownRef}
-        className="absolute left-1/2 top-33 w-[95%] -translate-x-1/2 bg-brand-background border border-brand-black z-50 overflow-hidden"
+        className="absolute left-1/2 md:left-3/4 top-33 w-[95%] md:w-[50%] -translate-x-1/2 bg-brand-background border border-brand-black z-50 overflow-hidden"
         style={{ opacity: 0, pointerEvents: "none" }}
       >
         <div className="px-4 py-3 heading-6 text-black opacity-100 border-b border-brand-black hover:bg-brand-background cursor-pointer">

@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import TwoFrameButton from "../../common/TwoFrameButton";
+import Link from "next/link";
 
 const nameRegex = /^[A-Za-zА-Яа-яІіЇїЄєʼ’\-]+$/;
 
@@ -110,7 +111,7 @@ const EditProfileDataForm = () => {
         </h6>
         <h6 className="heading-6">
           Якщо потрібно змінити пароль, скористайтеся сторінкою{" "}
-          <span className="underline">Зміна пароля.</span>
+          <Link className="underline" href="/auth/forgot-password">Зміна пароля.</Link>
         </h6>
         <div className="flex justify-center md:justify-start">
           <TwoFrameButton

@@ -77,7 +77,7 @@ export default function CustomHeading({
 }: CustomHeadingProps) {
   return (
     <div>
-      <h5 className="absolute translate-x-0 heading-5 w-[50%] lg:w-[21%] lg:left-0 lg:text-left text-right right-0">
+      <h5 className="absolute translate-x-0 heading-5 w-[50%] lg:w-[21%] md:w-[35%] lg:left-0 lg:text-left text-right right-0">
         {subLineHeading}
       </h5>
 
