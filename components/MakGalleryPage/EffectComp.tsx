@@ -38,7 +38,6 @@ const EffectComp = () => {
         <FrameWrapper
           className="right-0 hidden lg:block"
           src={mak_gallery_images.BOOK_PREVIEW}
-          width="340px"
           showOrnaments
           paddingX={21}
           paddingY={40}

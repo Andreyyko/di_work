@@ -41,7 +41,7 @@ const ThirdBlockKids = () => {
           paddingY={20}
           showOrnaments
         />
-          <TwoFrameButton variant="one" label="Спробувати зараз" className="block lg:hidden"/>
+          <TwoFrameButton variant="one" label="Спробувати зараз" className="block lg:hidden mx-auto"/>
         </div>
       </div>
     </div>

@@ -66,7 +66,7 @@ export default function FaqList({ items }: Props) {
   return (
     <div
       ref={listRef}
-      className="w-full px-3 mt-20 sm:mt-50 mb-20 sm:mb-50"
+      className="w-full px-3 pt-20 sm:mt-50 pb-20 sm:pb-50"
     >
       {items.map((item, i) => {
         const open = isOpen(i);
@@ -106,7 +106,7 @@ export default function FaqList({ items }: Props) {
                 }}
                 className="overflow-hidden opacity-0 h-0"
               >
-                <p className="heading-4 mb-7 max-w-150">
+                <p className="heading-4 pb-7 max-w-150">
                   {item.answer}
                 </p>
               </div>

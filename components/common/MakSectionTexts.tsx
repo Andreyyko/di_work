@@ -84,7 +84,7 @@ const PrivacySection: React.FC<PrivacySectionProps> = ({
       )}
 
       {listEffect && listEffect.length > 0 && (
-        <ul className="list-disc heading-4 pl-5 w-full lg:w-[60%] pb-2.5 max-w-full">
+        <ul className="list-disc heading-4 pl-5 w-full lg:w-[68%] pb-2.5 max-w-full">
           {listEffect.map((item, i) => (
             <li key={i}>{item}</li>
           ))}

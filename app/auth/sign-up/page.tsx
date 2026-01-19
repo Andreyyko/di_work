@@ -1,10 +1,13 @@
 "use client";
 
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import gsap from "gsap";
+
 import TwoFrameButton from "@/components/common/TwoFrameButton";
-import Image from 'next/image'
+import Image from "next/image";
 import { white_letter } from "@/public/images/CommonImages/PostCard";
 
 const schema = z
@@ -59,22 +62,49 @@ const SignUpPage = () => {
     resolver: zodResolver(schema),
   });
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        "[data-signup-item]",
+        { opacity: 0, y: 6 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power1.out",
+          stagger: 0.1,
+          clearProps: "opacity,transform",
+        }
+      );
+    });
+    return () => ctx.revert();
+  }, []);
+
   const onSubmit = async (data: FormData) => {
     console.log("SIGN UP DATA:", data);
   };
 
   return (
     <div className="min-h-screen relative overflow-hidden flex flex-col justify-center items-center px-5 pt-40 bg-[url('/images/CatalogMethodicsPage/backgrounds/MethodicsListBackGrounds.svg')]">
-        <Image
+      <Image
         src={white_letter.WHITE_POSTCARD}
         alt="letter"
         className="absolute -right-15 -rotate-15 w-90 top-100 hidden lg:block lg:w-60 xl:w-90 xl:top-100 lg:top-55"
+        data-signup-item
       />
-      <h5 className="heading-5 absolute top-0 left-0 w-35 md:w-75">
+
+      <h5
+        className="heading-5 absolute top-0 left-0 w-35 md:w-75"
+        data-signup-item
+      >
         Тут починається шлях до зростання, гармонії та розвитку внутрішнього
         потенціалу.
       </h5>
-      <h2 className="heading-2 uppercase text-center pb-12 -tracking-widest md:tracking-normal">
+
+      <h2
+        className="heading-2 uppercase text-center pb-12 -tracking-widest md:tracking-normal"
+        data-signup-item
+      >
         <span className="first-letter" data-first-letter="З">
           ареєструйтесь
         </span>{" "}
@@ -91,6 +121,7 @@ const SignUpPage = () => {
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-full max-w-3xl flex flex-col gap-8"
+        data-signup-item
       >
         <div>
           <label className="block pb-2 heading-4 text-[25px]">Імʼя</label>
@@ -159,6 +190,7 @@ const SignUpPage = () => {
             label="Зареєструватися"
             type="submit"
             disabled={isSubmitting}
+            data-signup-item
           />
         </div>
       </form>

@@ -10,7 +10,7 @@ import { white_letter } from "@/public/images/CommonImages/PostCard";
 const SecondBlockParents = () => {
   return (
     <div className="w-full">
-      <h6 className="heading-bg absolute xl:top-145 lg:top-140 hidden lg:block">Be Unique</h6>
+      <h6 className="heading-bg absolute xl:top-141 lg:top-142 hidden lg:block">Be Unique</h6>
       <Image
         src={flower_images.SECTION_PAGE_FLOWER}
         alt={"flower"}

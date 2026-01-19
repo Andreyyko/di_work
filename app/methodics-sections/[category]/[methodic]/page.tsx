@@ -11,13 +11,13 @@ type PageProps = {
 };
 
 export default async function MethodicDetailPage({ params }: PageProps) {
-    const { methodic } = await params;
-  
-    const data = await getMethodicBySlug(methodic);
-  
-    if (!data) {
-      notFound();
-    }
+  const { methodic } = await params;
+
+  const data = await getMethodicBySlug(methodic);
+
+  if (!data) {
+    notFound();
+  }
 
   return (
     <section className="px-5 md:pt-50 pt-30 pb-20 overflow-hidden bg-[url('/images/CatalogMethodicsPage/backgrounds/MethodicsListBackGrounds.svg')]">
@@ -50,8 +50,16 @@ export default async function MethodicDetailPage({ params }: PageProps) {
           </div>
         </div>
         <div className="flex flex-col w-full md:w-1/2 gap-12.5 md:gap-20">
-          <InfoBlock title={"Призначення"} children={data.purpose} className="w-full md:w-4/5" />
-          <InfoBlock title={"Терапевтичний ефект"} children={data.therapeuticEffect} className="w-full md:w-4/5" />
+          <InfoBlock
+            title={"Призначення"}
+            children={data.purpose}
+            className="w-full md:w-4/5"
+          />
+          <InfoBlock
+            title={"Терапевтичний ефект"}
+            children={data.therapeuticEffect}
+            className="w-full md:w-4/5"
+          />
           <div className="flex flex-col gap-4 ">
             <h3 className="heading-3 uppercase">Інструкція коротка:</h3>
             <ListBlock
@@ -61,10 +69,7 @@ export default async function MethodicDetailPage({ params }: PageProps) {
           </div>
           <div className="flex flex-col gap-4">
             <h3 className="heading-3 uppercase">Інструкція:</h3>
-            <ListBlock
-              items={data.instruction}
-              variant="numbers"
-            ></ListBlock>
+            <ListBlock items={data.instruction} variant="numbers"></ListBlock>
           </div>
         </div>
       </div>

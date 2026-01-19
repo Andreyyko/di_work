@@ -18,7 +18,7 @@ export default function MethodsList() {
         {CategoriesFrThCarouselData.map((item) => (
           <MethodicsCard key={item.id} item={item} />
         ))}
-        <h6 className="heading-bg absolute md:-top-10 lg:-top-14 xl:-top-20 hidden md:block">Be Unique</h6>
+        <h6 className="heading-bg absolute md:-top-14 lg:-top-14 xl:-top-20 hidden md:block">Be Unique</h6>
       </div>
       
     </section>

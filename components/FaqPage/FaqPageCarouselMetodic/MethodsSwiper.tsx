@@ -8,7 +8,7 @@ import { CategoriesFrThCarouselData } from "@/constant/common/CategoriesFrThCaro
 
 export default function MethodsSwiper() {
   return (
-    <section className="w-full max-w-[360px] sm:max-w-[500px] md:max-w-[750px] lg:max-w-[1050px] xl:max-w-[1300px] mx-auto mb-80 md:mb-100 px-4">
+    <section className="w-full max-w-[360px] sm:max-w-[500px] md:max-w-[750px] lg:max-w-[1050px] xl:max-w-[1300px] mx-auto pb-80 md:pb-100 px-4">
       <Swiper
         modules={[Navigation]}
         spaceBetween={16}

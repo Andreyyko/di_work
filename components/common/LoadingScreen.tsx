@@ -31,7 +31,7 @@ const LoadingScreen = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 z-9999 bg-brand-background flex items-center justify-center overflow-hidden">
+    <div className="fixed inset-0 z-9999 bg-brand-background bg-[url('/images/CatalogMethodicsPage/backgrounds/MethodicsListBackGrounds.svg')] flex items-center justify-center overflow-hidden">
 
       <h5 className="absolute top-0 heading-5 text-right right-0">
         Простір, де психологія поєднується з <br />креативом,

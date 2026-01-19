@@ -1,10 +1,13 @@
 "use client";
 
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import gsap from "gsap";
+
 import TwoFrameButton from "@/components/common/TwoFrameButton";
-import Image from 'next/image'
+import Image from "next/image";
 import { white_letter } from "@/public/images/CommonImages/PostCard";
 
 const schema = z
@@ -44,23 +47,50 @@ const ResetPasswordPage = () => {
     resolver: zodResolver(schema),
   });
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        "[data-reset-item]",
+        { opacity: 0, y: 6 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power1.out",
+          stagger: 0.1,
+          clearProps: "opacity,transform",
+        }
+      );
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   const onSubmit = async (data: FormData) => {
     console.log("RESET PASSWORD:", data);
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden flex flex-col pt-30 md:pt-50 items-start md:items-start px-4 md:px-5 bg-[url('/images/CatalogMethodicsPage/backgrounds/MethodicsListBackGrounds.svg')]">
-        <Image
+    <div className="min-h-screen relative overflow-hidden flex flex-col pt-30 md:pt-50 items-start px-4 md:px-5 bg-[url('/images/CatalogMethodicsPage/backgrounds/MethodicsListBackGrounds.svg')]">
+      <Image
         src={white_letter.WHITE_POSTCARD_AB}
         alt="letter"
         className="absolute -right-55 lg:-right-20 xl:-right-55 w-90 top-100 hidden lg:block lg:w-80 xl:w-150 xl:top-50 lg:top-55"
+        data-reset-item
       />
-      <h5 className="heading-5 absolute top-0 left-0 w-35 md:w-75">
+
+      <h5
+        className="heading-5 absolute top-0 left-0 w-35 md:w-75"
+        data-reset-item
+      >
         Кожен крок у цей простір — це подорож до себе, відкриття нових
         можливостей і ресурсів.
       </h5>
 
-      <h2 className="heading-2 uppercase pb-12 -tracking-widest md:tracking-normal">
+      <h2
+        className="heading-2 uppercase pb-12 -tracking-widest md:tracking-normal"
+        data-reset-item
+      >
         <span className="block md:hidden">
           <span className="first-letter" data-first-letter="С">
             творіть
@@ -78,7 +108,10 @@ const ResetPasswordPage = () => {
         </span>
       </h2>
 
-      <h3 className="heading-3 text-black text-left pb-10 w-full md:w-[50%]">
+      <h3
+        className="heading-3 text-black text-left pb-10 w-full md:w-[50%]"
+        data-reset-item
+      >
         Введіть новий пароль для вашого облікового запису. Пароль повинен
         містити не менше 8 символів
       </h3>
@@ -86,6 +119,7 @@ const ResetPasswordPage = () => {
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-full max-w-3xl flex flex-col gap-8"
+        data-reset-item
       >
         <div>
           <label className="block pb-2 heading-4 text-[25px]">

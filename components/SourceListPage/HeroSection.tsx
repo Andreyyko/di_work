@@ -4,7 +4,7 @@ const HeroSection = () => {
       <h2 className="heading-2 uppercase text-center pt-20  -tracking-widest">
         <span className="first-letter" data-first-letter="с">
           писок
-        </span>
+        </span>{" "}
         <span className="first-letter" data-first-letter="в">
           икористаної
         </span>
