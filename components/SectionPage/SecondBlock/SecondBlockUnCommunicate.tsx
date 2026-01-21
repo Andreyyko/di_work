@@ -1,3 +1,5 @@
+"use client";
+
 import { second_block_images } from "@/public/images/SectionsPage/SecondBlock";
 import { text_block_image } from "@/public/images/SectionsPage/TextImageBlock";
 import FrameWrapper from "../../common/FrameWrapper";
@@ -6,11 +8,24 @@ import TwoFrameButton from "../../common/TwoFrameButton";
 import Image from "next/image";
 import { flower_images } from "@/public/images/CommonImages/FlowerImages";
 import { white_letter } from "@/public/images/CommonImages/PostCard";
+import { useState, useEffect } from "react";
 
 const SecondBlockUnCommunicate = () => {
+  const [isWide, setIsWide] = useState(false);
+
+  useEffect(() => {
+    const checkWidth = () => setIsWide(window.innerWidth > 1433);
+    checkWidth();
+
+    window.addEventListener("resize", checkWidth);
+    return () => window.removeEventListener("resize", checkWidth);
+  }, []);
+
   return (
     <div className="w-full">
-      <h6 className="heading-bg absolute top-100 hidden lg:block lg:top-105 xl:left-60 lg:left-20">Be Unique</h6>
+      <h6 className="heading-bg absolute top-100 hidden lg:block lg:top-105 xl:left-60 lg:left-20">
+        Be Unique
+      </h6>
       <Image
         src={flower_images.SECTION_PAGE_FLOWER}
         alt={"flower"}
@@ -19,7 +34,13 @@ const SecondBlockUnCommunicate = () => {
       <Image
         src={white_letter.WHITE_POSTCARD}
         alt="letter"
-        className="absolute top-190 -right-30 w-[30%] lg:w-[25%] lg:right-85 -rotate-15 hidden lg:block"
+        className="absolute hidden lg:block"
+        style={{
+          top: isWide ? "720px" : "810px",
+          right: isWide ? "290px" : "290px",
+          width: isWide ? "25%" : "27%",
+          transform: isWide ? "rotate(-15deg)" : "rotate(-15deg)",
+        }}
       />
       <h5 className="absolute heading-5 lg:top-[10%] xl:top-[8.5%] -right-5 w-70 text-right hidden lg:block">
         Говорити — це не лише вимовляти звуки, а відчувати, що тебе чують.

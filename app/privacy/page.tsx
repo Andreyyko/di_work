@@ -29,12 +29,12 @@ export default function PrivacyPage() {
   }, []);
 
   return (
-    <section className="px-5 bg-[url('/images/CatalogMethodicsPage/backgrounds/MethodicsListBackGrounds.svg')]">
+    <section className="px-5 bg-[url('/images/CatalogMethodicsPage/backgrounds/MethodicsListBackGrounds.svg')] relative overflow-hidden">
       <Image
         className="absolute right-0 translate-y-250 w-90 lg:w-130 lg:translate-y-290 rotate-15 translate-x-40 hidden md:block"
         src={white_letter.WHITE_POSTCARD}
         alt={"postcard"}
-        data-privacy-animate
+        
       />
 
       <h5 className="heading-5 -translate-x-5" data-privacy-animate>
