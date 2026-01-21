@@ -58,7 +58,7 @@ export default function AboutUs() {
           loop
           muted
           playsInline
-          preload="metadata"
+          preload="none"
           className="w-full h-50 md:h-70 lg:h-150 object-cover"
         ></video>
       </FrameWrapper>

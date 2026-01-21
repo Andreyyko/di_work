@@ -22,6 +22,9 @@ export default async function MethodicDetailPage({ params }: PageProps) {
   return (
     <section className="px-5 md:pt-50 pt-30 pb-20 overflow-hidden bg-[url('/images/CatalogMethodicsPage/backgrounds/MethodicsListBackGrounds.svg')]">
       <div className="flex flex-col items-center relative">
+        <span className="heading-bg lg:leading-7 leading-5 whitespace-nowrap">
+          by Bogdana Andreyko
+        </span>
         <FrameWrapper
           className="text-center max-w-[1440px] w-full"
           paddingY={50}
@@ -31,9 +34,6 @@ export default async function MethodicDetailPage({ params }: PageProps) {
           <h2 className="heading-2 uppercase md:w-[90%] w-full first-letter md:tracking-normal -tracking-widest">
             {data.title}
           </h2>
-          <h6 className="heading-bg absolute lg:-top-26 lg:right-68 xl:-top-32 xl:right-110 -top-21 right-10 md:-top-23 md:right-45 whitespace-nowrap">
-            by Bogdana Andreyko
-          </h6>
         </FrameWrapper>
         <div className="pt-12.5">
           <FrameWrapper src={data.image.url} alt={data.image.alt} />
