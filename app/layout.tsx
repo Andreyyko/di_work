@@ -17,9 +17,7 @@ const kudriashov = localFont({
 });
 
 const grava = localFont({
-  src: [
-    {path: "../public/fonts/Grava-Normal.ttf"}
-  ],
+  src: [{ path: "../public/fonts/Grava-Normal.ttf" }],
   variable: "--font-grava",
   display: "swap",
 });
@@ -43,7 +41,8 @@ const montserrat = localFont({
 });
 
 export const metadata = {
-  title: "РОК-М — Ресурсно-орієнтовані когнітивні методики | Психологічний сайт №1 в Україні",
+  title:
+    "РОК-М — Ресурсно-орієнтовані когнітивні методики | Психологічний сайт №1 в Україні",
   description:
     "Перший в Україні психологічний сайт, що містить унікальні ресурсно-орієнтовані когнітивні та поведінкові методики, техніки, вправи, психологічні ігри та понад 100 тренінгів. Підтримка психічного здоровʼя, розвиток комунікації, подолання тривоги, робота з дітьми, сімʼєю та ПТСР.",
   keywords: [
@@ -56,7 +55,7 @@ export const metadata = {
     "методики для дітей",
     "тривога панічні атаки",
     "психологічні ігри",
-    "усвідомлене батьківство"
+    "усвідомлене батьківство",
   ],
   openGraph: {
     title: "РОК-М — Ресурсно-орієнтовані когнітивні методики",
@@ -82,16 +81,14 @@ export const metadata = {
   },
 };
 
-
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <
-      html lang="en"
+    <html
+      lang="en"
       className={`
         ${alexandra.variable}
         ${kudriashov.variable}
@@ -100,7 +97,7 @@ export default function RootLayout({
         ${allegretto.variable}
         ${montserrat.variable}
       `}
-      >
+    >
       <head>
         <link
           rel="preload"
@@ -109,14 +106,17 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-brand-background">
-        <Header/>
+        <Header />
         {children}
-        <section className="bg-cover bg-center bg-no-repeat" 
-      style={{backgroundImage: `url(${main_page_backrounds.FOOTER_BACKGROUND.src})`,
-      }}>
-        <Footer />
+        <section
+          className="bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url(${main_page_backrounds.FOOTER_BACKGROUND.src})`,
+          }}
+        >
+          <Footer />
         </section>
-        </body>
+      </body>
     </html>
   );
 }

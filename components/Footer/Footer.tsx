@@ -7,6 +7,7 @@ import CustomSeal from "../common/CustomSeal";
 import { CheckItems } from "@/constant/MainPageConstant/heroSectionData";
 import CheckItem from "../common/CheckItem";
 import { useWindowWidth } from "@/hooks/useWindowWidth";
+import Link from "next/link";
 
 const Footer = () => {
   const { isSmallerThanMd, isSmallerThanLg } = useWindowWidth();
@@ -82,24 +83,24 @@ const Footer = () => {
               <div>
                 <h3 className="heading-footer mb-5 md:mr-20">Сторінки сайту</h3>
                 <div className="flex flex-col gap-2.5 heading-6 opacity-100 tracking-[-0.5px]">
-                  <a href="#">Розділи</a>
-                  <a href="#">Картини (МАС)</a>
-                  <a href="#">Про нас</a>
-                  <a href="#">FAQ</a>
+                  <Link href="/catalog-methodics">Розділи</Link>
+                  <Link href="/mak-gallery">Картини (МАС)</Link>
+                  <Link href="/about">Про нас</Link>
+                  <Link href="/faq">FAQ</Link>
                   {isSmallerThanMd && (
                     <>
-                      <a
-                        href="#"
+                      <Link
+                        href="/privacy"
                         className="heading-6 opacity-100 tracking-[-0.5px]"
                       >
                         Політика конфіденційності
-                      </a>
-                      <a
-                        href="#"
+                      </Link>
+                      <Link
+                        href="/terms-of-use"
                         className="heading-6 opacity-100 tracking-[-0.5px]"
                       >
                         Умови користування
-                      </a>
+                      </Link>
                     </>
                   )}
                 </div>
@@ -110,12 +111,12 @@ const Footer = () => {
                     Юридичне
                   </h3>
                   <div className="flex flex-col gap-2.5">
-                    <a href="#" className="heading-6 opacity-100">
+                    <Link href="/privacy" className="heading-6 opacity-100">
                       Політика конфіденційності
-                    </a>
-                    <a href="#" className="heading-6 opacity-100">
+                    </Link>
+                    <Link href="/terms-of-use" className="heading-6 opacity-100">
                       Умови користування
-                    </a>
+                    </Link>
                   </div>
                 </div>
               )}

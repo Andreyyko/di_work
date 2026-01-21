@@ -14,7 +14,7 @@ const SecondBlockCommunicate = () => {
       <Image
         src={flower_images.SECTION_PAGE_FLOWER}
         alt={"flower"}
-        className="absolute right-0 lg:-bottom-30 xl:-bottom-[53%] translate-x-5 bottom-[95%] z-100 max-w-[1440px] w-[458px] lg:w-[1040px] xl:w-[1440px] md:w-[700px] md:bottom-[72%]"
+        className="absolute right-0 lg:-bottom-30 xl:-bottom-[50%] translate-x-5 bottom-[95%] z-100 max-w-[1440px] w-[458px] lg:w-[1040px] xl:w-[1400px] md:w-[700px] md:bottom-[72%]"
       />
       <h5 className="absolute heading-5 lg:-top-[430%] xl:-top-[370%] -right-5 w-90 text-right hidden lg:block">
         Творчість дитини — це не просто гра, це спосіб пізнати себе, висловити

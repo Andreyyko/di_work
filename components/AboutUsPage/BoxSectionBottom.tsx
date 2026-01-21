@@ -8,7 +8,7 @@ const BoxSectionBottom = () => {
       <Image
         src={flower_images.ABOUT_PAGE_BOTTOM}
         alt="flower"
-        className="absolute z-100 lg:bottom-[54%] xl:w-fit lg:w-[70%] lg:left-0 right-0 lg:scale-x-100 scale-x-[-1] md:bottom-[63%] md:w-[60%] bottom-[70%] translate-x-30 md:translate-x-0 w-[90%]"
+        className="absolute z-100 xl:bottom-[58.5%] lg:bottom-[58.5%] xl:w-fit lg:w-[70%] lg:left-0 right-0 lg:scale-x-100 scale-x-[-1] md:bottom-[65%] md:w-[60%] bottom-[70%] translate-x-30 md:translate-x-0 w-[90%]"
       />
       <div className="flex flex-row">
         <FrameWrapper

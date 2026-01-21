@@ -51,7 +51,17 @@ export default function AboutUs() {
         <BioSection />
       </div>
 
-      <FrameWrapper showOrnaments />
+      <FrameWrapper showOrnaments paddingX={10} paddingY={10} paddingXDesktop={25} paddingYDesktop={25}>
+        <video
+          src="/video/AboutUsPage/WalkVideoUniversity.mov"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          className="w-full h-50 md:h-70 lg:h-150 object-cover"
+        ></video>
+      </FrameWrapper>
 
       <div data-fade>
         <h3 className="heading-3 text-[250%] text-black uppercase flex flex-col pt-50">

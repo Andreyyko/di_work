@@ -100,8 +100,8 @@ const SectionSlider = () => {
         <span className="first-letter block text-end">Розділам</span>
       </h2>
 
-      <div className="lg:hidden relative flex justify-center mb-6 slider-anim">
-        <span className="heading-bg absolute -top-9 right-15 sm:right-60">Be Unique</span>
+      <div className="lg:hidden relative flex flex-col items-center mb-6 slider-anim">
+        <span className="heading-bg inline-flex leading-5">Be Unique</span>
         <FrameWrapper
           src={section_slider_images.BOHDANA_STAYING}
           paddingX={20}

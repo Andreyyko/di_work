@@ -132,11 +132,13 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
 
         <div className="flex items-center gap-4">
           {!isMobile && (
-            <Image
-              src={header_images.USER_ICON}
-              alt="profile"
-              className="w-[17px] h-[17px] menu-fade cursor-pointer"
-            />
+            <Link href="/profile/my-profile" onClick={onClose}>
+              <Image
+                src={header_images.USER_ICON}
+                alt="profile"
+                className="menu-fade cursor-pointer"
+              />
+            </Link>
           )}
         </div>
       </div>
@@ -158,23 +160,42 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
           frameThickness={isMobile ? "4px" : "8px"}
         >
           <div className="flex flex-col items-center gap-5 sm:gap-7.5">
-
-            <Link onClick={onClose} href="/about" className="heading-2-burger uppercase menu-item menu-fade">
-              <span className="first-letter" data-first-letter="П">ро нас</span>
+            <Link
+              onClick={onClose}
+              href="/about"
+              className="heading-2-burger uppercase menu-item menu-fade"
+            >
+              <span className="first-letter" data-first-letter="П">
+                ро нас
+              </span>
             </Link>
 
-            <Link href="/catalog-methodics" onClick={onClose} className="heading-2-burger uppercase  menu-item menu-fade">
-              <span className="first-letter-burger" data-first-letter="Р">озділи</span>
+            <Link
+              href="/catalog-methodics"
+              onClick={onClose}
+              className="heading-2-burger uppercase  menu-item menu-fade"
+            >
+              <span className="first-letter-burger" data-first-letter="Р">
+                озділи
+              </span>
             </Link>
 
-            <Link href="/mak-gallery" onClick={onClose} className="heading-2-burger uppercase pl-15 md:pl-25 sm:-translate-x-5 menu-item menu-fade">
+            <Link
+              href="/mak-gallery"
+              onClick={onClose}
+              className="heading-2-burger uppercase pl-15 md:pl-25 sm:-translate-x-5 menu-item menu-fade"
+            >
               МА
               <span className="first-letter-burger" data-first-letter="К">
                 <span className="opacity-0">O</span>
               </span>
             </Link>
 
-            <Link href="/faq" onClick={onClose} className="heading-2-burger uppercase menu-item menu-fade">
+            <Link
+              href="/faq"
+              onClick={onClose}
+              className="heading-2-burger uppercase menu-item menu-fade"
+            >
               <span className="sm:hidden flex items-center">
                 <span>
                   FA
@@ -187,11 +208,13 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
               <span className="hidden sm:flex items-center">
                 <span>
                   FA
-                  <span className="first-letter-burger" data-first-letter="Q"></span>
+                  <span
+                    className="first-letter-burger"
+                    data-first-letter="Q"
+                  ></span>
                 </span>
               </span>
             </Link>
-
           </div>
         </FrameWrapper>
       </div>
@@ -209,24 +232,39 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
         <div className="flex gap-4 items-center">
           {isMobile && (
             <Link href="/profile/my-profile" onClick={onClose}>
-            <Image
-              src={header_images.USER_ICON}
-              alt="profile"
-              className="w-5 h-5 menu-fade cursor-pointer"
-            />
+              <Image
+                src={header_images.USER_ICON}
+                alt="profile"
+                className="w-5 h-5 menu-fade cursor-pointer"
+              />
             </Link>
           )}
 
-          <a href="https://www.instagram.com/bogdanagalitskaandreiko/" target="_blank">
-            <Image src={header_images.INSTAGRAM_ICON} alt="ig" className="w-6 h-6 menu-fade" />
+          <a
+            href="https://www.instagram.com/bogdanagalitskaandreiko/"
+            target="_blank"
+          >
+            <Image
+              src={header_images.INSTAGRAM_ICON}
+              alt="ig"
+              className="w-6 h-6 menu-fade"
+            />
           </a>
 
           <a href="https://www.facebook.com/share/15xGzPkuLT/" target="_blank">
-            <Image src={header_images.FACEBOOK_ICON} alt="fb" className="w-6 h-6 menu-fade" />
+            <Image
+              src={header_images.FACEBOOK_ICON}
+              alt="fb"
+              className="w-6 h-6 menu-fade"
+            />
           </a>
 
           <a href="#" target="_blank">
-            <Image src={header_images.YOUTUBE_ICON} alt="yt" className="w-6 h-6 menu-fade" />
+            <Image
+              src={header_images.YOUTUBE_ICON}
+              alt="yt"
+              className="w-6 h-6 menu-fade"
+            />
           </a>
         </div>
       </div>
