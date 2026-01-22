@@ -10,6 +10,8 @@ const BoxSection = () => {
         <Image
           src={flower_images.ABOUT_PAGE_TOP}
           alt="flower"
+          loading="eager"
+          fetchPriority="high"
           className="absolute xl:top-110 left-0 z-100 xl:w-fit lg:top-120 lg:w-[70%] md:w-[50%] md:top-140 top-210 -translate-x-20 md:translate-x-0 lg:left-90 scale-x-[-1] lg:scale-x-100"
         />
         <div className="flex flex-col gap-15 relative">

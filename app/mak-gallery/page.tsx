@@ -34,10 +34,16 @@ export default function MakGalleryPage() {
   }, []);
 
   return (
-    <section
-      className="px-5 pb-20 bg-[url('/images/CatalogMethodicsPage/backgrounds/MethodicsListBackGrounds.svg')] overflow-hidden"
-      data-mak-animate
-    >
+    <section className="px-5 pb-20 overflow-hidden relative" data-mak-animate>
+      <Image
+        src={
+          "/images/CatalogMethodicsPage/backgrounds/MethodicsListBackGrounds.svg"
+        }
+        alt={"backgorund"}
+        fill
+        priority
+        className="object-cover -z-10"
+      />
       <h5 className="heading-5 -translate-x-5" data-mak-animate>
         Тренінги для відновлення
         <br />
