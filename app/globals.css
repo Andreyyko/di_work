@@ -303,6 +303,27 @@ html, body {
   z-index: 20;
 }
 
+.first-letter-about:first-letter {
+  font-family: var(--font-alexandra, inherit);
+  font-size: clamp(80px, 12vw, 160px);
+  color: var(--first-letter-color, var(--color-brand-bordo, currentColor));
+  line-height: 0.089;
+  position: absolute;
+  z-index: 20;
+  font-weight: 100;
+}
+
+.first-letter-about:before {
+  content: attr(data-first-letter);
+  font-family: var(--font-alexandra, inherit);
+  font-size: clamp(80px, 12vw, 160px);
+  color: var(--first-letter-color, var(--color-brand-bordo, currentColor));
+  line-height: 0.089;
+  position: relative;
+  z-index: 20;
+  font-weight: 100;
+}
+
 @media (min-width: 640px) {
   .heading-2 {
     letter-spacing: -0.08em;

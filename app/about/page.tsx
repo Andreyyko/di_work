@@ -9,6 +9,9 @@ import BoxSectionBottom from "../../components/AboutUsPage/BoxSectionBottom";
 import BoxSectionTop from "../../components/AboutUsPage/BoxSectionTop";
 import HeroSection from "../../components/AboutUsPage/HeroSection";
 import FrameWrapper from "@/components/common/FrameWrapper";
+import Image from "next/image";
+import { about_us_images } from "@/public/images/MainPageImages/AboutUsImages";
+import { bio_section_images } from "@/public/images/AboutUsPage/BioSection";
 
 export default function AboutUs() {
   const containerRef = useRef(null);
@@ -51,7 +54,13 @@ export default function AboutUs() {
         <BioSection />
       </div>
 
-      <FrameWrapper showOrnaments paddingX={10} paddingY={10} paddingXDesktop={25} paddingYDesktop={25}>
+      <FrameWrapper
+        showOrnaments
+        paddingX={10}
+        paddingY={10}
+        paddingXDesktop={25}
+        paddingYDesktop={25}
+      >
         <video
           src="/video/AboutUsPage/WalkVideoUniversity.mov"
           autoPlay
@@ -64,17 +73,37 @@ export default function AboutUs() {
       </FrameWrapper>
 
       <div data-fade>
-        <h3 className="heading-3 text-[250%] text-black uppercase flex flex-col pt-50">
-          <span>“</span>
-          <span className="first-letter-plan text-end" data-first-letter="С">
+        <h3 className="hidden heading-3 text-[210%] lg:text-[250%] xl:text-[313%] text-black uppercase lg:flex flex-col pt-50">
+          <Image src={bio_section_images.PAWS} alt={"paw"} />
+          <span className="first-letter-about text-end" data-first-letter="С">
             формуємо нову світлу
           </span>
-          <span>
-            реальність, знайшовши сенс та унікальність.<span> „</span>
+          <span className="flex flex-row justify-between">
+            реальність, знайшовши сенс та унікальність.
+            <Image
+              src={bio_section_images.PAWS}
+              alt={"paw"}
+              className="rotate-180 translate-y-5"
+            />
+          </span>
+        </h3>
+        <h3 className="lg:hidden heading-3 text-[130%] lg:text-[250%] xl:text-[313%] text-black uppercase flex flex-col pt-50">
+          <Image src={bio_section_images.PAWS} alt={"paw"} width={20} />
+          <span className="first-letter-plan text-end" data-first-letter="С">
+            формуємо
+          </span>
+          <span className="flex flex-row justify-between">
+            нову світлу реальність, знайшовши сенс та унікальність.
+            <Image
+              src={bio_section_images.PAWS}
+              alt={"paw"}
+              className="rotate-180 translate-y-5"
+              width={20}
+            />
           </span>
         </h3>
 
-        <h5 className="heading-5 pb-50">
+        <h5 className="heading-5 pb-50 pt-3">
           Omnia vincit amor — все перемагає любов.
         </h5>
       </div>

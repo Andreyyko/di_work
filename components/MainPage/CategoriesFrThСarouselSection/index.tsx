@@ -84,7 +84,7 @@ export default function CategoriesFrThCarousel() {
         <span className="first-letter">людей</span>
       </h2>
 
-      <p className="carousel-anim opacity-0 translate-y-[18%] heading-3 text-center">
+      <p className="carousel-anim opacity-0 translate-y-[18%] py-4 heading-3 text-center">
         Унікальні ресурсно-орієнтовані поведінкові методики, практики,
         {!isSmallerThanSm && <br />} техніки, вправи, інструменти та інтервенції
       </p>
