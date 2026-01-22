@@ -171,7 +171,7 @@ const MakMethodicInfo = () => {
 
         <div className="flex flex-col items-center sm:flex-row w-full">
           <div className="flex flex-row justify-between">
-            <span className="mak-anim opacity-0 hidden lg:block heading-5 -translate-x-5 relative -z-1">
+            <span className="hidden lg:block heading-5 -translate-x-5 relative -z-1">
               Практика, що оживає
               <br /> у тренінгах,
               <br /> музика, яка підтримує

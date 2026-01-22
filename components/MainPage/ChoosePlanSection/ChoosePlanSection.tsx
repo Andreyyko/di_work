@@ -83,7 +83,7 @@ const ChoosePlanSection = () => {
           </span>
           <br />
           <span
-            className="first-letter absolute uppercase right-5"
+            className="first-letter absolute uppercase whitespace-normal w-[95%] lg:w-[67%] text-start lg:text-end lg:whitespace-nowrap right-5"
             data-first-letter="п"
           >
             ідходить саме{" "}

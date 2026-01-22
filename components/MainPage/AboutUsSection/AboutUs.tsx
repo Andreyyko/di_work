@@ -60,7 +60,7 @@ const AboutUs = () => {
     <section ref={sectionRef} className="w-full pb-responsive">
       <div className="flex flex-col md:flex-row items-center md:justify-between md:mb-[50px] about-item opacity-0 translate-y-[30px]">
         {isSmallerThanSm && (
-          <p className="heading-bg sm:whitespace-nowrap translate-y-5 z-50 about-item opacity-0">
+          <p className="heading-bg sm:whitespace-nowrap leading-6 translate-y-5 z-50 about-item opacity-0">
             by Bo<span className="mr-1">g</span>
             <span>d</span>ana A<span className="mr-1">n</span>
             <span>d</span>reyko

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { footer_images } from "@/public/images/CommonImages/FooterImages";
 import Image from "next/image";
@@ -55,21 +55,24 @@ const Footer = () => {
                 </a>
               </div>
               <div className="flex flex-row gap-7.5 md:gap-5">
-                <a href="#">
+                <a
+                  href="https://www.instagram.com/bogdanagalitskaandreiko/"
+                  target="_blank"
+                >
                   <Image
                     src={footer_images.INTAGRAM_ICON}
                     alt="intagram icon"
                     className="h-5 w-5"
                   />
                 </a>
-                <a href="#">
+                <a href="https://www.facebook.com/share/15xGzPkuLT/" target="_blank">
                   <Image
                     src={footer_images.FACEBOOK_ICON}
                     alt="facebook icon"
                     className="h-5 w-5"
                   />
                 </a>
-                <a href="#">
+                <a href="#" target="_blank">
                   <Image
                     src={footer_images.YOUTUBE_ICON}
                     alt="youtube icon"
@@ -114,7 +117,10 @@ const Footer = () => {
                     <Link href="/privacy" className="heading-6 opacity-100">
                       Політика конфіденційності
                     </Link>
-                    <Link href="/terms-of-use" className="heading-6 opacity-100">
+                    <Link
+                      href="/terms-of-use"
+                      className="heading-6 opacity-100"
+                    >
                       Умови користування
                     </Link>
                   </div>

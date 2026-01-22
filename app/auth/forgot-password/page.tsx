@@ -78,8 +78,7 @@ const ForgotPasswordPage = () => {
       >
         <span className="first-letter" data-first-letter="з">
           абули
-        </span>
-        <br className="hidden" />
+        </span>{" "}
         <span>Пароль?</span>
       </h2>
 

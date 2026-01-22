@@ -71,7 +71,6 @@ const CourseSlider = () => {
 
   return (
     <section ref={sectionRef} className="relative">
-
       {!isSmallerThanMd && (
         <p className="heading-5 max-w-50 -translate-x-5">
           Він допомагає відкрити нові можливості,
@@ -85,7 +84,10 @@ const CourseSlider = () => {
       <h2 className="course-anim opacity-0 heading-2 flex flex-col xl:-translate-y-38">
         {isSmallerThanSm ? (
           <>
-            <span className="first-letter uppercase text-end" data-first-letter="н">
+            <span
+              className="first-letter uppercase text-end"
+              data-first-letter="н"
+            >
               езалежно
             </span>
             <span className="text-start uppercase">від віку</span>
@@ -119,7 +121,10 @@ const CourseSlider = () => {
         >
           {isSmallerThanSm ? (
             <>
-              <span className="first-letter text-end w-[95%] uppercase" data-first-letter="н">
+              <span
+                className="first-letter text-end w-[95%] uppercase"
+                data-first-letter="н"
+              >
                 а шляху
               </span>
 
@@ -169,10 +174,12 @@ const CourseSlider = () => {
           <TextSwiper onSwiper={(swiper) => (swiperRef.current = swiper)} />
         </div>
 
-        <Link href="/catalog-methodics" className="flex items-center sm:-translate-y-10 justify-center md:justify-end gap-4 md:max-w-[40%] w-full z-50">
+        <div className="flex items-center sm:-translate-y-10 justify-center md:justify-end gap-4 md:max-w-[40%] w-full z-50">
           {!isSmallerThanMd && <ArrowButton onClick={handleNextSlide} />}
-          <TwoFrameButton variant="one" label="ОБРАТИ СВОЮ МЕТОДИКУ" />
-        </Link>
+          <Link href="/catalog-methodics">
+            <TwoFrameButton variant="one" label="ОБРАТИ СВОЮ МЕТОДИКУ" />
+          </Link>
+        </div>
       </div>
 
       <Image
@@ -182,7 +189,7 @@ const CourseSlider = () => {
           top-65 w-80 -right-18
           sm:top-40 sm:-right-10
           md:top-50 md:w-170 md:-right-10
-          lg:top-80 lg:w-220 lg:-right-10
+          lg:top-90 lg:w-220 lg:-right-5
           xl:top-55 xl:w-300 xl:-right-10
           2xl:top-60 2xl:w-350 2xl:-right-10
           select-none pointer-events-none z-10
