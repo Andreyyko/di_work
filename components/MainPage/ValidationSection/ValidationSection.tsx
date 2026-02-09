@@ -6,6 +6,7 @@ import CustomSeal from "@/components/common/CustomSeal";
 import { useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -115,7 +116,7 @@ const ValidationSection = () => {
           </div>
         </div>
         <div className="absolute top-[75%] sm:top-[75%] left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <CustomSeal label="Переглянути методики" />
+          <Link href={"/catalog-methodics"}><CustomSeal label="Переглянути методики" /></Link>
         </div>
       </div>
 
@@ -162,12 +163,14 @@ const ValidationSection = () => {
             <br /> науково-практичній <br /> діяльності.
           </span>
           <div className="hidden md:block">
+            <Link href={"/catalog-methodics"}>
             <CustomSeal
               label="Переглянути методики"
               position="left"
-              className="-mt-6 lg:-mt-13"
+              className="-mt-6 lg:-mt-13 z-100"
               smallButton={true}
             />
+            </Link>
           </div>
         </div>
       </div>

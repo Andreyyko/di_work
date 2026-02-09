@@ -15,14 +15,13 @@ const LoadingScreen = () => {
 
     const interval = setInterval(() => {
       current += 1;
-      if (current > 100) {
-        clearInterval(interval);
 
-        document.body.style.overflow = "auto";
+      if (current >= 90) {
+        clearInterval(interval); 
       } else {
         setProgress(current);
       }
-    }, 20);
+    }, 25);
 
     return () => {
       clearInterval(interval);
@@ -34,8 +33,8 @@ const LoadingScreen = () => {
     <div className="fixed inset-0 z-9999 bg-brand-background bg-[url('/images/CatalogMethodicsPage/backgrounds/MethodicsListBackGrounds.svg')] flex items-center justify-center overflow-hidden">
 
       <h5 className="absolute top-0 heading-5 text-right right-0">
-        Простір, де психологія поєднується з <br />креативом,
-        де вправи стають ключем до<br />
+        Простір, де психологія поєднується з <br />
+        креативом, де вправи стають ключем до<br />
         самопізнання, а гра — до нових<br />
         можливостей.
       </h5>

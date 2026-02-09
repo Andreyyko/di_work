@@ -11,6 +11,7 @@ import FrameWrapper from "../../common/FrameWrapper";
 import { flower_images } from "@/public/images/CommonImages/FlowerImages";
 import { useWindowWidth } from "@/hooks/useWindowWidth";
 import { CheckItems } from "@/constant/MainPageConstant/heroSectionData";
+import Link from "next/link";
 
 const HeroSection = () => {
   const { isSmallerThanSm, isXlOrLarger } = useWindowWidth();
@@ -176,7 +177,7 @@ const HeroSection = () => {
 
         <div className="flex flex-col md:flex-row md:items-center lg:items-start justify-between gap-12">
           <div className="flex justify-center md:justify-start order-2 md:order-1 hero-cta-seal">
-            <CustomSeal label="ПЕРЕГЛЯНУТИ МЕТОДИКИ" />
+            <Link href={"/catalog-methodics"}><CustomSeal label="ПЕРЕГЛЯНУТИ МЕТОДИКИ" /></Link>
           </div>
 
           <div className="flex justify-center items-center md:justify-end lg:items-start order-1 md:order-2 hero-cta-frame">

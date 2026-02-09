@@ -6,6 +6,7 @@ import gsap from "gsap";
 import CustomSeal from "@/components/common/CustomSeal";
 import FrameWrapper from "@/components/common/FrameWrapper";
 import { HeroSectionImage } from "@/public/images/AboutUsPage/HeroSection";
+import Link from "next/link";
 
 const HeroSection = () => {
   useEffect(() => {
@@ -28,10 +29,7 @@ const HeroSection = () => {
 
   return (
     <div className="pb-37 lg:pb-[242px]" data-hero>
-      <h5
-        className="heading-5 -translate-x-5 absolute"
-        data-hero-item
-      >
+      <h5 className="heading-5 -translate-x-5 absolute" data-hero-item>
         Життя — це не
         <br />
         про ідеальність, а<br />
@@ -78,10 +76,7 @@ const HeroSection = () => {
           всіх сфер особистості.
         </h4>
 
-        <div
-          className="order-1 md:order-2 relative"
-          data-hero-item
-        >
+        <div className="order-1 md:order-2 relative" data-hero-item>
           <FrameWrapper
             className="w-90 translate-0 lg:-translate-x-12"
             src={HeroSectionImage.BOHDANA_STAY}
@@ -98,18 +93,16 @@ const HeroSection = () => {
           </h5>
         </div>
 
-        <div
-          className="hidden md:block order-3"
-          data-hero-item
-        >
-          <CustomSeal label="Переглянути методики" position="left" />
+        <div className="hidden md:block order-3 z-101" data-hero-item>
+          <Link href={"/catalog-methodics"}>
+            <CustomSeal label="Переглянути методики" position="left" />
+          </Link>
         </div>
 
-        <div
-          className="block md:hidden order-3"
-          data-hero-item
-        >
-          <CustomSeal label="Переглянути методики" position="right" />
+        <div className="block md:hidden order-3 z-900" data-hero-item>
+          <Link href={"/catalog-methodics"}>
+            <CustomSeal label="Переглянути методики" position="right" />
+          </Link>
         </div>
       </div>
     </div>

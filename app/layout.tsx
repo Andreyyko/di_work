@@ -3,6 +3,7 @@ import "./globals.css";
 import localFont from "next/font/local";
 import Footer from "@/components/Footer/Footer";
 import { main_page_backrounds } from "@/public/images/MainPageImages/backgrounds";
+import ClientLoaderWrapper from "@/components/common/ClientLoadingWrapper";
 
 const alexandra = localFont({
   src: "../public/fonts/alexandra-script.woff2",
@@ -106,6 +107,7 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-brand-background">
+      <ClientLoaderWrapper>
         <Header />
         {children}
         <section
@@ -116,6 +118,7 @@ export default function RootLayout({
         >
           <Footer />
         </section>
+        </ClientLoaderWrapper>
       </body>
     </html>
   );
