@@ -179,11 +179,12 @@ const Footer = () => {
                 застосування.
               </span>
             )}
-
+          <Link href={"/#contact"}>
             <CustomSeal
               label="зв’язатися з нами"
               className="w-[145px] md:w-[216px] mb-3 md:mb-0"
             />
+            </Link>
             {!isSmallerThanMd && (
               <div className="flex flex-col justify-end">
                 <span className="heading-bg leading-[67px]">

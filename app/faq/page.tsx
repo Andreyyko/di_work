@@ -9,6 +9,7 @@ import FaqList from "@/components/FaqPage/FaqList";
 import ValidationSection from "@/components/MainPage/ValidationSection/ValidationSection";
 import ReviewSection from "@/components/MainPage/ReviewSection/ReviewSection";
 import MethodsSwiper from "@/components/FaqPage/FaqPageCarouselMetodic/MethodsSwiper";
+import { generateCertificate } from "@/hooks/generateCertificate";
 
 export default function FaqPage() {
   const [activeTab, setActiveTab] = useState("methodologies");

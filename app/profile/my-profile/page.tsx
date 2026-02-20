@@ -17,7 +17,7 @@ const ProfilePage = () => {
         <ProfilePageHeaderMobile />
       </div>
       <div className="lg:flex flex-col translate-y-25 gap-1 hidden">
-        <h3 className="uppercase heading-3 pb-5 cursor-pointer">Акаунт</h3>
+        <h3 className="uppercase heading-3 pb-5">Акаунт</h3>
         <Link href="/profile/edit-profile">
           <h4 className="heading-4 cursor-pointer">
             Редагування персональних даних

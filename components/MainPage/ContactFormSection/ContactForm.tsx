@@ -86,6 +86,7 @@ const ContactForm = () => {
 
   return (
     <div
+      id="contact"
       ref={sectionRef}
       className="flex flex-col items-center justify-center w-full overflow-visible pt-[250px]"
     >
