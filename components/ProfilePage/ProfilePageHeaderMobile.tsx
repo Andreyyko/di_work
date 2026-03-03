@@ -5,9 +5,16 @@ import Image from "next/image";
 import gsap from "gsap";
 import { profile_page_images } from "@/public/images/ProfilePage";
 import Link from "next/link";
+import { getStoredUser } from "@/api/auth-api";
 
 const ProfilePageHeaderMobile = () => {
   const [open, setOpen] = useState(false);
+  const [displayName, setDisplayName] = useState<string>("Ім'я та прізвище");
+
+  useEffect(() => {
+    const user = getStoredUser();
+    if (user?.username) setDisplayName(user.username);
+  }, []);
 
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
@@ -72,7 +79,7 @@ const ProfilePageHeaderMobile = () => {
       <div className="flex flex-col gap-1.5 justify-center w-full">
         <div className="flex flex-row justify-between items-center gap-2">
           <h3 className="heading-3 uppercase text-black text-[18px]">
-            Імʼя та прізвище
+            {displayName}
           </h3>
 
           <Image
