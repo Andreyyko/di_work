@@ -1,14 +1,16 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import gsap from "gsap";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import TwoFrameButton from "@/components/common/TwoFrameButton";
 import { white_letter } from "@/public/images/CommonImages/PostCard";
 import Image from "next/image";
+import { setResetCode } from "@/api/auth-api";
 
 const schema = z.object({
   code: z
@@ -21,6 +23,19 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const VerifyCodePage = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const email = useMemo(() => {
+    const raw = searchParams.get("email");
+    if (!raw) return null;
+    try {
+      return decodeURIComponent(raw);
+    } catch {
+      return null;
+    }
+  }, [searchParams]);
+  const sent = searchParams.get("sent");
+
   const {
     register,
     handleSubmit,
@@ -48,7 +63,10 @@ const VerifyCodePage = () => {
   }, []);
 
   const onSubmit = async (data: FormData) => {
-    console.log("VERIFY CODE:", data);
+    if (!email) return;
+    setResetCode(data.code);
+    router.push(`/auth/reset-password?email=${encodeURIComponent(email)}`);
+    router.refresh();
   };
 
   return (
@@ -78,6 +96,25 @@ const VerifyCodePage = () => {
         щоб підтвердити вашу особу та продовжити відновлення пароля
       </h3>
 
+      {email && (
+        <p className="heading-6 text-left pb-4 w-full max-w-3xl" data-verify-item>
+          Email: <strong>{email}</strong>
+        </p>
+      )}
+
+      {sent === "0" && (
+        <p className="text-amber-600 text-sm pb-4" data-verify-item>
+          Не вдалося надіслати код. Перевірте, що бекенд запущений, або спробуйте
+          знову зі сторінки «Забули пароль». Якщо код вже приходив — введіть його нижче.
+        </p>
+      )}
+
+      {!email && (
+        <p className="text-red-500 text-sm pb-4" data-verify-item>
+          Не вказано email. Перейдіть зі сторінки «Забули пароль».
+        </p>
+      )}
+
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-full max-w-3xl flex flex-col gap-8"
@@ -104,9 +141,9 @@ const VerifyCodePage = () => {
         <div className="flex flex-col md:flex-row md:gap-6 items-center lg:items-start gap-10" data-verify-item>
           <TwoFrameButton
             variant="one"
-            label="Змінити пароль"
+            label="Далі"
             type="submit"
-            disabled={isSubmitting}
+            disabled={isSubmitting || !email}
             className="px-10 py-3 border border-black uppercase tracking-wide"
           />
         </div>

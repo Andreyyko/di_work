@@ -1,14 +1,16 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import gsap from "gsap";
+import { useRouter } from "next/navigation";
 
 import TwoFrameButton from "@/components/common/TwoFrameButton";
 import Image from "next/image";
 import { white_letter } from "@/public/images/CommonImages/PostCard";
+import { requestPasswordCode } from "@/api/auth-api";
 
 const schema = z.object({
   email: z
@@ -24,6 +26,9 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const ForgotPasswordPage = () => {
+  const router = useRouter();
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [success, setSuccess] = useState(false);
   const {
     register,
     handleSubmit,
@@ -52,7 +57,21 @@ const ForgotPasswordPage = () => {
   }, []);
 
   const onSubmit = async (data: FormData) => {
-    console.log("FORGOT PASSWORD EMAIL:", data);
+    setSubmitError(null);
+    setSuccess(false);
+    const email = data.email.trim();
+    const redirectUrl = `/auth/verify-code?email=${encodeURIComponent(email)}`;
+    try {
+      await requestPasswordCode({ email });
+      setSuccess(true);
+      router.push(`${redirectUrl}&sent=1`);
+    } catch (err) {
+      setSubmitError(
+        err instanceof Error ? err.message : "Не вдалося відправити код"
+      );
+      router.push(`${redirectUrl}&sent=0`);
+    }
+    router.refresh();
   };
 
   return (
@@ -103,10 +122,17 @@ const ForgotPasswordPage = () => {
             {...register("email")}
             className="w-full bg-transparent heading-6 text-[20px] border-b border-black focus:border-black outline-none py-2"
           />
-          {errors.email && (
-            <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
-          )}
+          {submitError && (
+          <p className="text-red-500 text-sm">{submitError}</p>
+        )}
+        {success && (
+          <p className="text-green-600 text-sm">
+            Код надіслано на email. Переходимо до введення коду…
+          </p>
+        )}
         </div>
+
+      
 
         <div className="flex flex-col md:flex-row md:gap-6 items-center lg:items-start gap-10">
           <TwoFrameButton

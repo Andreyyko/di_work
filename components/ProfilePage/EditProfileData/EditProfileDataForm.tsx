@@ -1,21 +1,24 @@
+"use client";
 
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import TwoFrameButton from "../../common/TwoFrameButton";
 import Link from "next/link";
+import { getMe, updateMe, setStoredUser, getStoredUser } from "@/api/auth-api";
 
-const nameRegex = /^[A-Za-zА-Яа-яІіЇїЄєʼ’\-]+$/;
+const nameRegex = /^[A-Za-zА-Яа-яІіЇїЄєʼ'\-\s]+$/;
 
 const schema = z.object({
   firstName: z
     .string()
-    .min(2, "Імʼя має містити мінімум 2 символи")
+    .min(1, "Імʼя має містити мінімум 1 символ")
     .regex(nameRegex, "Імʼя може містити лише літери"),
 
   lastName: z
     .string()
-    .min(2, "Прізвище має містити мінімум 2 символи")
+    .min(1, "Прізвище має містити мінімум 1 символ")
     .regex(nameRegex, "Прізвище може містити лише літери"),
 
   email: z
@@ -24,26 +27,86 @@ const schema = z.object({
     .refine((val) => !/\s/.test(val), {
       message: "Email не може містити пробіли",
     }),
-});
+}).refine(
+  (data) => (data.firstName.trim() + " " + data.lastName.trim()).trim().length >= 3,
+  { message: "Імʼя та прізвище разом мають містити мінімум 3 символи", path: ["lastName"] }
+);
 
 type FormData = z.infer<typeof schema>;
 
+function parseUsername(username: string): { firstName: string; lastName: string } {
+  const trimmed = username.trim();
+  const spaceIndex = trimmed.indexOf(" ");
+  if (spaceIndex === -1) return { firstName: trimmed, lastName: "" };
+  return {
+    firstName: trimmed.slice(0, spaceIndex),
+    lastName: trimmed.slice(spaceIndex + 1).trim(),
+  };
+}
+
+const emptyFormData: FormData = { firstName: "", lastName: "", email: "" };
+
 const EditProfileDataForm = () => {
+  const [loadError, setLoadError] = useState<string | null>(null);
+  const [initialData, setInitialData] = useState<FormData | null>(null);
+
   const {
     register,
     handleSubmit,
+    reset,
+    setError,
     formState: { errors, isSubmitting },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
-    defaultValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
-    },
+    defaultValues: emptyFormData,
   });
 
+  useEffect(() => {
+    let cancelled = false;
+    const stored = typeof window !== "undefined" ? getStoredUser() : null;
+    if (stored) {
+      const data: FormData = {
+        ...parseUsername(stored.username),
+        email: stored.email ?? "",
+      };
+      setInitialData(data);
+      reset(data);
+    }
+    getMe()
+      .then((user) => {
+        if (cancelled) return;
+        const data: FormData = {
+          ...parseUsername(user.username),
+          email: user.email ?? "",
+        };
+        setInitialData(data);
+        reset(data);
+      })
+      .catch((err) => {
+        if (cancelled) return;
+        setLoadError(err instanceof Error ? err.message : "Не вдалося завантажити профіль");
+      });
+    return () => { cancelled = true; };
+  }, [reset]);
+
   const onSubmit = async (data: FormData) => {
-    console.log("UPDATE PROFILE:", data);
+    setLoadError(null);
+    const username = `${data.firstName.trim()} ${data.lastName.trim()}`.trim();
+    try {
+      const updated = await updateMe({ username, email: data.email });
+      setStoredUser(updated);
+      reset({ firstName: data.firstName, lastName: data.lastName, email: data.email });
+      if (typeof window !== "undefined") window.location.reload();
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Не вдалося зберегти зміни";
+      if (message.includes("Username") || message.includes("username") || message.includes("Ім'я")) {
+        setError("firstName", { type: "server", message });
+      } else if (message.includes("Email") || message.includes("email")) {
+        setError("email", { type: "server", message });
+      } else {
+        setLoadError(message);
+      }
+    }
   };
   return (
     <div className="flex flex-col">
@@ -61,10 +124,14 @@ const EditProfileDataForm = () => {
         інформацію для входу та спілкування.
       </h4>
       <hr className="pb-5" />
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col gap-8 w-full md:w-2/3"
-      >
+      {!initialData && !loadError && (
+        <p className="heading-6 w-full md:w-2/3 pb-5">Завантаження...</p>
+      )}
+      {initialData && (
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex flex-col gap-8 w-full md:w-2/3"
+        >
         <div>
           <label className="heading-4 pb-2 block">Імʼя</label>
           <input
@@ -101,9 +168,6 @@ const EditProfileDataForm = () => {
             {...register("email")}
             className="w-full bg-transparent border-b opacity-100 border-black outline-none py-2 heading-6"
           />
-          {errors.email && (
-            <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
-          )}
         </div>
         <h6 className="heading-6 w-[90%]">
           Після збереження змін ви зможете використовувати оновлені дані для
@@ -121,7 +185,8 @@ const EditProfileDataForm = () => {
             disabled={isSubmitting}
           />
         </div>
-      </form>
+        </form>
+      )}
     </div>
   );
 };

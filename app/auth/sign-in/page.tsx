@@ -1,15 +1,17 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import gsap from "gsap";
+import { useRouter } from "next/navigation";
 
 import TwoFrameButton from "@/components/common/TwoFrameButton";
 import Link from "next/link";
 import Image from "next/image";
 import { white_letter } from "@/public/images/CommonImages/PostCard";
+import { login, setJwt, setStoredUser } from "@/api/auth-api";
 
 const schema = z.object({
   email: z
@@ -42,6 +44,8 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const SignInPage = () => {
+  const router = useRouter();
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
@@ -70,7 +74,19 @@ const SignInPage = () => {
   }, []);
 
   const onSubmit = async (data: FormData) => {
-    console.log("LOGIN DATA:", data);
+    setSubmitError(null);
+    try {
+      const res = await login({
+        identifier: data.email,
+        password: data.password,
+      });
+      setJwt(res.jwt);
+      setStoredUser(res.user);
+      router.push("/profile/my-profile");
+      router.refresh();
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : "Помилка входу");
+    }
   };
 
   return (
@@ -134,6 +150,8 @@ const SignInPage = () => {
               {errors.password.message}
             </p>
           )}
+
+        
 
           <Link
             href="/auth/forgot-password"

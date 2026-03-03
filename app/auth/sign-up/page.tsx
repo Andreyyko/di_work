@@ -1,22 +1,24 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import gsap from "gsap";
+import { useRouter } from "next/navigation";
 
 import TwoFrameButton from "@/components/common/TwoFrameButton";
 import Image from "next/image";
 import { white_letter } from "@/public/images/CommonImages/PostCard";
+import { register as registerUser, setJwt, setStoredUser } from "@/api/auth-api";
 
 const schema = z
   .object({
     name: z
       .string()
-      .min(2, "Імʼя має містити мінімум 2 символи")
-      .max(50, "Імʼя занадто довге")
-      .regex(/^[A-Za-zА-Яа-яІіЇїЄєʼ’\- ]+$/, "Імʼя може містити лише літери"),
+      .min(3, "Ім'я (логін) має містити мінімум 3 символи")
+      .max(50, "Ім'я занадто довге")
+      .regex(/^[A-Za-zА-Яа-яІіЇїЄєʼ’\- ]+$/, "Ім'я може містити лише літери"),
 
     email: z
       .string()
@@ -54,6 +56,8 @@ const schema = z
 type FormData = z.infer<typeof schema>;
 
 const SignUpPage = () => {
+  const router = useRouter();
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
@@ -81,7 +85,20 @@ const SignUpPage = () => {
   }, []);
 
   const onSubmit = async (data: FormData) => {
-    console.log("SIGN UP DATA:", data);
+    setSubmitError(null);
+    try {
+      const res = await registerUser({
+        email: data.email,
+        username: data.name.trim(),
+        password: data.password,
+      });
+      setJwt(res.jwt);
+      setStoredUser(res.user);
+      router.push("/profile/my-profile");
+      router.refresh();
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : "Помилка реєстрації");
+    }
   };
 
   return (
@@ -124,10 +141,10 @@ const SignUpPage = () => {
         data-signup-item
       >
         <div>
-          <label className="block pb-2 heading-4 text-[25px]">Імʼя</label>
+          <label className="block pb-2 heading-4 text-[25px]">Ім'я</label>
           <input
             type="text"
-            placeholder="Ваше імʼя"
+            placeholder="Ваше ім'я"
             {...register("name")}
             className="w-full bg-transparent heading-6 text-[20px] border-b border-black outline-none py-2"
           />
