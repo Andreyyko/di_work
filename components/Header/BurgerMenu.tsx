@@ -7,10 +7,12 @@ import { X } from "lucide-react";
 import { header_images } from "@/public/images/CommonImages/HeaderImages";
 
 import { useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 
 import gsap from "gsap";
 import { main_page_backrounds } from "@/public/images/MainPageImages/backgrounds";
 import Link from "next/link";
+import { getJwt } from "@/api/auth-api";
 
 type Props = {
   onClose: () => void;
@@ -19,8 +21,18 @@ type Props = {
 };
 
 const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
+  const router = useRouter();
   const menuRef = useRef<HTMLDivElement>(null);
   const frameRef = useRef<HTMLDivElement>(null);
+
+  const handleUserIconClick = () => {
+    onClose();
+    if (getJwt()) {
+      router.push("/profile/my-profile");
+    } else {
+      router.push("/auth/sign-in");
+    }
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -132,13 +144,18 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
 
         <div className="flex items-center gap-4">
           {!isMobile && (
-            <Link href="/profile/my-profile" onClick={onClose}>
+            <button
+              type="button"
+              onClick={handleUserIconClick}
+              className="menu-fade"
+              aria-label="Профіль"
+            >
               <Image
                 src={header_images.USER_ICON}
                 alt="profile"
                 className="menu-fade cursor-pointer"
               />
-            </Link>
+            </button>
           )}
         </div>
       </div>
@@ -231,13 +248,18 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
 
         <div className="flex gap-4 items-center">
           {isMobile && (
-            <Link href="/profile/my-profile" onClick={onClose}>
+            <button
+              type="button"
+              onClick={handleUserIconClick}
+              className="menu-fade"
+              aria-label="Профіль"
+            >
               <Image
                 src={header_images.USER_ICON}
                 alt="profile"
                 className="w-5 h-5 menu-fade cursor-pointer"
               />
-            </Link>
+            </button>
           )}
 
           <a
