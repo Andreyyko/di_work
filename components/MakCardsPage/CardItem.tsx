@@ -20,33 +20,39 @@ export default function CardItem({
   return (
     <div
       onClick={onClick}
-      className="relative bg-transparent text-center overflow-hidden cursor-pointer hover:scale-[1.02] transition"
+      className="relative w-full bg-transparent text-center overflow-hidden cursor-pointer hover:scale-[1.02] transition duration-300"
     >
       <FrameWrapper paddingX={15} paddingY={20}>
-        <Image
-          src={card.frontImage}
-          alt={card.title}
-          width={400}
-          height={500}
-          className="w-full xl:h-[500px] h-[400px] object-cover"
-        />
+        <div className="relative aspect-4/5 w-full overflow-hidden">
+          <Image
+            src={card.frontImage}
+            alt={card.title}
+            fill 
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" 
+            className="object-cover"
+            priority={false}
+          />
+        </div>
       </FrameWrapper>
+
       <button
         onClick={(e) => {
           e.stopPropagation();
           toggleFavorite(card.id);
         }}
-        className="absolute z-100 top-8 right-8 text-xl cursor-pointer"
+        className="absolute z-10 top-[7%] right-[10%] cursor-pointer drop-shadow-md"
       >
-        {isFavorite(card.id) ? (
-          <Heart size={32} color="#ffffff" strokeWidth={1.25} fill="#67161f"/>
-        ) : (
-          <Heart size={32} color="#ffffff" strokeWidth={1.25} fill="#ffffff32"/>
-        )}
+        <Heart 
+          size={32} 
+          color="#ffffff" 
+          strokeWidth={1.25} 
+          fill={isFavorite(card.id) ? "#67161f" : "#ffffff32"}
+          className="transition-colors duration-300"
+        />
       </button>
 
       <div className="p-3 heading-3 text-brand-bordo uppercase">
-        <h3 className="">{card.title}</h3>
+        <h3 className="text-sm md:text-base lg:text-lg truncate">{card.title}</h3>
       </div>
     </div>
   );
