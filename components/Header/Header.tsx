@@ -1,20 +1,29 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 import Image from "next/image";
 import InitialsCircle from "../common/InitialsCircle";
 import BurgerMenu from "./BurgerMenu";
 
-import Link from 'next/link'
-
 import { header_images } from "@/public/images/CommonImages/HeaderImages";
+import { getJwt } from "@/api/auth-api";
 
 const Header = () => {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
 
   const [isMobile, setIsMobile] = useState(false);
+
+  const handleUserIconClick = () => {
+    if (getJwt()) {
+      router.push("/profile/my-profile");
+    } else {
+      router.push("/auth/sign-in");
+    }
+  };
 
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 767px)");
@@ -69,13 +78,18 @@ const Header = () => {
         </button>
 
         <div className="z-300">
-          <Link className="pt-3 hidden md:block" href="/profile/my-profile">
+          <button
+            type="button"
+            onClick={handleUserIconClick}
+            className="pt-3 hidden md:block"
+            aria-label="Профіль"
+          >
             <Image
               src={header_images.USER_ICON}
               alt="profile-icon"
               className="w-[17px] h-[17px] cursor-pointer"
             />
-          </Link>
+          </button>
         </div>
       </header>
 
