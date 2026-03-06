@@ -1,8 +1,8 @@
 'use client'
 
-import { Heart } from "lucide-react"
+import { Heart, Baby } from "lucide-react"
 
-type Tab = 'all' | 'favorites'
+export type Tab = 'all' | 'favorites' | 'child'
 
 export default function Tabs({
   active,
@@ -13,28 +13,40 @@ export default function Tabs({
 }) {
   return (
     <div className="flex gap-4">
+
       <button
         onClick={() => onChange('all')}
-        className={`py-2 transition cursor-pointer
-          ${active === 'all'
-            ? 'border-brand-gray text-brand-gray'
-            : 'border-brand-gray/30 text-brand-gray/50'
-          }`}
+        className={`py-2 px-4 transition cursor-pointer 
+        ${active === 'all'
+          ? ' text-brand-gray'
+          : ' text-brand-gray/50'
+        }`}
       >
         All
       </button>
 
       <button
         onClick={() => onChange('favorites')}
-        className={`px-4 py-2 transition cursor-pointer
-          ${active === 'favorites'
-            ? 'border-brand-gray text-brand-gray opacity-100'
-            : 'border-brand-gray/30 text-brand-gray/50 opacity-50'
-          }`}
+        className={`py-2 px-4 transition cursor-pointer 
+        ${active === 'favorites'
+          ? 'opacity-100 text-brand-gray'
+          : 'opacity-50 text-brand-gray/50'
+        }`}
       >
-        <Heart size={32} color="#67161f" strokeWidth={1.25} fill="#67161f"/>
+        <Heart size={28} color="#67161f" strokeWidth={1.25} fill="#67161f" />
       </button>
-      
+
+      <button
+        onClick={() => onChange('child')}
+        className={`py-2 px-4 transition cursor-pointer 
+        ${active === 'child'
+          ? ' text-brand-gray'
+          : ' text-brand-gray/50'
+        }`}
+      >
+        <Baby size={28} strokeWidth={1.25} />
+      </button>
+
     </div>
   )
 }

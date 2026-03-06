@@ -52,7 +52,7 @@ export default function CardItem({
       </button>
 
       <div className="p-3 heading-3 text-brand-bordo uppercase">
-        <h3 className="text-sm md:text-base lg:text-lg truncate">{card.title}</h3>
+        <h3 className="text-sm md:text-base lg:text-lg xl:text-xl truncate">{card.title}</h3>
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ export type Card = {
   tags: string[];
   frontImage: string;
   backImage: string;
+  type?: string;
 };
 
 export const cards: Card[] = [
@@ -13,6 +14,8 @@ export const cards: Card[] = [
     tags: ["сварка", "примирення"],
     frontImage: "/images/MakCards/AfterQuarell_Front.png",
     backImage: "/images/MakCards/AfterQuarell_Back.png",
+    type: "child",
+    
   },
 
   {
@@ -29,6 +32,7 @@ export const cards: Card[] = [
     tags: ["вдячність"],
     frontImage: "/images/MakCards/Appreciation_Front.png",
     backImage: "/images/MakCards/Appreciation_Back.png",
+    type: "child",
   },
 
   {
@@ -37,6 +41,7 @@ export const cards: Card[] = [
     tags: ["творчість"],
     frontImage: "/images/MakCards/Art_Front.png",
     backImage: "/images/MakCards/Art_Back.png",
+    type: "child",
   },
 
   {
@@ -45,6 +50,7 @@ export const cards: Card[] = [
     tags: ["Книга"],
     frontImage: "/images/MakCards/Book_Front.png",
     backImage: "/images/MakCards/Book_Back.png",
+    type: "child",
   },
 
   {
@@ -85,6 +91,7 @@ export const cards: Card[] = [
     tags: ["Дракон"],
     frontImage: "/images/MakCards/Dragon_Front.png",
     backImage: "/images/MakCards/Dragon_Back.png",
+    type: "child",
   },
 
   {
@@ -93,6 +100,7 @@ export const cards: Card[] = [
     tags: ["Мрії", "Мрія"],
     frontImage: "/images/MakCards/Dreams_Front.png",
     backImage: "/images/MakCards/Dreams_Back.png",
+    type: "child",
   },
 
   {
@@ -101,30 +109,34 @@ export const cards: Card[] = [
     tags: ["Обійми"],
     frontImage: "/images/MakCards/Embrace_Front.png",
     backImage: "/images/MakCards/Embrace_Back.png",
+    type: "child",
   },
 
   {
     id: "card-13",
-    title: "Казковий Дім",
-    tags: ["Казковий", "Дім"],
+    title: "Казковий Будиночок",
+    tags: ["Казковий", "Будиночок"],
     frontImage: "/images/MakCards/FairTailHouse_Front.png",
     backImage: "/images/MakCards/FairTailHouse_Back.png",
+    type: "child",
   },
 
   {
     id: "card-14",
     title: "Фея",
-    tags: ["сварФеяка"],
+    tags: ["Фея"],
     frontImage: "/images/MakCards/Fairy_Front.png",
     backImage: "/images/MakCards/Fairy_Back.png",
+    type: "child",
   },
 
   {
     id: "card-15",
-    title: "Казкова Пташка",
-    tags: ["Казкова", "Пташка"],
+    title: "Казковий Птах",
+    tags: ["Казковий", "Птах"],
     frontImage: "/images/MakCards/FairyTailBird_Front.png",
     backImage: "/images/MakCards/FairyTailBird_Back.png",
+    type: "child",
   },
 
   {
@@ -133,6 +145,7 @@ export const cards: Card[] = [
     tags: ["Сім'я"],
     frontImage: "/images/MakCards/Family_Front.png",
     backImage: "/images/MakCards/Family_Back.png",
+    type: "child",
   },
 
   {
@@ -141,6 +154,7 @@ export const cards: Card[] = [
     tags: ["Вина"],
     frontImage: "/images/MakCards/Fault_Front.png",
     backImage: "/images/MakCards/Fault_Back.png",
+    type: "child",
   },
 
   {
@@ -149,6 +163,7 @@ export const cards: Card[] = [
     tags: ["Страх"],
     frontImage: "/images/MakCards/Fear_Front.png",
     backImage: "/images/MakCards/Fear_Back.png",
+    type: "child",
   },
 
   {
@@ -165,6 +180,7 @@ export const cards: Card[] = [
     tags: ["Їжа"],
     frontImage: "/images/MakCards/Food_Front.png",
     backImage: "/images/MakCards/Food_Back.png",
+    type: "child",
   },
 
   {
@@ -181,6 +197,7 @@ export const cards: Card[] = [
     tags: ["Дружба"],
     frontImage: "/images/MakCards/Friendship_Front.png",
     backImage: "/images/MakCards/Friendship_Back.png",
+    type: "child",
   },
 
   {
@@ -189,6 +206,7 @@ export const cards: Card[] = [
     tags: ["Гра"],
     frontImage: "/images/MakCards/Game_Front.png",
     backImage: "/images/MakCards/Game_Back.png",
+    type: "child",
   },
 
   {
@@ -205,6 +223,7 @@ export const cards: Card[] = [
     tags: ["Джин"],
     frontImage: "/images/MakCards/Gin_Front.png",
     backImage: "/images/MakCards/Gin_Back.png",
+    type: "child",
   },
 
   {
@@ -213,6 +232,7 @@ export const cards: Card[] = [
     tags: ["Гном"],
     frontImage: "/images/MakCards/Gnome_Front.png",
     backImage: "/images/MakCards/Gnome_Back.png",
+    type: "child",
   },
 
   {
@@ -221,14 +241,16 @@ export const cards: Card[] = [
     tags: ["Допомога", "іншому"],
     frontImage: "/images/MakCards/Helping_Front.png",
     backImage: "/images/MakCards/Helping_Back.png",
+    type: "child",
   },
 
   {
     id: "card-28",
-    title: "Відпочинок",
-    tags: ["Відпочинок"],
+    title: "Свято",
+    tags: ["Свято"],
     frontImage: "/images/MakCards/Holiday_Front.png",
     backImage: "/images/MakCards/Holiday_Back.png",
+    type: "child",
   },
 
   {
@@ -245,6 +267,7 @@ export const cards: Card[] = [
     tags: ["Надія"],
     frontImage: "/images/MakCards/Hope_Front.png",
     backImage: "/images/MakCards/Hope_Back.png",
+    type: "child",
   },
 
   {
@@ -253,6 +276,7 @@ export const cards: Card[] = [
     tags: ["Цікавість"],
     frontImage: "/images/MakCards/Interest_Front.png",
     backImage: "/images/MakCards/Interest_Back.png",
+    type: "child",
   },
 
   {
@@ -269,6 +293,7 @@ export const cards: Card[] = [
     tags: ["Радість"],
     frontImage: "/images/MakCards/Joy_Front.png",
     backImage: "/images/MakCards/Joy_Back.png",
+    type: "child",
   },
 
   {
@@ -277,6 +302,7 @@ export const cards: Card[] = [
     tags: ["Лицар"],
     frontImage: "/images/MakCards/Knight_Front.png",
     backImage: "/images/MakCards/Knight_Back.png",
+    type: "child",
   },
 
   {
@@ -293,6 +319,7 @@ export const cards: Card[] = [
     tags: ["Сміх"],
     frontImage: "/images/MakCards/Laugh_Front.png",
     backImage: "/images/MakCards/Laugh_Back.png",
+    type: "child",
   },
 
   {
@@ -309,6 +336,7 @@ export const cards: Card[] = [
     tags: ["Чарівний", "кінь"],
     frontImage: "/images/MakCards/MagicHorse_Front.png",
     backImage: "/images/MakCards/MagicHorse_Back.png",
+    type: "child",
   },
 
   {
@@ -317,6 +345,7 @@ export const cards: Card[] = [
     tags: ["Злість"],
     frontImage: "/images/MakCards/Malice_Front.png",
     backImage: "/images/MakCards/Malice_Back.png",
+    type: "child",
   },
 
   {
@@ -333,6 +362,7 @@ export const cards: Card[] = [
     tags: ["Переїзд"],
     frontImage: "/images/MakCards/Moving_Front.png",
     backImage: "/images/MakCards/Moving_Back.png",
+    type: "child",
   },
 
   {
@@ -341,6 +371,7 @@ export const cards: Card[] = [
     tags: ["Музика"],
     frontImage: "/images/MakCards/Music_Front.png",
     backImage: "/images/MakCards/Music_Back.png",
+    type: "child",
   },
 
   {
@@ -349,6 +380,7 @@ export const cards: Card[] = [
     tags: ["Природа"],
     frontImage: "/images/MakCards/Nature_Front.png",
     backImage: "/images/MakCards/Nature_Back.png",
+    type: "child",
   },
 
   {
@@ -357,6 +389,7 @@ export const cards: Card[] = [
     tags: ["Новий", "день", "садочку", "садочок"],
     frontImage: "/images/MakCards/NewDayInKinderGarten_Front.png",
     backImage: "/images/MakCards/NewDayInKinderGarten_Back.png",
+    type: "child",
   },
 
   {
@@ -365,6 +398,7 @@ export const cards: Card[] = [
     tags: ["Новий", "день", "школі", "школа"],
     frontImage: "/images/MakCards/NewDayInSchool_Front.png",
     backImage: "/images/MakCards/NewDayInSchool_Back.png",
+    type: "child",
   },
 
   {
@@ -381,6 +415,7 @@ export const cards: Card[] = [
     tags: ["Гордість"],
     frontImage: "/images/MakCards/Pride_Front.png",
     backImage: "/images/MakCards/Pride_Back.png",
+    type: "child",
   },
 
   {
@@ -389,6 +424,7 @@ export const cards: Card[] = [
     tags: ["Принцеса"],
     frontImage: "/images/MakCards/Princess_Front.png",
     backImage: "/images/MakCards/Princess_Back.png",
+    type: "child",
   },
 
   {
@@ -397,6 +433,7 @@ export const cards: Card[] = [
     tags: ["Сварка", "другом", "друг"],
     frontImage: "/images/MakCards/Quarell_Front.png",
     backImage: "/images/MakCards/Quarell_Back.png",
+    type: "child",
   },
 
   {
@@ -413,6 +450,7 @@ export const cards: Card[] = [
     tags: ["Відпочинок"],
     frontImage: "/images/MakCards/Rest_Front.png",
     backImage: "/images/MakCards/Rest_Back.png",
+    type: "child",
   },
 
   {
@@ -453,6 +491,7 @@ export const cards: Card[] = [
     tags: ["Сором"],
     frontImage: "/images/MakCards/Shame_Front.png",
     backImage: "/images/MakCards/Shame_Back.png",
+    type: "child",
   },
 
   {
@@ -461,6 +500,7 @@ export const cards: Card[] = [
     tags: ["Чарівниця"],
     frontImage: "/images/MakCards/Sorceress_Front.png",
     backImage: "/images/MakCards/Sorceress_Back.png",
+    type: "child",
   },
 
   {
@@ -469,6 +509,7 @@ export const cards: Card[] = [
     tags: ["Смуток"],
     frontImage: "/images/MakCards/Sorrow_Front.png",
     backImage: "/images/MakCards/Sorrow_Back.png",
+    type: "child",
   },
 
   {
@@ -485,6 +526,7 @@ export const cards: Card[] = [
     tags: ["Підтримка"],
     frontImage: "/images/MakCards/Suport_Front.png",
     backImage: "/images/MakCards/Suport_Back.png",
+    type: "child",
   },
 
   {
@@ -501,6 +543,7 @@ export const cards: Card[] = [
     tags: ["Теплі", "речі"],
     frontImage: "/images/MakCards/WarmThings_Front.png",
     backImage: "/images/MakCards/WarmThings_Back.png",
+    type: "child",
   },
 
   {
@@ -533,5 +576,6 @@ export const cards: Card[] = [
     tags: ["Лісовик"],
     frontImage: "/images/MakCards/WoodMan_Front.png",
     backImage: "/images/MakCards/WoodMan_Back.png",
+    type: "child",
   },
 ];
