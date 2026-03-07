@@ -58,6 +58,9 @@ export default function CustomHeading({
   line1,
   line2,
   line3,
+  line4,
+  line5,
+  line6,
   highlightWords1,
   highlightWords2,
   highlightWords3,
@@ -88,6 +91,9 @@ export default function CustomHeading({
           {renderLine(line1, highlightWords1, "start")}
           {renderLine(line2, highlightWords2, "end")}
           {renderLine(line3, highlightWords3, "start")}
+          {renderLine(line4, highlightWords1, "start")}
+          {renderLine(line5, highlightWords2, "start")}
+          {renderLine(line6, highlightWords3, "end")}
         </div>
         <div className="pt-6 flex md:hidden flex-col w-full heading-2 uppercase text-4xl">
           {renderLineMob(lineMob1, highlightWordsMob1, "start")}

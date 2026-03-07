@@ -58,6 +58,8 @@ const ImageTextBlockSection = ({
   highlight,
   highlight1,
   highlight2,
+  highlight3,
+  highlight4,
   sub_text,
   mobile_image,
 }: TextImageBlockData) => {
@@ -86,6 +88,7 @@ const ImageTextBlockSection = ({
           {renderLine(highlight)}
           {renderLine(highlight1)}
           {renderLine(highlight2)}
+          {renderLine(highlight3)}
           {renderImage(sub_image)}
           {renderMobile(mobile_image)}
         </div>

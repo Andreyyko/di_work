@@ -22,7 +22,7 @@ export default function Tabs({
           : ' text-brand-gray/50'
         }`}
       >
-        All
+        <div className="flex flex-col items-center"><p>All</p><p>Для дорослих</p></div>
       </button>
 
       <button
@@ -44,7 +44,7 @@ export default function Tabs({
           : ' text-brand-gray/50'
         }`}
       >
-        <Baby size={28} strokeWidth={1.25} />
+        <div className="flex flex-col items-center"><Baby size={28} strokeWidth={1.25} /><p>Для дітей</p></div>
       </button>
 
     </div>
