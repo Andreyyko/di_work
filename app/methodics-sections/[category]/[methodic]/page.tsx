@@ -2,7 +2,49 @@ import FrameWrapper from "@/components/common/FrameWrapper";
 import InfoBlock from "@/components/common/InfoBlock";
 import ListBlock from "@/components/common/ListBlock";
 import { getMethodicBySlug } from "@/constant/methodics-sections/getMethodicBySlug";
+import { methodic_image } from "@/public/images/MethodicsListImage";
 import { notFound } from "next/navigation";
+
+function blocksToPlainText(blocks: any[] | null | undefined): string {
+  if (!blocks) return "";
+
+  return blocks
+    .map((block) =>
+      Array.isArray(block?.children)
+        ? block.children.map((child: any) => child?.text || "").join("")
+        : ""
+    )
+    .join("\n\n")
+    .trim();
+}
+
+function blocksToPlainTextArray(blocks: any[] | null | undefined): string[] {
+  if (!blocks) return [];
+
+  return blocks
+    .flatMap((block) => {
+      if (!block) return [];
+
+      if (typeof block === "string") {
+        return [block];
+      }
+
+      if (typeof (block as any).text === "string") {
+        return [(block as any).text];
+      }
+
+      if (Array.isArray((block as any).children)) {
+        const text = (block as any).children
+          .map((child: any) => child?.text || "")
+          .join("");
+        return [text];
+      }
+
+      return [];
+    })
+    .map((text) => text.trim())
+    .filter((text) => text.length > 0);
+}
 
 type PageProps = {
   params: Promise<{
@@ -15,9 +57,9 @@ export default async function MethodicDetailPage({ params }: PageProps) {
 
   const data = await getMethodicBySlug(methodic);
 
-  if (!data) {
-    notFound();
-  }
+  console.log("METHODIC DETAIL DATA:", JSON.stringify(data, null, 2));
+
+  if (!data) notFound();
 
   return (
     <section className="px-5 md:pt-50 pt-30 pb-20 overflow-hidden bg-[url('/images/CatalogMethodicsPage/backgrounds/MethodicsListBackGrounds.svg')]">
@@ -36,40 +78,81 @@ export default async function MethodicDetailPage({ params }: PageProps) {
           </h2>
         </FrameWrapper>
         <div className="pt-12.5">
-          <FrameWrapper src={data.image.url} alt={data.image.alt} />
+          <FrameWrapper src={methodic_image.METHODIC_IMAGE} alt={"flower"} />
         </div>
       </div>
       <div className="flex flex-col md:flex-row justify-between pt-20 gap-12.5 md:gap-0">
         <div className="flex flex-col w-full md:w-[35%] gap-12.5 md:gap-20">
-          <InfoBlock title={"Автор / Джерело"} children={data.author} />
-          <InfoBlock title={"Вік"} children={data.age} />
-          <InfoBlock title={"Мета"} children={data.goal} />
-          <div className="flex flex-col gap-4">
-            <h3 className="heading-3 uppercase">Запитання для рефлексії</h3>
-            <ListBlock items={data.reflectionQuestions} />
-          </div>
+          <InfoBlock title={"Автор / Джерело:"} children={data.author_source} />
+          <InfoBlock
+            title={"Психотерапевтичний напрям / Підхід:"}
+            children={data.approach}
+          />
+          <InfoBlock
+            title={"Вік / Цільова група:"}
+            children={data.target_audience}
+          />
+          <InfoBlock title={"Мета:"} children={data.goal} />
+          {data.purpose && (
+          <InfoBlock
+            title={"Призначення:"}
+            children={blocksToPlainText(data.purpose)}
+            className="w-full "
+          />
+          )}
         </div>
         <div className="flex flex-col w-full md:w-1/2 gap-12.5 md:gap-20">
+        {data.therapeutic_effect && (
+            <InfoBlock
+              title="Терапевтичний ефект:"
+              children={blocksToPlainText(data.therapeutic_effect)}
+              className="w-full md:w-4/5"
+            />
+          )}
+          {data.time && (
+            <InfoBlock
+              title="Час виконання:"
+              children={data.time}
+              className="w-full md:w-4/5"
+            />
+          )}
+          {data.materials && (
+            <InfoBlock
+              title="Матеріали:"
+              children={data.materials}
+              className="w-full md:w-4/5"
+            />
+          )}
+          {data.interpretation && (
+            <InfoBlock
+              title="Інтерпретація:"
+              children={blocksToPlainText(data.interpretation)}
+              className="w-full md:w-4/5"
+            />
+          )}
+          {data.short_instruction && (
+            <InfoBlock
+              title="Інструкція коротка:"
+              children={blocksToPlainText(data.short_instruction)}
+              className="w-full md:w-4/5"
+            />
+          )}
           <InfoBlock
-            title={"Призначення"}
-            children={data.purpose}
-            className="w-full md:w-4/5"
+            title="Інструкція:"
+            children={blocksToPlainText(data.instruction)}
           />
-          <InfoBlock
-            title={"Терапевтичний ефект"}
-            children={data.therapeuticEffect}
-            className="w-full md:w-4/5"
-          />
-          <div className="flex flex-col gap-4 ">
-            <h3 className="heading-3 uppercase">Інструкція коротка:</h3>
-            <ListBlock
-              items={data.shortInstruction}
-              variant="numbers"
-            ></ListBlock>
-          </div>
+          {data.completion && (
+            <InfoBlock
+              title="Завершення:"
+              children={blocksToPlainText(data.completion)}
+              className="w-full"
+            />
+          )}
           <div className="flex flex-col gap-4">
-            <h3 className="heading-3 uppercase">Інструкція:</h3>
-            <ListBlock items={data.instruction} variant="numbers"></ListBlock>
+            <h3 className="heading-3 uppercase">запитання до рефлексії:</h3>
+            <ListBlock
+              items={blocksToPlainTextArray(data.reflection_questions)}
+            />
           </div>
         </div>
       </div>

@@ -125,6 +125,11 @@ const ForgotPasswordPage = () => {
           {submitError && (
           <p className="text-red-500 text-sm">{submitError}</p>
         )}
+        {success && (
+          <p className="text-green-600 text-sm">
+            Код надіслано на email. Переходимо до введення коду…
+          </p>
+        )}
         </div>
 
       
@@ -144,3 +149,4 @@ const ForgotPasswordPage = () => {
 };
 
 export default ForgotPasswordPage;
+

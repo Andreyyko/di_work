@@ -1,10 +1,28 @@
-import { mockMethodic } from "@/constant/methodics-sections/mokMethodic";
+export async function getMethodicBySlug(slug: string) {
+  const API_URL =
+    process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337/api";
 
-export async function getMethodicBySlug(methodic: string) {
-  
-  if (mockMethodic.methodic === methodic) {
-    return mockMethodic;
+  const res = await fetch(
+    `${API_URL}/methods?filters[slug][$eq]=${encodeURIComponent(
+      slug
+    )}&populate=*`
+  );
+
+  if (!res.ok) {
+    throw new Error("Failed to load method");
   }
 
-  return null;  
+  const json = await res.json();
+  const item = json.data?.[0];
+
+  if (!item) {
+    return null;
+  }
+
+  const attrs = item.attributes ?? item;
+
+  return {
+    id: item.id,
+    ...attrs,
+  };
 }

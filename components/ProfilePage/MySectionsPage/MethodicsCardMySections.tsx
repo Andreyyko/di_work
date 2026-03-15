@@ -37,14 +37,21 @@ export default function MethodicsCardProfile({ item }: Props) {
           {item.descriptionPageFaq}
         </p>
         </div>
-        <div className="mt-6 md:mt-4 flex justify-between w-full md:w-5/6">
-          <Link href={`/sections/${item.slug}`} className="heading-6 underline">
+        <div className="mt-6 md:mt-4 flex justify-start w-full md:w-5/6">
+          <Link
+            href={`/sections/${item.slug}`}
+            className="heading-6 underline"
+          >
             Дізнатися більше
           </Link>
-          <span className="heading-3 text-brand-gray">{item.price}</span>
         </div>
         <div className="flex justify-center mt-6">
-          <TwoFrameButton variant="one" label="Придбати" />
+          <Link
+            href={`/methodics-sections/${item.slug}`}
+            className="block"
+          >
+            <TwoFrameButton variant="one" label="Відкрити розділ" />
+          </Link>
         </div>
       </div>
     </div>
