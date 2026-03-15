@@ -78,7 +78,7 @@ export async function generateCertificate() {
 
   const pdfBytes = await pdfDoc.save();
 
-  const blob = new Blob([pdfBytes], { type: "application/pdf" });
+  const blob = new Blob([pdfBytes as BlobPart], { type: "application/pdf" });
   const url = URL.createObjectURL(blob);
 
   const fileName = `Certificate_${data.number.replace("/", "-")}_${slugify(
