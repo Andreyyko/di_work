@@ -14,7 +14,7 @@ export default function InfoBlock({
   return (
     <div className={clsx("flex flex-col gap-4", className)}>
       <h3 className="heading-3 uppercase">{title}</h3>
-      <div className="heading-4">{children}</div>
+      <div className="heading-4 whitespace-pre-line">{children}</div>
     </div>
   );
 }

@@ -1,9 +1,72 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import MethodicsCard from "./MethodicsCard";
 import { CategoriesFrThCarouselData } from "@/constant/common/CategoriesFrThCarouselData";
 
+type SlugToIdMap = Record<string, number | undefined>;
+
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337/api";
+
 export default function MethodsList() {
+  const [sectionsMap, setSectionsMap] = useState<SlugToIdMap>({});
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    const url = `${API_URL}/method-sections?pagination[pageSize]=100`;
+    console.log("[MethodsList] GET method-sections URL:", url);
+
+    fetch(url)
+      .then((res) => {
+        console.log("[MethodsList] method-sections response status:", res.status, res.statusText);
+        return res.json();
+      })
+      .then((json) => {
+        console.log(
+          "[MethodsList] method-sections raw response:",
+          JSON.stringify(json, null, 2)
+        );
+
+        const data = json?.data ?? [];
+        console.log(
+          "[MethodsList] method-sections data array length:",
+          data.length
+        );
+        if (data.length > 0) {
+          console.log("[MethodsList] first item keys:", Object.keys(data[0]));
+          console.log("[MethodsList] first item sample:", data[0]);
+        }
+
+        type MethodSectionItem = {
+          id: number | string;
+          slug?: string;
+        };
+
+        const map: SlugToIdMap = {};
+
+        for (const item of data as MethodSectionItem[]) {
+          const slug = item.slug;
+          const id = item.id;
+          console.log("[MethodsList] item id:", id, "slug:", slug);
+
+          if (slug && (typeof id === "number" || typeof id === "string")) {
+            map[slug] = typeof id === "string" ? parseInt(id, 10) : id;
+          }
+        }
+
+        console.log("[MethodsList] slug -> id map:", map);
+        setSectionsMap(map);
+      })
+      .catch((err) => {
+        console.error("[MethodsList] method-sections fetch error:", err);
+        setSectionsMap({});
+      })
+      .finally(() => setIsLoading(false));
+  }, []);
+
   return (
     <section className="w-full max-w-[360px] sm:max-w-[500px] md:max-w-[750px] lg:max-w-[1050px] xl:max-w-[1300px] mx-auto pb-62.5 md:pb-62.5 relative flex flex-col">
       <span className="heading-bg md:inline-flex md:leading-[25px] hidden">
@@ -18,9 +81,19 @@ export default function MethodsList() {
           gap-10
         "
       >
-        {CategoriesFrThCarouselData.map((item) => (
-          <MethodicsCard key={item.id} item={item} />
-        ))}
+        {CategoriesFrThCarouselData.map((item) => {
+          const manualId = (item as { methodSectionId?: number }).methodSectionId;
+          const resolvedId = manualId ?? sectionsMap[item.slug];
+
+          return (
+            <MethodicsCard
+              key={item.id}
+              item={item}
+              methodSectionId={resolvedId}
+              isLoadingSectionId={isLoading}
+            />
+          );
+        })}
       </div>
     </section>
   );
