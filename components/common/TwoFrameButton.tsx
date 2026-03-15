@@ -1,153 +1,152 @@
 "use client";
 
-import React from "react";
-import Image, { StaticImageData } from "next/image";
-import { frames_buttons } from "@/public/images/CommonImages/FramesButton";
+import React, { useState } from "react";
+import Image from "next/image";
 
-type Variant = "one" | "two";
+import redButton from "@/public/images/CommonImages/FramesButton/RedButton.svg";
+import redButtonFrame from "@/public/images/CommonImages/FramesButton/RedButtonFrame.svg";
+import goldButton from "@/public/images/CommonImages/FramesButton/GoldButton.svg";
+import modalButton from "@/public/images/CommonImages/FramesButton/ButtonModal.svg";
 
-type TwoFrameButtonProps = {
+type Variant = "one" | "two" | "three";
+
+export type TwoFrameButtonProps = {
   variant: Variant;
   label: string;
-
-  width?: number;
-  height?: number;
-  inset?: number | string;
-
-  onClick?: () => void;
+  isActive?: boolean;
+  isFaq?: boolean;
+  onActivate?: () => void;
   disabled?: boolean;
-  type?: "button" | "submit";
-  alt?: string;
   className?: string;
-
-  textClassOne?: string;
-  textClassTwo?: string;
-  textClassTwoHover?: string;
+  type?: "button" | "submit";
 };
-
-const FRAMES: Record<Variant, StaticImageData> = {
-  one: frames_buttons.GOLD_BUTTON,
-  two: frames_buttons.RED_BUTTON,
-};
-
-const FRAMES_HOVER: Partial<Record<Variant, StaticImageData>> = {
-  two: frames_buttons.RED_BUTTON_HOVER,
-};
-
-const toCss = (v?: number | string) =>
-  v === undefined ? undefined : typeof v === "number" ? `${v}px` : v;
 
 const TwoFrameButton: React.FC<TwoFrameButtonProps> = ({
   variant,
   label,
-  width = 324,
-  height = 213,
-  inset = "8%",
-  onClick,
+  isActive = false,
+  isFaq = false,
+  onActivate,
   disabled = false,
   type = "button",
-  alt = "button frame",
   className = "",
-
-  textClassOne = "heading-4 text-brand-gold tracking-tighter w-[70%] uppercase font-kudriashov text-[clamp(14px,2vw,19px)]",
-  textClassTwo = "heading-4 text-red-800 font-kudriashov uppercase text-[clamp(14px,2vw,19px)]",
-  textClassTwoHover = "heading-4 text-white font-kudriashov uppercase text-[clamp(14px,2vw,19px)]",
 }) => {
-  const [hover, setHover] = React.useState(false);
-  const [active, setActive] = React.useState(false);
+  const [hover, setHover] = useState(false);
+  const [pressed, setPressed] = useState(false);
 
-  const baseSrc = FRAMES[variant];
-  const hoverSrc = FRAMES_HOVER[variant];
+  const interactive = !disabled && (hover || isActive);
 
-  const isHoverLike =
-    !disabled && variant === "two" && (hover || active);
-
-  const currentSrc = isHoverLike && hoverSrc ? hoverSrc : baseSrc;
-  const insetCss = toCss(inset) ?? "0";
-
-  const textClass =
-    variant === "one"
-      ? textClassOne
-      : isHoverLike
-      ? textClassTwoHover
-      : textClassTwo;
-
-  const handleClick = () => {
-    if (disabled) return;
-    if (variant === "two") setActive((v) => !v);
-    onClick?.();
-  };
-
-  const handleKeyDown: React.KeyboardEventHandler<HTMLButtonElement> = (e) => {
-    if (disabled) return;
-    if (variant !== "two") return;
-
-    if (e.key === " " || e.key === "Enter") {
-      e.preventDefault();
-      setActive((v) => !v);
-      onClick?.();
-    }
-  };
+  const scale = disabled ? 1 : pressed ? 0.985 : interactive ? 1.015 : 1;
+  const translateY = disabled ? 0 : pressed ? 0.5 : interactive ? -1.5 : 0;
 
   return (
     <button
-      type={type} 
+      type={type}
       disabled={disabled}
-      aria-disabled={disabled}
-      aria-pressed={variant === "two" ? active : undefined}
-      data-state={active ? "active" : "inactive"}
-      className={className}
-      onClick={handleClick}
-      onKeyDown={handleKeyDown}
+      onClick={() => !disabled && onActivate?.()}
       onMouseEnter={() => !disabled && setHover(true)}
-      onMouseLeave={() => !disabled && setHover(false)}
-      onTouchStart={() => !disabled && setHover(true)}
-      onTouchEnd={() => !disabled && setHover(false)}
+      onMouseLeave={() => {
+        setHover(false);
+        setPressed(false);
+      }}
+      onMouseDown={() => !disabled && setPressed(true)}
+      onMouseUp={() => setPressed(false)}
+      className={`relative inline-block ${className}`}
       style={{
-        position: "relative",
-        display: "inline-block",
-        lineHeight: 0,
-        cursor: disabled ? "not-allowed" : "pointer",
-        width: `${width}px`,
-        height: "auto",
-        maxWidth: "100%",
-        opacity: disabled ? 0.5 : 1,
-        background: "transparent",
         border: "none",
+        background: "transparent",
         padding: 0,
-        transition: "opacity 0.2s ease",
-        pointerEvents: disabled ? "none" : "auto",
+        cursor: disabled ? "not-allowed" : "pointer",
       }}
     >
-      <Image
-        src={currentSrc}
-        alt={alt}
-        width={width}
-        height={height}
-        style={{
-          display: "block",
-          width: "100%",
-          height: "auto",
-          userSelect: "none",
-          pointerEvents: "none",
-        }}
-        priority={false}
-      />
-
       <div
+        className={`relative ${
+          isFaq ? " overflow-hidden h-23 sm:h-auto" : ""
+        }  w-[324px] max-w-full`}
         style={{
-          position: "absolute",
-          top: insetCss,
-          left: insetCss,
-          right: insetCss,
-          bottom: insetCss,
-          display: "grid",
-          placeItems: "center",
-          textAlign: "center",
-          pointerEvents: "none",
+          aspectRatio: "324 / 213",
+          transform: `translateY(${translateY}px) scale(${scale})`,
+          transition: "transform 620ms cubic-bezier(0.25, 0.8, 0.25, 1)",
         }}
       >
-        <span className={textClass}>{label}</span>
+        {variant === "one" && (
+          <>
+            <Image
+              src={goldButton}
+              alt="gold button"
+              fill
+              className="absolute object-contain pointer-events-none"
+            />
+
+            <div
+              className="absolute inset-0 grid place-items-center font-kudriashov uppercase leading-4 text-[clamp(12px,4vw,19px)] transition-colors duration-400"
+              style={{
+                color: interactive ? "#8C6A4D" : "#9E7557",
+              }}
+            >
+              {typeof label === "string"
+                ? (() => {
+                    const words = label.split(" ");
+                    return (
+                      <>
+                        {words[0]}
+                        <br />
+                        {words.slice(1).join(" ")}
+                      </>
+                    );
+                  })()
+                : label}
+            </div>
+          </>
+        )}
+
+        {variant === "two" && (
+          <>
+            <Image
+              src={interactive ? redButtonFrame : redButton}
+              alt="red button"
+              fill
+              className="absolute object-contain pointer-events-none transition-opacity duration-400"
+            />
+
+            <div
+              className={`absolute inset-[8%] grid place-items-center uppercase leading-4 md:leading-6 md:tracking-[-2px] font-kudriashov transition-colors duration-400 ${
+                isFaq
+                  ? "text-[14px] sm:text-[20px] md:text-[22px] lg:text-[25px]"
+                  : "text-[clamp(12px,4vw,18px)]"
+              }`}
+              style={{
+                color: interactive ? "white" : "#67161F",
+              }}
+            >
+              {label}
+            </div>
+          </>
+        )}
+
+        {variant === "three" && (
+          <>
+            <Image
+              src={modalButton}
+              alt="red button"
+              fill
+              className="absolute object-contain pointer-events-none transition-opacity duration-400"
+            />
+
+            <div
+              className={`absolute inset-[8%] grid place-items-center uppercase leading-4 md:leading-6 md:tracking-[-2px] font-kudriashov transition-colors duration-400 ${
+                isFaq
+                  ? "text-[14px] sm:text-[20px] md:text-[22px] lg:text-[25px]"
+                  : "text-[clamp(12px,4vw,18px)]"
+              }`}
+              style={{
+                color: interactive ? "white" : "white",
+              }}
+            >
+              {label}
+            </div>
+          </>
+        )}
       </div>
     </button>
   );

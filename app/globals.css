@@ -1,0 +1,383 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+html, body {
+  overscroll-behavior-x: none;
+}
+
+
+@theme {
+  --color-brand-bordo: #67161f;
+  --color-brand-gold: #9e7557;
+  --color-brand-gray: #262626;
+  --color-brand-cream: #e0dcd0;
+  --color-brand-lightgray: #e9e7e1;
+  --color-brand-monolightgray: #eeebe2;
+  --color-brand-background: #FFFBEF;
+  --color-brand-white: #FFFFFF;
+
+  --heading-2-size: clamp(40px, 6vw, 80px);
+  --heading-privacy-size: clamp(30px, 5vw, 80px);
+  --validation-heading-size: clamp(22px, 6vw, 80px);
+  --heading-2-burger-size: clamp(50px, 6vw, 80px);
+  --heading-3-size: clamp(18px, 2vw, 25px);
+  --heading-4-size: clamp(15px, 1.4vw, 25px);
+
+  --heading-5-size: clamp(14px, 2vw, 33px);
+  --heading-6-size: clamp(14px, 1.8vw, 18px);
+  --heading-7-size: clamp(50px, 8vw, 144px);
+  --heading-footer-size: 18px;
+  --heading-burger-size: clamp(14px, 2vw, 18px);
+  --heading-plan-size: clamp(25px, 3vw, 32px);
+}
+
+
+@utility font-kudriashov {
+  font-family: var(--font-kudriashov);
+}
+@utility font-alexandra {
+  font-family: var(--font-alexandra);
+}
+@utility font-grava {
+  font-family: var(--font-grava);
+}
+@utility font-newstandard {
+  font-family: var(--font-newstandard);
+}
+@utility font-allegretto {
+  font-family: var(--font-allegretto);
+}
+@utility font-montserrat {
+  font-family: var(--font-montserrat);
+}
+
+@utility heading-plan {
+  font-weight: bold;
+  font-size: var(--heading-plan-size);
+  line-height: 0.89;
+  letter-spacing: -0.01em;
+  @apply font-grava text-brand-gray;
+}
+
+@utility validation-heading {
+  font-size: var(--validation-heading-size);
+  line-height: 0.89;
+  letter-spacing: -0.01em;
+  @apply font-kudriashov text-brand-gray;
+}
+
+@utility heading-privacy {
+  font-size: var(--heading-privacy-size);
+  line-height: 0.89;
+  letter-spacing: -0.01em;
+  @apply font-kudriashov text-brand-gray;
+}
+
+@utility heading-2 {
+  font-size: var(--heading-2-size);
+  line-height: 0.89;
+  letter-spacing: -0.01em;
+  @apply font-kudriashov text-brand-gray;
+}
+
+
+@media (min-width: 1536px) {
+  .heading-2 {
+    font-size: clamp(78px, 10vw, 105px);
+    line-height: 0.89;
+    letter-spacing: -0.1em;
+  }
+
+  .first-letter:first-letter {
+    font-size: clamp(80px, 12vw, 160px);
+  }
+}
+
+@utility heading-2-burger {
+  font-size: var(--heading-2-burger-size);
+  line-height: 0.89;
+  letter-spacing: -0.01em;
+  @apply font-kudriashov text-brand-gray;
+}
+
+@media (min-width: 1536px) {
+  .heading-2-burger {
+    font-size: clamp(78px, 10vw, 105px);
+    line-height: 0.89;
+    letter-spacing: -0.1em;
+  }
+
+  .first-letter:first-letter {
+    font-size: clamp(80px, 12vw, 160px);
+  }
+}
+
+@utility heading-3 {
+  font-weight: bold;
+  font-size: var(--heading-3-size);
+  line-height: 0.89;
+  letter-spacing: -0.05em;
+  @apply font-grava text-brand-bordo;
+}
+
+@utility heading-4 {
+  font-size: var(--heading-4-size);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  @apply font-newstandard text-brand-gray;
+}
+
+@utility heading-5 {
+  font-size: var(--heading-5-size);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  @apply font-allegretto text-brand-bordo opacity-50;
+}
+
+@utility heading-6 {
+  font-size: var(--heading-6-size);
+  line-height: 1.05;
+  letter-spacing: 0;
+  @apply font-newstandard text-brand-gray opacity-50;
+}
+
+@utility heading-bg {
+  font-size: var(--heading-7-size);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  @apply font-alexandra;
+
+  color: rgba(238, 235, 226, 1);
+
+  text-shadow: 1px 1px 1px rgba(219, 213, 195, 1),
+    -1px -1px 1px rgba(255, 253, 246, 1);
+}
+
+@utility heading-footer {
+  font-size: var(--heading-footer-size);
+  line-height: 0.89;
+  letter-spacing: -0.01em;
+
+  @apply font-montserrat text-brand-gray font-semibold opacity-50;
+}
+
+@utility first-letter {
+  display: inline-block;
+  line-height: 1;
+  position: relative;
+  z-index: 10;
+}
+
+@utility heading-burger {
+  font-size: var(--heading-burger-size);
+  line-height: 0.89;
+  letter-spacing: -0.01em;
+  @apply font-grava text-brand-gray;
+}
+
+.first-letter:first-letter {
+  font-family: var(--font-alexandra, inherit);
+  font-size: clamp(80px, 12vw, 160px);
+  color: var(--first-letter-color, var(--color-brand-bordo, currentColor));
+  line-height: 0.089;
+  position: absolute;
+  z-index: 20;
+}
+
+.first-letter:before {
+  content: attr(data-first-letter);
+  font-family: var(--font-alexandra, inherit);
+  font-size: clamp(80px, 12vw, 160px);
+  color: var(--first-letter-color, var(--color-brand-bordo, currentColor));
+  line-height: 0.089;
+  position: relative;
+  z-index: 20;
+}
+
+@utility first-letter-adaptation {
+  display: inline-block;
+  line-height: 1;
+}
+
+@utility first-letter-burger {
+  display: inline-block;
+  line-height: 1;
+  position: relative;
+  z-index: 10;
+}
+
+@utility first-letter-modal {
+  display: inline-block;
+  line-height: 1;
+  position: relative;
+  z-index: 10;
+}
+
+.first-letter-burger:first-letter {
+  font-family: var(--font-alexandra, inherit);
+  font-size: clamp(80px, 12vw, 150px);
+  color: var(--first-letter-color, var(--color-brand-bordo, currentColor));
+  line-height: 0.089;
+  letter-spacing: -0.1em;
+  position: relative;
+  z-index: 20;
+}
+
+.first-letter-burger:before {
+  content: attr(data-first-letter);
+  font-family: var(--font-alexandra, inherit);
+  font-size: clamp(80px, 12vw, 160px);
+  color: var(--first-letter-color, var(--color-brand-bordo, currentColor));
+  line-height: 0.089;
+  position: relative;
+  z-index: 20;
+}
+
+.first-letter-privacy:first-letter {
+  font-family: var(--font-alexandra, inherit);
+  font-size: clamp(60px, 10vw, 150px);
+  color: var(--first-letter-color, var(--color-brand-bordo, currentColor));
+  line-height: 0.089;
+  letter-spacing: -0.1em;
+  position: relative;
+  z-index: 20;
+}
+
+.first-letter-privacy:before {
+  content: attr(data-first-letter);
+  font-family: var(--font-alexandra, inherit);
+  font-size: clamp(60px, 10vw, 160px);
+  color: var(--first-letter-color, var(--color-brand-bordo, currentColor));
+  line-height: 0.089;
+  position: relative;
+  z-index: 20;
+}
+
+.first-letter-modal:first-letter {
+  font-family: var(--font-alexandra, inherit);
+  font-size: clamp(80px, 10vw, 150px);
+  color: var(--first-letter-color, var(--color-brand-white, currentColor));
+  line-height: 0.089;
+  letter-spacing: -0.1em;
+  position: relative;
+  z-index: 20;
+}
+
+.first-letter-modal:before {
+  content: attr(data-first-letter);
+  font-family: var(--font-alexandra, inherit);
+  font-size: clamp(80px, 10vw, 160px);
+  color: var(--first-letter-color, var(--color-brand-white, currentColor));
+  line-height: 0.089;
+  position: relative;
+  z-index: 20;
+}
+
+
+@utility first-letter-plan {
+  display: inline-block;
+  line-height: 1;
+  position: relative;
+  z-index: 10;
+}
+
+.first-letter-plan:first-letter {
+  font-weight: 400;
+  font-family: var(--font-alexandra, inherit);
+  font-size: clamp(76px, 6vw, 100px);
+  color: var(--first-letter-color, var(--color-brand-bordo, currentColor));
+  line-height: 0.089;
+  letter-spacing: -0.1em;
+  position: relative;
+  z-index: 20;
+}
+
+.first-letter-plan:before {
+  font-weight: 400;
+  content: attr(data-first-letter);
+  font-family: var(--font-alexandra, inherit);
+  font-size: clamp(76px, 6vw, 100px);
+  color: var(--first-letter-color, var(--color-brand-bordo, currentColor));
+  line-height: 0.089;
+  position: relative;
+  z-index: 20;
+}
+
+.first-letter-about:first-letter {
+  font-family: var(--font-alexandra, inherit);
+  font-size: clamp(80px, 12vw, 160px);
+  color: var(--first-letter-color, var(--color-brand-bordo, currentColor));
+  line-height: 0.089;
+  position: absolute;
+  z-index: 20;
+  font-weight: 100;
+}
+
+.first-letter-about:before {
+  content: attr(data-first-letter);
+  font-family: var(--font-alexandra, inherit);
+  font-size: clamp(80px, 12vw, 160px);
+  color: var(--first-letter-color, var(--color-brand-bordo, currentColor));
+  line-height: 0.089;
+  position: relative;
+  z-index: 20;
+  font-weight: 100;
+}
+
+@media (min-width: 640px) {
+  .heading-2 {
+    letter-spacing: -0.08em;
+  }
+}
+
+@layer utilities {
+  .pb-responsive {
+    padding-bottom: 50px;
+
+    @media (min-width: 640px) {
+      padding-bottom: 70px;
+    }
+
+    @media (min-width: 768px) {
+      padding-bottom: 30px;
+    }
+
+    @media (min-width: 1024px) {
+      padding-bottom: 150px;
+    }
+
+    @media (min-width: 1280px) {
+      padding-bottom: 350px;
+    }
+  }
+}
+
+@keyframes fadeBurgerIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeBurgerOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+}
+
+.animate-burger-in {
+  animation: fadeBurgerIn 0.35s ease-out forwards;
+}
+
+.animate-burger-out {
+  animation: fadeBurgerOut 0.25s ease-in forwards;
+}

@@ -61,7 +61,7 @@ const CustomSeal = ({
       <Image
         src={seal_icon.SEAL_IMAGE}
         alt="seal"
-        className={`select-none pointer-events-none w-40 sm:w-[200px] md:w-60 lg:w-[216px] h-auto ${sealSize}`}
+        className={`select-none pointer-events-none w-39 sm:w-[200px] md:w-40 lg:w-[170px] h-auto ${sealSize}`}
         priority
       />
 
@@ -78,7 +78,7 @@ const CustomSeal = ({
             ${padding}
             font-kudriashov uppercase 
             bg-brand-cream text-brand-bordo
-            rounded-sm shadow-md cursor-pointer leading-3 -tracking-[1px]
+            rounded-sm cursor-pointer leading-3 -tracking-[1px]
             ${finalMobilePos}
             ${finalDesktopPos}
           `}

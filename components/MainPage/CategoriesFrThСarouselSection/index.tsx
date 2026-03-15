@@ -7,6 +7,9 @@ import ImageSlots from "./ImageSlots";
 import TextBlock from "./TextBlock";
 import NavigationButtons from "./NavigationButtons";
 
+import { useLayoutEffect, useRef, useState } from "react";
+import gsap from "gsap";
+
 export default function CategoriesFrThCarousel() {
   const { breakpoint, isSmallerThanSm } = useWindowWidth();
 
@@ -23,9 +26,54 @@ export default function CategoriesFrThCarousel() {
     descRef,
   } = useCarouselLogic(breakpoint);
 
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [shouldAnimate, setShouldAnimate] = useState(false);
+
+  useLayoutEffect(() => {
+    if (!sectionRef.current) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setShouldAnimate(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0,
+        rootMargin: "200px 0px -10% 0px",
+      }
+    );
+
+    observer.observe(sectionRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
+  useLayoutEffect(() => {
+    if (!shouldAnimate) return;
+
+    const ctx = gsap.context(() => {
+      const items = gsap.utils.toArray(".carousel-anim");
+
+      gsap.to(items, {
+        opacity: 1,
+        yPercent: 0,
+        duration: 0.9,
+        ease: "power3.out",
+        stagger: 0.12,
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, [shouldAnimate]);
+
   return (
-    <section className="relative w-full flex flex-col items-center justify-center pb-responsive">
-      <h2 className="heading-2 uppercase text-center md:mb-7 mb-5">
+    <section
+      ref={sectionRef}
+      className="relative w-full flex flex-col items-center justify-center pb-responsive"
+    >
+      <h2 className="carousel-anim opacity-0 translate-y-[18%] heading-2 uppercase text-center md:mb-7 mb-5">
         <span className="first-letter">Розділи</span>{" "}
         <span className="whitespace-nowrap">
           методик <span className="first-letter">для</span>{" "}
@@ -36,14 +84,16 @@ export default function CategoriesFrThCarousel() {
         <span className="first-letter">людей</span>
       </h2>
 
-      <p className="heading-3 text-center">
+      <p className="carousel-anim opacity-0 translate-y-[18%] py-4 heading-3 text-center">
         Унікальні ресурсно-орієнтовані поведінкові методики, практики,
         {!isSmallerThanSm && <br />} техніки, вправи, інструменти та інтервенції
       </p>
 
-      <NavigationButtons moveLeft={moveLeft} moveRight={moveRight} />
+      <div>
+        <NavigationButtons moveLeft={moveLeft} moveRight={moveRight} />
+      </div>
 
-      <div className="relative h-[490px] md:h-[500px] lg:h-[600px] flex items-center justify-center">
+      <div className="carousel-anim opacity-0 relative h-[490px] md:h-[500px] lg:h-[600px] 2xl:h-[850px] flex items-center justify-center">
         <ImageSlots
           layout={layout}
           left={left}
@@ -60,12 +110,12 @@ export default function CategoriesFrThCarousel() {
         />
 
         <Link
-          href="/methods"
+          href="/catalog-methodics"
           className="
+            opacity-40 translate-y-[18%]
             absolute 
-            md:right-[13%] lg:right-[13%] xl:right-[19%]
-            top-[93%] md:top-[7%] lg:top-[8%] xl:top-[1%]
-            translate-y-1/2
+            md:right-[13%] lg:right-[13%] xl:right-[19%] 2xl:right-[25%]
+            top-[93%] md:top-[7%] lg:top-[8%] xl:top-[1%] 2xl:top-[10%]
             heading-6 underline
           "
         >
