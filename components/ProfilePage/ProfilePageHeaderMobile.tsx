@@ -106,21 +106,21 @@ const ProfilePageHeaderMobile = () => {
 
       <div
         ref={dropdownRef}
-        className="absolute left-1/2 md:left-3/4 top-33 w-[95%] md:w-[50%] -translate-x-1/2 bg-brand-background border border-brand-black z-50 overflow-hidden"
+        className="profile-nav-dropdown absolute left-1/2 md:left-3/4 top-33 w-[95%] md:w-[50%] -translate-x-1/2 bg-brand-background border border-brand-black z-50 overflow-hidden"
         style={{ opacity: 0, pointerEvents: "none" }}
       >
-        <div className="px-4 py-3 heading-6 text-black opacity-100 border-b border-brand-black hover:bg-brand-background cursor-pointer">
-          <Link href="/profile/edit-profile">
+        <Link href="/profile/edit-profile" className="block cursor-pointer">
+          <div className="px-4 py-3 heading-6 text-black opacity-100 border-b border-brand-black hover:bg-brand-background cursor-pointer">
             Редагування персональних даних
-          </Link>
-        </div>
-        <Link href="/auth/forgot-password">
+          </div>
+        </Link>
+        <Link href="/auth/forgot-password" className="block cursor-pointer">
           <div className="px-4 py-3 heading-6 text-black opacity-100 border-b border-brand-black hover:bg-brand-background cursor-pointer">
             Зміна пароля
           </div>
         </Link>
-        <Link href={"/profile/my-sections"}>
-          <div className="px-4 py-3 heading-6 text-black opacity-100  border-brand-black hover:bg-brand-background cursor-pointer">
+        <Link href={"/profile/my-sections"} className="block cursor-pointer">
+          <div className="px-4 py-3 heading-6 text-black opacity-100 border-brand-black hover:bg-brand-background cursor-pointer">
             Мої розділи
           </div>
         </Link>

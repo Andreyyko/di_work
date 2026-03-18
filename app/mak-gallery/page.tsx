@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useCallback, useState } from "react";
+import { useRouter } from "next/navigation";
 import gsap from "gsap";
 
 import FrameWrapper from "@/components/common/FrameWrapper";
@@ -13,8 +14,38 @@ import MakPlan from "../../components/MakGalleryPage/MakPlan";
 import { mak_gallery_images } from "@/public/images/MakGallery";
 import Image from "next/image";
 import { white_letter } from "@/public/images/CommonImages/PostCard";
+import { grantMakCardsAccess } from "@/api/mind-maps-api";
 
 export default function MakGalleryPage() {
+  const router = useRouter();
+  const [purchaseError, setPurchaseError] = useState<string | null>(null);
+  const [isCheckingAccess, setIsCheckingAccess] = useState(false);
+
+  const handlePurchaseClick = useCallback(async () => {
+    setPurchaseError(null);
+    setIsCheckingAccess(true);
+    try {
+      const { ok, error } = await grantMakCardsAccess();
+      if (error) {
+        if (error === "Необхідно увійти в систему") {
+          router.push("/auth/sign-in");
+          return;
+        }
+        setPurchaseError(error);
+        return;
+      }
+      if (ok) {
+        router.push("/mak-cards");
+        return;
+      }
+      setPurchaseError("Не вдалося надати доступ. Спробуйте пізніше.");
+    } catch {
+      setPurchaseError("Помилка перевірки доступу. Спробуйте пізніше.");
+    } finally {
+      setIsCheckingAccess(false);
+    }
+  }, [router]);
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
@@ -116,8 +147,16 @@ export default function MakGalleryPage() {
         data-mak-animate
       />
 
+      {purchaseError && (
+        <p className="text-center text-red-600 heading-4 mb-4" data-mak-animate role="alert">
+          {purchaseError}
+        </p>
+      )}
       <div data-mak-animate>
-        <MakPlan />
+        <MakPlan
+          onPurchaseClick={handlePurchaseClick}
+          purchaseDisabled={isCheckingAccess}
+        />
       </div>
     </section>
   );

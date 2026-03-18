@@ -2,10 +2,12 @@
 
 import { useEffect, useMemo, useState } from "react";
 import MethodicsCard from "./MethodicsCardProfile";
+import MakSectionCard from "../MySectionsPage/MakSectionCard";
 import { CategoriesFrThCarouselData } from "@/constant/common/CategoriesFrThCarouselData";
 import {
   UserMethodSectionRelation,
   getMyMethodSections,
+  MyMethodSectionsResponse,
 } from "@/api/user-method-sections";
 
 type MethodCardType = (typeof CategoriesFrThCarouselData)[number];
@@ -24,6 +26,7 @@ export default function MethodsListProfile() {
   >([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [hasMakAccess, setHasMakAccess] = useState(false);
 
   const catalogBySlug = useMemo(() => {
     const map: Record<string, MethodCardType> = {};
@@ -39,13 +42,10 @@ export default function MethodsListProfile() {
     setError(null);
 
     getMyMethodSections<MethodSectionFromApi>()
-      .then((data) => {
+      .then((data: MyMethodSectionsResponse<MethodSectionFromApi>) => {
         if (cancelled) return;
-        console.log(
-          "[MyProfile] /user-method-sections/me raw response:",
-          JSON.stringify(data, null, 2)
-        );
-        setRelations(data || []);
+        setRelations(data.items || []);
+        setHasMakAccess(data.makCardsAccess === true);
       })
       .catch((err) => {
         if (cancelled) return;
@@ -113,15 +113,20 @@ export default function MethodsListProfile() {
         </p>
       )}
 
-      {!isLoading && !error && visibleItems.length === 0 && (
+      {!isLoading && !error && visibleItems.length === 0 && !hasMakAccess && (
         <p className="heading-6 text-center lg:text-right pt-4">
           У вас ще немає придбаних розділів. Поверніться до каталогу, щоб
           придбати перший розділ.
         </p>
       )}
 
-      {visibleItems.length > 0 && (
+      {(visibleItems.length > 0 || hasMakAccess) && (
         <div className="w-full flex flex-col lg:flex-row flex-wrap gap-10 justify-center md:justify-end">
+          {hasMakAccess && (
+            <div className="w-full lg:w-[calc(35%-10px)]">
+              <MakSectionCard />
+            </div>
+          )}
           {visibleItems.map((item) => (
             <div key={item.id} className="w-full lg:w-[calc(35%-10px)]">
               <MethodicsCard item={item} />

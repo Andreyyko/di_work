@@ -381,3 +381,11 @@ html, body {
 .animate-burger-out {
   animation: fadeBurgerOut 0.25s ease-in forwards;
 }
+
+/* Профільна панель: курсор-рука при наведенні */
+.profile-sidebar a,
+.profile-sidebar .cursor-pointer,
+.profile-nav-dropdown a,
+.profile-nav-dropdown a div {
+  cursor: pointer;
+}

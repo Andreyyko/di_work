@@ -1,5 +1,6 @@
 import { MetodicImages } from "@/public/images/FaqPage/FaqCarouselImage";
 import { carouselImages } from "@/public/images/MainPageImages/CategoriesFrThСarouselImages";
+import makCardsProfile from "@/public/images/ProfilePage/mak-cards-profile.svg";
 
 export const CategoriesFrThCarouselData = [
   {
@@ -90,6 +91,20 @@ export const CategoriesFrThCarouselData = [
       "Технології розвитку комунікативних компетенцій осіб та дітей з порушенням мовлення.",
     descriptionPageFaq:
       "Комунікація, психологічний клімат в групі, колективі, спілкування, самооцінка, емпатія для дітей та  дорослих.",
-      slug: "uncommunicate"
+    slug: "uncommunicate"
+  },
+  {
+    id: 8,
+    price: "1999 ₴",
+    src: makCardsProfile,
+    metodicSrc: makCardsProfile,
+    alt: "Коробка РОК МАК be unique — доступ до МАК-карток",
+    title: "РОК МАК be unique «Ресурс SenseDia»",
+    description:
+      "Унікальна авторська збірка МАК-картин для роботи з емоціями, ресурсами та внутрішнім світом.",
+    descriptionPageFaq:
+      "Повний доступ до 63 авторських МАК-картин «Ресурс SenseDia».",
+    slug: "mak-cards",
+    isMakCards: true,
   },
 ];

@@ -3,8 +3,13 @@
 import { useEffect, useState } from "react";
 import MethodicsCard from "./MethodicsCard";
 import { CategoriesFrThCarouselData } from "@/constant/common/CategoriesFrThCarouselData";
+import {
+  getMyMethodSections,
+  MyMethodSectionsResponse,
+} from "@/api/user-method-sections";
 
 type SlugToIdMap = Record<string, number | undefined>;
+type OwnedSlugsMap = Record<string, boolean | undefined>;
 
 const API_URL =
   process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337/api";
@@ -12,6 +17,8 @@ const API_URL =
 export default function MethodsList() {
   const [sectionsMap, setSectionsMap] = useState<SlugToIdMap>({});
   const [isLoading, setIsLoading] = useState(false);
+  const [ownedSlugs, setOwnedSlugs] = useState<OwnedSlugsMap>({});
+  const [hasMakAccess, setHasMakAccess] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -67,6 +74,36 @@ export default function MethodsList() {
       .finally(() => setIsLoading(false));
   }, []);
 
+  // Завантажуємо, які розділи вже є у користувача + доступ до МАК-карток
+  useEffect(() => {
+    let cancelled = false;
+
+    getMyMethodSections<{ slug?: string }>()
+      .then(
+        (data: MyMethodSectionsResponse<{ slug?: string }>) => {
+          if (cancelled) return;
+          const map: OwnedSlugsMap = {};
+          for (const rel of data.items || []) {
+            const slug = rel.method_section?.slug;
+            if (slug) {
+              map[slug] = true;
+            }
+          }
+          setOwnedSlugs(map);
+          setHasMakAccess(data.makCardsAccess === true);
+        }
+      )
+      .catch(() => {
+        if (cancelled) return;
+        setOwnedSlugs({});
+        setHasMakAccess(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   return (
     <section className="w-full max-w-[360px] sm:max-w-[500px] md:max-w-[750px] lg:max-w-[1050px] xl:max-w-[1300px] mx-auto pb-62.5 md:pb-62.5 relative flex flex-col">
       <span className="heading-bg md:inline-flex md:leading-[25px] hidden">
@@ -84,11 +121,15 @@ export default function MethodsList() {
         {CategoriesFrThCarouselData.map((item) => {
           const manualId = (item as { methodSectionId?: number }).methodSectionId;
           const resolvedId = manualId ?? sectionsMap[item.slug];
+          const isMakCards = (item as { isMakCards?: boolean }).isMakCards === true;
+          const owned = isMakCards
+            ? hasMakAccess
+            : !!ownedSlugs[item.slug];
 
           return (
             <MethodicsCard
               key={item.id}
-              item={item}
+              item={{ ...item, owned }}
               methodSectionId={resolvedId}
               isLoadingSectionId={isLoading}
             />

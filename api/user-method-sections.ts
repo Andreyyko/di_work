@@ -86,16 +86,18 @@ export async function assignMethodSectionToUser(
   }
 }
 
-/**
- * GET /api/user-method-sections/me
- * Отримати всі розділи методик, прив'язані до поточного користувача.
- */
+export interface MyMethodSectionsResponse<TMethodSection = {}> {
+  items: UserMethodSectionRelation<TMethodSection>[];
+  makCardsAccess?: boolean;
+}
+
+
 export async function getMyMethodSections<TMethodSection = {}>(): Promise<
-  UserMethodSectionRelation<TMethodSection>[]
+  MyMethodSectionsResponse<TMethodSection>
 > {
   try {
     const res = await apiClient.get("/user-method-sections/me");
-    return res.data;
+    return res.data as MyMethodSectionsResponse<TMethodSection>;
   } catch (error) {
     const typedError = error as Error | AxiosLikeError | null | undefined;
     const message = getErrorMessage(

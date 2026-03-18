@@ -19,17 +19,17 @@ const EditProfilePage = () => {
         <ProfilePageHeaderMobile />
       </div>
       <div className="flex flex-row justify-between w-full">
-        <div className="lg:flex flex-col gap-1 hidden w-[40%]">
+        <div className="profile-sidebar lg:flex flex-col gap-1 hidden w-[40%]">
           <h3 className="uppercase heading-3 pb-5 cursor-pointer">Акаунт</h3>
-          <Link href="/profile/edit-profile">
+          <Link href="/profile/edit-profile" className="cursor-pointer">
             <h4 className="heading-4 cursor-pointer">
               Редагування персональних даних
             </h4>
           </Link>
-          <Link href="/auth/forgot-password">
+          <Link href="/auth/forgot-password" className="cursor-pointer">
             <h4 className="heading-4 cursor-pointer">Зміна пароля</h4>
           </Link>
-          <Link href={"/profile/my-sections"}>
+          <Link href={"/profile/my-sections"} className="cursor-pointer">
             <h4 className="heading-4 cursor-pointer">Мої розділи</h4>
           </Link>
         </div>
