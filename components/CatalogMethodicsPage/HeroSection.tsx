@@ -16,15 +16,15 @@ const HeroSection = () => {
       </h5>
       <h2 className="heading-2 text-center pt-15 hidden lg:block">
         <div className="">
-          <span className="first-letter" data-first-letter="Р">
-            ОК-М, BEUNIQUE.HEALTH —
+          <span className="first-letter whitespace-pre-wrap" data-first-letter="Р">
+            ОК-М,  MENTAL HEALTH —
           </span>
-          <span>
+          <span className="whitespace-pre-wrap">
             ПЕРША{" "}
             <span className="first-letter" data-first-letter="У">
               КРАЇНСЬКА
             </span>{" "}
-            EVIDENCE-BASED ОНЛАЙН-ПЛАТФОРМА{" "}
+            EVIDENCE-BASED  ОНЛАЙН-ПЛАТФОРМА{" "}
           </span>
           <span className="first-letter">З</span>
           <span className="first-letter" data-first-letter="П">
@@ -44,7 +44,7 @@ const HeroSection = () => {
           <span className="first-letter" data-first-letter="Р">
             ОК-М,
           </span>{" "}
-          BEUNIQUE.HEALTH
+          MENTAL HEALTH
         </div>
 
         <div>— ПЕРША</div>
