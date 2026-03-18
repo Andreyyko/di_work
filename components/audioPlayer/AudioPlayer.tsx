@@ -5,6 +5,8 @@ import { useState, useRef } from "react";
 import { SideMenu } from "./SideMenu";
 import { MiniPlayer } from "./MiniPlayer";
 import { gsap } from "gsap";
+import Image from "next/image";
+import { check_icon } from "@/public/images/CommonImages/CheckItemIcon";
 
 const AudioPlayer = () => {
   const [open, setOpen] = useState(false);
@@ -54,7 +56,7 @@ const AudioPlayer = () => {
           hover:bg-black/20
         "
       >
-        {open ? "→" : "🎧"}
+        {open ? "→" : <Image src={check_icon.MUSIC_MENU_ICON} width={25} alt={"music_icon"}/>}
       </button>
 
       <div
