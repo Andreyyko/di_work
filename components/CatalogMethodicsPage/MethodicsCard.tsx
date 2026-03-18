@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CategoriesFrThCarouselData } from "@/constant/common/CategoriesFrThCarouselData";
 import FrameWrapper from "@/components/common/FrameWrapper";
 import Link from "next/link";
@@ -9,11 +9,13 @@ import { useRouter } from "next/navigation";
 import { useWindowWidth } from "@/hooks/useWindowWidth";
 import TwoFrameButton from "@/components/common/TwoFrameButton";
 import { assignMethodSectionToUser } from "@/api/user-method-sections";
+import { grantMakCardsAccess } from "@/api/mind-maps-api";
 
 type MethodCardType = (typeof CategoriesFrThCarouselData)[number];
+type MethodCardWithFlags = MethodCardType & { isMakCards?: boolean; owned?: boolean };
 
 interface Props {
-  item: MethodCardType;
+  item: MethodCardWithFlags;
   methodSectionId?: number;
   isLoadingSectionId?: boolean;
 }
@@ -29,8 +31,58 @@ export default function MethodCard({
   const [assignError, setAssignError] = useState<string | null>(null);
   const [isAssigned, setIsAssigned] = useState(false);
 
+  const isMakCards = item.isMakCards === true;
+
+  // якщо користувач уже має цей розділ / МАК-карти – вважаємо, що "Придбано"
+  const owned = item.owned === true;
+
+  useEffect(() => {
+    setIsAssigned(owned);
+  }, [owned]);
+
   const handleAssignClick = async () => {
-    if (!methodSectionId || isAssigning) return;
+    if (isAssigning) return;
+    // Для МАК-карток — окрема логіка купівлі/доступу
+    if (isMakCards) {
+      setAssignError(null);
+      setIsAssigning(true);
+      try {
+        // Якщо вже є доступ – просто відкриваємо МАК-карти
+        if (owned) {
+          router.push("/mak-cards");
+          return;
+        }
+
+        const { ok, error } = await grantMakCardsAccess();
+        if (error) {
+          if (error === "Необхідно увійти в систему") {
+            router.push("/auth/sign-in");
+            return;
+          }
+          setAssignError(error);
+          return;
+        }
+        if (ok) {
+          setIsAssigned(true);
+          router.push("/mak-cards");
+        }
+      } catch (e) {
+        const msg =
+          e instanceof Error ? e.message : "Не вдалося відкрити МАК-карти";
+        setAssignError(msg);
+      } finally {
+        setIsAssigning(false);
+      }
+      return;
+    }
+
+    // Звичайний розділ: якщо вже куплений – просто відкриваємо
+    if (owned) {
+      router.push(`/methodics-sections/${item.slug}`);
+      return;
+    }
+
+    if (!methodSectionId) return;
     setAssignError(null);
     setIsAssigning(true);
     try {
@@ -49,10 +101,16 @@ export default function MethodCard({
   };
 
   const isButtonDisabled =
-    !methodSectionId || isLoadingSectionId || isAssigning || isAssigned;
+    (!isMakCards && !owned && !methodSectionId) ||
+    isLoadingSectionId ||
+    isAssigning;
 
-  const buttonLabel = isAssigned
-    ? "Придбано"
+  const isOwnedOrAssigned = owned || isAssigned;
+
+  const buttonLabel = isOwnedOrAssigned
+    ? isMakCards
+      ? "Відкрити МАК-карти"
+      : "Відкрити розділ"
     : isAssigning
     ? "Оформлення..."
     : "Придбати";
@@ -79,7 +137,10 @@ export default function MethodCard({
           </p>
         </div>
         <div className="mt-6 md:mt-4 flex justify-between w-full">
-          <Link href={`/sections/${item.slug}`} className="heading-6 underline">
+          <Link
+            href={isMakCards ? "/mak-gallery" : `/sections/${item.slug}`}
+            className="heading-6 underline"
+          >
             Дізнатися більше
           </Link>
           <span className="heading-3 text-brand-gray">{item.price}</span>

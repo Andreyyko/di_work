@@ -2,7 +2,12 @@ import CheckItem from "@/components/common/CheckItem";
 import FrameWrapper from "@/components/common/FrameWrapper";
 import { MakPlanData } from "@/constant/MakGallaryConstant/MakPlanData";
 
-const MakPlan = () => {
+type MakPlanProps = {
+  onPurchaseClick?: () => void;
+  purchaseDisabled?: boolean;
+};
+
+const MakPlan = ({ onPurchaseClick, purchaseDisabled }: MakPlanProps) => {
   return (
     <div className="flex gap-20 flex-col lg:flex-row items-center justify-center pb-20 pt-39 lg:pt-0">
       <FrameWrapper
@@ -14,6 +19,8 @@ const MakPlan = () => {
         showOrnaments
         sealResponsiveButton
         sealLabel="ПРИДБАТИ"
+        onSealClick={onPurchaseClick}
+        sealDisabled={purchaseDisabled}
       >
         <div className="flex items-center flex-row justify-between pb-5">
           <h3
@@ -47,6 +54,8 @@ const MakPlan = () => {
         sealResponsiveButton
         sealButtonDesktop="left"
         sealLabel="ПРИДБАТИ"
+        onSealClick={onPurchaseClick}
+        sealDisabled={purchaseDisabled}
       >
         <div className="flex items-center flex-row justify-between pb-5">
           <h3

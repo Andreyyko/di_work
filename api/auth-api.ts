@@ -116,6 +116,13 @@ export interface AuthUser {
   confirmed?: boolean;
   blocked?: boolean;
   provider?: string;
+  role?: string;
+  /** Доступ до МАК-карток (увімкнути після оплати) */
+  makCardsAccess?: boolean;
+  /** Улюблені МАК-картки, напр. ["card-1", "card-3"] */
+  makFavoriteCardIds?: string[];
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface AuthResponse {
@@ -211,7 +218,12 @@ async function authFetchWithJwt<T>(
 
 /** GET /api/auth/me — профіль поточного користувача */
 export async function getMe(): Promise<AuthUser> {
-  return authFetchWithJwt<AuthUser>("/auth/me", { method: "GET" });
+  const data = await authFetchWithJwt<unknown>("/auth/me", { method: "GET" });
+  // Деякі реалізації можуть повертати масив (наприклад [user]) замість обʼєкта.
+  if (Array.isArray(data)) {
+    return (data[0] ?? {}) as AuthUser;
+  }
+  return (data ?? {}) as AuthUser;
 }
 
 /** POST /api/auth/profile — оновити профіль (username, email, password?) */
