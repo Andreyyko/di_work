@@ -16,6 +16,10 @@ export type HeadingData = {
   line1?: string;
   line2?: string;
   line3?: string;
+  line4?: string;
+  line5?: string;
+  line6?: string;
+  line7?: string;
   lineMob1?: string;
   lineMob2?: string;
   lineMob3?: string;
@@ -142,19 +146,22 @@ export const headingPresets: Record<HeadingPresetKey, HeadingData> = {
   uncommunicate: {
     image: section_images_frame.UNCOMMUNICATE,
     subLineHeading: "Не важливо, як саме ти говориш — важливо, що твої думки мають значення.",
-    line1: "Для розвитку комунікативних",
-    line2: "навичок осіб",
-    line3: "з порушенням мовлення",
+    line1: "Для розвитку ",
+    line2: "психічних процесів ",
+    line3: "та комунікативних навичок",
+    line4: "дітей з особливими освітніми ",
+    line5: "потребами та з порушенням мовлення",
     highlightWords1: [0],
     highlightWords2: [0],
     highlightWords3: [1],
     lineMob1: "Для розвитку",
-    lineMob2: "комунікативних",
-    lineMob3: "навичок осіб",
-    lineMob4: "з порушенням",
-    lineMob5: "мовлення",
+    lineMob2: "психічних процесів",
+    lineMob3: "та комунікативних навичок",
+    lineMob4: "дітей з особливими освітніми",
+    lineMob5: "потребами та з порушенням мовлення",
     highlightWordsMob1: [0],
     highlightWordsMob3: [0],
     highlightWordsMob4: [1],
   },
 };
+  

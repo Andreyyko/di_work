@@ -8,20 +8,27 @@ import { useFavorites } from "@/hooks/useFavorite";
 import { Card } from "@/constant/MakCardsData/cards";
 import CardModal from "@/components/MakCardsPage/CardModal";
 
-type Tab = "all" | "favorites";
+type Tab = "all" | "favorites" | "child";
 
 export default function CardsPage() {
   const [query, setQuery] = useState("");
   const [tab, setTab] = useState<Tab>("all");
   const favoritesHook = useFavorites();
-  const [activeCard, setActiveCard] = useState<Card | null>(null); 
+  const [activeCard, setActiveCard] = useState<Card | null>(null);
 
   const filteredCards = useMemo(() => {
     let list = cards;
+
     if (tab === "favorites") {
       list = list.filter((card) => favoritesHook.favorites.includes(card.id));
     }
+
+    if (tab === "child") {
+      list = list.filter((card) => card.type === "child");
+    }
+
     if (!query) return list;
+
     return list.filter((c) =>
       [c.title, c.tags.join(" ")]
         .join(" ")
@@ -46,12 +53,12 @@ export default function CardsPage() {
           <Tabs active={tab} onChange={setTab} />
           <button
             onClick={drawRandom}
-            className="heading-4 text-lg rounded-lg  border-brand-bordo text-brand-gray cursor-pointer
-               transition whitespace-nowrap"
+            className="heading-4 text-lg rounded-lg border-brand-bordo text-brand-gray cursor-pointer transition whitespace-nowrap"
           >
             Випадкова картка
           </button>
         </div>
+
         <SearchBar onSearch={setQuery} />
       </div>
 

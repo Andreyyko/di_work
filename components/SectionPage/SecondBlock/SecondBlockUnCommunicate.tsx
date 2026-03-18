@@ -36,7 +36,7 @@ const SecondBlockUnCommunicate = () => {
         alt="letter"
         className="absolute hidden lg:block"
         style={{
-          top: isWide ? "720px" : "810px",
+          top: isWide ? "900px" : "810px",
           right: isWide ? "290px" : "290px",
           width: isWide ? "25%" : "27%",
           transform: isWide ? "rotate(-15deg)" : "rotate(-15deg)",

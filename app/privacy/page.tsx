@@ -8,6 +8,7 @@ import { footer_images } from "@/public/images/CommonImages/FooterImages";
 import Image from "next/image";
 import { PravicyData } from "@/constant/PrivacyConstant/privacyData";
 import { white_letter } from "@/public/images/CommonImages/PostCard";
+import { Copyright } from "lucide-react";
 
 export default function PrivacyPage() {
   useEffect(() => {
@@ -22,7 +23,7 @@ export default function PrivacyPage() {
           ease: "power1.out",
           stagger: 0.15,
           clearProps: "opacity, transform",
-        }
+        },
       );
     });
     return () => ctx.revert();
@@ -34,7 +35,6 @@ export default function PrivacyPage() {
         className="absolute right-0 translate-y-250 w-90 lg:w-130 lg:translate-y-290 rotate-15 translate-x-40 hidden md:block"
         src={white_letter.WHITE_POSTCARD}
         alt={"postcard"}
-        
       />
 
       <h5 className="heading-5 -translate-x-5" data-privacy-animate>
@@ -89,6 +89,59 @@ export default function PrivacyPage() {
         <a href="tel:+380000000000" className="heading-6 opacity-100">
           +380 00 000 00 00
         </a>
+      </div>
+      <div>
+        <div className="heading-4 w-[50%]">
+          <p>Copyright © Богдана Андрейко, RОК-М, 2026. Усі права захищені.</p>
+          <br/>
+          <p>
+            Усі матеріали, тексти, структура, опис методик, психотерапевтичні
+            інтервенції, формулювання інструкцій, система класифікації, дизайн і
+            концепція платформи RОК-М є результатом авторської
+            науково-методичної розробки та належать Андрейко, Б. В.{" "}
+          </p>
+          <br/>
+          <p>
+            На платформі RОК-М також представлені авторські психотерапевтичні
+            методики та моделі психологічного супроводу, розроблені автором у
+            процесі наукових досліджень, професійної практики та багаторічної
+            методологічної роботи.
+          </p>
+          <br/>
+          <p>
+            {" "}
+            Платформа RОК-М має науково-освітню спрямованість та створена з
+            метою систематизації, розвитку і практичного впровадження доказових
+            психологічних підходів.{" "}
+          </p>
+          <br/>
+          <p>
+            Матеріали платформи створені шляхом наукової адаптації, інтеграції
+            та структуризації принципів і підходів, описаних у працях
+            міжнародних і українських дослідників у галузі психології,
+            психотерапії, нейронауки та суміжних дисциплін. RОК-М не відтворює
+            дослівно оригінальні тексти наукових джерел.
+          </p>
+          <br/>
+          <p>
+            {" "}
+            Будь-яке копіювання, відтворення, розповсюдження або використання
+            матеріалів платформи RОК-М повністю або частково без письмового
+            дозволу автора заборонено відповідно до Закону України «Про
+            авторське право і суміжні права» та міжнародних норм авторського
+            права.
+          </p>
+          <br/>
+          <p> Автор платформи RОК-М Андрейко, Б. В. Україна </p>
+          <br/>
+          <p>
+            Copyright © Bogdana Andreyko ROK-M, 2026. All rights reserved.
+            Author and owner: Andreyko, B. V. All materials, including
+            methodology structure, adaptation, and instructional content, are
+            protected by copyright law and international intellectual property
+            regulations.
+          </p>
+        </div>
       </div>
     </section>
   );

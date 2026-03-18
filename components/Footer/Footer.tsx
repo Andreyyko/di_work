@@ -65,7 +65,10 @@ const Footer = () => {
                     className="h-5 w-5"
                   />
                 </a>
-                <a href="https://www.facebook.com/share/15xGzPkuLT/" target="_blank">
+                <a
+                  href="https://www.facebook.com/share/15xGzPkuLT/"
+                  target="_blank"
+                >
                   <Image
                     src={footer_images.FACEBOOK_ICON}
                     alt="facebook icon"
@@ -179,11 +182,11 @@ const Footer = () => {
                 застосування.
               </span>
             )}
-          <Link href={"/#contact"}>
-            <CustomSeal
-              label="зв’язатися з нами"
-              className="w-[145px] md:w-[216px] mb-3 md:mb-0"
-            />
+            <Link href={"/#contact"}>
+              <CustomSeal
+                label="зв’язатися з нами"
+                className="w-[145px] md:w-[216px] mb-3 md:mb-0"
+              />
             </Link>
             {!isSmallerThanMd && (
               <div className="flex flex-col justify-end">
@@ -214,6 +217,13 @@ const Footer = () => {
             </span>
           )}
         </div>
+      </div>
+      <div className="text-center heading-4 bg-brand-lightgray text-sm relative z-10">
+        Copyright © 2026 ROK-M. Усі права захищені. Автор і власник: Андрейко,
+        Б. В.Усі матеріали, включаючи методологічну структуру,
+        науково-методичну адаптацію та навчальний контент, є результатом
+        інтелектуальної праці автора та охороняються авторським правом і чинними
+        міжнародними нормами у сфері інтелектуальної власності.
       </div>
     </footer>
   );
