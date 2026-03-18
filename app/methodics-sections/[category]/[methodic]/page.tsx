@@ -1,3 +1,4 @@
+import AudioPlayer from "@/components/audioPlayer/AudioPlayer";
 import FrameWrapper from "@/components/common/FrameWrapper";
 import InfoBlock from "@/components/common/InfoBlock";
 import ListBlock from "@/components/common/ListBlock";
@@ -21,6 +22,7 @@ export default async function MethodicDetailPage({ params }: PageProps) {
 
   return (
     <section className="px-5 md:pt-50 pt-30 pb-20 overflow-hidden bg-[url('/images/CatalogMethodicsPage/backgrounds/MethodicsListBackGrounds.svg')]">
+      <AudioPlayer/>
       <div className="flex flex-col items-center relative">
         <span className="heading-bg lg:leading-7 leading-5 whitespace-nowrap">
           by Bogdana Andreyko

@@ -32,7 +32,7 @@ const ValidationSection = () => {
             start: "top 90%",
             once: true,
           },
-        }
+        },
       );
     }
 
@@ -51,7 +51,7 @@ const ValidationSection = () => {
               start: "top 90%",
               once: true,
             },
-          }
+          },
         );
       };
       if (letterMobileRef.current.complete) {
@@ -116,7 +116,9 @@ const ValidationSection = () => {
           </div>
         </div>
         <div className="absolute top-[75%] sm:top-[75%] left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <Link href={"/catalog-methodics"}><CustomSeal label="Переглянути методики" /></Link>
+          <Link href={"/catalog-methodics"}>
+            <CustomSeal label="Переглянути методики" />
+          </Link>
         </div>
       </div>
 
@@ -149,12 +151,34 @@ const ValidationSection = () => {
               років в різних країнах світу, в роботі з клієнтами, студентами,
               учнями, під час викладацької та наукової діяльності.
             </p>
-            <p className="heading-4 md:w-[70%] lg:w-[46%] mt-5">
-              Окремі методики апробовані та описані у успішно захищеному
-              дисертаційному досліджені на звання доктора філософії з
-              спеціальності спеціальна психологія. Сертифікований психотерапевт
-              в трьох країнах світу.
-            </p>
+            <div className="flex flex-row gap-5">
+              <p className="heading-4 md:w-[70%] lg:w-[46%] mt-5">
+                Окремі методики апробовані та описані у успішно захищеному
+                дисертаційному досліджені на звання доктора філософії з
+                спеціальності спеціальна психологія. Сертифікований
+                психотерапевт в трьох країнах світу.
+              </p>
+              <p className="heading-4 md:w-[70%] lg:w-[46%] mt-5">
+                Платформа RОК-М має науково-освітню спрямованість та створена з
+                метою систематизації, розвитку і практичного впровадження
+                доказових психологічних підходів.
+              </p>
+            </div>
+            <div className="flex flex-row gap-5">
+              <p className="heading-4 md:w-[70%] lg:w-[46%] mt-5">
+                Матеріали платформи створені шляхом наукової адаптації,
+                інтеграції та структуризації принципів і підходів, описаних у
+                працях міжнародних і українських дослідників у галузі
+                психології, психотерапії, нейронауки та суміжних дисциплін.
+                RОК-М не відтворює дослівно оригінальні тексти наукових джерел.
+              </p>
+              <p className="heading-4 md:w-[70%] lg:w-[46%] mt-5">
+                На платформі RОК-М також представлені авторські
+                психотерапевтичні методики та моделі психологічного супроводу,
+                розроблені автором у процесі наукових досліджень, професійної
+                практики та багаторічної методологічної роботи.
+              </p>
+            </div>
           </div>
         </div>
         <div className="mt-6 lg:mt-12 2xl:mt-60 flex justify-between">
@@ -164,12 +188,12 @@ const ValidationSection = () => {
           </span>
           <div className="hidden md:block">
             <Link href={"/catalog-methodics"}>
-            <CustomSeal
-              label="Переглянути методики"
-              position="left"
-              className="-mt-6 lg:-mt-13 z-100"
-              smallButton={true}
-            />
+              <CustomSeal
+                label="Переглянути методики"
+                position="left"
+                className="-mt-6 lg:-mt-13 z-100"
+                smallButton={true}
+              />
             </Link>
           </div>
         </div>
