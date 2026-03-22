@@ -15,6 +15,7 @@ import { mak_gallery_images } from "@/public/images/MakGallery";
 import Image from "next/image";
 import { white_letter } from "@/public/images/CommonImages/PostCard";
 import { grantMakCardsAccess } from "@/api/mind-maps-api";
+import { saveOrderReference } from "@/lib/paymentOrderReference";
 
 export default function MakGalleryPage() {
   const router = useRouter();
@@ -25,13 +26,25 @@ export default function MakGalleryPage() {
     setPurchaseError(null);
     setIsCheckingAccess(true);
     try {
-      const { ok, error } = await grantMakCardsAccess();
+      const result = await grantMakCardsAccess();
+      const { ok } = result;
+      const error = "error" in result ? result.error : undefined;
       if (error) {
         if (error === "Необхідно увійти в систему") {
           router.push("/auth/sign-in");
           return;
         }
         setPurchaseError(error);
+        return;
+      }
+      if (
+        ok &&
+        "status" in result &&
+        result.status === "payment_required" &&
+        result.paymentUrl
+      ) {
+        saveOrderReference("mak", result.orderReference);
+        window.location.href = result.paymentUrl;
         return;
       }
       if (ok) {

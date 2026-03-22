@@ -8,12 +8,15 @@ import gsap from "gsap";
 import TwoFrameButton from "@/components/common/TwoFrameButton";
 import { X } from "lucide-react";
 import ModalPortal from "@/components/common/ModalPortal";
+import { useRouter } from "next/navigation";
+import { activateMediumTariff, activatePremiumTariff } from "@/api/tariffs-api";
+import { saveOrderReference } from "@/lib/paymentOrderReference";
 
 const plans = [
-  { id: "standard", label: "Стандарт", price: 1999 },
-  { id: "medium", label: "Медіум", price: 2999 },
-  { id: "premium", label: "Преміум", price: 3999 },
-  { id: "mak", label: "МАК-картини", price: 1999 },
+  { id: "standard", label: "Стандарт", price: 1490 },
+  { id: "medium", label: "Медіум", price: 2990 },
+  { id: "premium", label: "Преміум", price: 4990 },
+  { id: "mak", label: "МАК-картини", price: 1490 },
 ];
 
 const nameRegex = /^[A-Za-zА-Яа-яІіЇїЄєʼ’\-]+ [A-Za-zА-Яа-яІіЇїЄєʼ’\-]+$/;
@@ -37,6 +40,7 @@ type Props = {
 export default function PlanOrderModal({ open, onClose }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   const {
     register,
@@ -126,9 +130,41 @@ export default function PlanOrderModal({ open, onClose }: Props) {
 
   if (!open) return null;
 
-  const onSubmit = (data: FormData) => {
-    console.log("ORDER DATA:", data);
-    handleClose();
+  const onSubmit = async (data: FormData) => {
+    // Для medium/premium очікуємо ініціалізацію платежу і редірект на paymentUrl.
+    if (data.plan !== "medium" && data.plan !== "premium") {
+      console.log("ORDER DATA (stub):", data);
+      handleClose();
+      return;
+    }
+
+    try {
+      const result =
+        data.plan === "medium"
+          ? await activateMediumTariff()
+          : await activatePremiumTariff();
+
+      if (result && "status" in result && result.status === "payment_required") {
+        saveOrderReference(result.kind, result.orderReference);
+        window.location.href = result.paymentUrl;
+        return;
+      }
+
+      handleClose();
+      router.push("/profile/my-sections");
+      router.refresh();
+    } catch (e) {
+      const msg =
+        e instanceof Error ? e.message : "Не вдалося активувати тариф";
+      const status = (e as { response?: { status?: number } } | null | undefined)?.response?.status;
+      if (status === 401) return; // interceptor already redirects to sign-in
+      if (msg === "Необхідно увійти в систему") {
+        router.push("/auth/sign-in");
+        return;
+      }
+      // Не показуємо “червону модалку” в UI — одразу повідомляємо.
+      alert(msg);
+    }
   };
 
   return (

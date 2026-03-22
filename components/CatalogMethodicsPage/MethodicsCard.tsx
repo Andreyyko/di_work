@@ -10,6 +10,7 @@ import { useWindowWidth } from "@/hooks/useWindowWidth";
 import TwoFrameButton from "@/components/common/TwoFrameButton";
 import { assignMethodSectionToUser } from "@/api/user-method-sections";
 import { grantMakCardsAccess } from "@/api/mind-maps-api";
+import { saveOrderReference } from "@/lib/paymentOrderReference";
 
 type MethodCardType = (typeof CategoriesFrThCarouselData)[number];
 type MethodCardWithFlags = MethodCardType & { isMakCards?: boolean; owned?: boolean };
@@ -53,7 +54,9 @@ export default function MethodCard({
           return;
         }
 
-        const { ok, error } = await grantMakCardsAccess();
+        const makAccessResult = await grantMakCardsAccess();
+        const error =
+          "error" in makAccessResult ? makAccessResult.error : undefined;
         if (error) {
           if (error === "Необхідно увійти в систему") {
             router.push("/auth/sign-in");
@@ -62,7 +65,16 @@ export default function MethodCard({
           setAssignError(error);
           return;
         }
-        if (ok) {
+        if (makAccessResult.ok) {
+          if (
+            "status" in makAccessResult &&
+            makAccessResult.status === "payment_required" &&
+            typeof makAccessResult.paymentUrl === "string"
+          ) {
+            saveOrderReference("mak", makAccessResult.orderReference);
+            window.location.href = makAccessResult.paymentUrl;
+            return;
+          }
           setIsAssigned(true);
           router.push("/mak-cards");
         }
@@ -78,7 +90,9 @@ export default function MethodCard({
 
     // Звичайний розділ: якщо вже куплений – просто відкриваємо
     if (owned) {
-      router.push(`/methodics-sections/${item.slug}`);
+      router.push(
+        `/payment-return?kind=section&category=${encodeURIComponent(item.slug)}`
+      );
       return;
     }
 
@@ -86,9 +100,25 @@ export default function MethodCard({
     setAssignError(null);
     setIsAssigning(true);
     try {
-      await assignMethodSectionToUser(methodSectionId);
+      const result = await assignMethodSectionToUser(methodSectionId, {
+        categorySlug: item.slug,
+      });
+      if (
+        "status" in result &&
+        result.status === "payment_required" &&
+        "orderReference" in result &&
+        typeof result.orderReference === "string" &&
+        "paymentUrl" in result &&
+        typeof result.paymentUrl === "string"
+      ) {
+        saveOrderReference("section", result.orderReference);
+        window.location.href = result.paymentUrl;
+        return;
+      }
       setIsAssigned(true);
-      router.push(`/methodics-sections/${item.slug}`);
+      router.push(
+        `/payment-return?kind=section&category=${encodeURIComponent(item.slug)}`
+      );
     } catch (error) {
       const msg =
         error instanceof Error

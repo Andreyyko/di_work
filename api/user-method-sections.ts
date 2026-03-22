@@ -64,18 +64,38 @@ export interface UserMethodSectionRelation<TMethodSection = {}> {
   [key: string]: string | number | boolean | null | TMethodSection | undefined;
 }
 
+export interface AssignSectionPaymentRequiredResponse {
+  status: "payment_required";
+  kind: "section";
+  access: "section";
+  orderReference: string;
+  amount: number;
+  currency: string;
+  paymentUrl: string;
+}
+
+export type AssignSectionResponse<TMethodSection = {}> =
+  | UserMethodSectionRelation<TMethodSection>
+  | AssignSectionPaymentRequiredResponse;
+
 /**
  * POST /api/user-method-sections/assign
  * Прив'язати розділ методик до поточного користувача.
  */
 export async function assignMethodSectionToUser(
-  methodSectionId: number
-): Promise<UserMethodSectionRelation> {
+  methodSectionId: number,
+  options?: {
+    categorySlug?: string;
+    methodicSlug?: string;
+  }
+): Promise<AssignSectionResponse> {
   try {
     const res = await apiClient.post("/user-method-sections/assign", {
       methodSectionId,
+      ...(options?.categorySlug ? { categorySlug: options.categorySlug } : {}),
+      ...(options?.methodicSlug ? { methodicSlug: options.methodicSlug } : {}),
     });
-    return res.data;
+    return res.data as AssignSectionResponse;
   } catch (error) {
     const typedError = error as Error | AxiosLikeError | null | undefined;
     const message = getErrorMessage(

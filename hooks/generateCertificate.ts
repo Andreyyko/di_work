@@ -19,11 +19,12 @@ const slugify = (text: string) =>
   text
     .toLowerCase()
     .replace(/[\s]+/g, "-")
-    .replace(/[^a-z0-9\-]/g, "");
+    // keep letters/numbers (including Cyrillic) and dashes
+    .replace(/[^\p{L}\p{N}\-]+/gu, "");
 
-export async function generateCertificate() {
+export async function generateCertificate(name: string) {
   const data = {
-    name: "Олег Андрейко",
+    name: name?.trim() || "Користувач",
     number: generateCertificateNumber(),
     date: getTodayDate(),
   };

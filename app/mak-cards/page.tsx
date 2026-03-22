@@ -7,10 +7,19 @@ import Tabs from "@/components/MakCardsPage/Tabs";
 import { useFavorites } from "@/hooks/useFavorite";
 import { Card } from "@/constant/MakCardsData/cards";
 import CardModal from "@/components/MakCardsPage/CardModal";
+import MakCardsAccessGate from "@/components/common/MakCardsAccessGate";
 
 type Tab = "all" | "favorites" | "child";
 
 export default function CardsPage() {
+  return (
+    <MakCardsAccessGate>
+      <CardsPageContent />
+    </MakCardsAccessGate>
+  );
+}
+
+function CardsPageContent() {
   const [query, setQuery] = useState("");
   const [tab, setTab] = useState<Tab>("all");
   const favoritesHook = useFavorites();
@@ -75,3 +84,4 @@ export default function CardsPage() {
     </div>
   );
 }
+

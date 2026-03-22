@@ -4,9 +4,74 @@ import { CheckMediumItems } from "@/constant/MainPageConstant/PlanMediumItems";
 import { CheckPremiumItems } from "@/constant/MainPageConstant/PlanPremiumItems";
 import { useState } from "react";
 import PlanOrderModal from "./PlanOrderModal";
+import { useRouter } from "next/navigation";
+import {
+  activateMediumTariff,
+  activatePremiumTariff,
+} from "@/api/tariffs-api";
+import { saveOrderReference } from "@/lib/paymentOrderReference";
 
 const PlanSectionMobile = () => {
   const [open, setOpen] = useState(false);
+  const [isActivatingMedium, setIsActivatingMedium] = useState(false);
+  const router = useRouter();
+
+  const handleMediumClick = async () => {
+    if (isActivatingMedium) return;
+    setIsActivatingMedium(true);
+
+    try {
+      const result = await activateMediumTariff();
+      if (result && "status" in result && result.status === "payment_required") {
+        saveOrderReference("medium", result.orderReference);
+        window.location.href = result.paymentUrl;
+        return;
+      }
+      router.push("/profile/my-sections");
+      router.refresh();
+    } catch (e) {
+      const status = (e as { response?: { status?: number } } | null | undefined)?.response?.status;
+      if (status === 401) return; // interceptor already redirects to sign-in
+      const msg =
+        e instanceof Error ? e.message : "Не вдалося активувати тариф Medium";
+      alert(msg);
+    } finally {
+      setIsActivatingMedium(false);
+    }
+  };
+
+  const [isActivatingPremium, setIsActivatingPremium] = useState(false);
+  const handlePremiumClick = async () => {
+    if (isActivatingPremium) return;
+    setIsActivatingPremium(true);
+
+    try {
+      const result = await activatePremiumTariff();
+      if (result && "status" in result && result.status === "payment_required") {
+        saveOrderReference("premium", result.orderReference);
+        window.location.href = result.paymentUrl;
+        return;
+      }
+      router.push("/profile/my-sections");
+      router.refresh();
+    } catch (e) {
+      const status =
+        (e as { response?: { status?: number } } | null | undefined)?.response
+          ?.status;
+      if (status === 401) return; // interceptor already redirects to sign-in
+      const msg =
+        e instanceof Error
+          ? e.message
+          : "Не вдалося активувати тариф Premium або згенерувати сертифікат";
+      if (msg === "Необхідно увійти в систему") {
+        router.push("/auth/sign-in");
+        return;
+      }
+      alert(msg);
+    } finally {
+      setIsActivatingPremium(false);
+    }
+  };
 
   return (
     <div className="flex flex-col gap-14.25">
@@ -18,7 +83,7 @@ const PlanSectionMobile = () => {
         sealHideUntilHover={true}
         sealResponsiveButton
         sealButtonDesktop="left"
-        onSealClick={() => setOpen(true)}
+        onSealClick={() => router.push("/catalog-methodics")}
       >
         <div className="flex justify-between pb-5">
           <h3
@@ -38,7 +103,7 @@ const PlanSectionMobile = () => {
         </span>
 
         <span className="heading-2 text-[clamp(40px,4vw,50px)] pt-5 block">
-          1999 ₴
+          1490 ₴
         </span>
       </FrameWrapper>
 
@@ -50,7 +115,7 @@ const PlanSectionMobile = () => {
         sealHideUntilHover={true}
         sealResponsiveButton
         sealButtonDesktop="left"
-        onSealClick={() => setOpen(true)}
+        onSealClick={handleMediumClick}
       >
         <div className="flex justify-between pb-5">
           <h3
@@ -70,7 +135,7 @@ const PlanSectionMobile = () => {
 
         <CheckItem className="heading-4 pb-4" items={CheckMediumItems} />
 
-        <span className="heading-2 text-[clamp(40px,4vw,50px)]">2999 ₴</span>
+        <span className="heading-2 text-[clamp(40px,4vw,50px)]">2990 ₴</span>
       </FrameWrapper>
 
       <FrameWrapper
@@ -80,7 +145,7 @@ const PlanSectionMobile = () => {
         sealHideUntilHover={true}
         sealResponsiveButton
         sealButtonDesktop="left"
-        onSealClick={() => setOpen(true)}
+        onSealClick={handlePremiumClick}
       >
         <div className="flex justify-between pb-5">
           <h3
@@ -99,7 +164,7 @@ const PlanSectionMobile = () => {
 
         <CheckItem className="heading-4 pb-4" items={CheckPremiumItems} />
 
-        <span className="heading-2 text-[clamp(40px,4vw,50px)]">3999 ₴</span>
+        <span className="heading-2 text-[clamp(40px,4vw,50px)]">4990 ₴</span>
       </FrameWrapper>
 
       <FrameWrapper
@@ -111,7 +176,7 @@ const PlanSectionMobile = () => {
         sealHideUntilHover={true}
         sealResponsiveButton
         sealButtonDesktop="left"
-        onSealClick={() => setOpen(true)}
+        onSealClick={() => router.push("/mak-gallery")}
       >
         <div className="flex justify-between pb-5">
           <h3
@@ -127,7 +192,7 @@ const PlanSectionMobile = () => {
         </span>
 
         <span className="heading-2 text-[clamp(40px,4vw,50px)] block pt-5">
-          1999 ₴
+          1490 ₴
         </span>
       </FrameWrapper>
       <PlanOrderModal

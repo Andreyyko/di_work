@@ -1,6 +1,7 @@
 import { getMethodicsSectionsBySlug } from "@/constant/methodics-sections/getMethodicsSectionsBySlug";
 import PhotoFrame from "@/components/common/PhotoFrame";
 import FrameWrapper from "@/components/common/FrameWrapper";
+import MethodicsSectionAccessGate from "@/components/common/MethodicsSectionAccessGate";
 import Image from "next/image";
 import { white_letter } from "@/public/images/CommonImages/PostCard";
 import Link from "next/link";
@@ -49,6 +50,7 @@ export default async function MethodicPage({
   const totalPages = Math.ceil(methodic.methods.length / ITEMS_PER_PAGE);
 
   return (
+    <MethodicsSectionAccessGate categorySlug={category}>
     <section className="px-5 flex flex-col items-center bg-[url('/images/CatalogMethodicsPage/backgrounds/MethodicsListBackGrounds.svg')] overflow-hidden relative pb-10">
       <div className="absolute flex flex-row justify-between items-center w-[98%] top-175 md:top-125">
         <h4 className="heading-4 text-left w-[50%] pt-10 md:w-[30%] hidden md:block">
@@ -127,5 +129,6 @@ export default async function MethodicPage({
         </div>
       )}
     </section>
+    </MethodicsSectionAccessGate>
   );
 }

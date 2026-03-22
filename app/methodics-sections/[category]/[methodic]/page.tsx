@@ -1,5 +1,6 @@
-import AudioPlayer from "@/components/audioPlayer/AudioPlayer";
+import PremiumAudioGate from "@/components/audioPlayer/PremiumAudioGate";
 import FrameWrapper from "@/components/common/FrameWrapper";
+import MethodicsSectionAccessGate from "@/components/common/MethodicsSectionAccessGate";
 import InfoBlock from "@/components/common/InfoBlock";
 import ListBlock from "@/components/common/ListBlock";
 import { getMethodicBySlug } from "@/constant/methodics-sections/getMethodicBySlug";
@@ -49,12 +50,13 @@ function blocksToPlainTextArray(blocks: any[] | null | undefined): string[] {
 
 type PageProps = {
   params: Promise<{
+    category: string;
     methodic: string;
   }>;
 };
 
 export default async function MethodicDetailPage({ params }: PageProps) {
-  const { methodic } = await params;
+  const { category, methodic } = await params;
 
   const data = await getMethodicBySlug(methodic);
 
@@ -62,9 +64,13 @@ export default async function MethodicDetailPage({ params }: PageProps) {
 
   if (!data) notFound();
 
+  const apiSectionSlug = (data.method_section as { slug?: string } | null | undefined)?.slug;
+  const categoryForAccess = apiSectionSlug || category;
+
   return (
+    <MethodicsSectionAccessGate categorySlug={categoryForAccess}>
     <section className="px-5 md:pt-50 pt-30 pb-20 overflow-hidden bg-[url('/images/CatalogMethodicsPage/backgrounds/MethodicsListBackGrounds.svg')]">
-      <AudioPlayer/>
+      <PremiumAudioGate/>
       <div className="flex flex-col items-center relative">
         <span className="heading-bg lg:leading-7 leading-5 whitespace-nowrap">
           by Bogdana Andreyko
@@ -159,5 +165,6 @@ export default async function MethodicDetailPage({ params }: PageProps) {
         </div>
       </div>
     </section>
+    </MethodicsSectionAccessGate>
   );
 }

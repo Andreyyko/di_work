@@ -30,7 +30,7 @@ const MakPlan = ({ onPurchaseClick, purchaseDisabled }: MakPlanProps) => {
             АК-картини
           </h3>
           <span className="heading-2 text-[clamp(40px,4vw,50px)] block whitespace-nowrap">
-            1999 ₴
+            1490 ₴
           </span>
         </div>
         <span className="heading-4">
@@ -44,7 +44,9 @@ const MakPlan = ({ onPurchaseClick, purchaseDisabled }: MakPlanProps) => {
           (записавшись на консультацію)
         </span>
       </FrameWrapper>
-      <FrameWrapper
+      {/* Тимчасово: прибрано дубль другого блоку.
+          Потрібно щоб було лише одне “ПРИДБАТИ”, як на макеті. */}
+      {/* <FrameWrapper
         paddingX={40}
         paddingY={70}
         className="w-full lg:w-[50%] order-4 lg:order-0 leading-0"
@@ -65,7 +67,7 @@ const MakPlan = ({ onPurchaseClick, purchaseDisabled }: MakPlanProps) => {
             АК-картини
           </h3>
           <span className="heading-2 text-[clamp(40px,4vw,50px)] block whitespace-nowrap">
-            1999 ₴
+            1490 ₴
           </span>
         </div>
         <span className="heading-4">
@@ -78,7 +80,7 @@ const MakPlan = ({ onPurchaseClick, purchaseDisabled }: MakPlanProps) => {
           Формат: онлайн-доступ та з можливістю придбати збірку фізично
           (записавшись на консультацію)
         </span>
-      </FrameWrapper>
+      </FrameWrapper> */}
     </div>
   );
 };

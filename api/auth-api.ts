@@ -1,7 +1,15 @@
 /**
  * Auth API client for Strapi backend.
  * Base URL: NEXT_PUBLIC_API_URL (за замовчуванням локальний http://localhost:1337/api).
+ *
+ * Відповіді `/auth/me`, login/register повертають на клієнті лише «публічний» профіль
+ * (див. `sanitizeAuthUser`) — без documentId, role, methodSections тощо.
  */
+
+import {
+  sanitizeAuthUser,
+  type AuthUserPublic,
+} from "@/lib/sanitizeAuthUser";
 
 const API_URL =
   typeof window !== "undefined"
@@ -79,16 +87,25 @@ export function getStoredUser(): AuthUser | null {
   try {
     const raw = localStorage.getItem(USER_KEY);
     if (!raw) return null;
-    return JSON.parse(raw) as AuthUser;
+    const sanitized = sanitizeAuthUser(JSON.parse(raw) as unknown);
+    // Перезаписуємо сховище, якщо там ще лежала «повна» відповідь API (до sanitize).
+    const slim = JSON.stringify(sanitized);
+    if (slim !== raw) {
+      localStorage.setItem(USER_KEY, slim);
+    }
+    return sanitized;
   } catch {
     return null;
   }
 }
 
-export function setStoredUser(user: AuthUser): void {
+/** Зберігає лише безпечний піднабір полів (навіть якщо передати повну відповідь API). */
+export function setStoredUser(user: unknown): void {
   if (typeof window === "undefined") return;
-  localStorage.setItem(USER_KEY, JSON.stringify(user));
+  localStorage.setItem(USER_KEY, JSON.stringify(sanitizeAuthUser(user)));
 }
+
+export { sanitizeAuthUser };
 
 /** Код скидання пароля (sessionStorage), передається з verify-code на reset-password */
 export function setResetCode(code: string): void {
@@ -108,22 +125,8 @@ export function clearResetCode(): void {
 
 // --- Auth responses ---
 
-export interface AuthUser {
-  id: number;
-  documentId?: string;
-  username: string;
-  email: string;
-  confirmed?: boolean;
-  blocked?: boolean;
-  provider?: string;
-  role?: string;
-  /** Доступ до МАК-карток (увімкнути після оплати) */
-  makCardsAccess?: boolean;
-  /** Улюблені МАК-картки, напр. ["card-1", "card-3"] */
-  makFavoriteCardIds?: string[];
-  createdAt?: string;
-  updatedAt?: string;
-}
+/** Дані користувача на клієнті (без службових полів Strapi). */
+export type AuthUser = AuthUserPublic;
 
 export interface AuthResponse {
   jwt: string;
@@ -143,7 +146,11 @@ export async function register(body: {
   username: string;
   password: string;
 }): Promise<AuthResponse> {
-  return authFetch<AuthResponse>("/auth/register", { method: "POST", body });
+  const res = await authFetch<AuthResponse>("/auth/register", {
+    method: "POST",
+    body,
+  });
+  return { ...res, user: sanitizeAuthUser(res.user) };
 }
 
 /** POST /api/auth/email/verify-code → JWT */
@@ -151,10 +158,11 @@ export async function verifyCode(body: {
   email: string;
   code: string;
 }): Promise<AuthResponse> {
-  return authFetch<AuthResponse>("/auth/email/verify-code", {
+  const res = await authFetch<AuthResponse>("/auth/email/verify-code", {
     method: "POST",
     body,
   });
+  return { ...res, user: sanitizeAuthUser(res.user) };
 }
 
 /** POST /api/auth/email/request-code */
@@ -172,7 +180,11 @@ export async function login(body: {
   identifier: string;
   password: string;
 }): Promise<AuthResponse> {
-  return authFetch<AuthResponse>("/auth/local", { method: "POST", body });
+  const res = await authFetch<AuthResponse>("/auth/local", {
+    method: "POST",
+    body,
+  });
+  return { ...res, user: sanitizeAuthUser(res.user) };
 }
 
 /** POST /api/auth/password/request-code */
@@ -221,9 +233,9 @@ export async function getMe(): Promise<AuthUser> {
   const data = await authFetchWithJwt<unknown>("/auth/me", { method: "GET" });
   // Деякі реалізації можуть повертати масив (наприклад [user]) замість обʼєкта.
   if (Array.isArray(data)) {
-    return (data[0] ?? {}) as AuthUser;
+    return sanitizeAuthUser(data[0] ?? {});
   }
-  return (data ?? {}) as AuthUser;
+  return sanitizeAuthUser(data ?? {});
 }
 
 /** POST /api/auth/profile — оновити профіль (username, email, password?) */
@@ -232,8 +244,9 @@ export async function updateMe(body: {
   email?: string;
   password?: string;
 }): Promise<AuthUser> {
-  return authFetchWithJwt<AuthUser>("/auth/profile", {
+  const data = await authFetchWithJwt<unknown>("/auth/profile", {
     method: "POST",
     body,
   });
+  return sanitizeAuthUser(data);
 }

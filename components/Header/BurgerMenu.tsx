@@ -178,6 +178,16 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
         >
           <div className="flex flex-col items-center gap-5 sm:gap-7.5">
             <Link
+              href="/"
+              onClick={onClose}
+              className="heading-2-burger uppercase menu-item menu-fade"
+            >
+              <span className="first-letter-burger" data-first-letter="Г">
+                оловна
+              </span>
+            </Link>
+
+            <Link
               onClick={onClose}
               href="/about"
               className="heading-2-burger uppercase menu-item menu-fade"
