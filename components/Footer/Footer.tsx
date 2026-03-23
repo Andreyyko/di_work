@@ -8,6 +8,7 @@ import { CheckItems } from "@/constant/MainPageConstant/heroSectionData";
 import CheckItem from "../common/CheckItem";
 import { useWindowWidth } from "@/hooks/useWindowWidth";
 import Link from "next/link";
+import { main_page_backrounds } from "@/public/images/MainPageImages/backgrounds";
 
 const Footer = () => {
   const { isSmallerThanMd, isSmallerThanLg } = useWindowWidth();
@@ -31,7 +32,7 @@ const Footer = () => {
 
       <div className="relative z-10 ">
         <div className="flex flex-row justify-between">
-          <div className="flex flex-row justify-between w-full md:w-[590px] lg:w-[750px]">
+          <div className="flex flex-row justify-between w-full md:w-[790px] lg:w-[850px]">
             <div className="flex flex-col">
               <h3 className="heading-footer mb-5">Контакти</h3>
               <div className="flex flex-row items-center gap-4 mb-2.5">
@@ -40,8 +41,8 @@ const Footer = () => {
                   alt="email icon"
                   className="h-5 w-5"
                 />
-                <a href="mail:info@rok-m.ua" className="heading-6 opacity-100 ">
-                  info@rok-m.ua
+                <a href="mail:bogdanaandrejko@gmail.com" className="heading-6 opacity-100 ">
+                bogdanaandrejko@gmail.com
                 </a>
               </div>
               <div className="flex flex-row items-center gap-4 mb-2.5">
@@ -50,8 +51,8 @@ const Footer = () => {
                   alt="phone icon"
                   className="h-5 w-5"
                 />
-                <a href="tel:+380000000000" className="heading-6 opacity-100">
-                  +380 00 000 00 00
+                <a href="tel:+380979200740" className="heading-6 opacity-100">
+                +38 (097) 920-07-40
                 </a>
               </div>
               <div className="flex flex-row gap-7.5 md:gap-5">
@@ -95,6 +96,8 @@ const Footer = () => {
                   <Link href="/faq">FAQ</Link>
                   {isSmallerThanMd && (
                     <>
+ <p className="heading-6 opacity-100 tracking-[-0.5px]">ФОП Андрейко Богдана Володимирівна</p>
+ <p className="heading-6 opacity-100 tracking-[-0.5px]">ІПН: 3100916566</p>
                       <Link
                         href="/privacy"
                         className="heading-6 opacity-100 tracking-[-0.5px]"
@@ -117,6 +120,8 @@ const Footer = () => {
                     Юридичне
                   </h3>
                   <div className="flex flex-col gap-2.5">
+                  <p className="heading-6 opacity-100 tracking-[-0.5px]">ФОП Андрейко Богдана Володимирівна</p>
+                  <p className="heading-6 opacity-100 tracking-[-0.5px]">ІПН: 3100916566</p>
                     <Link href="/privacy" className="heading-6 opacity-100">
                       Політика конфіденційності
                     </Link>
@@ -218,12 +223,21 @@ const Footer = () => {
           )}
         </div>
       </div>
-      <div className="text-center heading-4 bg-brand-lightgray text-sm relative z-10">
-        Copyright © 2026 ROK-M. Усі права захищені. Автор і власник: Андрейко,
-        Б. В.Усі матеріали, включаючи методологічну структуру,
-        науково-методичну адаптацію та навчальний контент, є результатом
-        інтелектуальної праці автора та охороняються авторським правом і чинними
-        міжнародними нормами у сфері інтелектуальної власності.
+      <div
+        className="w-screen left-1/2 -translate-x-1/2 text-center heading-4 text-sm relative z-10 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url(${main_page_backrounds.FOOTER_BACKGROUND.src})`,
+        }}
+      >
+        <p>
+          Copyright{" "}
+          <span className="font-sans inline-block align-baseline">©</span>{" "}
+          2026 ROK-M. Усі права захищені. Автор і власник:
+          Андрейко, Б. В. Усі матеріали, включаючи методологічну структуру,
+          науково-методичну адаптацію та навчальний контент, є результатом
+          інтелектуальної праці автора та охороняються авторським правом і
+          чинними міжнародними нормами у сфері інтелектуальної власності.
+        </p>
       </div>
     </footer>
   );

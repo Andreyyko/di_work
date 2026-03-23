@@ -6,9 +6,11 @@ import gsap from "gsap";
 import PrivacySection from "@/components/common/PrivacySection";
 import { footer_images } from "@/public/images/CommonImages/FooterImages";
 import Image from "next/image";
-import { PravicyData } from "@/constant/PrivacyConstant/privacyData";
+import {
+  PravicyData,
+  copyrightData,
+} from "@/constant/PrivacyConstant/privacyData";
 import { white_letter } from "@/public/images/CommonImages/PostCard";
-import { Copyright } from "lucide-react";
 
 export default function PrivacyPage() {
   useEffect(() => {
@@ -63,85 +65,14 @@ export default function PrivacyPage() {
         <PrivacySection key={index} {...block} data-privacy-animate />
       ))}
 
-      <div
-        className="flex flex-row items-center gap-4 pb-2.5 -translate-y-5"
-        data-privacy-animate
-      >
-        <Image
-          src={footer_images.EMAIL_ICON}
-          alt="email icon"
-          className="h-5 w-5"
-        />
-        <a href="mailto:info@rok-m.ua" className="heading-6 opacity-100">
-          info@rok-m.ua
-        </a>
-      </div>
-
-      <div
-        className="flex flex-row items-center gap-4 pb-2.5 -translate-y-5"
-        data-privacy-animate
-      >
-        <Image
-          src={footer_images.PHONE_ICON}
-          alt="phone icon"
-          className="h-5 w-5"
-        />
-        <a href="tel:+380000000000" className="heading-6 opacity-100">
-          +380 00 000 00 00
-        </a>
-      </div>
-      <div>
-        <div className="heading-4 w-[50%]">
-          <p>Copyright © Богдана Андрейко, RОК-М, 2026. Усі права захищені.</p>
-          <br/>
-          <p>
-            Усі матеріали, тексти, структура, опис методик, психотерапевтичні
-            інтервенції, формулювання інструкцій, система класифікації, дизайн і
-            концепція платформи RОК-М є результатом авторської
-            науково-методичної розробки та належать Андрейко, Б. В.{" "}
-          </p>
-          <br/>
-          <p>
-            На платформі RОК-М також представлені авторські психотерапевтичні
-            методики та моделі психологічного супроводу, розроблені автором у
-            процесі наукових досліджень, професійної практики та багаторічної
-            методологічної роботи.
-          </p>
-          <br/>
-          <p>
-            {" "}
-            Платформа RОК-М має науково-освітню спрямованість та створена з
-            метою систематизації, розвитку і практичного впровадження доказових
-            психологічних підходів.{" "}
-          </p>
-          <br/>
-          <p>
-            Матеріали платформи створені шляхом наукової адаптації, інтеграції
-            та структуризації принципів і підходів, описаних у працях
-            міжнародних і українських дослідників у галузі психології,
-            психотерапії, нейронауки та суміжних дисциплін. RОК-М не відтворює
-            дослівно оригінальні тексти наукових джерел.
-          </p>
-          <br/>
-          <p>
-            {" "}
-            Будь-яке копіювання, відтворення, розповсюдження або використання
-            матеріалів платформи RОК-М повністю або частково без письмового
-            дозволу автора заборонено відповідно до Закону України «Про
-            авторське право і суміжні права» та міжнародних норм авторського
-            права.
-          </p>
-          <br/>
-          <p> Автор платформи RОК-М Андрейко, Б. В. Україна </p>
-          <br/>
-          <p>
-            Copyright © Bogdana Andreyko ROK-M, 2026. All rights reserved.
-            Author and owner: Andreyko, B. V. All materials, including
-            methodology structure, adaptation, and instructional content, are
-            protected by copyright law and international intellectual property
-            regulations.
-          </p>
-        </div>
+      <div data-privacy-animate>
+        {copyrightData.map((block, index) => (
+          <PrivacySection
+            key={index}
+            {...block}
+            className={index === copyrightData.length - 1 ? "mb-20" : "mb-8"}
+          />
+        ))}
       </div>
     </section>
   );
