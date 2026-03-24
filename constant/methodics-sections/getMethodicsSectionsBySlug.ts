@@ -1,8 +1,7 @@
 import { section_images_frame } from "@/public/images/CommonImages/SectionsImageFrame";
 
 export async function getMethodicsSectionsBySlug(category: string) {
-  const API_URL =
-    process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337/api";
+  const API_URL = process.env.NEXT_PUBLIC_API_URL!;
 
   const res = await fetch(
     `${API_URL}/method-sections?filters[slug][$eq]=${encodeURIComponent(

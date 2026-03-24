@@ -1,6 +1,5 @@
 export async function getMethodicBySlug(slug: string) {
-  const API_URL =
-    process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337/api";
+  const API_URL = process.env.NEXT_PUBLIC_API_URL!;
 
   const res = await fetch(
     `${API_URL}/methods?filters[slug][$eq]=${encodeURIComponent(

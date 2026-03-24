@@ -10,10 +10,7 @@ import FormField from "@/components/common/FormField";
 import SelectField from "@/components/common/SelectField";
 import TwoFrameButton from "@/components/common/TwoFrameButton";
 
-const API_URL =
-  typeof window !== "undefined"
-    ? (process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337/api")
-    : process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337/api";
+const API_URL = process.env.NEXT_PUBLIC_API_URL!;
 
 const formSchema = z.object({
   fullName: z.string().min(2, "Введіть коректне ім’я (мін. 2 символи)"),

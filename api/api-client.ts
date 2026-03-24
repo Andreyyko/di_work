@@ -1,8 +1,7 @@
 import axios from "axios";
 import { getJwt, clearJwt } from "./auth-api";
 
-const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337/api";
+const API_URL = process.env.NEXT_PUBLIC_API_URL!;
 
 export const apiClient = axios.create({
   baseURL: API_URL,

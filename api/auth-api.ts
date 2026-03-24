@@ -1,6 +1,6 @@
 /**
  * Auth API client for Strapi backend.
- * Base URL: NEXT_PUBLIC_API_URL (за замовчуванням локальний http://localhost:1337/api).
+ * Base URL: NEXT_PUBLIC_API_URL (обовʼязково заданий у env).
  *
  * Відповіді `/auth/me`, login/register повертають на клієнті лише «публічний» профіль
  * (див. `sanitizeAuthUser`) — без documentId, role, methodSections тощо.
@@ -11,10 +11,7 @@ import {
   type AuthUserPublic,
 } from "@/lib/sanitizeAuthUser";
 
-const API_URL =
-  typeof window !== "undefined"
-    ? (process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337/api")
-    : process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337/api";
+const API_URL = process.env.NEXT_PUBLIC_API_URL!;
 
 const JWT_KEY = "rok_jwt";
 const USER_KEY = "rok_user";

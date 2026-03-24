@@ -11,8 +11,7 @@ import {
 type SlugToIdMap = Record<string, number | undefined>;
 type OwnedSlugsMap = Record<string, boolean | undefined>;
 
-const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337/api";
+const API_URL = process.env.NEXT_PUBLIC_API_URL!;
 
 export default function MethodsList() {
   const [sectionsMap, setSectionsMap] = useState<SlugToIdMap>({});
