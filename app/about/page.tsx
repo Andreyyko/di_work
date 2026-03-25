@@ -103,9 +103,9 @@ export default function AboutUs() {
           </span>
         </h3>
 
-        <h5 className="heading-5 pb-50 pt-3">
+        <p className="heading-5 pb-50 pt-3">
           Omnia vincit amor — все перемагає любов.
-        </h5>
+        </p>
       </div>
 
       <div data-fade>

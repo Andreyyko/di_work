@@ -24,8 +24,8 @@ const Footer = () => {
         alt="footer flower"
         className="
           pointer-events-none select-none 
-          absolute left-[68%] md:left-[64%] -translate-x-1/2  top-[79%]
-          md:top-[45%] -translate-y-1/2 
+          absolute left-[68%] md:left-[64%] -translate-x-1/2 bottom-0
+          md:top-[45%] md:-translate-y-1/2 
           w-60 md:w-[850px] 
         "
       />
@@ -217,7 +217,7 @@ const Footer = () => {
         </div>
       </div>
       <div
-        className="w-screen left-1/2 -translate-x-1/2 text-center heading-4 text-sm relative z-10 bg-cover bg-center bg-no-repeat"
+        className="w-screen left-1/2 -translate-x-1/2 text-center heading-4 text-[12px] md:text-sm relative z-10 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: `url(${main_page_backrounds.FOOTER_BACKGROUND.src})`,
         }}

@@ -43,6 +43,7 @@ export default function MethodicsCardProfile({ item }: Props) {
             className="heading-6 underline"
           >
             Дізнатися більше
+            <span className="sr-only"> про {item.title}</span>
           </Link>
         </div>
         <div className="flex justify-center mt-6">

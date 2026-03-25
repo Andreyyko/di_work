@@ -22,5 +22,13 @@ export default function ClientLoaderWrapper({
     return () => clearTimeout(timer);
   }, [pathname]);
 
-  return <>{showLoader ? <LoadingScreen /> : children}</>;
+  if (showLoader) {
+    return (
+      <main>
+        <LoadingScreen />
+      </main>
+    );
+  }
+
+  return <>{children}</>;
 }

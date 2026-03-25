@@ -13,9 +13,9 @@ const BioBlockTop = () => {
           paddingX={20}
           paddingY={20}
         />
-        <h5 className="heading-5 absolute -bottom-18 hidden lg:block">
+        <p className="heading-5 absolute -bottom-18 hidden lg:block">
         Відкрий у собі силу. Знайди<br/>внутрішній баланс. Побудуй новий<br/>простір для життя – стабільного,<br/>гармонійного, усвідомленого.
-        </h5>
+        </p>
         <div className="w-full md:w-[60%]">
         <MakSectionTexts
           title="Психолог і психотерапевт"
