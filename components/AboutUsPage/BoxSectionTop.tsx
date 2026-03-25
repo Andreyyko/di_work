@@ -12,7 +12,7 @@ const BoxSection = () => {
           alt="flower"
           loading="eager"
           fetchPriority="high"
-          className="absolute xl:top-110 left-0 z-100 xl:w-fit lg:top-120 lg:w-[70%] md:w-[50%] md:top-140 top-210 -translate-x-20 md:translate-x-0 lg:left-90 scale-x-[-1] lg:scale-x-100"
+          className="absolute left-0 -translate-x-20 md:translate-x-0 md:top-140 top-210 md:w-[50%] lg:left-auto lg:right-0 lg:top-120 lg:w-[70%] xl:top-110 xl:w-fit z-100 scale-x-[-1] lg:scale-x-100"
         />
         <div className="flex flex-col gap-15 relative">
           <h5 className="heading-5 w-80 -translate-x-5 hidden lg:block">
