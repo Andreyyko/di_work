@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import Footer from "@/components/Footer/Footer";
 import { main_page_backrounds } from "@/public/images/MainPageImages/backgrounds";
 import ClientLoaderWrapper from "@/components/common/ClientLoadingWrapper";
+import type { Metadata } from "next";
 
 const alexandra = localFont({
   src: "../public/fonts/alexandra-script.woff2",
@@ -41,7 +42,9 @@ const montserrat = localFont({
   display: "swap",
 });
 
-export const metadata = {
+const siteUrl = "https://www.rok-mentalhealth.com";
+
+export const metadata: Metadata = {
   title:
     "РОК-М — Ресурсно-орієнтовані когнітивні методики | Психологічний сайт №1 в Україні",
   description:
@@ -58,22 +61,37 @@ export const metadata = {
     "психологічні ігри",
     "усвідомлене батьківство",
   ],
+  metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
     title: "РОК-М — Ресурсно-орієнтовані когнітивні методики",
     description:
       "Унікальний психологічний ресурс для розвитку життєздатності, мотивації та психічного здоровʼя. 100+ методик, технік, вправ та тренінгів.",
-    url: "https://rok-m.netlify.app",
+    url: siteUrl,
     siteName: "РОК-М",
     locale: "uk_UA",
     type: "website",
     images: [
       {
-        url: "https://rok-m.netlify.app/og-image.jpg",
+        url: "/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "РОК-М – Психологічні методики",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "РОК-М — Ресурсно-орієнтовані когнітивні методики",
+    description:
+      "Унікальний психологічний ресурс для розвитку життєздатності, мотивації та психічного здоровʼя.",
+    images: ["/twitter-image.png"],
   },
   icons: {
     icon: "/icon.svg",
@@ -89,7 +107,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="uk"
       className={`
         ${alexandra.variable}
         ${kudriashov.variable}
