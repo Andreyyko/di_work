@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { getJwt, getMe } from "@/api/auth-api";
 import { getMyMethodSections } from "@/api/user-method-sections";
 import { canAccessMethodicsCategory } from "@/lib/accessRules";
+import LoadingScreen from "./LoadingScreen";
 
 type Props = {
   categorySlug: string;
@@ -66,13 +67,7 @@ export default function MethodicsSectionAccessGate({
   }, [categorySlug, router]);
 
   if (!ready) {
-    return (
-      <div className="min-h-[50vh] flex flex-col items-center justify-center px-6 bg-[url('/images/CatalogMethodicsPage/backgrounds/MethodicsListBackGrounds.svg')]">
-        <p className="heading-5 opacity-80 text-center">
-          Перевірка доступу до розділу…
-        </p>
-      </div>
-    );
+    return <LoadingScreen />;
   }
 
   return <>{children}</>;

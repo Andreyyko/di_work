@@ -248,11 +248,11 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
 
       <div className="flex absolute bottom-0 justify-between items-end w-full px-5.5 pb-5 pointer-events-auto menu-item menu-fade">
         <p className="flex flex-col heading-6 gap-1 opacity-60">
-          <a href="mailto:info@rok-m.ua" className="hover:underline">
-            info@rok-m.ua
+          <a href="mailto:bogdanaandrejko@gmail.com" className="hover:underline">
+            bogdanaandrejko@gmail.com
           </a>
-          <a href="tel:+380000000000" className="hover:underline">
-            +380 00 000 00 00
+          <a href="tel:+380979200740" className="hover:underline">
+            +38 (097) 920-07-40
           </a>
         </p>
 

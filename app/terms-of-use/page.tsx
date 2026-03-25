@@ -72,8 +72,8 @@ export default function TermsOfUsePage() {
           alt="email icon"
           className="h-5 w-5"
         />
-        <a href="mailto:info@rok-m.ua" className="heading-6 opacity-100">
-          info@rok-m.ua
+        <a href="mailto:bogdanaandrejko@gmail.com" className="heading-6 opacity-100">
+          bogdanaandrejko@gmail.com
         </a>
       </div>
 
@@ -86,8 +86,8 @@ export default function TermsOfUsePage() {
           alt="phone icon"
           className="h-5 w-5"
         />
-        <a href="tel:+380000000000" className="heading-6 opacity-100">
-          +380 00 000 00 00
+        <a href="tel:+380979200740" className="heading-6 opacity-100">
+          +38 (097) 920-07-40
         </a>
       </div>
     </section>

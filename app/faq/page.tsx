@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 
 import { faqData } from "@/constant/FaqPageConstant/faqData";
@@ -13,6 +13,35 @@ import { generateCertificate } from "@/hooks/generateCertificate";
 
 export default function FaqPage() {
   const [activeTab, setActiveTab] = useState("methodologies");
+  const [tabClickNonce, setTabClickNonce] = useState(0);
+
+  const faqQuestionsRef = useRef<HTMLDivElement | null>(null);
+  const didMountRef = useRef(false);
+
+  const handleTabChange = (tabId: string) => {
+    setActiveTab(tabId);
+    setTabClickNonce((n) => n + 1);
+  };
+
+  useEffect(() => {
+    // Skip initial render; scroll only after a tab click (state update).
+    if (!didMountRef.current) {
+      didMountRef.current = true;
+      return;
+    }
+
+    const el = faqQuestionsRef.current;
+    if (!el) return;
+
+    // Wait for the tab content to re-render before calculating position.
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const offset = 100; // Keep space under the absolute header overlay.
+        const top = el.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: "smooth" });
+      });
+    });
+  }, [activeTab, tabClickNonce]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -62,10 +91,10 @@ export default function FaqPage() {
       </h1>
 
       <div data-faq-animate>
-        <FaqTabs activeTab={activeTab} onChange={setActiveTab} />
+        <FaqTabs activeTab={activeTab} onChange={handleTabChange} />
       </div>
 
-      <div data-faq-animate>
+      <div data-faq-animate ref={faqQuestionsRef}>
         <FaqList items={(faqData as any)[activeTab]} />
       </div>
 

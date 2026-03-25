@@ -5,9 +5,10 @@ import { MakPlanData } from "@/constant/MakGallaryConstant/MakPlanData";
 type MakPlanProps = {
   onPurchaseClick?: () => void;
   purchaseDisabled?: boolean;
+  sealLabel?: string;
 };
 
-const MakPlan = ({ onPurchaseClick, purchaseDisabled }: MakPlanProps) => {
+const MakPlan = ({ onPurchaseClick, purchaseDisabled, sealLabel }: MakPlanProps) => {
   return (
     <div className="flex gap-20 flex-col lg:flex-row items-center justify-center pb-20 pt-39 lg:pt-0">
       <FrameWrapper
@@ -18,7 +19,7 @@ const MakPlan = ({ onPurchaseClick, purchaseDisabled }: MakPlanProps) => {
         sealHideUntilHover={true}
         showOrnaments
         sealResponsiveButton
-        sealLabel="ПРИДБАТИ"
+        sealLabel={sealLabel ?? "ПРИДБАТИ"}
         onSealClick={onPurchaseClick}
         sealDisabled={purchaseDisabled}
       >

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { getJwt, getMe } from "@/api/auth-api";
 import { getMyMethodSections } from "@/api/user-method-sections";
 import { canAccessMakCards } from "@/lib/accessRules";
+import LoadingScreen from "./LoadingScreen";
 
 type Props = {
   children: React.ReactNode;
@@ -55,13 +56,7 @@ export default function MakCardsAccessGate({ children }: Props) {
   }, [router]);
 
   if (!ready) {
-    return (
-      <div className="min-h-[50vh] flex flex-col items-center justify-center px-6 bg-[url('/images/CatalogMethodicsPage/backgrounds/MethodicsListBackGrounds.svg')]">
-        <p className="heading-5 opacity-80 text-center">
-          Перевірка доступу до МАК-карток…
-        </p>
-      </div>
-    );
+      return <LoadingScreen />;
   }
 
   return <>{children}</>;

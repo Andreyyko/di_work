@@ -15,14 +15,22 @@ import { mak_gallery_images } from "@/public/images/MakGallery";
 import Image from "next/image";
 import { white_letter } from "@/public/images/CommonImages/PostCard";
 import { grantMakCardsAccess } from "@/api/mind-maps-api";
+import { getMe, type AuthUser, getJwt } from "@/api/auth-api";
 import { saveOrderReference } from "@/lib/paymentOrderReference";
+import { getMyMethodSections } from "@/api/user-method-sections";
+import { canAccessMakCards } from "@/lib/accessRules";
 
 export default function MakGalleryPage() {
   const router = useRouter();
   const [purchaseError, setPurchaseError] = useState<string | null>(null);
   const [isCheckingAccess, setIsCheckingAccess] = useState(false);
+  const [hasMakCardsAccess, setHasMakCardsAccess] = useState<boolean | null>(null);
 
   const handlePurchaseClick = useCallback(async () => {
+    if (hasMakCardsAccess === true) {
+      router.push("/mak-cards");
+      return;
+    }
     setPurchaseError(null);
     setIsCheckingAccess(true);
     try {
@@ -57,7 +65,39 @@ export default function MakGalleryPage() {
     } finally {
       setIsCheckingAccess(false);
     }
-  }, [router]);
+  }, [router, hasMakCardsAccess]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const check = async () => {
+      try {
+        // Показуємо правильний лейбл так само, як `MakCardsAccessGate`:
+        // доступ може бути з `isPremium`/`makCardsAccess`, а не тільки з /mak-cards/access endpoint.
+        if (!getJwt()) {
+          setHasMakCardsAccess(false);
+          return;
+        }
+
+        const [me, my] = await Promise.all([
+          getMe() as Promise<AuthUser>,
+          getMyMethodSections(),
+        ]);
+
+        const makFlag = my.makCardsAccess === true;
+        const access = canAccessMakCards(me, makFlag);
+        if (!cancelled) setHasMakCardsAccess(access);
+      } catch {
+        if (cancelled) return;
+        setHasMakCardsAccess(false);
+      }
+    };
+
+    void check();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -169,6 +209,7 @@ export default function MakGalleryPage() {
         <MakPlan
           onPurchaseClick={handlePurchaseClick}
           purchaseDisabled={isCheckingAccess}
+          sealLabel={hasMakCardsAccess === true ? "Переглянути" : undefined}
         />
       </div>
     </section>

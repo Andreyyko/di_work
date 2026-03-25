@@ -1,17 +1,47 @@
+"use client";
+
 import CheckItem from "@/components/common/CheckItem";
 import FrameWrapper from "@/components/common/FrameWrapper";
 import { CheckMediumItems } from "@/constant/MainPageConstant/PlanMediumItems";
 import { CheckPremiumItems } from "@/constant/MainPageConstant/PlanPremiumItems";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PlanOrderModal from "./PlanOrderModal";
 import { useRouter } from "next/navigation";
 import { activateMediumTariff, activatePremiumTariff } from "@/api/tariffs-api";
 import { saveOrderReference } from "@/lib/paymentOrderReference";
+import { getJwt, getMe, type AuthUser } from "@/api/auth-api";
+import { getMyMethodSections, type MyMethodSectionsResponse } from "@/api/user-method-sections";
 
 const PlanSection = () => {
   const [open, setOpen] = useState(false);
   const [isActivatingMedium, setIsActivatingMedium] = useState(false);
   const router = useRouter();
+
+  const [me, setMe] = useState<AuthUser | null>(null);
+  const [myMethodSections, setMyMethodSections] = useState<MyMethodSectionsResponse | null>(null);
+
+  useEffect(() => {
+    const jwt = getJwt();
+    if (!jwt) return;
+
+    Promise.allSettled([getMe(), getMyMethodSections()])
+      .then((results) => {
+        const meResult = results[0];
+        if (meResult.status === "fulfilled") setMe(meResult.value);
+
+        const myResult = results[1];
+        if (myResult.status === "fulfilled") setMyMethodSections(myResult.value);
+      })
+      .catch(() => {
+        setMe(null);
+        setMyMethodSections(null);
+      });
+  }, []);
+
+  const hasMediumOrPremiumAccess = me?.isMedium === true || me?.isPremium === true;
+  const hasPremiumAccess = me?.isPremium === true;
+  const hasMakCardsAccess = me?.makCardsAccess === true || myMethodSections?.makCardsAccess === true;
+  const hasAnySectionPaid = (myMethodSections?.items?.length ?? 0) > 0;
 
   const handleMediumClick = async () => {
     if (isActivatingMedium) return;
@@ -83,7 +113,12 @@ const PlanSection = () => {
           showOrnaments
           sealResponsiveButton
           sealButtonDesktop="left"
-          onSealClick={handleMediumClick}
+          sealLabel={
+            hasMediumOrPremiumAccess ? "Переглянути" : "ОБРАТИ ТАРИФ"
+          }
+          onSealClick={
+            hasMediumOrPremiumAccess ? () => router.push("/profile/my-sections") : handleMediumClick
+          }
         >
           <div className="flex items-center flex-row justify-between pb-5">
             <h3
@@ -112,7 +147,8 @@ const PlanSection = () => {
           sealHideUntilHover={true}
           showOrnaments
           sealResponsiveButton
-          onSealClick={() => router.push("/mak-gallery")}
+          sealLabel={hasMakCardsAccess ? "Переглянути" : "ОБРАТИ ТАРИФ"}
+          onSealClick={() => router.push(hasMakCardsAccess ? "/mak-cards" : "/mak-gallery")}
         >
           <div className="flex items-center flex-row justify-between pb-5">
             <h3
@@ -147,6 +183,9 @@ const PlanSection = () => {
           sealHideUntilHover={true}
           sealResponsiveButton
           sealButtonDesktop="left"
+          sealLabel={
+            hasAnySectionPaid ? "Переглянути" : "ОБРАТИ ТАРИФ"
+          }
           onSealClick={() => router.push("/catalog-methodics")}
         >
           <div className="flex items-center flex-row justify-between pb-5">
@@ -178,7 +217,10 @@ const PlanSection = () => {
           sealHideUntilHover={true}
           sealResponsiveButton
           sealButtonDesktop="left"
-          onSealClick={handlePremiumClick}
+          sealLabel={hasPremiumAccess ? "Переглянути" : "ОБРАТИ ТАРИФ"}
+          onSealClick={
+            hasPremiumAccess ? () => router.push("/profile/my-sections") : handlePremiumClick
+          }
         >
           <div className="flex items-center flex-row justify-between pb-5">
             <h3
