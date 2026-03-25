@@ -6,6 +6,7 @@ import ListBlock from "@/components/common/ListBlock";
 import { getMethodicBySlug } from "@/constant/methodics-sections/getMethodicBySlug";
 import { methodic_image } from "@/public/images/MethodicsListImage";
 import { notFound } from "next/navigation";
+import ContentProtection from "@/components/Protection/ContentProtection";
 
 function blocksToPlainText(blocks: any[] | null | undefined): string {
   if (!blocks) return "";
@@ -70,6 +71,7 @@ export default async function MethodicDetailPage({ params }: PageProps) {
   return (
     <MethodicsSectionAccessGate categorySlug={categoryForAccess}>
     <section className="px-5 md:pt-50 pt-30 pb-20 overflow-hidden bg-[url('/images/CatalogMethodicsPage/backgrounds/MethodicsListBackGrounds.svg')]">
+    <ContentProtection/>
       <PremiumAudioGate/>
       <div className="flex flex-col items-center relative">
         <span className="heading-bg lg:leading-7 leading-5 whitespace-nowrap">

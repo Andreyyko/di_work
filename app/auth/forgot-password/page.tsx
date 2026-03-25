@@ -49,7 +49,7 @@ const ForgotPasswordPage = () => {
           ease: "power1.out",
           stagger: 0.1,
           clearProps: "opacity,transform",
-        }
+        },
       );
     });
 
@@ -67,7 +67,7 @@ const ForgotPasswordPage = () => {
       router.push(`${redirectUrl}&sent=1`);
     } catch (err) {
       setSubmitError(
-        err instanceof Error ? err.message : "Не вдалося відправити код"
+        err instanceof Error ? err.message : "Не вдалося відправити код",
       );
       router.push(`${redirectUrl}&sent=0`);
     }
@@ -90,63 +90,62 @@ const ForgotPasswordPage = () => {
         Кожен крок у цей простір — це подорож до себе, відкриття нових
         можливостей і ресурсів.
       </h5>
+      <div className="pl-0 lg:pl-5">
+        <h2
+          className="heading-2 uppercase text-left pb-12 -tracking-widest md:tracking-normal"
+          data-forgot-item
+        >
+          <span className="first-letter" data-first-letter="з">
+            абули
+          </span>{" "}
+          <span>Пароль?</span>
+        </h2>
 
-      <h2
-        className="heading-2 uppercase text-center pb-12 -tracking-widest md:tracking-normal"
-        data-forgot-item
-      >
-        <span className="first-letter" data-first-letter="з">
-          абули
-        </span>{" "}
-        <span>Пароль?</span>
-      </h2>
+        <h3
+          className="heading-3 text-black text-left pb-10 w-full md:w-[50%]"
+          data-forgot-item
+        >
+          Введіть адресу електронної пошти, яку ви використовували при
+          реєстрації. Ми надішлемо вам лист із інструкцією для відновлення
+          доступу
+        </h3>
 
-      <h3
-        className="heading-3 text-black text-left pb-10 w-full md:w-[50%]"
-        data-forgot-item
-      >
-        Введіть адресу електронної пошти, яку ви використовували при реєстрації.
-        Ми надішлемо вам лист із інструкцією для відновлення доступу
-      </h3>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="w-full max-w-3xl flex flex-col gap-8"
+          data-forgot-item
+        >
+          <div>
+            <label className="block pb-2 heading-4 text-[25px]">Email</label>
+            <input
+              type="email"
+              placeholder="example@gmail.com"
+              {...register("email")}
+              className="w-full bg-transparent heading-6 text-[20px] border-b border-black focus:border-black outline-none py-2"
+            />
+            {submitError && (
+              <p className="text-red-500 text-sm">{submitError}</p>
+            )}
+            {success && (
+              <p className="text-green-600 text-sm">
+                Код надіслано на email. Переходимо до введення коду…
+              </p>
+            )}
+          </div>
 
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="w-full max-w-3xl flex flex-col gap-8"
-        data-forgot-item
-      >
-        <div>
-          <label className="block pb-2 heading-4 text-[25px]">Email</label>
-          <input
-            type="email"
-            placeholder="example@gmail.com"
-            {...register("email")}
-            className="w-full bg-transparent heading-6 text-[20px] border-b border-black focus:border-black outline-none py-2"
-          />
-          {submitError && (
-          <p className="text-red-500 text-sm">{submitError}</p>
-        )}
-        {success && (
-          <p className="text-green-600 text-sm">
-            Код надіслано на email. Переходимо до введення коду…
-          </p>
-        )}
-        </div>
-
-      
-
-        <div className="flex flex-col md:flex-row md:gap-6 items-center lg:items-start gap-10">
-          <TwoFrameButton
-            variant="one"
-            label="Відправити код"
-            type="submit"
-            disabled={isSubmitting}
-            className="px-10 py-3 border border-black uppercase tracking-wide"
-          />
-        </div>
-      </form>
+          <div className="flex flex-col md:flex-row md:gap-6 items-center lg:items-start gap-10">
+            <TwoFrameButton
+              variant="one"
+              label="Відправити код"
+              type="submit"
+              disabled={isSubmitting}
+              className="px-10 py-3 border border-black uppercase tracking-wide"
+            />
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
 
 export default ForgotPasswordPage;
-

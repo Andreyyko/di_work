@@ -10,7 +10,11 @@ import { useRouter } from "next/navigation";
 import TwoFrameButton from "@/components/common/TwoFrameButton";
 import Image from "next/image";
 import { white_letter } from "@/public/images/CommonImages/PostCard";
-import { register as registerUser, setJwt, setStoredUser } from "@/api/auth-api";
+import {
+  register as registerUser,
+  setJwt,
+  setStoredUser,
+} from "@/api/auth-api";
 
 const schema = z
   .object({
@@ -58,6 +62,7 @@ type FormData = z.infer<typeof schema>;
 const SignUpPage = () => {
   const router = useRouter();
   const [submitError, setSubmitError] = useState<string | null>(null);
+
   const {
     register,
     handleSubmit,
@@ -78,26 +83,53 @@ const SignUpPage = () => {
           ease: "power1.out",
           stagger: 0.1,
           clearProps: "opacity,transform",
-        }
+        },
       );
     });
+
     return () => ctx.revert();
   }, []);
 
   const onSubmit = async (data: FormData) => {
     setSubmitError(null);
+
     try {
       const res = await registerUser({
         email: data.email,
         username: data.name.trim(),
         password: data.password,
       });
+
       setJwt(res.jwt);
       setStoredUser(res.user);
       router.push("/profile/my-profile");
       router.refresh();
-    } catch (err) {
-      setSubmitError(err instanceof Error ? err.message : "Помилка реєстрації");
+    } catch (err: any) {
+      console.error("Помилка реєстрації:", err);
+
+      const apiMessage =
+        err?.response?.data?.error?.message ||
+        err?.message ||
+        "Помилка реєстрації";
+
+      const normalized = String(apiMessage).toLowerCase();
+
+      if (
+        normalized.includes("already") ||
+        normalized.includes("taken") ||
+        normalized.includes("exists") ||
+        normalized.includes("email")
+      ) {
+        setSubmitError("Користувач з таким email уже існує");
+        return;
+      }
+
+      if (normalized.includes("username")) {
+        setSubmitError("Користувач з таким ім’ям уже існує");
+        return;
+      }
+
+      setSubmitError(apiMessage);
     }
   };
 
@@ -201,13 +233,20 @@ const SignUpPage = () => {
           )}
         </div>
 
+        {submitError && (
+          <p className="text-red-500 text-sm text-center -mt-2">
+            {submitError}
+          </p>
+        )}
+
         <div className="flex gap-6 justify-center">
           <TwoFrameButton
             variant="one"
-            label="Зареєструватися"
+            label={isSubmitting ? "Завантаження..." : "Зареєструватися"}
             type="submit"
             disabled={isSubmitting}
             data-signup-item
+            className="disabled:opacity-50 disabled:pointer-events-none"
           />
         </div>
       </form>

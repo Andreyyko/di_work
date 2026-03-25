@@ -157,12 +157,12 @@ export default function MethodCard({
       </div>
       <div className="flex flex-col justify-center items-center">
         <div className="w-full flex justify-center">
-          <h3 className="h-15 md:h-28 mt-5 flex text-center justify-center items-center heading-3 w-10/12 md:w-11/12 uppercase">
+          <h3 className="h-15 md:h-28 mt-10 flex text-center justify-center items-center heading-3 w-10/12 md:w-11/12 uppercase">
             {item.title}
           </h3>
         </div>
         <div className="flex items-left w-full">
-          <p className="heading-4 text-left text-[16px] sm:text-[18px] w-[80%] mt-5 h-12 opacity-50">
+          <p className="heading-4 text-left text-[16px] sm:text-[18px] w-[80%] mt-10 h-12 opacity-50">
             {item.descriptionPageFaq}
           </p>
         </div>

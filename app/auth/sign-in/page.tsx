@@ -46,6 +46,7 @@ type FormData = z.infer<typeof schema>;
 const SignInPage = () => {
   const router = useRouter();
   const [submitError, setSubmitError] = useState<string | null>(null);
+
   const {
     register,
     handleSubmit,
@@ -75,17 +76,38 @@ const SignInPage = () => {
 
   const onSubmit = async (data: FormData) => {
     setSubmitError(null);
+
     try {
       const res = await login({
         identifier: data.email,
         password: data.password,
       });
+
       setJwt(res.jwt);
       setStoredUser(res.user);
       router.push("/profile/my-profile");
       router.refresh();
-    } catch (err) {
-      setSubmitError(err instanceof Error ? err.message : "Помилка входу");
+    } catch (err: any) {
+      console.error("Помилка входу:", err);
+
+      const apiMessage =
+        err?.response?.data?.error?.message ||
+        err?.message ||
+        "Помилка входу";
+
+      const normalized = String(apiMessage).toLowerCase();
+
+      if (
+        normalized.includes("invalid") ||
+        normalized.includes("identifier") ||
+        normalized.includes("password") ||
+        normalized.includes("email")
+      ) {
+        setSubmitError("Неправильний email або пароль");
+        return;
+      }
+
+      setSubmitError(apiMessage);
     }
   };
 
@@ -151,8 +173,6 @@ const SignInPage = () => {
             </p>
           )}
 
-        
-
           <Link
             href="/auth/forgot-password"
             className="heading-6 text-[20px] pt-5 inline-block opacity-70 hover:opacity-100"
@@ -161,13 +181,19 @@ const SignInPage = () => {
           </Link>
         </div>
 
+        {submitError && (
+          <p className="text-red-500 text-sm text-center -mt-2">
+            {submitError}
+          </p>
+        )}
+
         <div className="flex flex-col md:flex-row md:gap-6 items-center gap-10 justify-center">
           <TwoFrameButton
             variant="one"
-            label="Увійти"
+            label={isSubmitting ? "Завантаження..." : "Увійти"}
             type="submit"
             disabled={isSubmitting}
-            className="px-10 py-3 border border-black rounded-full uppercase tracking-wide hover:bg-black hover:text-white transition"
+            className="px-10 py-3 border border-black rounded-full uppercase tracking-wide hover:bg-black hover:text-white transition disabled:opacity-50 disabled:pointer-events-none"
           />
 
           <Link href="/auth/sign-up">

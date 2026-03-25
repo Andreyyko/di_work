@@ -16,7 +16,7 @@ const ProfilePage = () => {
       <div className="block lg:hidden">
         <ProfilePageHeaderMobile />
       </div>
-      <div className="profile-sidebar lg:flex flex-col translate-y-25 gap-1 hidden">
+      <div className="profile-sidebar lg:flex flex-col translate-y-25 gap-1 hidden relative z-100">
         <h3 className="uppercase heading-3 pb-5 cursor-pointer">Акаунт</h3>
         <Link href="/profile/edit-profile" className="cursor-pointer">
           <h4 className="heading-4 cursor-pointer">

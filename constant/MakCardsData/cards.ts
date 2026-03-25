@@ -574,8 +574,8 @@ export const cards: Card[] = [
     id: "card-66",
     title: "Лісовик",
     tags: ["Лісовик"],
-    frontImage: "/images/MakCards/WoodMan_Front.png",
-    backImage: "/images/MakCards/WoodMan_Back.png",
+    frontImage: "/images/MakCards/Woodman_Front.png",
+    backImage: "/images/MakCards/Woodman_Back.png",
     type: "child",
   },
 ];

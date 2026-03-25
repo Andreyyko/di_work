@@ -86,7 +86,7 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className="flex flex-row">
+            <div className="flex flex-row translate-x-[25px] md:translate-x-0">
               <div>
                 <h3 className="heading-footer mb-5 md:mr-20">Сторінки сайту</h3>
                 <div className="flex flex-col gap-2.5 heading-6 opacity-100 tracking-[-0.5px]">

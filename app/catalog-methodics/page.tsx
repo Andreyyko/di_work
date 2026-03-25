@@ -43,7 +43,7 @@ export default function MethodicsCatalogPage() {
       >
         <MethodicsListUse />
         <Image
-          className="absolute right-0 -translate-y-190 w-110 rotate-15 translate-x-40 hidden md:block"
+          className="absolute right-0 -translate-y-190 w-110 rotate-15 translate-x-40 hidden lg:block"
           src={white_letter.WHITE_POSTCARD}
           alt={"postcard"}
           data-animate-item
