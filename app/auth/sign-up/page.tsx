@@ -23,6 +23,11 @@ const schema = z
       .min(3, "Ім'я (логін) має містити мінімум 3 символи")
       .max(50, "Ім'я занадто довге")
       .regex(/^[A-Za-zА-Яа-яІіЇїЄєʼ’\- ]+$/, "Ім'я може містити лише літери"),
+    surname: z
+      .string()
+      .min(2, "Прізвище має містити мінімум 2 символи")
+      .max(50, "Прізвище занадто довге")
+      .regex(/^[A-Za-zА-Яа-яІіЇїЄєʼ’\- ]+$/, "Прізвище може містити лише літери"),
 
     email: z
       .string()
@@ -94,9 +99,10 @@ const SignUpPage = () => {
     setSubmitError(null);
 
     try {
+      const username = `${data.name.trim()} ${data.surname.trim()}`.replace(/\s+/g, " ");
       const res = await registerUser({
         email: data.email,
-        username: data.name.trim(),
+        username,
         password: data.password,
       });
 
@@ -182,6 +188,21 @@ const SignUpPage = () => {
           />
           {errors.name && (
             <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+          )}
+        </div>
+
+        <div>
+          <label className="block pb-2 heading-4 text-[25px]">Прізвище</label>
+          <input
+            type="text"
+            placeholder="Ваше прізвище"
+            {...register("surname")}
+            className="w-full bg-transparent heading-6 text-[20px] border-b border-black outline-none py-2"
+          />
+          {errors.surname && (
+            <p className="text-red-500 text-sm mt-1">
+              {errors.surname.message}
+            </p>
           )}
         </div>
 
