@@ -291,13 +291,6 @@ const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
             />
           </a>
 
-          <a href="#" target="_blank">
-            <Image
-              src={header_images.YOUTUBE_ICON}
-              alt="yt"
-              className="w-6 h-6 menu-fade"
-            />
-          </a>
         </div>
       </div>
     </div>

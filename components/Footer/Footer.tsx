@@ -76,13 +76,6 @@ const Footer = () => {
                     className="h-5 w-5"
                   />
                 </a>
-                <a href="#" target="_blank">
-                  <Image
-                    src={footer_images.YOUTUBE_ICON}
-                    alt="youtube icon"
-                    className="h-5 w-5"
-                  />
-                </a>
               </div>
             </div>
 
