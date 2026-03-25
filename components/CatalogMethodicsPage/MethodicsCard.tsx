@@ -172,6 +172,7 @@ export default function MethodCard({
             className="heading-6 underline"
           >
             Дізнатися більше
+            <span className="sr-only"> про {item.title}</span>
           </Link>
           <span className="heading-3 text-brand-gray">{item.price}</span>
         </div>

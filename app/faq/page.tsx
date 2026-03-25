@@ -98,7 +98,7 @@ export default function FaqPage() {
         <FaqList items={(faqData as any)[activeTab]} />
       </div>
 
-      {activeTab === "methodologies" && (
+      {(activeTab === "methodologies" || activeTab === "trainings") && (
         <div className="-pb-50" data-faq-animate>
           <MethodsSwiper />
         </div>

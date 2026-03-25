@@ -66,7 +66,7 @@ const HeroSection = () => {
       </h2>
 
       <div className="flex flex-col md:flex-row justify-between items-center pt-10 gap-10">
-        <h4
+        <p
           className="heading-4 w-full md:max-w-[23%] order-2 md:order-1"
           data-hero-item
         >
@@ -74,7 +74,7 @@ const HeroSection = () => {
           онлайн-каталог із понад 1000 технік, вправ, інтервенцій, практик
           спрямований на підтримку психічного здоров’я, відновлення ресурсу та
           всіх сфер особистості.
-        </h4>
+        </p>
 
         <div className="order-1 md:order-2 relative" data-hero-item>
           <FrameWrapper
@@ -86,11 +86,11 @@ const HeroSection = () => {
             paddingY={25}
           />
 
-          <h5 className="heading-5 absolute bottom-0 -right-50 hidden lg:block lg:-right-30 xl:-right-45">
+          <p className="heading-5 absolute bottom-0 -right-50 hidden lg:block lg:-right-30 xl:-right-45">
             Твоя життєздатність
             <br />
             та унікальність
-          </h5>
+          </p>
         </div>
 
         <div className="hidden md:block order-3 z-101" data-hero-item>

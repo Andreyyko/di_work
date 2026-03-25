@@ -34,6 +34,7 @@ export default function MakSectionCard() {
         <div className="mt-6 md:mt-4 flex justify-start w-full md:w-5/6">
           <Link href="/mak-gallery" className="heading-6 underline">
             Дізнатися більше
+            <span className="sr-only"> про РОК МАК be unique «Ресурс SenseDia»</span>
           </Link>
         </div>
         <div className="flex justify-center mt-6">

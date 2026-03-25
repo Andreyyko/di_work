@@ -127,7 +127,7 @@ export default function RootLayout({
       <body className="bg-brand-background">
       <ClientLoaderWrapper>
         <Header />
-        {children}
+        <main>{children}</main>
         <section
           className="bg-cover bg-center bg-no-repeat"
           style={{

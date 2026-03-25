@@ -15,7 +15,7 @@ import ValidationSection from "@/components/MainPage/ValidationSection/Validatio
 
 export default function Home() {
   return (
-    <main className="bg-brand-background overflow-hidden">
+    <div className="bg-brand-background overflow-hidden">
       <section className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/hero_section_background.svg')]">
         <HeroSection />
       </section>
@@ -52,6 +52,6 @@ export default function Home() {
       <section className="px-5 bg-cover bg-center bg-no-repeat bg-[url('/images/MainPageImages/backgrounds/contact_from_background.svg')]">
         <ContactForm />
       </section>
-    </main>
+    </div>
   );
 }

@@ -23,18 +23,18 @@ const BoxSectionBottom = () => {
             ресурс і унікальність
           </h3>
         </FrameWrapper>
-        <h5 className="heading-5 w-40 xl:w-80 hidden lg:block">
+        <p className="heading-5 w-40 xl:w-80 hidden lg:block">
           Ми віримо, що кожна людина здатна відновити свій ресурс і знайти
           гармонію — потрібно лише дати їй правильні інструменти
-        </h5>
+        </p>
       </div>
       <div className="flex flex-col gap-10">
-        <h4 className="heading-4 w-[95%] order-2 md:order-1">
+        <p className="heading-4 w-[95%] order-2 md:order-1">
           РОК-М — це унікальний психотерапевтичний онлайн-проект, який об'єднує
           ресурсно-орієнтовані когнітивні методики, перевірені практикою і
           науково обґрунтовані. Сайт надає доступ до ефективних інструментів для
           відновлення внутрішнього балансу, ресурсу та життєстійкості.
-        </h4>
+        </p>
 
         <FrameWrapper
           className="w-fit md:w-[92%] order-1 md:order-2"
