@@ -7,6 +7,7 @@ import {
   getMyMethodSections,
   MyMethodSectionsResponse,
 } from "@/api/user-method-sections";
+import { getJwt } from "@/api/auth-api";
 
 type SlugToIdMap = Record<string, number | undefined>;
 type OwnedSlugsMap = Record<string, boolean | undefined>;
@@ -76,6 +77,13 @@ export default function MethodsList() {
   // Завантажуємо, які розділи вже є у користувача + доступ до МАК-карток
   useEffect(() => {
     let cancelled = false;
+    const jwt = getJwt();
+
+    if (!jwt) {
+      setOwnedSlugs({});
+      setHasMakAccess(false);
+      return;
+    }
 
     getMyMethodSections<{ slug?: string }>()
       .then(
