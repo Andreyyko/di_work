@@ -43,6 +43,28 @@ const montserrat = localFont({
 });
 
 const siteUrl = "https://www.rok-mentalhealth.com";
+const siteName = "РОК-М";
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: siteName,
+  url: siteUrl,
+  logo: `${siteUrl}/icon.svg`,
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteName,
+  url: siteUrl,
+  inLanguage: "uk-UA",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${siteUrl}/catalog-methodics?query={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
+};
 
 export const metadata: Metadata = {
   title:
@@ -122,6 +144,18 @@ export default function RootLayout({
           rel="preload"
           as="image"
           href="/images/CommonImages/FlowerImages/hero-flower.svg"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteJsonLd).replace(/</g, "\\u003c"),
+          }}
         />
       </head>
       <body className="bg-brand-background">
