@@ -2,15 +2,35 @@
 
 import { useEffect } from "react";
 import gsap from "gsap";
-
-import PrivacySection from "@/components/common/PrivacySection";
-import { footer_images } from "@/public/images/CommonImages/FooterImages";
 import Image from "next/image";
-import {
-  PravicyData,
-  copyrightData,
-} from "@/constant/PrivacyConstant/privacyData";
 import { white_letter } from "@/public/images/CommonImages/PostCard";
+import { copyrightData } from "@/constant/PrivacyConstant/privacyData";
+
+function renderTextWithLinks(text: string) {
+  const parts = text.split(/(https?:\/\/[^\s)]+)/g);
+
+  return parts.map((part, index) => {
+    if (/^https?:\/\//.test(part)) {
+      const href = part.replace(/[.,;!?)]*$/, "");
+      const trailing = part.slice(href.length);
+
+      return (
+        <span key={`${part}-${index}`}>
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline break-all"
+          >
+            {href}
+          </a>
+          {trailing}
+        </span>
+      );
+    }
+    return <span key={`${index}-${part.slice(0, 10)}`}>{part}</span>;
+  });
+}
 
 export default function PrivacyPage() {
   useEffect(() => {
@@ -34,7 +54,7 @@ export default function PrivacyPage() {
   return (
     <section className="px-5 bg-[url('/images/CatalogMethodicsPage/backgrounds/MethodicsListBackGrounds.svg')] relative overflow-hidden">
       <Image
-        className="absolute right-0 translate-y-250 w-90 lg:w-130 lg:translate-y-290 rotate-15 translate-x-40 hidden md:block"
+        className="absolute right-0 translate-y-250 w-90 lg:w-130 lg:translate-y-290 rotate-15 translate-x-52 hidden md:block"
         src={white_letter.WHITE_POSTCARD}
         alt={"postcard"}
       />
@@ -61,17 +81,28 @@ export default function PrivacyPage() {
         </span>
       </h2>
 
-      {PravicyData.map((block, index) => (
-        <PrivacySection key={index} {...block} data-privacy-animate />
-      ))}
-
-      <div data-privacy-animate>
-        {copyrightData.map((block, index) => (
-          <PrivacySection
-            key={index}
-            {...block}
-            className={index === copyrightData.length - 1 ? "mb-20" : "mb-8"}
-          />
+      <div className="pb-20" data-privacy-animate>
+        {copyrightData.map((section) => (
+          <div key={section.heading} className="mb-14">
+            <h3 className="heading-3 uppercase mb-5">{section.heading}</h3>
+            {section.paragraphs?.map((paragraph, idx) => (
+              <p
+                key={`${section.heading}-p-${idx}`}
+                className="heading-4 max-w-full md:max-w-[85%] mb-4 tracking-[-0.03em]"
+              >
+                {renderTextWithLinks(paragraph)}
+              </p>
+            ))}
+            {section.list && section.list.length > 0 && (
+              <ul className="list-disc heading-4 pl-5 max-w-full md:max-w-[85%] tracking-[-0.03em]">
+                {section.list.map((item, idx) => (
+                  <li key={`${section.heading}-li-${idx}`} className="mb-2">
+                    {renderTextWithLinks(item)}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         ))}
       </div>
     </section>
