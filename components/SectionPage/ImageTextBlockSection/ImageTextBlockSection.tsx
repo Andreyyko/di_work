@@ -52,6 +52,7 @@ const ImageTextBlockSection = ({
   image,
   title,
   line1,
+  section_line,
   line2,
   line3,
   sub_image,
@@ -79,6 +80,7 @@ const ImageTextBlockSection = ({
         <div className="flex flex-col w-full lg:w-[41%] tracking-tight heading-4 gap-5">
           <div className="heading-3 uppercase">{renderLine(title)}</div>
           {renderLine(line1)}
+          {renderLine(section_line)}
           {renderLine(line2)}
           {renderLine(line3)}
         </div>

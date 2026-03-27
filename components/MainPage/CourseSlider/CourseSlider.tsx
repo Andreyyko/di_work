@@ -102,7 +102,7 @@ const CourseSlider = () => {
         )}
 
         <span className="text-start block uppercase">
-          чи досвіду – цей курс
+          чи досвіду – ця платформа
         </span>
 
         <span

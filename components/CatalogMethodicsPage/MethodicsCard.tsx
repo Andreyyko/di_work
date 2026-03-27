@@ -166,7 +166,7 @@ export default function MethodCard({
             {item.descriptionPageFaq}
           </p>
         </div>
-        <div className="mt-6 md:mt-4 flex justify-between w-full">
+        <div className="mt-8 lg:mt-18 xl:mt-10 md:mt-14 flex justify-between w-full">
           <Link
             href={isMakCards ? "/mak-gallery" : `/sections/${item.slug}`}
             className="heading-6 underline"
