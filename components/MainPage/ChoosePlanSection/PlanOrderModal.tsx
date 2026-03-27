@@ -13,10 +13,10 @@ import { activateMediumTariff, activatePremiumTariff } from "@/api/tariffs-api";
 import { saveOrderReference } from "@/lib/paymentOrderReference";
 
 const plans = [
-  { id: "standard", label: "Стандарт", price: 1490 },
-  { id: "medium", label: "Медіум", price: 2990 },
-  { id: "premium", label: "Преміум", price: 4990 },
-  { id: "mak", label: "МАК-картини", price: 1490 },
+  { id: "standard", label: "Стандарт", price: 1890 },
+  { id: "medium", label: "Медіум", price: 3990 },
+  { id: "premium", label: "Преміум", price: 4490 },
+  { id: "mak", label: "МАК-картини", price: 1890 },
 ];
 
 const nameRegex = /^[A-Za-zА-Яа-яІіЇїЄєʼ’\-]+ [A-Za-zА-Яа-яІіЇїЄєʼ’\-]+$/;
