@@ -87,6 +87,7 @@ const Footer = () => {
                   <Link href="/mak-gallery">Картини (МАС)</Link>
                   <Link href="/about">Про нас</Link>
                   <Link href="/faq">FAQ</Link>
+                  <Link href="/source-list">Список джерел</Link>
                   {isSmallerThanMd && (
                     <>
  <p className="heading-6 opacity-100 tracking-[-0.5px]">ФОП Андрейко Богдана Володимирівна</p>
@@ -102,6 +103,22 @@ const Footer = () => {
                         className="heading-6 opacity-100 tracking-[-0.5px]"
                       >
                         Умови користування
+                      </Link>
+                      <Link
+                        href="/legal-offer.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="heading-6 opacity-100 tracking-[-0.5px]"
+                      >
+                        Публічна оферта
+                      </Link>
+                      <Link
+                        href="/legal-offer-mak-cards.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="heading-6 opacity-100 tracking-[-0.5px]"
+                      >
+                        Публічна оферта (МАК-картини)
                       </Link>
                     </>
                   )}
@@ -123,6 +140,22 @@ const Footer = () => {
                       className="heading-6 opacity-100"
                     >
                       Умови користування
+                    </Link>
+                    <Link
+                      href="/legal-offer.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="heading-6 opacity-100"
+                    >
+                      Публічна оферта
+                    </Link>
+                    <Link
+                      href="/legal-offer-mak-cards.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="heading-6 opacity-100"
+                    >
+                      Публічна оферта (МАК-картини)
                     </Link>
                   </div>
                 </div>
