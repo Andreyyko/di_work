@@ -31,7 +31,7 @@ const MakPlan = ({ onPurchaseClick, purchaseDisabled, sealLabel }: MakPlanProps)
             АК-картини
           </h3>
           <span className="heading-2 text-[clamp(40px,4vw,50px)] block whitespace-nowrap">
-            1490 ₴
+            1890 ₴
           </span>
         </div>
         <span className="heading-4">
@@ -68,7 +68,7 @@ const MakPlan = ({ onPurchaseClick, purchaseDisabled, sealLabel }: MakPlanProps)
             АК-картини
           </h3>
           <span className="heading-2 text-[clamp(40px,4vw,50px)] block whitespace-nowrap">
-            1490 ₴
+            1890 ₴
           </span>
         </div>
         <span className="heading-4">

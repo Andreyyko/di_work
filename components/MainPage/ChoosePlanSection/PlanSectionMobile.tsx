@@ -138,7 +138,7 @@ const PlanSectionMobile = () => {
         </span>
 
         <span className="heading-2 text-[clamp(40px,4vw,50px)] pt-5 block">
-          1490 ₴
+          1890 ₴
         </span>
       </FrameWrapper>
 
@@ -177,7 +177,7 @@ const PlanSectionMobile = () => {
 
         <CheckItem className="heading-4 pb-4" items={CheckMediumItems} />
 
-        <span className="heading-2 text-[clamp(40px,4vw,50px)]">2990 ₴</span>
+        <span className="heading-2 text-[clamp(40px,4vw,50px)]">3990 ₴</span>
       </FrameWrapper>
 
       <FrameWrapper
@@ -209,7 +209,7 @@ const PlanSectionMobile = () => {
 
         <CheckItem className="heading-4 pb-4" items={CheckPremiumItems} />
 
-        <span className="heading-2 text-[clamp(40px,4vw,50px)]">4990 ₴</span>
+        <span className="heading-2 text-[clamp(40px,4vw,50px)]">4490 ₴</span>
       </FrameWrapper>
 
       <FrameWrapper
@@ -238,7 +238,7 @@ const PlanSectionMobile = () => {
         </span>
 
         <span className="heading-2 text-[clamp(40px,4vw,50px)] block pt-5">
-          1490 ₴
+          1890 ₴
         </span>
       </FrameWrapper>
       <PlanOrderModal
