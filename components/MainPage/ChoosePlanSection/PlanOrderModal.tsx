@@ -15,7 +15,7 @@ import { saveOrderReference } from "@/lib/paymentOrderReference";
 const plans = [
   { id: "standard", label: "Стандарт", price: 1890 },
   { id: "medium", label: "Медіум", price: 3990 },
-  { id: "premium", label: "Преміум", price: 4490 },
+  { id: "premium", label: "Преміум", price: 4990 },
   { id: "mak", label: "МАК-картини", price: 1890 },
 ];
 
