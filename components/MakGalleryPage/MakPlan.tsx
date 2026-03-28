@@ -35,7 +35,7 @@ const MakPlan = ({ onPurchaseClick, purchaseDisabled, sealLabel }: MakPlanProps)
           </span>
         </div>
         <span className="heading-4">
-          Повний доступ до до 63 авторських
+          Повний доступ до до 66 авторських
           <br />
           МАК-картин “Ресурс SenseDia”
         </span>

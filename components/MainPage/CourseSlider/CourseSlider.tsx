@@ -150,17 +150,17 @@ const CourseSlider = () => {
           )}
         </div>
 
-        <span
+        <div
           className={`heading-3 ${
             isSmallerThanXl
               ? "leading-5 text-start w-full pt-5"
-              : "text-start max-w-[95%] lg:translate-x-230 xl:translate-x-230 2xl:translate-x-300 -translate-y-15 whitespace-nowrap"
+              : "text-start max-w-[95%]  whitespace-nowrap"
           }`}
         >
-          Розділи розроблені так, щоб ними могли{" "}
+          Розділи створені для практичного використання психологами, психотерапевтами, освітянами,{" "}
           <br className={`${isSmallerThanSm ? "hidden" : "block"}`} />
-          користуватись дорослі, діти і колективи
-        </span>
+          вчителями, коучами, керівниками, колективами а також дорослими та дітьми для самоосвіти та розвитку особистості
+        </div>
       </h2>
 
       {!isSmallerThanMd && (
@@ -186,7 +186,7 @@ const CourseSlider = () => {
         className="
           course-anim opacity-0
           absolute
-          top-65 w-80 -right-18
+          top-95 w-80 -right-18
           sm:top-40 sm:-right-10
           md:top-50 md:w-170 md:-right-10
           lg:top-90 lg:w-220 lg:-right-5
