@@ -209,7 +209,7 @@ const PlanSectionMobile = () => {
 
         <CheckItem className="heading-4 pb-4" items={CheckPremiumItems} />
 
-        <span className="heading-2 text-[clamp(40px,4vw,50px)]">4490 ₴</span>
+        <span className="heading-2 text-[clamp(40px,4vw,50px)]">4990 ₴</span>
       </FrameWrapper>
 
       <FrameWrapper
