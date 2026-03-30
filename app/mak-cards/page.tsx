@@ -3,13 +3,12 @@ import { useMemo, useState } from "react";
 import { cards } from "@/constant/MakCardsData/cards";
 import SearchBar from "@/components/MakCardsPage/SearchBar";
 import CardGrid from "@/components/MakCardsPage/CardGrid";
-import Tabs from "@/components/MakCardsPage/Tabs";
+import Tabs, { Tab } from "@/components/MakCardsPage/Tabs";
 import { useFavorites } from "@/hooks/useFavorite";
 import { Card } from "@/constant/MakCardsData/cards";
 import CardModal from "@/components/MakCardsPage/CardModal";
 import MakCardsAccessGate from "@/components/common/MakCardsAccessGate";
-
-type Tab = "all" | "favorites" | "child";
+import InstructionContent from "@/components/MakCardsPage/InstructionContent";
 
 export default function CardsPage() {
   return (
@@ -26,6 +25,8 @@ function CardsPageContent() {
   const [activeCard, setActiveCard] = useState<Card | null>(null);
 
   const filteredCards = useMemo(() => {
+    if (tab === "instruction") return [];
+
     let list = cards;
 
     if (tab === "favorites") {
@@ -42,7 +43,7 @@ function CardsPageContent() {
       [c.title, c.tags.join(" ")]
         .join(" ")
         .toLowerCase()
-        .includes(query.toLowerCase())
+        .includes(query.toLowerCase()),
     );
   }, [query, tab, favoritesHook.favorites]);
 
@@ -58,25 +59,33 @@ function CardsPageContent() {
   return (
     <div className="px-5 pt-35 bg-[url('/images/CatalogMethodicsPage/backgrounds/MethodicsListBackGrounds.svg')] relative overflow-hidden">
       <div className="flex flex-col justify-between sm:flex-row items-center gap-4 pb-6">
-        <div className="flex flex-row gap-3">
+        <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
           <Tabs active={tab} onChange={setTab} />
-          <button
-            onClick={drawRandom}
-            className="heading-4 text-lg rounded-lg border-brand-bordo text-brand-gray cursor-pointer transition whitespace-nowrap"
-          >
-            Випадкова картка
-          </button>
+          {tab !== "instruction" && (
+            <button
+              onClick={drawRandom}
+              className="heading-4 text-lg rounded-lg border-brand-bordo text-brand-gray cursor-pointer transition whitespace-nowrap w-full sm:w-auto"
+            >
+              Випадкова картка
+            </button>
+          )}
         </div>
 
-        <SearchBar onSearch={setQuery} />
+        {tab !== "instruction" && <SearchBar onSearch={setQuery} />}
       </div>
 
-      <CardGrid
-        cards={filteredCards}
-        favoritesHook={favoritesHook}
-        setActiveCard={setActiveCard}
-        isFavoritesPage={tab === "favorites"}
-      />
+      {tab === "instruction" ? (
+        <div>
+          <InstructionContent />
+        </div>
+      ) : (
+        <CardGrid
+          cards={filteredCards}
+          favoritesHook={favoritesHook}
+          setActiveCard={setActiveCard}
+          isFavoritesPage={tab === "favorites"}
+        />
+      )}
 
       {activeCard && (
         <CardModal card={activeCard} onClose={() => setActiveCard(null)} />
@@ -84,4 +93,3 @@ function CardsPageContent() {
     </div>
   );
 }
-
