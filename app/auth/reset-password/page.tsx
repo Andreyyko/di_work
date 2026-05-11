@@ -49,11 +49,6 @@ const ResetPasswordPage = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [submitError, setSubmitError] = useState<string | null>(null);
-  const [storedCode, setStoredCode] = useState<string | null>(null);
-
-  useEffect(() => {
-    setStoredCode(getResetCode());
-  }, []);
 
   const email = useMemo(() => {
     const raw = searchParams.get("email");
@@ -75,8 +70,9 @@ const ResetPasswordPage = () => {
   });
 
   useEffect(() => {
-    if (storedCode) setValue("code", storedCode);
-  }, [storedCode, setValue]);
+    const initialCode = getResetCode();
+    if (initialCode) setValue("code", initialCode);
+  }, [setValue]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -102,7 +98,7 @@ const ResetPasswordPage = () => {
       setSubmitError("Email не знайдено. Перейдіть зі сторінки «Забули пароль».");
       return;
     }
-    const code = storedCode ?? data.code;
+    const code = data.code.trim();
     if (!code) {
       setSubmitError("Введіть код з email або перейдіть зі сторінки введення коду.");
       return;
@@ -166,9 +162,7 @@ const ResetPasswordPage = () => {
         className="heading-3 text-black text-left pb-10 w-full md:w-[50%]"
         data-reset-item
       >
-        {storedCode
-          ? "Введіть новий пароль. Пароль повинен містити не менше 8 символів."
-          : "Введіть код з email та новий пароль. Пароль повинен містити не менше 8 символів."}
+        Введіть код з email та новий пароль. Пароль повинен містити не менше 8 символів.
       </h3>
 
       {email && (
@@ -188,25 +182,23 @@ const ResetPasswordPage = () => {
         className="w-full max-w-3xl flex flex-col gap-8"
         data-reset-item
       >
-        {!storedCode && (
-          <div>
-            <label className="block pb-2 heading-4 text-[25px]">
-              Код з email (6 цифр)
-            </label>
-            <input
-              type="text"
-              inputMode="numeric"
-              autoComplete="one-time-code"
-              placeholder="123456"
-              maxLength={6}
-              {...register("code")}
-              className="w-full bg-transparent heading-6 text-[20px] border-b border-black focus:border-black outline-none py-2"
-            />
-            {errors.code && (
-              <p className="text-red-500 text-sm mt-1">{errors.code.message}</p>
-            )}
-          </div>
-        )}
+        <div>
+          <label className="block pb-2 heading-4 text-[25px]">
+            Код з email (6 цифр)
+          </label>
+          <input
+            type="text"
+            inputMode="numeric"
+            autoComplete="one-time-code"
+            placeholder="123456"
+            maxLength={6}
+            {...register("code")}
+            className="w-full bg-transparent heading-6 text-[20px] border-b border-black focus:border-black outline-none py-2"
+          />
+          {errors.code && (
+            <p className="text-red-500 text-sm mt-1">{errors.code.message}</p>
+          )}
+        </div>
 
         <div>
           <label className="block pb-2 heading-4 text-[25px]">
@@ -251,6 +243,9 @@ const ResetPasswordPage = () => {
             className="px-10 py-3 border border-black uppercase tracking-wide"
           />
         </div>
+        {submitError && (
+          <p className="text-red-500 text-sm">{submitError}</p>
+        )}
       </form>
     </div>
   );
