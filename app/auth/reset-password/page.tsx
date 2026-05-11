@@ -6,6 +6,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import gsap from "gsap";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Eye, EyeOff } from "lucide-react";
 
 import TwoFrameButton from "@/components/common/TwoFrameButton";
 import Image from "next/image";
@@ -35,7 +36,6 @@ const schema = z
       .refine((val) => !/\s/.test(val), {
         message: "Пароль не може містити пробіли",
       }),
-
     confirmPassword: z.string().min(1, "Підтвердіть пароль"),
   })
   .refine((data) => data.password === data.confirmPassword, {
@@ -48,8 +48,11 @@ type FormData = z.infer<typeof schema>;
 const ResetPasswordPage = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
+
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [storedCode, setStoredCode] = useState<string | null>(null);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   useEffect(() => {
     setStoredCode(getResetCode());
@@ -102,18 +105,23 @@ const ResetPasswordPage = () => {
       setSubmitError("Email не знайдено. Перейдіть зі сторінки «Забули пароль».");
       return;
     }
+
     const code = storedCode ?? data.code;
+
     if (!code) {
       setSubmitError("Введіть код з email або перейдіть зі сторінки введення коду.");
       return;
     }
+
     setSubmitError(null);
+
     try {
       await resetPassword({
         email,
         code,
         password: data.password,
       });
+
       clearResetCode();
       router.push("/auth/sign-in");
       router.refresh();
@@ -212,12 +220,29 @@ const ResetPasswordPage = () => {
           <label className="block pb-2 heading-4 text-[25px]">
             Новий пароль
           </label>
-          <input
-            type="password"
-            placeholder="Введіть новий пароль"
-            {...register("password")}
-            className="w-full bg-transparent heading-6 text-[20px] border-b border-black focus:border-black outline-none py-2"
-          />
+
+          <div className="relative">
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Введіть новий пароль"
+              {...register("password")}
+              className="w-full bg-transparent heading-6 text-[20px] border-b border-black focus:border-black outline-none py-2 pr-12"
+            />
+
+            <button
+              type="button"
+              onClick={() => setShowPassword((prev) => !prev)}
+              className="absolute right-0 top-1/2 -translate-y-1/2 p-2 text-black/60 transition hover:text-black"
+              aria-label={showPassword ? "Приховати пароль" : "Показати пароль"}
+            >
+              {showPassword ? (
+                <EyeOff className="h-5 w-5" />
+              ) : (
+                <Eye className="h-5 w-5" />
+              )}
+            </button>
+          </div>
+
           {errors.password && (
             <p className="text-red-500 text-sm mt-1">
               {errors.password.message}
@@ -229,12 +254,33 @@ const ResetPasswordPage = () => {
           <label className="block pb-2 heading-4 text-[25px]">
             Підтвердіть пароль
           </label>
-          <input
-            type="password"
-            placeholder="Повторіть новий пароль"
-            {...register("confirmPassword")}
-            className="w-full bg-transparent heading-6 text-[20px] border-b border-black focus:border-black outline-none py-2"
-          />
+
+          <div className="relative">
+            <input
+              type={showConfirmPassword ? "text" : "password"}
+              placeholder="Повторіть новий пароль"
+              {...register("confirmPassword")}
+              className="w-full bg-transparent heading-6 text-[20px] border-b border-black focus:border-black outline-none py-2 pr-12"
+            />
+
+            <button
+              type="button"
+              onClick={() => setShowConfirmPassword((prev) => !prev)}
+              className="absolute right-0 top-1/2 -translate-y-1/2 p-2 text-black/60 transition hover:text-black"
+              aria-label={
+                showConfirmPassword
+                  ? "Приховати підтвердження пароля"
+                  : "Показати підтвердження пароля"
+              }
+            >
+              {showConfirmPassword ? (
+                <EyeOff className="h-5 w-5" />
+              ) : (
+                <Eye className="h-5 w-5" />
+              )}
+            </button>
+          </div>
+
           {errors.confirmPassword && (
             <p className="text-red-500 text-sm mt-1">
               {errors.confirmPassword.message}
@@ -242,13 +288,17 @@ const ResetPasswordPage = () => {
           )}
         </div>
 
+        {submitError && (
+          <p className="text-red-500 text-sm -mt-2">{submitError}</p>
+        )}
+
         <div className="flex flex-col md:flex-row md:gap-6 items-center lg:items-start gap-10">
           <TwoFrameButton
             variant="one"
-            label="Зберегти та увійти"
+            label={isSubmitting ? "Завантаження..." : "Зберегти та увійти"}
             type="submit"
             disabled={isSubmitting || !email}
-            className="px-10 py-3 border border-black uppercase tracking-wide"
+            className="px-10 py-3 border border-black uppercase tracking-wide disabled:opacity-50 disabled:pointer-events-none"
           />
         </div>
       </form>

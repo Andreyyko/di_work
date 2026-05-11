@@ -6,6 +6,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import gsap from "gsap";
 import { useRouter } from "next/navigation";
+import { Eye, EyeOff } from "lucide-react";
 
 import TwoFrameButton from "@/components/common/TwoFrameButton";
 import Image from "next/image";
@@ -28,7 +29,6 @@ const schema = z
       .min(2, "Прізвище має містити мінімум 2 символи")
       .max(50, "Прізвище занадто довге")
       .regex(/^[A-Za-zА-Яа-яІіЇїЄєʼ’\- ]+$/, "Прізвище може містити лише літери"),
-
     email: z
       .string()
       .min(1, "Email обовʼязковий")
@@ -37,7 +37,6 @@ const schema = z
       .refine((val) => !/\s/.test(val), {
         message: "Email не може містити пробіли",
       }),
-
     password: z
       .string()
       .min(8, "Пароль має містити мінімум 8 символів")
@@ -54,7 +53,6 @@ const schema = z
       .refine((val) => !/\s/.test(val), {
         message: "Пароль не може містити пробіли",
       }),
-
     confirmPassword: z.string().min(1, "Підтвердіть пароль"),
   })
   .refine((data) => data.password === data.confirmPassword, {
@@ -66,7 +64,10 @@ type FormData = z.infer<typeof schema>;
 
 const SignUpPage = () => {
   const router = useRouter();
+
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const {
     register,
@@ -99,7 +100,11 @@ const SignUpPage = () => {
     setSubmitError(null);
 
     try {
-      const username = `${data.name.trim()} ${data.surname.trim()}`.replace(/\s+/g, " ");
+      const username = `${data.name.trim()} ${data.surname.trim()}`.replace(
+        /\s+/g,
+        " ",
+      );
+
       const res = await registerUser({
         email: data.email,
         username,
@@ -221,17 +226,35 @@ const SignUpPage = () => {
 
         <div>
           <label className="block pb-2 heading-4 text-[25px]">Пароль</label>
-          <input
-            type="password"
-            placeholder="Введіть пароль"
-            {...register("password")}
-            className="w-full bg-transparent heading-6 text-[20px] border-b border-black outline-none py-2"
-          />
+
+          <div className="relative">
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Введіть пароль"
+              {...register("password")}
+              className="w-full bg-transparent heading-6 text-[20px] border-b border-black outline-none py-2 pr-12"
+            />
+
+            <button
+              type="button"
+              onClick={() => setShowPassword((prev) => !prev)}
+              className="absolute right-0 top-1/2 -translate-y-1/2 p-2 text-black/60 transition hover:text-black"
+              aria-label={showPassword ? "Приховати пароль" : "Показати пароль"}
+            >
+              {showPassword ? (
+                <EyeOff className="h-5 w-5" />
+              ) : (
+                <Eye className="h-5 w-5" />
+              )}
+            </button>
+          </div>
+
           {errors.password && (
             <p className="text-red-500 text-sm mt-1">
               {errors.password.message}
             </p>
           )}
+
           <p className="text-xs opacity-60 mt-1">
             Мінімум 8 символів, велика і мала літера та цифра
           </p>
@@ -241,12 +264,33 @@ const SignUpPage = () => {
           <label className="block pb-2 heading-4 text-[25px]">
             Підтвердіть пароль
           </label>
-          <input
-            type="password"
-            placeholder="Повторіть пароль"
-            {...register("confirmPassword")}
-            className="w-full bg-transparent heading-6 text-[20px] border-b border-black outline-none py-2"
-          />
+
+          <div className="relative">
+            <input
+              type={showConfirmPassword ? "text" : "password"}
+              placeholder="Повторіть пароль"
+              {...register("confirmPassword")}
+              className="w-full bg-transparent heading-6 text-[20px] border-b border-black outline-none py-2 pr-12"
+            />
+
+            <button
+              type="button"
+              onClick={() => setShowConfirmPassword((prev) => !prev)}
+              className="absolute right-0 top-1/2 -translate-y-1/2 p-2 text-black/60 transition hover:text-black"
+              aria-label={
+                showConfirmPassword
+                  ? "Приховати підтвердження пароля"
+                  : "Показати підтвердження пароля"
+              }
+            >
+              {showConfirmPassword ? (
+                <EyeOff className="h-5 w-5" />
+              ) : (
+                <Eye className="h-5 w-5" />
+              )}
+            </button>
+          </div>
+
           {errors.confirmPassword && (
             <p className="text-red-500 text-sm mt-1">
               {errors.confirmPassword.message}

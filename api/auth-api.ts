@@ -31,6 +31,7 @@ function getErrorMessage(data: unknown, fallback = "Помилка запиту"
     if (typeof obj.message === "string") return obj.message;
   }
   return fallback;
+  
 }
 
 type AuthFetchOptions = Omit<RequestInit, "body"> & { body?: object };

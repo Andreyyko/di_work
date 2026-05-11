@@ -6,6 +6,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import gsap from "gsap";
 import { useRouter } from "next/navigation";
+import { Eye, EyeOff } from "lucide-react";
 
 import TwoFrameButton from "@/components/common/TwoFrameButton";
 import Link from "next/link";
@@ -46,6 +47,7 @@ type FormData = z.infer<typeof schema>;
 const SignInPage = () => {
   const router = useRouter();
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
@@ -161,12 +163,29 @@ const SignInPage = () => {
 
         <div>
           <label className="block pb-2 heading-4 text-[25px]">Пароль</label>
-          <input
-            type="password"
-            placeholder="Введіть ваш пароль"
-            {...register("password")}
-            className="w-full bg-transparent border-b heading-6 text-[20px] border-black focus:border-black outline-none py-2"
-          />
+
+          <div className="relative">
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Введіть ваш пароль"
+              {...register("password")}
+              className="w-full bg-transparent border-b heading-6 text-[20px] border-black focus:border-black outline-none py-2 pr-12"
+            />
+
+            <button
+              type="button"
+              onClick={() => setShowPassword((prev) => !prev)}
+              className="absolute right-0 top-1/2 -translate-y-1/2 p-2 text-black/60 transition hover:text-black"
+              aria-label={showPassword ? "Приховати пароль" : "Показати пароль"}
+            >
+              {showPassword ? (
+                <EyeOff className="h-5 w-5" />
+              ) : (
+                <Eye className="h-5 w-5" />
+              )}
+            </button>
+          </div>
+
           {errors.password && (
             <p className="text-red-500 text-sm mt-1">
               {errors.password.message}
