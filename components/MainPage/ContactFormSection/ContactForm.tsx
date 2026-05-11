@@ -6,16 +6,21 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import gsap from "gsap";
 
+import { submitFeedback } from "@/api/feedback-api";
 import FormField from "@/components/common/FormField";
 import SelectField from "@/components/common/SelectField";
 import TwoFrameButton from "@/components/common/TwoFrameButton";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL!;
-
 const formSchema = z.object({
-  fullName: z.string().min(2, "Введіть коректне ім’я (мін. 2 символи)"),
-  email: z.string().email("Некоректний Email"),
-  message: z.string().min(10, "Повідомлення надто коротке (мін. 10 символів)"),
+  fullName: z
+    .string()
+    .trim()
+    .min(2, "Введіть коректне ім’я (мін. 2 символи)"),
+  email: z.string().trim().email("Некоректний Email"),
+  message: z
+    .string()
+    .trim()
+    .min(10, "Повідомлення надто коротке (мін. 10 символів)"),
   tariff: z.string().optional(),
 });
 
@@ -26,7 +31,9 @@ const ContactForm = () => {
   const [resetSignal, setResetSignal] = useState(0);
   const [animate, setAnimate] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitSuccessMessage, setSubmitSuccessMessage] = useState<string | null>(
+    null
+  );
 
   const {
     control,
@@ -40,9 +47,9 @@ const ContactForm = () => {
     mode: "onSubmit", // валідація тільки при відправці, не при зміні/скиданні полів
   });
 
-  const handleSuccess = () => {
+  const handleSuccess = (message: string) => {
     setSubmitError(null);
-    setSubmitSuccess(true);
+    setSubmitSuccessMessage(message);
     reset({ fullName: "", email: "", message: "", tariff: "" }, { keepErrors: false });
     setResetSignal((n) => n + 1);
     // Після reset() може спрацювати валідація на порожніх полях — скидаємо помилки в наступному тіку
@@ -50,34 +57,28 @@ const ContactForm = () => {
   };
 
   const handleError = (message: string) => {
-    setSubmitSuccess(false);
+    setSubmitSuccessMessage(null);
     setSubmitError(message);
   };
 
   const onSubmit = async (values: FormValues) => {
     setSubmitError(null);
-    setSubmitSuccess(false);
+    setSubmitSuccessMessage(null);
     try {
-      const res = await fetch(`${API_URL}/feedback`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: values.fullName,
-          message: values.message,
-          email: values.email,
-          tariff: values.tariff || undefined,
-        }),
+      const response = await submitFeedback({
+        name: values.fullName,
+        message: values.message,
+        email: values.email,
+        tariff: values.tariff?.trim() || undefined,
       });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) {
-        const message =
-          (data && typeof data.message === "string") ? data.message : "Не вдалося надіслати повідомлення";
-        handleError(message);
-        return;
-      }
-      handleSuccess();
-    } catch {
-      handleError("Помилка з’єднання. Спробуйте пізніше.");
+
+      handleSuccess(response.message);
+    } catch (error) {
+      handleError(
+        error instanceof Error
+          ? error.message
+          : "Помилка з’єднання. Спробуйте пізніше."
+      );
     }
   };
 
@@ -210,13 +211,13 @@ const ContactForm = () => {
             />
           </div>
 
-          {(submitError || submitSuccess) && (
+          {(submitError || submitSuccessMessage) && (
             <div
               className={`w-full text-center text-sm md:text-base ${
-                submitSuccess ? "text-green-600" : "text-red-600"
+                submitSuccessMessage ? "text-green-600" : "text-red-600"
               }`}
             >
-              {submitSuccess ? "Повідомлення надіслано. Дякуємо!" : submitError}
+              {submitSuccessMessage ?? submitError}
             </div>
           )}
 
