@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,7 +10,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import TwoFrameButton from "@/components/common/TwoFrameButton";
 import { white_letter } from "@/public/images/CommonImages/PostCard";
 import Image from "next/image";
-import { setResetCode } from "@/api/auth-api";
+import { clearResetCode, setResetCode, verifyPasswordCode } from "@/api/auth-api";
 
 const schema = z.object({
   code: z
@@ -25,6 +25,7 @@ type FormData = z.infer<typeof schema>;
 const VerifyCodePage = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const email = useMemo(() => {
     const raw = searchParams.get("email");
     if (!raw) return null;
@@ -45,6 +46,7 @@ const VerifyCodePage = () => {
   });
 
   useEffect(() => {
+    clearResetCode();
     const ctx = gsap.context(() => {
       gsap.fromTo(
         "[data-verify-item]",
@@ -64,9 +66,21 @@ const VerifyCodePage = () => {
 
   const onSubmit = async (data: FormData) => {
     if (!email) return;
-    setResetCode(data.code);
-    router.push(`/auth/reset-password?email=${encodeURIComponent(email)}`);
-    router.refresh();
+    setSubmitError(null);
+
+    try {
+      await verifyPasswordCode({
+        email,
+        code: data.code,
+      });
+      setResetCode(data.code);
+      router.push(`/auth/reset-password?email=${encodeURIComponent(email)}`);
+      router.refresh();
+    } catch (err) {
+      setSubmitError(
+        err instanceof Error ? err.message : "Не вдалося перевірити код",
+      );
+    }
   };
 
   return (
@@ -135,6 +149,9 @@ const VerifyCodePage = () => {
           />
           {errors.code && (
             <p className="text-red-500 text-sm mt-1">{errors.code.message}</p>
+          )}
+          {submitError && (
+            <p className="text-red-500 text-sm mt-1">{submitError}</p>
           )}
         </div>
 
