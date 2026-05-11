@@ -53,7 +53,7 @@ async function authFetch<T>(
     const msg = getErrorMessage(data);
     if (res.status === 404 && (msg === "Not Found" || msg === "not found")) {
       throw new Error(
-        `Сервер не підтримує запит ${path} (404). Перевірте бекенд-маршрут.`
+          "Сервер не підтримує цей запит (404). Перевірте, що бекенд має ендпоінт GET /api/auth/me та POST /api/auth/profile."
       );
     }
     throw new Error(msg);
@@ -189,17 +189,6 @@ export async function requestPasswordCode(body: {
   email: string;
 }): Promise<OkResponse> {
   return authFetch<OkResponse>("/auth/password/request-code", {
-    method: "POST",
-    body,
-  });
-}
-
-/** POST /api/auth/password/verify-code */
-export async function verifyPasswordCode(body: {
-  email: string;
-  code: string;
-}): Promise<OkResponse> {
-  return authFetch<OkResponse>("/auth/password/verify-code", {
     method: "POST",
     body,
   });
