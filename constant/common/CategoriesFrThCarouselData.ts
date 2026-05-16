@@ -5,7 +5,6 @@ import makCardsProfile from "@/public/images/ProfilePage/mak-cards-profile.svg";
 export const CategoriesFrThCarouselData = [
   {
     id: 1,
-    price: "1890 ₴",
     src: carouselImages.weddingHandsCloseup,
     metodicSrc: MetodicImages.metodicWeddingHandsCloseup,
     alt: "Руки подружжя з обручками — методики роботи із сімейними парами",
@@ -17,7 +16,6 @@ export const CategoriesFrThCarouselData = [
   },
   {
     id: 2,
-    price: "1890 ₴",
     src: carouselImages.coupleWalkingSeaside,
     metodicSrc: MetodicImages.metodicCoupleWalkingSeaside,
     alt: "Пара, що прогулюється узбережжям — техніки відновлення ресурсу, мотивації та життєздатності",
@@ -30,7 +28,6 @@ export const CategoriesFrThCarouselData = [
   },
   {
     id: 3,
-    price: "1890 ₴",
     src: carouselImages.girlPaintingEveningScene,
     metodicSrc: MetodicImages.metodicGirlPaintingEveningScene,
     alt: "Дитина малює — методики розвитку творчих здібностей, креативності та психічних процесів",
@@ -43,7 +40,6 @@ export const CategoriesFrThCarouselData = [
   },
   {
     id: 4,
-    price: "1890 ₴",
     src: carouselImages.supportiveHandsStack,
     metodicSrc: MetodicImages.metodicSupportiveHandsStack,
     alt: "Руки складені разом — розвиток комунікативних навичок, емпатії та психологічного клімату",
@@ -56,7 +52,6 @@ export const CategoriesFrThCarouselData = [
   },
   {
     id: 5,
-    price: "1890 ₴",
     src: carouselImages.flowerCandleStillLife,
     metodicSrc: MetodicImages.metodicFlowerCandleStillLife,
     alt: "Натюрморт зі свічкою та квіткою — техніки для покращення психоемоційного стану",
@@ -69,7 +64,6 @@ export const CategoriesFrThCarouselData = [
   },
   {
     id: 6,
-    price: "1890 ₴",
     src: carouselImages.familyByTheWindow,
     metodicSrc: MetodicImages.metodicFamilyByTheWindow,
     alt: "Сім'я біля вікна — методики усвідомленого батьківства та покращення сімейних стосунків",
@@ -82,7 +76,6 @@ export const CategoriesFrThCarouselData = [
   },
   {
     id: 7,
-    price: "1890 ₴",
     src: carouselImages.therapyHandsGesture,
     metodicSrc: MetodicImages.metodicTherapyHandsGesture,
     alt: "Руки, що взаємодіють у терапевтичній техніці — розвиток комунікації при порушеннях мовлення",
@@ -96,7 +89,6 @@ export const CategoriesFrThCarouselData = [
   },
   {
     id: 8,
-    price: "1890 ₴",
     src: makCardsProfile,
     metodicSrc: makCardsProfile,
     alt: "Коробка РОК МАК be unique — доступ до МАК-карток",

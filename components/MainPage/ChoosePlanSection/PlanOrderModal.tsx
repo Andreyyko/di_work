@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -11,13 +11,8 @@ import ModalPortal from "@/components/common/ModalPortal";
 import { useRouter } from "next/navigation";
 import { activateMediumTariff, activatePremiumTariff } from "@/api/tariffs-api";
 import { saveOrderReference } from "@/lib/paymentOrderReference";
-
-const plans = [
-  { id: "standard", label: "Стандарт", price: 1890 },
-  { id: "medium", label: "Медіум", price: 3990 },
-  { id: "premium", label: "Преміум", price: 4990 },
-  { id: "mak", label: "МАК-картини", price: 1890 },
-];
+import { usePricing } from "@/hooks/usePricing";
+import { formatPrice } from "@/lib/formatPrice";
 
 const nameRegex = /^[A-Za-zА-Яа-яІіЇїЄєʼ’\-]+ [A-Za-zА-Яа-яІіЇїЄєʼ’\-]+$/;
 
@@ -41,6 +36,17 @@ export default function PlanOrderModal({ open, onClose }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+  const { pricing } = usePricing();
+
+  const plans = useMemo(() => {
+    if (!pricing) return [];
+    return [
+      { id: "standard", label: "Стандарт", price: pricing.sectionPrice },
+      { id: "medium", label: "Медіум", price: pricing.mediumPrice },
+      { id: "premium", label: "Преміум", price: pricing.premiumPrice },
+      { id: "mak", label: "МАК-картини", price: pricing.makCardsPrice },
+    ];
+  }, [pricing]);
 
   const {
     register,
@@ -256,9 +262,11 @@ export default function PlanOrderModal({ open, onClose }: Props) {
             </div>
 
             <div className="anim-item min-h-10 pt-3">
-              {selectedPlan && (
+              {selectedPlan && pricing && (
                 <div className="text-center text-[22px]">
-                  {selectedPlan.price} ₴
+                  {pricing
+                    ? formatPrice(selectedPlan.price, pricing.currency)
+                    : null}
                 </div>
               )}
             </div>

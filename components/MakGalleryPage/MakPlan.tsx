@@ -1,5 +1,6 @@
 import CheckItem from "@/components/common/CheckItem";
 import FrameWrapper from "@/components/common/FrameWrapper";
+import PriceLabel from "@/components/common/PriceLabel";
 import { MakPlanData } from "@/constant/MakGallaryConstant/MakPlanData";
 
 type MakPlanProps = {
@@ -30,9 +31,10 @@ const MakPlan = ({ onPurchaseClick, purchaseDisabled, sealLabel }: MakPlanProps)
           >
             АК-картини
           </h3>
-          <span className="heading-2 text-[clamp(40px,4vw,50px)] block whitespace-nowrap">
-            1890 ₴
-          </span>
+          <PriceLabel
+            kind="mak"
+            className="heading-2 text-[clamp(40px,4vw,50px)] block whitespace-nowrap"
+          />
         </div>
         <span className="heading-4">
           Повний доступ до до 66 авторських

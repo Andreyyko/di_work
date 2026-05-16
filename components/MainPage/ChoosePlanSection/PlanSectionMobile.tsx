@@ -14,6 +14,7 @@ import {
 import { saveOrderReference } from "@/lib/paymentOrderReference";
 import { getJwt, getMe, type AuthUser } from "@/api/auth-api";
 import { getMyMethodSections, type MyMethodSectionsResponse } from "@/api/user-method-sections";
+import PriceLabel from "@/components/common/PriceLabel";
 
 const PlanSectionMobile = () => {
   const [open, setOpen] = useState(false);
@@ -137,9 +138,10 @@ const PlanSectionMobile = () => {
           методик.
         </span>
 
-        <span className="heading-2 text-[clamp(40px,4vw,50px)] pt-5 block">
-          1890 ₴
-        </span>
+        <PriceLabel
+          kind="section"
+          className="heading-2 text-[clamp(40px,4vw,50px)] pt-5 block"
+        />
       </FrameWrapper>
 
       <FrameWrapper
@@ -177,7 +179,10 @@ const PlanSectionMobile = () => {
 
         <CheckItem className="heading-4 pb-4" items={CheckMediumItems} />
 
-        <span className="heading-2 text-[clamp(40px,4vw,50px)]">3990 ₴</span>
+        <PriceLabel
+          kind="medium"
+          className="heading-2 text-[clamp(40px,4vw,50px)]"
+        />
       </FrameWrapper>
 
       <FrameWrapper
@@ -209,7 +214,10 @@ const PlanSectionMobile = () => {
 
         <CheckItem className="heading-4 pb-4" items={CheckPremiumItems} />
 
-        <span className="heading-2 text-[clamp(40px,4vw,50px)]">4990 ₴</span>
+        <PriceLabel
+          kind="premium"
+          className="heading-2 text-[clamp(40px,4vw,50px)]"
+        />
       </FrameWrapper>
 
       <FrameWrapper
@@ -237,9 +245,10 @@ const PlanSectionMobile = () => {
           Повний доступ до всіх авторських МАК-картин “Ресурс SenseDia”
         </span>
 
-        <span className="heading-2 text-[clamp(40px,4vw,50px)] block pt-5">
-          1890 ₴
-        </span>
+        <PriceLabel
+          kind="mak"
+          className="heading-2 text-[clamp(40px,4vw,50px)] block pt-5"
+        />
       </FrameWrapper>
       <PlanOrderModal
         open={open}

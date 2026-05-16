@@ -6,6 +6,7 @@ import Link from "next/link";
 
 import { useWindowWidth } from "@/hooks/useWindowWidth";
 import TwoFrameButton from "@/components/common/TwoFrameButton";
+import PriceLabel from "@/components/common/PriceLabel";
 
 
 type MethodCardType = (typeof CategoriesFrThCarouselData)[number];
@@ -42,7 +43,12 @@ export default function MethodCard({ item }: Props) {
             Дізнатися більше
             <span className="sr-only"> про {item.title}</span>
           </Link>
-          <span className="heading-3 text-brand-gray">{item.price}</span>
+          <PriceLabel
+            kind={
+              (item as { isMakCards?: boolean }).isMakCards ? "mak" : "section"
+            }
+            className="heading-3 text-brand-gray"
+          />
         </div>
         <div className="flex justify-center mt-6">
           <TwoFrameButton variant="one" label="Придбати" />

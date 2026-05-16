@@ -11,6 +11,7 @@ import TwoFrameButton from "@/components/common/TwoFrameButton";
 import { assignMethodSectionToUser } from "@/api/user-method-sections";
 import { grantMakCardsAccess } from "@/api/mind-maps-api";
 import { saveOrderReference } from "@/lib/paymentOrderReference";
+import PriceLabel from "@/components/common/PriceLabel";
 
 type MethodCardType = (typeof CategoriesFrThCarouselData)[number];
 type MethodCardWithFlags = MethodCardType & { isMakCards?: boolean; owned?: boolean };
@@ -174,7 +175,10 @@ export default function MethodCard({
             Дізнатися більше
             <span className="sr-only"> про {item.title}</span>
           </Link>
-          <span className="heading-3 text-brand-gray">{item.price}</span>
+          <PriceLabel
+            kind={isMakCards ? "mak" : "section"}
+            className="heading-3 text-brand-gray"
+          />
         </div>
         <div className="flex flex-col items-center mt-6 w-full">
           <TwoFrameButton

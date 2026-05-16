@@ -11,6 +11,7 @@ import { activateMediumTariff, activatePremiumTariff } from "@/api/tariffs-api";
 import { saveOrderReference } from "@/lib/paymentOrderReference";
 import { getJwt, getMe, type AuthUser } from "@/api/auth-api";
 import { getMyMethodSections, type MyMethodSectionsResponse } from "@/api/user-method-sections";
+import PriceLabel from "@/components/common/PriceLabel";
 
 const PlanSection = () => {
   const [open, setOpen] = useState(false);
@@ -135,7 +136,10 @@ const PlanSection = () => {
             Доступ до 7 розділів РОК-М, який містить близько 700 методик.
           </span>
           <CheckItem className="heading-4 pb-4" items={CheckMediumItems} />
-          <span className="heading-2 text-[clamp(40px,4vw,50px)]">3990 ₴</span>
+          <PriceLabel
+            kind="medium"
+            className="heading-2 text-[clamp(40px,4vw,50px)]"
+          />
         </FrameWrapper>
 
         <FrameWrapper
@@ -162,9 +166,10 @@ const PlanSection = () => {
             Повний доступ до всіх авторських МАК-картин “Ресурс SenseDia”
           </span>
           <br />
-          <span className="heading-2 text-[clamp(40px,4vw,50px)] block pt-5">
-            1890 ₴
-          </span>
+          <PriceLabel
+            kind="mak"
+            className="heading-2 text-[clamp(40px,4vw,50px)] block pt-5"
+          />
         </FrameWrapper>
       </div>
       <div
@@ -204,9 +209,10 @@ const PlanSection = () => {
             методик.
           </span>
           <br />
-          <span className="heading-2 text-[clamp(40px,4vw,50px)] block pt-5">
-            1890 ₴
-          </span>
+          <PriceLabel
+            kind="section"
+            className="heading-2 text-[clamp(40px,4vw,50px)] block pt-5"
+          />
         </FrameWrapper>
 
         <FrameWrapper
@@ -235,7 +241,10 @@ const PlanSection = () => {
           </div>
           <span className="heading-4">Повний доступ до: </span>
           <CheckItem className="heading-4 pb-4" items={CheckPremiumItems} />
-          <span className="heading-2 text-[clamp(40px,4vw,50px)]">4990 ₴</span>
+          <PriceLabel
+            kind="premium"
+            className="heading-2 text-[clamp(40px,4vw,50px)]"
+          />
         </FrameWrapper>
         <PlanOrderModal
         open={open}
