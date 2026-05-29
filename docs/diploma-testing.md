@@ -164,5 +164,5 @@ pnpm build && pnpm start
 | Firebase | `lib/firebase-admin-app.ts`, `docs/firebase-setup.md` |
 | HOC | `lib/with-access-gate.tsx`, `app/mak-cards/page.tsx` |
 | Access rules | `lib/accessRules.ts`, `components/common/*AccessGate.tsx` |
-| Error monitor | `public/error-monitor.js`, `app/api/log-error/route.ts` |
+| Error monitor | `utils/monitors/error-monitor.js`, `app/api/log-error/route.ts` |
 | Load test | `scripts/load-test-log-error.mjs` |

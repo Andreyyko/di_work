@@ -38,13 +38,13 @@ flowchart LR
 
 | Файл | Призначення |
 |------|-------------|
-| `public/error-monitor.js` | Vanilla JS: `onerror`, `unhandledrejection`, `sendBeacon` |
+| `utils/monitors/error-monitor.js` | Vanilla JS: `onerror`, `unhandledrejection`, `sendBeacon` |
 | `app/layout.tsx` | Підключення скрипта в `<head>` |
 | `app/api/log-error/route.ts` | POST endpoint |
 | `lib/error-log-storage.ts` | Firestore + fallback у файл |
 | `app/dev/error-monitor-test/page.tsx` | QA сторінка |
 | `app/dev/error-monitor-dashboard/page.tsx` | Дашборд візуалізації (vanilla JS + Canvas) |
-| `public/error-monitor-dashboard.js` | Логіка графіків і таблиці |
+| `utils/monitors/error-monitor-dashboard.js` | Логіка графіків і таблиці |
 
 ## План перевірки (PoC)
 
