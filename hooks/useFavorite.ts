@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useCallback } from "react";
 import { getJwt } from "@/api/auth-api";
 import {
   getMakCardFavorites,
   postMakCardFavoritesToggle,
 } from "@/api/mak-cards-favorites-api";
+import { useMakFavoritesStore } from "@/stores/mak-favorites-store";
 
 const STORAGE_KEY = "favorites";
 
@@ -25,9 +26,10 @@ function setStoredFavorites(ids: string[]) {
 }
 
 export function useFavorites() {
-  const [favorites, setFavorites] = useState<string[]>([]);
+  const favorites = useMakFavoritesStore((s) => s.favorites);
+  const setFavorites = useMakFavoritesStore((s) => s.setFavorites);
+  const toggleOptimistic = useMakFavoritesStore((s) => s.toggleOptimistic);
 
-  // При завантаженні — один GET, стейт тільки з відповіді (масив)
   useEffect(() => {
     const jwt = getJwt();
     if (jwt) {
@@ -41,42 +43,33 @@ export function useFavorites() {
     } else {
       setFavorites(getStoredFavorites());
     }
-  }, []);
+  }, [setFavorites]);
 
-  const toggleFavorite = useCallback((id: string) => {
-    const jwt = getJwt();
-    if (jwt) {
-      // Оптимістичний стан рахуємо з поточного; API викликаємо один раз зовні (не всередині setState),
-      // щоб у React Strict Mode не було подвійного виклику toggle
-      const next = favorites.includes(id)
-        ? favorites.filter((f) => f !== id)
-        : [...favorites, id];
-      setFavorites(next);
-      postMakCardFavoritesToggle(id)
-        .then((ids) => {
-          setFavorites((current) => {
-            if (!Array.isArray(ids)) return current;
-            if (ids.length === 0 && current.includes(id)) return current;
-            return ids;
-          });
-          setStoredFavorites(Array.isArray(ids) ? ids : next);
-        })
-        .catch(() => {
-          setStoredFavorites(next);
-        });
-    } else {
-      setFavorites((prev) => {
-        const updated = prev.includes(id)
-          ? prev.filter((f) => f !== id)
-          : [...prev, id];
+  const toggleFavorite = useCallback(
+    (id: string) => {
+      const jwt = getJwt();
+      if (jwt) {
+        const next = toggleOptimistic(id);
+        postMakCardFavoritesToggle(id)
+          .then((ids) => {
+            if (!Array.isArray(ids)) return;
+            setFavorites(ids.length === 0 && next.includes(id) ? next : ids);
+            setStoredFavorites(Array.isArray(ids) ? ids : next);
+          })
+          .catch(() => setStoredFavorites(next));
+      } else {
+        const updated = favorites.includes(id)
+          ? favorites.filter((f) => f !== id)
+          : [...favorites, id];
+        setFavorites(updated);
         setStoredFavorites(updated);
-        return updated;
-      });
-    }
-  }, [favorites]);
+      }
+    },
+    [favorites, setFavorites, toggleOptimistic]
+  );
 
   const isFavorite = useCallback(
-    (id: string) => favorites.includes(id), // перевірка по всьому масиву
+    (id: string) => favorites.includes(id),
     [favorites]
   );
 

@@ -8,17 +8,18 @@ import InitialsCircle from "../common/InitialsCircle";
 import BurgerMenu from "./BurgerMenu";
 
 import { header_images } from "@/public/images/CommonImages/HeaderImages";
-import { getJwt } from "@/api/auth-api";
+import { useIsAuthenticated } from "@/stores/auth-store";
 
 const Header = () => {
   const router = useRouter();
+  const isAuthenticated = useIsAuthenticated();
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
 
   const [isMobile, setIsMobile] = useState(false);
 
   const handleUserIconClick = () => {
-    if (getJwt()) {
+    if (isAuthenticated) {
       router.push("/profile/my-profile");
     } else {
       router.push("/auth/sign-in");

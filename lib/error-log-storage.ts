@@ -7,17 +7,10 @@ import type {
   ClientErrorsListResponse,
   StoredClientError,
 } from "./client-error-types";
+import { getFirestoreDb, isFirebaseConfigured } from "./firebase-admin-app";
 
 const LOG_DIR = path.join(process.cwd(), "logs");
 const LOG_FILE = path.join(LOG_DIR, "client-errors.jsonl");
-
-function isFirebaseConfigured(): boolean {
-  return Boolean(
-    process.env.FIREBASE_PROJECT_ID &&
-      process.env.FIREBASE_CLIENT_EMAIL &&
-      process.env.FIREBASE_PRIVATE_KEY
-  );
-}
 
 function normalizePayload(payload: ClientErrorPayload): ClientErrorPayload {
   return {
@@ -35,20 +28,8 @@ function normalizePayload(payload: ClientErrorPayload): ClientErrorPayload {
 }
 
 async function saveToFirestore(payload: ClientErrorPayload): Promise<void> {
-  const { cert, getApps, initializeApp } = await import("firebase-admin/app");
-  const { getFirestore, FieldValue } = await import("firebase-admin/firestore");
-
-  if (getApps().length === 0) {
-    initializeApp({
-      credential: cert({
-        projectId: process.env.FIREBASE_PROJECT_ID,
-        clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-        privateKey: process.env.FIREBASE_PRIVATE_KEY!.replace(/\\n/g, "\n"),
-      }),
-    });
-  }
-
-  const db = getFirestore();
+  const { FieldValue } = await import("firebase-admin/firestore");
+  const db = await getFirestoreDb();
   const record: StoredClientError = {
     ...normalizePayload(payload),
     receivedAt: new Date().toISOString(),
@@ -116,27 +97,21 @@ export async function readErrorsFromFile(limit: number): Promise<StoredClientErr
 }
 
 async function readErrorsFromFirestore(limit: number): Promise<StoredClientError[]> {
-  const { cert, getApps, initializeApp } = await import("firebase-admin/app");
-  const { getFirestore } = await import("firebase-admin/firestore");
-
-  if (getApps().length === 0) {
-    initializeApp({
-      credential: cert({
-        projectId: process.env.FIREBASE_PROJECT_ID,
-        clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-        privateKey: process.env.FIREBASE_PRIVATE_KEY!.replace(/\\n/g, "\n"),
-      }),
-    });
+  const db = await getFirestoreDb();
+  try {
+    const snapshot = await db
+      .collection("client_errors")
+      .orderBy("receivedAt", "desc")
+      .limit(limit)
+      .get();
+    return snapshot.docs.map((doc) => doc.data() as StoredClientError);
+  } catch {
+    const snapshot = await db.collection("client_errors").limit(limit).get();
+    return snapshot.docs
+      .map((doc) => doc.data() as StoredClientError)
+      .sort((a, b) => (b.receivedAt || "").localeCompare(a.receivedAt || ""))
+      .slice(0, limit);
   }
-
-  const db = getFirestore();
-  const snapshot = await db
-    .collection("client_errors")
-    .orderBy("receivedAt", "desc")
-    .limit(limit)
-    .get();
-
-  return snapshot.docs.map((doc) => doc.data() as StoredClientError);
 }
 
 export function computeClientErrorStats(items: StoredClientError[]): ClientErrorStats {

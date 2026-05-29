@@ -10,6 +10,7 @@ import {
   sanitizeAuthUser,
   type AuthUserPublic,
 } from "@/lib/sanitizeAuthUser";
+import { clearJwtCookie, syncJwtCookie } from "@/lib/auth-cookie";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL!;
 
@@ -72,12 +73,25 @@ export function getJwt(): string | null {
 export function setJwt(jwt: string): void {
   if (typeof window === "undefined") return;
   localStorage.setItem(JWT_KEY, jwt);
+  syncJwtCookie(jwt);
+  void import("@/stores/auth-store").then(({ useAuthStore }) => {
+    const user = getStoredUser();
+    if (user) {
+      useAuthStore.getState().setSession(jwt, user);
+    } else {
+      useAuthStore.setState({ jwt, hydrated: true });
+    }
+  });
 }
 
 export function clearJwt(): void {
   if (typeof window === "undefined") return;
   localStorage.removeItem(JWT_KEY);
   localStorage.removeItem(USER_KEY);
+  clearJwtCookie();
+  void import("@/stores/auth-store").then(({ useAuthStore }) => {
+    useAuthStore.getState().clearSession();
+  });
 }
 
 export function getStoredUser(): AuthUser | null {
@@ -100,7 +114,16 @@ export function getStoredUser(): AuthUser | null {
 /** Зберігає лише безпечний піднабір полів (навіть якщо передати повну відповідь API). */
 export function setStoredUser(user: unknown): void {
   if (typeof window === "undefined") return;
-  localStorage.setItem(USER_KEY, JSON.stringify(sanitizeAuthUser(user)));
+  const sanitized = sanitizeAuthUser(user);
+  localStorage.setItem(USER_KEY, JSON.stringify(sanitized));
+  void import("@/stores/auth-store").then(({ useAuthStore }) => {
+    const jwt = getJwt();
+    if (jwt) {
+      useAuthStore.getState().setSession(jwt, sanitized);
+    } else {
+      useAuthStore.getState().setUser(sanitized);
+    }
+  });
 }
 
 export { sanitizeAuthUser };

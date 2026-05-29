@@ -8,19 +8,12 @@ import type {
   StoredClientPerformance,
 } from "./performance-types";
 import { isDashboardAccessAllowed } from "./error-log-storage";
+import { getFirestoreDb, isFirebaseConfigured } from "./firebase-admin-app";
 
 export { isDashboardAccessAllowed };
 
 const LOG_DIR = path.join(process.cwd(), "logs");
 const LOG_FILE = path.join(LOG_DIR, "client-performance.jsonl");
-
-function isFirebaseConfigured(): boolean {
-  return Boolean(
-    process.env.FIREBASE_PROJECT_ID &&
-      process.env.FIREBASE_CLIENT_EMAIL &&
-      process.env.FIREBASE_PRIVATE_KEY
-  );
-}
 
 function normalizePayload(payload: ClientPerformancePayload): ClientPerformancePayload {
   return {
@@ -45,20 +38,8 @@ async function saveToFile(payload: ClientPerformancePayload): Promise<void> {
 }
 
 async function saveToFirestore(payload: ClientPerformancePayload): Promise<void> {
-  const { cert, getApps, initializeApp } = await import("firebase-admin/app");
-  const { getFirestore, FieldValue } = await import("firebase-admin/firestore");
-
-  if (getApps().length === 0) {
-    initializeApp({
-      credential: cert({
-        projectId: process.env.FIREBASE_PROJECT_ID,
-        clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-        privateKey: process.env.FIREBASE_PRIVATE_KEY!.replace(/\\n/g, "\n"),
-      }),
-    });
-  }
-
-  const db = getFirestore();
+  const { FieldValue } = await import("firebase-admin/firestore");
+  const db = await getFirestoreDb();
   const record: StoredClientPerformance = {
     ...normalizePayload(payload),
     receivedAt: new Date().toISOString(),
@@ -155,15 +136,49 @@ export function computePerformanceStats(items: StoredClientPerformance[]): Perfo
   };
 }
 
+async function readPerformanceFromFirestore(
+  limit: number
+): Promise<StoredClientPerformance[]> {
+  const db = await getFirestoreDb();
+  try {
+    const snapshot = await db
+      .collection("client_performance")
+      .orderBy("receivedAt", "desc")
+      .limit(limit)
+      .get();
+    return snapshot.docs.map((doc) => doc.data() as StoredClientPerformance);
+  } catch {
+    const snapshot = await db.collection("client_performance").limit(limit).get();
+    return snapshot.docs
+      .map((doc) => doc.data() as StoredClientPerformance)
+      .sort((a, b) => (b.receivedAt || "").localeCompare(a.receivedAt || ""))
+      .slice(0, limit);
+  }
+}
+
 export async function listRecentClientPerformance(
   limit = 100
 ): Promise<ClientPerformanceListResponse> {
   const capped = Math.min(Math.max(limit, 1), 500);
-  const items = await readPerformanceFromFile(capped);
+  let items: StoredClientPerformance[] = [];
+  let storage: ClientPerformanceListResponse["storage"] = "file";
+
+  if (isFirebaseConfigured()) {
+    try {
+      items = await readPerformanceFromFirestore(capped);
+      storage = "firestore";
+    } catch (error) {
+      console.error("[log-performance] Firestore read failed, fallback to file:", error);
+      items = await readPerformanceFromFile(capped);
+    }
+  } else {
+    items = await readPerformanceFromFile(capped);
+  }
+
   return {
     ok: true,
     items,
     stats: computePerformanceStats(items),
-    storage: "file",
+    storage,
   };
 }

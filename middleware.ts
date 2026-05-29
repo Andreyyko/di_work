@@ -1,11 +1,14 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { AUTH_JWT_COOKIE } from "@/lib/auth-cookie";
+import { buildSignInRedirectUrl, isProtectedPath } from "@/lib/protected-routes";
+import { verifyJwtForEdge } from "@/lib/verify-jwt-edge";
 
 const canonicalHost = "www.rok-mentalhealth.com";
 const canonicalProtocol = "https";
 const localHosts = new Set(["localhost", "127.0.0.1", "::1", "[::1]"]);
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname, search } = request.nextUrl;
   const isDevelopment = process.env.NODE_ENV === "development";
   const forwardedProto = request.headers.get("x-forwarded-proto") ?? request.nextUrl.protocol.replace(":", "");
@@ -37,6 +40,22 @@ export function middleware(request: NextRequest) {
       `${canonicalProtocol}://${canonicalHost}`,
     );
     return NextResponse.redirect(canonicalUrl, 308);
+  }
+
+  if (isProtectedPath(pathname)) {
+    const token = request.cookies.get(AUTH_JWT_COOKIE)?.value;
+    if (!token) {
+      const signIn = buildSignInRedirectUrl(pathname, search);
+      return NextResponse.redirect(new URL(signIn, request.url));
+    }
+
+    const verification = await verifyJwtForEdge(token);
+    if (!verification.valid) {
+      const signIn = buildSignInRedirectUrl(pathname, search);
+      const res = NextResponse.redirect(new URL(signIn, request.url));
+      res.cookies.delete(AUTH_JWT_COOKIE);
+      return res;
+    }
   }
 
   return NextResponse.next();

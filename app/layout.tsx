@@ -5,6 +5,7 @@ import Footer from "@/components/Footer/Footer";
 import { main_page_backrounds } from "@/public/images/MainPageImages/backgrounds";
 import ClientLoaderWrapper from "@/components/common/ClientLoadingWrapper";
 import DevMonitorPanelBoot from "@/components/dev/DevMonitorPanelBoot";
+import AuthStoreSync from "@/components/providers/AuthStoreSync";
 import type { Metadata } from "next";
 
 const isDevMonitorEnabled = process.env.NODE_ENV === "development";
@@ -165,6 +166,7 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-brand-background">
+        <AuthStoreSync />
       <ClientLoaderWrapper>
         <Header />
         <main>{children}</main>

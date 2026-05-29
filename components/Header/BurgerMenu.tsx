@@ -12,7 +12,7 @@ import { useRouter } from "next/navigation";
 import gsap from "gsap";
 import { main_page_backrounds } from "@/public/images/MainPageImages/backgrounds";
 import Link from "next/link";
-import { getJwt } from "@/api/auth-api";
+import { useIsAuthenticated } from "@/stores/auth-store";
 
 type Props = {
   onClose: () => void;
@@ -22,12 +22,13 @@ type Props = {
 
 const BurgerMenu = ({ onClose, isMobile, closing }: Props) => {
   const router = useRouter();
+  const isAuthenticated = useIsAuthenticated();
   const menuRef = useRef<HTMLDivElement>(null);
   const frameRef = useRef<HTMLDivElement>(null);
 
   const handleUserIconClick = () => {
     onClose();
-    if (getJwt()) {
+    if (isAuthenticated) {
       router.push("/profile/my-profile");
     } else {
       router.push("/auth/sign-in");
