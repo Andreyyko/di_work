@@ -4,7 +4,10 @@ import localFont from "next/font/local";
 import Footer from "@/components/Footer/Footer";
 import { main_page_backrounds } from "@/public/images/MainPageImages/backgrounds";
 import ClientLoaderWrapper from "@/components/common/ClientLoadingWrapper";
+import DevMonitorPanelBoot from "@/components/dev/DevMonitorPanelBoot";
 import type { Metadata } from "next";
+
+const isDevMonitorEnabled = process.env.NODE_ENV === "development";
 
 const alexandra = localFont({
   src: "../public/fonts/alexandra-script.woff2",
@@ -140,6 +143,9 @@ export default function RootLayout({
       `}
     >
       <head>
+        {/* Error & performance monitors — vanilla JS, before Next.js bundles */}
+        <script src="/error-monitor.js" />
+        {isDevMonitorEnabled ? <script src="/performance-monitor.js" /> : null}
         <link
           rel="preload"
           as="image"
@@ -171,6 +177,7 @@ export default function RootLayout({
           <Footer />
         </section>
         </ClientLoaderWrapper>
+        {isDevMonitorEnabled ? <DevMonitorPanelBoot /> : null}
       </body>
     </html>
   );

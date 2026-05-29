@@ -1,0 +1,439 @@
+/* ROK-M brand dashboard — matches site tokens from globals.css */
+
+:root {
+  --emd-bordo: #67161f;
+  --emd-gold: #9e7557;
+  --emd-gray: #262626;
+  --emd-cream: #e0dcd0;
+  --emd-light: #e9e7e1;
+  --emd-mono: #eeebe2;
+  --emd-bg: #fffbef;
+  --emd-white: #ffffff;
+  --emd-fatal: #67161f;
+  --emd-warn: #9e7557;
+  --emd-ok: #5a7a52;
+  --emd-border: rgba(103, 22, 31, 0.12);
+  --emd-shadow: 0 4px 24px rgba(103, 22, 31, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.emd-body {
+  margin: 0;
+  min-height: 60vh;
+  font-family: var(--font-montserrat), "Montserrat", system-ui, sans-serif;
+  color: var(--emd-gray);
+  background: transparent;
+}
+
+.emd-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3.5rem;
+}
+
+@media (min-width: 768px) {
+  .emd-wrap {
+    padding: 2.5rem 2rem 4rem;
+  }
+}
+
+.emd-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--emd-border);
+}
+
+.emd-header h1 {
+  margin: 0;
+  font-family: var(--font-grava), serif;
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--emd-bordo);
+  line-height: 1.1;
+}
+
+.emd-header p {
+  margin: 0.35rem 0 0;
+  font-size: 0.9rem;
+  color: var(--emd-gold);
+}
+
+.emd-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.emd-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  border: 1px solid var(--emd-border);
+  background: var(--emd-white);
+  color: var(--emd-gray);
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: var(--emd-shadow);
+}
+
+.emd-btn:hover {
+  background: var(--emd-mono);
+  border-color: rgba(103, 22, 31, 0.22);
+}
+
+.emd-btn-danger {
+  background: rgba(103, 22, 31, 0.06);
+  border-color: rgba(103, 22, 31, 0.28);
+  color: var(--emd-bordo);
+}
+
+.emd-btn-danger:hover {
+  background: rgba(103, 22, 31, 0.12);
+}
+
+.emd-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.emd-stat {
+  background: var(--emd-white);
+  border: 1px solid var(--emd-border);
+  border-radius: 1rem;
+  padding: 1rem 1.1rem;
+  box-shadow: var(--emd-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.emd-stat::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--emd-bordo), var(--emd-gold));
+  opacity: 0.85;
+}
+
+.emd-stat-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--emd-gold);
+  font-weight: 600;
+}
+
+.emd-stat-value {
+  font-family: var(--font-grava), serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-top: 0.35rem;
+  color: var(--emd-gray);
+  line-height: 1;
+}
+
+.emd-stat-value.fatal {
+  color: var(--emd-bordo);
+}
+.emd-stat-value.warn {
+  color: var(--emd-gold);
+}
+.emd-stat-value.ok {
+  color: var(--emd-ok);
+}
+
+.emd-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 900px) {
+  .emd-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.emd-panel {
+  background: var(--emd-white);
+  border: 1px solid var(--emd-border);
+  border-radius: 1rem;
+  padding: 1.15rem 1.25rem;
+  box-shadow: var(--emd-shadow);
+}
+
+.emd-panel h2 {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-grava), serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--emd-bordo);
+}
+
+.emd-canvas-wrap {
+  position: relative;
+  height: 220px;
+  background: var(--emd-mono);
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+}
+
+.emd-canvas-wrap canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.emd-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-top: 0.65rem;
+  font-size: 0.78rem;
+  color: var(--emd-gray);
+}
+
+.emd-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.emd-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.emd-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.emd-filters input,
+.emd-filters select {
+  background: var(--emd-mono);
+  border: 1px solid var(--emd-border);
+  color: var(--emd-gray);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  font-family: inherit;
+  font-size: 0.8125rem;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.emd-filters input:focus,
+.emd-filters select:focus {
+  border-color: var(--emd-gold);
+  box-shadow: 0 0 0 2px rgba(158, 117, 87, 0.2);
+}
+
+.emd-filters input {
+  min-width: 200px;
+  flex: 1;
+}
+
+.emd-table-wrap {
+  overflow: auto;
+  max-height: 480px;
+  border-radius: 0.75rem;
+  border: 1px solid var(--emd-border);
+  background: var(--emd-mono);
+}
+
+.emd-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.emd-table th,
+.emd-table td {
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid var(--emd-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.emd-table th {
+  position: sticky;
+  top: 0;
+  background: var(--emd-light);
+  z-index: 1;
+  color: var(--emd-bordo);
+  font-weight: 600;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.emd-table tbody tr:hover td {
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.emd-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.emd-badge {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.emd-badge-fatal {
+  background: rgba(103, 22, 31, 0.12);
+  color: var(--emd-bordo);
+}
+.emd-badge-error {
+  background: rgba(158, 117, 87, 0.18);
+  color: #6b4f3a;
+}
+.emd-badge-warning {
+  background: rgba(224, 220, 208, 0.9);
+  color: var(--emd-gold);
+}
+
+.emd-msg {
+  max-width: 280px;
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+.emd-empty {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  color: var(--emd-gold);
+  font-size: 0.9rem;
+}
+
+.emd-detail {
+  margin-top: 0.5rem;
+  padding: 1rem;
+  background: var(--emd-mono);
+  border: 1px solid var(--emd-border);
+  border-radius: 0.75rem;
+  font-family: ui-monospace, "SF Mono", monospace;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 220px;
+  overflow: auto;
+  color: var(--emd-gray);
+}
+
+.emd-detail-panel h3 {
+  font-family: var(--font-grava), serif;
+  font-size: 1rem;
+  color: var(--emd-bordo);
+  margin: 0 0 0.5rem;
+}
+
+.emd-status {
+  font-size: 0.8125rem;
+  color: var(--emd-gold);
+  margin-bottom: 1rem;
+}
+
+.emd-status.ok {
+  color: var(--emd-ok);
+}
+
+.emd-status.err {
+  color: var(--emd-bordo);
+}
+
+.emd-tabs {
+  display: inline-flex;
+  gap: 0.35rem;
+  margin-bottom: 1.25rem;
+  padding: 0.25rem;
+  background: var(--emd-light);
+  border-radius: 999px;
+  border: 1px solid var(--emd-border);
+}
+
+.emd-tab {
+  border: none;
+  background: transparent;
+  color: var(--emd-gold);
+  padding: 0.5rem 1.15rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.emd-tab:hover {
+  color: var(--emd-bordo);
+}
+
+.emd-tab.active {
+  background: var(--emd-white);
+  color: var(--emd-bordo);
+  box-shadow: var(--emd-shadow);
+  font-weight: 600;
+}
+
+.emd-rec-list {
+  margin: 0.5rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--emd-gray);
+}
+
+.emd-rec-list li {
+  margin-bottom: 0.35rem;
+}
+
+.emd-rating-good {
+  color: var(--emd-ok);
+  font-weight: 600;
+}
+.emd-rating-needs {
+  color: var(--emd-gold);
+  font-weight: 600;
+}
+.emd-rating-poor {
+  color: var(--emd-bordo);
+  font-weight: 600;
+}
+
+/* checkbox inside label button */
+.emd-btn input[type="checkbox"] {
+  accent-color: var(--emd-bordo);
+}

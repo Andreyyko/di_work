@@ -20,6 +20,9 @@
 # production
 /build
 
+# client error monitor (local fallback logs)
+/logs/
+
 # misc
 .DS_Store
 *.pem
