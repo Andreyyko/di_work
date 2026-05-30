@@ -29,7 +29,7 @@ FIREBASE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY----
 2. Firebase Console → `client_errors` — новий документ
 3. Дашборд `/dev/error-monitor-dashboard` — у статусі API `storage: "firestore"`
 
-Якщо Firestore недоступний — fallback у `logs/client-errors.jsonl`.
+Якщо Firestore недоступний — fallback у `logs/client-errors.jsonl` (форматований JSON-масив).
 
 ## Безпека
 

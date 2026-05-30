@@ -1,4 +1,4 @@
-import { appendFile, mkdir, readFile } from "fs/promises";
+import { mkdir, readFile, writeFile } from "fs/promises";
 import path from "path";
 import { randomUUID } from "crypto";
 import type {
@@ -11,6 +11,8 @@ import { getFirestoreDb, isFirebaseConfigured } from "./firebase-admin-app";
 
 const LOG_DIR = path.join(process.cwd(), "logs");
 const LOG_FILE = path.join(LOG_DIR, "client-errors.jsonl");
+/** Максимум записів у файлі fallback (pretty JSON array). */
+const MAX_FILE_ENTRIES = 200;
 
 function normalizePayload(payload: ClientErrorPayload): ClientErrorPayload {
   return {
@@ -42,16 +44,60 @@ async function saveToFirestore(payload: ClientErrorPayload): Promise<void> {
   });
 }
 
-async function saveToFile(payload: ClientErrorPayload): Promise<void> {
-  await mkdir(LOG_DIR, { recursive: true });
+function isStoredClientError(value: unknown): value is StoredClientError {
+  if (!value || typeof value !== "object") return false;
+  const row = value as StoredClientError;
+  return typeof row.message === "string" && typeof row.timestamp === "string";
+}
 
+function parseJsonlLine(line: string): StoredClientError | null {
+  try {
+    const parsed = JSON.parse(line) as StoredClientError;
+    return isStoredClientError(parsed) ? parsed : null;
+  } catch {
+    return null;
+  }
+}
+
+async function readAllFromLogFile(): Promise<StoredClientError[]> {
+  try {
+    const content = await readFile(LOG_FILE, "utf8");
+    const trimmed = content.trim();
+    if (!trimmed) return [];
+
+    if (trimmed.startsWith("[")) {
+      const parsed = JSON.parse(trimmed) as unknown;
+      if (!Array.isArray(parsed)) return [];
+      return parsed.filter(isStoredClientError);
+    }
+
+    return trimmed
+      .split("\n")
+      .map((line) => line.trim())
+      .filter(Boolean)
+      .map(parseJsonlLine)
+      .filter((item): item is StoredClientError => item !== null);
+  } catch {
+    return [];
+  }
+}
+
+async function writeAllToLogFile(items: StoredClientError[]): Promise<void> {
+  await mkdir(LOG_DIR, { recursive: true });
+  const capped = items.slice(-MAX_FILE_ENTRIES);
+  await writeFile(LOG_FILE, `${JSON.stringify(capped, null, 2)}\n`, "utf8");
+}
+
+async function saveToFile(payload: ClientErrorPayload): Promise<void> {
   const record: StoredClientError = {
     ...normalizePayload(payload),
     receivedAt: new Date().toISOString(),
     serverEnv: process.env.NODE_ENV ?? "unknown",
   };
 
-  await appendFile(LOG_FILE, `${JSON.stringify(record)}\n`, "utf8");
+  const items = await readAllFromLogFile();
+  items.push(record);
+  await writeAllToLogFile(items);
 }
 
 export async function persistClientError(
@@ -72,28 +118,9 @@ export async function persistClientError(
   return "file";
 }
 
-function parseJsonlLine(line: string): StoredClientError | null {
-  try {
-    const parsed = JSON.parse(line) as StoredClientError;
-    if (!parsed.message || !parsed.timestamp) return null;
-    return parsed;
-  } catch {
-    return null;
-  }
-}
-
 export async function readErrorsFromFile(limit: number): Promise<StoredClientError[]> {
-  try {
-    const content = await readFile(LOG_FILE, "utf8");
-    const lines = content.split("\n").filter(Boolean);
-    const items = lines
-      .map(parseJsonlLine)
-      .filter((item): item is StoredClientError => item !== null);
-
-    return items.slice(-limit).reverse();
-  } catch {
-    return [];
-  }
+  const items = await readAllFromLogFile();
+  return items.slice(-limit).reverse();
 }
 
 async function readErrorsFromFirestore(limit: number): Promise<StoredClientError[]> {

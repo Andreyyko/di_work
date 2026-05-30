@@ -62,7 +62,7 @@ flowchart LR
 
 ### Перевірка збереження
 
-- **Без Firebase:** `logs/client-errors.jsonl` (один JSON на рядок)
+- **Без Firebase:** `logs/client-errors.jsonl` (JSON-масив з відступами; підтримується legacy JSONL)
 - **З Firebase:** колекція `client_errors` у Firestore Console
 
 ### Приклад запису

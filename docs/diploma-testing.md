@@ -96,7 +96,7 @@ document.cookie.includes('rok_jwt')
 1. http://localhost:3000/dev/error-monitor-test — кнопки тестів.
 2. Dev Monitor (кнопка внизу справа) → Sync throw / Manual error.
 3. http://localhost:3000/dev/error-monitor-dashboard — графіки та таблиця.
-4. Файл `logs/client-errors.jsonl` — новий рядок JSON.
+4. Файл `logs/client-errors.jsonl` — новий запис у JSON-масиві (з відступами).
 
 ---
 
